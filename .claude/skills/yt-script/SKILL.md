@@ -19,6 +19,10 @@ python3 hookscore.py hooks.txt              # rank your hook options
 python3 hookscore.py --hook "one line"      # score a single one
 ```
 
+`hookscore.py` scores Portuguese hooks too (PT word lists, accent-insensitive, `match_pt` patterns
+in `hooks.json`). Write PT hooks in PT and score them as they are; do not translate them to score.
+The original calibration was English-only, so a PT score is an adaptation, not a measurement.
+
 ## Before you write
 
 1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk

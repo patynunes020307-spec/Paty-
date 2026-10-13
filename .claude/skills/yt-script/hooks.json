@@ -19,6 +19,10 @@
     "\\b\\d+(\\.\\d+)?\\s?%",
     "\\b\\d+ (out of|in) \\d+\\b",
     "\\b\\d{2,}(,\\d{3})+\\b"
+   ],
+   "match_pt": [
+    "\\b\\d+ (de cada|em cada) \\d+\\b",
+    "\\b\\d{1,3}(\\.\\d{3})+\\b"
    ]
   },
   {
@@ -31,6 +35,11 @@
     "\\bthis (channel|guy|creator|account)\\b",
     "\\bwent from .* to\\b",
     "\\bin (a|one|two|three|\\d+) (week|month|year)s?\\b"
+   ],
+   "match_pt": [
+    "\\b(esse|este|essa|esta) (canal|cara|perfil|casal|noiva|cerimonialista|empresa)\\b",
+    "\\b(foi|saiu|passou) de .* (para|pra)\\b",
+    "\\bem (um|uma|dois|duas|tres|\\d+) (semana|mes|meses|ano)s?\\b"
    ]
   },
   {
@@ -43,6 +52,12 @@
     "\\byou('re| are) (probably |still )?(doing|making)\\b",
     "\\bthe (mistake|reason) (everyone|most people|nobody)\\b",
     "\\bstop (doing )?\\b"
+   ],
+   "match_pt": [
+    "\\bvoce (provavelmente |ainda )?(esta|ta) (fazendo|cometendo|errando)\\b",
+    "\\bo (erro|motivo) (que|de) (todo mundo|a maioria|ninguem)\\b",
+    "\\bpare de\\b",
+    "\\bo erro\\b"
    ]
   },
   {
@@ -55,6 +70,11 @@
     "\\beveryone (says|thinks|tells you)\\b",
     "\\bis (actually )?wrong\\b",
     "\\bnobody (tells|talks about)\\b"
+   ],
+   "match_pt": [
+    "\\btodo mundo (diz|acha|fala|manda|te diz)\\b",
+    "\\b(esta|ta) (completamente |totalmente )?errad[oa]\\b",
+    "\\bninguem (te )?(conta|fala|diz)\\b"
    ]
   },
   {
@@ -67,6 +87,11 @@
     "\\bI('m| am) going to show you\\b",
     "\\bhere('s| is) (the|exactly)\\b",
     "\\bon screen\\b"
+   ],
+   "match_pt": [
+    "\\b(eu )?vou (te )?mostrar\\b",
+    "\\baqui (esta|ta) (o|a|exatamente)\\b",
+    "\\bna tela\\b"
    ]
   },
   {
@@ -78,6 +103,10 @@
    "match": [
     "\\bthe (best|worst|fastest|easiest|only)\\b",
     "\\bnumber one\\b"
+   ],
+   "match_pt": [
+    "\\b(o|a) (melhor|pior|unic[oa]|mais rapid[oa]|mais facil)\\b",
+    "\\bnumero um\\b"
    ]
   },
   {
@@ -90,6 +119,11 @@
     "\\bin (the next )?\\d+ (seconds|minutes|hours)\\b",
     "\\bby the end of this video\\b",
     "\\bunder \\d+\\b"
+   ],
+   "match_pt": [
+    "\\bem (menos de )?\\d+ (segundos|minutos|horas)\\b",
+    "\\bate o final (deste|desse) video\\b",
+    "\\bnos proximos \\d+\\b"
    ]
   },
   {
@@ -102,6 +136,11 @@
     "\\bI (tried|spent|tested|let|gave)\\b",
     "\\bfor \\d+ (days|weeks|months)\\b",
     "\\bso you don'?t have to\\b"
+   ],
+   "match_pt": [
+    "\\beu (testei|tentei|passei|deixei|fiz)\\b",
+    "\\bpor \\d+ (dias|semanas|meses)\\b",
+    "\\b(pra|para) (voce|vc) nao (precisar|ter que)\\b"
    ]
   },
   {
@@ -113,6 +152,9 @@
    "match": [
     "^(why|how|what|when|should|can|do|does|is)\\b",
     "\\?\\s*$"
+   ],
+   "match_pt": [
+    "^(por que|como|o que|quando|qual|quais|sera que|vale a pena)\\b"
    ]
   },
   {
@@ -125,6 +167,11 @@
     "\\bbefore\\b.*\\bafter\\b",
     "\\bthis was\\b.*\\bthis is\\b",
     "\\bused to\\b"
+   ],
+   "match_pt": [
+    "\\bantes\\b.*\\bdepois\\b",
+    "\\bisso era\\b.*\\bisso e\\b",
+    "\\bcostumava\\b"
    ]
   },
   {
@@ -138,6 +185,11 @@
     "\\bteardown\\b",
     "\\banalys(ed|ed|is|e)\\b",
     "\\bI pulled\\b"
+   ],
+   "match_pt": [
+    "\\b(analisei|analisamos|destrinchei|desmontei)\\b",
+    "\\banalise\\b",
+    "\\bpeguei (os|as)\\b"
    ]
   },
   {
@@ -150,6 +202,11 @@
     "\\b\\w+ (plus|\\+) \\w+\\b",
     "\\bcombine\\b",
     "\\btogether\\b"
+   ],
+   "match_pt": [
+    "\\b\\w+ \\+ \\w+\\b",
+    "\\bcombina(ndo|r)\\b",
+    "\\bjunt[oa]s\\b"
    ]
   },
   {
@@ -163,6 +220,12 @@
     "\\bdon'?t (upload|post|publish|start)\\b",
     "\\bbefore you\\b",
     "\\bstop\\b"
+   ],
+   "match_pt": [
+    "\\bnao (feche|contrate|assine|poste|publique|comece|envie|pague|escolha)\\b",
+    "\\bantes de (voce )?(fechar|contratar|assinar|casar|escolher|pagar)\\b",
+    "\\bpare\\b",
+    "\\bcuidado\\b"
    ]
   },
   {
@@ -174,6 +237,9 @@
    "match": [
     "^\\d+ \\w+",
     "\\b(here are|these are) \\d+\\b"
+   ],
+   "match_pt": [
+    "\\b(aqui estao|estes sao|estas sao) (os |as )?\\d+\\b"
    ]
   },
   {
@@ -187,6 +253,12 @@
     "\\bscreenshot\\b",
     "\\bproof\\b",
     "\\breceipts?\\b"
+   ],
+   "match_pt": [
+    "\\b(essa|esta|esse|este) e (a|o|minha|meu)\\b",
+    "\\bprint\\b",
+    "\\bprova\\b",
+    "\\bcomprovante\\b"
    ]
   },
   {
@@ -199,6 +271,11 @@
     "\\b(nobody|almost nobody|most people) (knows?|opens?|uses?)\\b",
     "\\bhidden\\b",
     "\\bburied\\b"
+   ],
+   "match_pt": [
+    "\\b(ninguem|quase ninguem|a maioria) (sabe|usa|abre|percebe|repara)\\b",
+    "\\bescondid[oa]s?\\b",
+    "\\benterrad[oa]s?\\b"
    ]
   },
   {
@@ -211,6 +288,12 @@
     "\\bwithout\\b",
     "\\bnever\\b",
     "\\bin one\\b",
+    "\\bzero\\b"
+   ],
+   "match_pt": [
+    "\\bsem\\b",
+    "\\bnunca\\b",
+    "\\bde uma vez\\b",
     "\\bzero\\b"
    ]
   },
@@ -225,6 +308,11 @@
     "\\bversus\\b",
     "\\bwhich (one )?(is|wins)\\b",
     "\\bsame .* (three|two) ways\\b"
+   ],
+   "match_pt": [
+    "\\bversus\\b",
+    "\\bqual (e melhor|vence|ganha)\\b",
+    "\\bmesm[oa] .* de (tres|duas|dois) (jeitos|formas|maneiras)\\b"
    ]
   },
   {
@@ -237,6 +325,11 @@
     "\\bevery (video|post) .* starts\\b",
     "\\bit all (starts|started)\\b",
     "\\bthe (real )?reason\\b"
+   ],
+   "match_pt": [
+    "\\btod[oa] (video|casamento|evento|post) .* comeca\\b",
+    "\\btudo (comeca|comecou)\\b",
+    "\\bo (verdadeiro )?motivo\\b"
    ]
   },
   {
@@ -250,6 +343,13 @@
     "\\bis changing\\b",
     "\\bno longer\\b",
     "\\bas of\\b"
+   ],
+   "match_pt": [
+    "\\b(este|esse|proximo) (mes|ano)\\b",
+    "\\b(esta|essa|proxima) semana\\b",
+    "\\besta mudando\\b",
+    "\\bnao (e|vale) mais\\b",
+    "\\ba partir de\\b"
    ]
   },
   {
@@ -262,7 +362,13 @@
     "^if you\\b",
     "\\bfor (anyone|everyone|people) who\\b",
     "\\byou specifically\\b"
+   ],
+   "match_pt": [
+    "^se voce\\b",
+    "\\b(para|pra) (quem|todo mundo que)\\b",
+    "\\bvoce especificamente\\b"
    ]
   }
- ]
+ ],
+ "note_pt": "match_pt: padroes em portugues, escritos sem acento e em minusculas; hookscore.py remove acentos do texto antes de comparar."
 }
