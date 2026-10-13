@@ -1,7 +1,7 @@
 # voice.md — Impactar Cerimonial (Paty)
 
-Status: RASCUNHO v1. Base: 1 Reel editado (legenda da tela, ~60s) e 1 story (sem áudio
-transcrito). Seções marcadas PENDENTE ainda dependem de mais fala real.
+Status: RASCUNHO v2. Base: 1 Reel editado (legenda da tela, ~60s), 1 story e 3 clipes brutos
+de gravação (estes dois últimos sem fala transcrita). Seções marcadas PENDENTE ainda dependem de mais fala real.
 
 Regra para as skills: onde estiver PENDENTE, não preencher por suposição. Escrever no padrão de
 comunicação abaixo e avisar no fim do roteiro que o tom ainda não foi validado com fala real.
@@ -21,8 +21,9 @@ fala com a noiva (como hoje) ou com os dois. Até decidir, usar "vocês" / "o ca
 ## Como eu falo de verdade
 
 Fonte: Reel "visita técnica" (@impactarcerimonial), texto tirado das legendas na tela. Pode ter
-sido ajustado na edição. Trecho de ~52s a 55s sem legenda. Duas pessoas falam; PENDENTE confirmar
-qual é a Paty (A = camisa laranja, B = vestido rosé).
+sido ajustado na edição. Trecho de ~52s a 55s sem legenda. Duas pessoas falam.
+CONFIRMADO: A (camisa laranja) = Paty. B (vestido rosé) = sócia/parceira, nome não confirmado aqui.
+As falas de A são a referência de voz da Paty; as de B não.
 
 > A: Hoje nós vamos falar sobre visita técnica. Mas afinal, quais são os benefícios de uma visita
 > técnica?
@@ -67,9 +68,18 @@ acreditar", "bora lá", "fala, galera", "se inscreve e ativa o sininho" no come�
 
 ## Palavras que eu uso
 
-OBSERVADO no Reel (falta confirmar quais são da Paty e quais da outra pessoa):
-"Mas afinal", "tá?", "né", "Então a gente vai...", "por exemplo" (muito), "pra você, noiva",
-"a gente", "nós já estamos preparadas".
+Da Paty (A), OBSERVADO no Reel:
+- "Mas afinal, ..." para virar a pergunta
+- "Muitas vezes, você ..." para abrir um problema real
+- enumeração encadeada: "que não tem..., que não tem..., que o local..." e "falta uma mesa, falta
+  um espaço..."
+- "por exemplo" (repetido) e exemplos que vão do comum ao extremo (entrar com o pai -> chegar
+  de helicóptero)
+- fala direto com a pessoa: "você fecha", "você vai perceber", "sua cerimônia", "seu pai"
+- usa "nós" para a empresa ("nós avaliarmos")
+
+Da outra pessoa (B), não usar como voz da Paty: "tá?", "né", "Então a gente vai...",
+"pra você, noiva", "nós já estamos preparadas".
 
 Na fala, "muita das vezes" é natural. No roteiro escrito, usar "muitas vezes".
 
@@ -92,9 +102,13 @@ OBSERVADO:
 - legenda palavra por palavra, serifada, com termos-chave em itálico; marca @impactarcerimonial
 - sem apresentação de quem fala, sem pedido no fim (termina numa afirmação)
 - stories: selfie gravada durante o evento, cerca de 20s, marcando os fornecedores
+- gravação solo (3 clipes brutos): Paty sentada à mesa de madeira, cadeira de couro preta, fundo
+  cinza escuro com ripado de madeira, microfone de lapela, roupa em tons terrosos, olhando para a
+  câmera, vertical 4K. É o cenário mais "escritório de alto padrão" do material e o que melhor
+  serve para vídeo de autoridade no YouTube.
 
 PENDENTE:
 - confirmar se o YouTube vai ter vídeo longo ou só Shorts (o material atual é todo de Reels)
-- confirmar quem aparece (Paty, Viviane, as duas) e qual pessoa é quem no Reel
+- confirmar se os vídeos do YouTube serão só com a Paty ou com a sócia também
 - definir o pedido no fim (hoje não existe; a skill pede exatamente um)
 - idioma: português
