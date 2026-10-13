@@ -45,7 +45,7 @@ STAKE = re.compile(r"\b(lose|lost|wasting|waste|quit|fail|broke|cost|risk|before
                    r"|antes|pare|parar|nunca|erra\w*|erro|erros|falha\w*|prejuizo|multa|atraso|cancela\w*"
                    r"|desist\w*|quebr\w*|atras\w*|esquec\w*|estour\w*)\b", re.I)
 CURIOSITY = re.compile(r"\b(why|how|what|which|until|before|but|nobody|almost|except|reason|actually"
-                       r"|por que|como|o que|qual|quais|ate|mas|ninguem|quase|exceto|motivo|razao|na verdade)\b", re.I)
+                       r"|por que|como|o que|qual|quais|onde|quem|ate|mas|ninguem|quase|exceto|motivo|razao|na verdade)\b", re.I)
 CLOSED = re.compile(r"\b(because|so that|which means|porque|para que|ou seja|o que significa)\b", re.I)
 PT_MARKERS = {"voce","voces","vc","nao","que","para","pra","uma","isso","esse","essa","seu","sua",
               "de","do","da","dos","das","com","por","mas","sao","esta","e","ao","sobre","vamos",

@@ -107,8 +107,9 @@ OBSERVADO:
   câmera, vertical 4K. É o cenário mais "escritório de alto padrão" do material e o que melhor
   serve para vídeo de autoridade no YouTube.
 
+CONFIRMADO: YouTube só com Shorts (vertical, até 60s).
+
 PENDENTE:
-- confirmar se o YouTube vai ter vídeo longo ou só Shorts (o material atual é todo de Reels)
 - confirmar se os vídeos do YouTube serão só com a Paty ou com a sócia também
 - definir o pedido no fim (hoje não existe; a skill pede exatamente um)
 - idioma: português

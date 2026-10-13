@@ -54,7 +54,7 @@
     "\\bstop (doing )?\\b"
    ],
    "match_pt": [
-    "\\bvoce (provavelmente |ainda )?(esta|ta) (fazendo|cometendo|errando)\\b",
+    "\\b(voce|voces) (provavelmente |ainda )?(esta|estao|ta|tao) (fazendo|cometendo|errando)\\b",
     "\\bo (erro|motivo) (que|de) (todo mundo|a maioria|ninguem)\\b",
     "\\bpare de\\b",
     "\\bo erro\\b"
@@ -222,7 +222,7 @@
     "\\bstop\\b"
    ],
    "match_pt": [
-    "\\bnao (feche|contrate|assine|poste|publique|comece|envie|pague|escolha)\\b",
+    "\\bnao (fech|contrat|assin|post|publiqu|comec|envi|pag|escolh)(e|em|a|am)\\b",
     "\\bantes de (voce )?(fechar|contratar|assinar|casar|escolher|pagar)\\b",
     "\\bpare\\b",
     "\\bcuidado\\b"
@@ -364,7 +364,7 @@
     "\\byou specifically\\b"
    ],
    "match_pt": [
-    "^se voce\\b",
+    "^se (voce|voces|vc|vcs)\\b",
     "\\b(para|pra) (quem|todo mundo que)\\b",
     "\\bvoce especificamente\\b"
    ]
