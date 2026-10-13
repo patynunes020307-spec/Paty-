@@ -1,25 +1,52 @@
 # voice.md — Impactar Cerimonial (Paty)
 
-Status: RASCUNHO v0. Seções marcadas PENDENTE só podem ser preenchidas a partir de vídeos ou
-áudios reais da Paty. Nada aqui foi inferido de fala gravada.
+Status: RASCUNHO v1. Base: 1 Reel editado (legenda da tela, ~60s) e 1 story (sem áudio
+transcrito). Seções marcadas PENDENTE ainda dependem de mais fala real.
 
 Regra para as skills: onde estiver PENDENTE, não preencher por suposição. Escrever no padrão de
 comunicação abaixo e avisar no fim do roteiro que o tom ainda não foi validado com fala real.
 
 ## Para quem eu falo
 
-PREMISSA (vem do posicionamento da Impactar, não de dados do canal):
+CONFIRMADO pela Paty: o canal fala com CASAIS.
+
+Perfil (PREMISSA, vem do posicionamento da Impactar, não de dados do canal):
 Um casal que está planejando um casamento de médio ou alto padrão, já tem data ou está perto de
 fechar, investe bastante e tem medo de que o dia dê errado por algo que ninguém avisou: atraso,
 fornecedor que não entrega, contrato com brecha, família interferindo.
 
-PENDENTE: confirmar se o público do canal é o casal, outros profissionais do mercado (cerimonialistas,
-fornecedores) ou os dois. Isso muda gancho, vocabulário e o pedido no fim.
+DIVERGENTE: o Reel analisado fala com "você, noiva", não com o casal. Decidir se o roteiro
+fala com a noiva (como hoje) ou com os dois. Até decidir, usar "vocês" / "o casal".
 
 ## Como eu falo de verdade
 
-PENDENTE. Colar aqui a transcrição de 3 vídeos, Reels, stories ou áudios da Paty falando
-naturalmente (não roteirizados).
+Fonte: Reel "visita técnica" (@impactarcerimonial), texto tirado das legendas na tela. Pode ter
+sido ajustado na edição. Trecho de ~52s a 55s sem legenda. Duas pessoas falam; PENDENTE confirmar
+qual é a Paty (A = camisa laranja, B = vestido rosé).
+
+> A: Hoje nós vamos falar sobre visita técnica. Mas afinal, quais são os benefícios de uma visita
+> técnica?
+> B: Pra você, noiva, entender quais são os benefícios de uma visita técnica, hoje nós vamos mapear
+> três benefícios, tá? Um dos principais benefícios é mapeamento do evento. Então a gente vai
+> entender o fluxo do evento, né, por onde os convidados vão entrar, por onde eles vão sair, a
+> logística dos fornecedores, como a luz natural vai entrar na sua cerimônia.
+> A: O segundo benefício é nós avaliarmos o que o contrato não diz. Muitas vezes você fecha um
+> lugar e, quando chega no dia do evento, você vai perceber que não tem plano B, que não tem espaço
+> adequado pros garçons circularem, que o local da sua cerimônia é estreito pra você entrar, por
+> exemplo, com o seu pai, com a sua mãe. E outras particularidades como essas: falta uma mesa,
+> falta um espaço pra você colocar um cantinho instagramável, ou às vezes você até quer chegar de
+> helicóptero no seu evento e não tem um lugar adequado pra pousar.
+> B: O terceiro benefício é que a gente já [sem legenda] oferecer, e nós já estamos preparadas pra
+> qualquer tipo de acontecimento.
+
+O que o Reel mostra (OBSERVADO):
+- fala explicativa e calma, de quem já viu o problema acontecer
+- estrutura em lista numerada ("três benefícios", "o segundo", "o terceiro")
+- exemplos concretos da operação: fluxo de convidados, garçons circulando, entrada com o pai,
+  luz natural, plano B. É o ponto mais forte da fala e deve ser mantido nos roteiros.
+- fala como equipe: "nós", "a gente", "estamos preparadas" (feminino plural)
+- abre anunciando o tema ("Hoje nós vamos falar sobre..."). É o padrão que a skill trata como
+  resumo, não gancho. Nos roteiros, abrir pelo problema e anunciar o tema depois.
 
 Padrão de comunicação da Impactar (CONFIRMADO, é a regra da marca, não a fala gravada):
 - elegante, humana, clara, segura, organizada, firme e acolhedora
@@ -40,7 +67,11 @@ acreditar", "bora lá", "fala, galera", "se inscreve e ativa o sininho" no come�
 
 ## Palavras que eu uso
 
-PENDENTE. Bordões e expressões reais da Paty, tirados das transcrições.
+OBSERVADO no Reel (falta confirmar quais são da Paty e quais da outra pessoa):
+"Mas afinal", "tá?", "né", "Então a gente vai...", "por exemplo" (muito), "pra você, noiva",
+"a gente", "nós já estamos preparadas".
+
+Na fala, "muita das vezes" é natural. No roteiro escrito, usar "muitas vezes".
 
 ## O que eu não afirmo
 
@@ -55,9 +86,15 @@ SUGESTÃO (validar):
 
 ## Meu formato
 
+OBSERVADO:
+- Reel vertical 9:16, cerca de 1 minuto, duas pessoas sentadas se alternando
+- fundo neutro de parede texturizada, com cortes para cenas de evento (equipe, garçons, decoração)
+- legenda palavra por palavra, serifada, com termos-chave em itálico; marca @impactarcerimonial
+- sem apresentação de quem fala, sem pedido no fim (termina numa afirmação)
+- stories: selfie gravada durante o evento, cerca de 20s, marcando os fornecedores
+
 PENDENTE:
-- duração (vídeo longo, Shorts, ou os dois)
-- quem aparece (Paty, Viviane, as duas)
-- cenário (escritório, evento, bastidor)
-- abertura com ou sem apresentação
+- confirmar se o YouTube vai ter vídeo longo ou só Shorts (o material atual é todo de Reels)
+- confirmar quem aparece (Paty, Viviane, as duas) e qual pessoa é quem no Reel
+- definir o pedido no fim (hoje não existe; a skill pede exatamente um)
 - idioma: português
