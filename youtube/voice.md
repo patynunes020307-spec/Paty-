@@ -113,3 +113,29 @@ PENDENTE:
 - confirmar se os vídeos do YouTube serão só com a Paty ou com a sócia também
 - definir o pedido no fim (hoje não existe; a skill pede exatamente um)
 - idioma: português
+
+## Padrão de roteiro para Shorts
+
+CONFIRMADO pela Paty em 2026-10 (modelo de referência: `youtube/roteiros/2026-10-short-contrato-do-espaco.md`).
+Todo roteiro de Short segue esta estrutura, salvo pedido diferente:
+
+| Tempo | Bloco | Regra |
+|---|---|---|
+| 0:00 | Gancho | Abre pelo problema, nunca por "Hoje nós vamos falar sobre...". Fala com "vocês". |
+| 0:05 | Virada | O que o contrato/o casal acha que resolve, "Mas afinal, ..." e o que o vídeo vai mostrar, numa frase. |
+| 0:15–0:45 | 3 itens | Exatamente 3. Cada item é uma pergunta + um exemplo concreto da operação ("Muitas vezes vocês...", "Por exemplo, ..."). |
+| 0:45 | Entrega | Repete os 3 itens em palavras curtas e diz onde eles se resolvem. |
+| 0:52 | Pedido | Um pedido só. |
+
+Regras fixas:
+- até 145 palavras (cerca de 58s a 150 palavras/min); o roteiro informa a contagem
+- todo bloco tem `[NA TELA: ...]`; texto na tela em caixa alta com o nome do item ("1. PLANO B")
+- cenário padrão: Paty sozinha à mesa do escritório; cenas de apoio só com imagens próprias e
+  autorizadas
+- número no gancho só se for verdadeiro (ex.: a quantidade de itens do próprio vídeo); nunca
+  estatística sem fonte
+- 5 ganchos testados no hookscore.py; mostrar os 2 melhores com a nota e a fórmula
+- salvar cada roteiro em `youtube/roteiros/AAAA-MM-short-<tema>.md`
+
+PENDENTE: texto padrão do pedido. Premissa atual: "Antes de assinar, agendem a visita técnica com
+a gente." Confirmar se a visita técnica é vendida à parte ou já faz parte do pacote.
