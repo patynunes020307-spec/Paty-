@@ -1,5 +1,4 @@
 import { Audio } from "@remotion/media";
-import { loadFont } from "@remotion/google-fonts/Anton";
 import {
   AbsoluteFill,
   Easing,
@@ -10,11 +9,8 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { SANS } from "./fontes";
 
-const { fontFamily } = loadFont("normal", {
-  weights: ["400"],
-  subsets: ["latin"],
-});
 
 // Teste de configuração: 5 s, tela cheia, "EDITA" entrando letra a letra.
 export const TesteEdita: React.FC = () => {
@@ -35,8 +31,9 @@ export const TesteEdita: React.FC = () => {
         name="Titulo EDITA"
         style={{
           display: "flex",
-          fontFamily,
-          fontSize: 340,
+          fontFamily: SANS,
+          fontWeight: 600,
+          fontSize: 260,
           lineHeight: 1,
           color: "#F5F1E8",
           letterSpacing: 8,
