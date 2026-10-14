@@ -1,5 +1,5 @@
 # Bastidores da semana
-- Data: 2026-10-14 | Slug: `bastidores-semana` | Composição: `BastidoresSemana` | Status: trecho de validação — aguardando Paty
+- Data: 2026-10-14 | Slug: `bastidores-semana` | Composição: `BastidoresSemana` | Status: entregue (v1)
 
 ## Objetivo / CTA
 CONFIRMADO: bastidores da semana. CTA: não confirmado (fechamento só com selo + @impactarcerimonial).
@@ -55,3 +55,5 @@ Checagem dos proibidos: sem tremida artificial, sem pulsar, sem seguir rosto, se
 
 ## Log de versões
 - 2026-10-14 — exports/bastidores-semana-teste.mp4 (0–8 s) enviado para validação.
+- 2026-10-14 — trecho APROVADO pela Paty.
+- 2026-10-14 — **v1 entregue**: exports/bastidores-semana-v1.mp4 — 1080×1920, 30 fps, 20,0 s (600 frames), H.264, sem áudio, 29 MB. Originais conferidos por hash: intactos.
