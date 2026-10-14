@@ -1,0 +1,18 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+# Render
+.tmp/*
+!.tmp/.gitkeep
+exports/*
+!exports/.gitkeep
+# Brutos e referências são pesados: ficam fora do git
+originais/*
+!originais/.gitkeep
+referencias/*
+!referencias/.gitkeep
