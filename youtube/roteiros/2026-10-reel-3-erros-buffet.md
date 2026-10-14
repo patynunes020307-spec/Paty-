@@ -1,6 +1,6 @@
 # Reel — 3 erros ao contratar o buffet
 
-Status: STORYBOARD PARA APROVAÇÃO. Nada foi renderizado.
+Status: APROVADO e renderizado em 14/10/2026 (`youtube/reels/2026-10-3-erros-buffet/`). Logo provisório vetorizado do arquivo de 280 px; trocar pelo oficial em alta.
 Formato: vertical 9:16, 1440 × 2560 (padrão `design-carrossel-impactar`), 30 s, só texto na tela, sem voz.
 
 ## Premissas (confirmar)

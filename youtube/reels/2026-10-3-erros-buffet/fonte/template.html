@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:CG;src:url(cormorant-garamond-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:CG;src:url(cormorant-garamond-latin-500-italic.woff2);font-weight:500;font-style:italic}
+@font-face{font-family:MS;src:url(montserrat-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:MS;src:url(montserrat-latin-600-normal.woff2);font-weight:600}
+:root{--petroleo:#072126;--azul:#203f51;--nevoa:#84a9ac;--areia:#e6ded4}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1440px;height:2560px;overflow:hidden;background:var(--petroleo)}
+#stage{position:relative;width:1440px;height:2560px;background:var(--petroleo);color:var(--areia)}
+#azul{position:absolute;inset:0;background:var(--azul);opacity:0}
+.scene{position:absolute;left:140px;right:140px;top:0;bottom:0;opacity:0}
+.block{position:absolute;left:0;right:0;top:50%;transform:translateY(-58%)}
+.el{will-change:opacity,transform}
+.eyebrow{font:600 34px/1 MS;letter-spacing:.32em;text-transform:uppercase;color:var(--nevoa);margin-bottom:56px}
+.num{font:600 40px/1 MS;letter-spacing:.3em;color:var(--nevoa)}
+.fio{height:2px;width:120px;background:var(--nevoa);margin:36px 0 52px;transform-origin:left center}
+.title{font:500 124px/1.04 CG;letter-spacing:-.005em}
+.title.big{font-size:136px}
+.ital{font:italic 500 92px/1.1 CG;color:var(--nevoa);margin-top:28px}
+.sup{font:400 52px/1.45 MS;color:var(--areia);opacity:.88;margin-top:56px;max-width:1060px}
+.hl{font-style:italic;color:var(--nevoa)}
+.logo{color:var(--areia);display:block}
+#logoTop{position:absolute;left:50%;top:300px;width:150px;transform:translateX(-50%)}
+#logoEnd{width:600px;margin:120px auto 0}
+.handle{font:600 34px/1 MS;letter-spacing:.3em;color:var(--nevoa);text-align:center;margin-top:56px}
+.center{text-align:center}
+.center .fio{margin-left:auto;margin-right:auto;transform-origin:center}
+</style></head><body>
+<div id="stage">
+  <div id="azul"></div>
+  <svg id="logoTop" class="logo" viewBox="680 0 1360 832" style="width:150px;opacity:0"><defs>
+    <linearGradient id="gT" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff"/><stop id="gT1" offset="0" stop-color="#fff"/><stop id="gT2" offset="0" stop-color="#000"/><stop offset="1" stop-color="#000"/></linearGradient>
+    <mask id="mT" maskUnits="userSpaceOnUse" x="680" y="0" width="1360" height="832"><rect x="680" y="0" width="1360" height="832" fill="url(#gT)"/></mask></defs>
+    <path mask="url(#mT)" fill="currentColor" fill-rule="evenodd" d="__LOGO__"/></svg>
+
+  <div class="scene" id="s1"><div class="block">
+    <div class="eyebrow el" id="s1e">Impactar Cerimonial</div>
+    <div class="title big el" id="s1t">3 erros ao contratar o&nbsp;buffet</div>
+    <div class="ital el" id="s1i">e que só aparecem no dia.</div>
+  </div></div>
+
+  <div class="scene" id="s2"><div class="block">
+    <div class="num el" id="s2n">01</div><div class="fio el" id="s2f"></div>
+    <div class="title el" id="s2t">Comparar só o preço por&nbsp;pessoa</div>
+    <div class="sup el" id="s2s">Taxa de serviço, louça e bebidas costumam ficar fora desse valor.</div>
+  </div></div>
+
+  <div class="scene" id="s3"><div class="block">
+    <div class="num el" id="s3n">02</div><div class="fio el" id="s3f"></div>
+    <div class="title el" id="s3t">Não fixar garçons por&nbsp;convidado</div>
+    <div class="sup el" id="s3s">Sem número no contrato, o serviço trava no auge da festa.</div>
+  </div></div>
+
+  <div class="scene" id="s4"><div class="block">
+    <div class="num el" id="s4n">03</div><div class="fio el" id="s4f"></div>
+    <div class="title el" id="s4t">Esquecer a refeição dos fornecedores</div>
+    <div class="sup el" id="s4s">Foto, filmagem, banda e equipe também comem. Isso entra na contagem.</div>
+  </div></div>
+
+  <div class="scene center" id="s5"><div class="block" style="transform:translateY(-50%)">
+    <div class="title el" id="s5t">Comente <span class="hl">BUFFET</span><br>e eu te envio o&nbsp;guia</div>
+    <div class="sup el" id="s5s" style="margin-left:auto;margin-right:auto">O que perguntar antes de assinar.</div>
+    <svg id="logoEnd" class="logo" viewBox="0 0 2240 1528"><defs>
+      <linearGradient id="gE" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff"/><stop id="gE1" offset="0" stop-color="#fff"/><stop id="gE2" offset="0" stop-color="#000"/><stop offset="1" stop-color="#000"/></linearGradient>
+      <mask id="mE" maskUnits="userSpaceOnUse" x="0" y="0" width="2240" height="1528"><rect width="2240" height="1528" fill="url(#gE)"/></mask></defs>
+      <path mask="url(#mE)" fill="currentColor" fill-rule="evenodd" d="__LOGO__"/></svg>
+    <div class="handle el" id="s5h">@impactarcerimonial</div>
+  </div></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=x=>Math.max(0,Math.min(1,x));
+const ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const eout=x=>1-Math.pow(1-cl(x),3);
+function rise(el,t,t0,d=0.7,dy=24){const p=eout((t-t0)/d);el.style.opacity=p;el.style.transform=`translateY(${(1-p)*dy}px)`}
+function fio(el,t,t0){const p=ease((t-t0)/0.6);el.style.opacity=p>0?1:0;el.style.transform=`scaleX(${p})`}
+function scene(id,t,a,b,fin=0.45){const s=$(id);let o=0;if(t>=a&&t<b){o=1-ease((t-(b-fin))/fin)}if(id==='s1'&&t<a)o=0;s.style.opacity=o}
+function write(g1,g2,p,feather=0.12){const x=-feather+p*(1+2*feather);$(g1).setAttribute('offset',cl(x));$(g2).setAttribute('offset',cl(x+feather))}
+window.setT=function(t){
+  // cena 1: 0–3
+  scene('s1',t,0,3.0);rise($('s1e'),t,-1);rise($('s1t'),t,-1);rise($('s1i'),t,0.4);
+  // logo pequeno no topo: escreve 0.2–1.4, some junto com a cena 4
+  const lt=$('logoTop');lt.style.opacity=t<24?1-ease((t-23.55)/0.45):0;write('gT1','gT2',ease((t-0.2)/1.2));
+  // cenas 2–4
+  [['s2',3],['s3',10],['s4',17]].forEach(([k,a])=>{scene(k,t,a,a+7);rise($(k+'n'),t,a+0.15);fio($(k+'f'),t,a+0.30);rise($(k+'t'),t,a+0.45,0.8,30);rise($(k+'s'),t,a+1.05)});
+  // cena 5: 24–30
+  $('azul').style.opacity=ease((t-24.0)/0.6);
+  const s5=$('s5');s5.style.opacity=t>=24.2?1:0;
+  rise($('s5t'),t,24.35,0.8,30);rise($('s5s'),t,24.95);
+  write('gE1','gE2',ease((t-25.5)/1.8),0.1);rise($('s5h'),t,27.1);
+};
+setT(0);
+</script></body></html>
