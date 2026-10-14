@@ -16,3 +16,6 @@ originais/*
 !originais/.gitkeep
 referencias/*
 !referencias/.gitkeep
+# Cópias de trabalho dos brutos e whisper.cpp local
+public/brutos/
+whisper.cpp/

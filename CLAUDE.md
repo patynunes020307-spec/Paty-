@@ -20,6 +20,10 @@ projeto/
 
 `originais/`, `referencias/`, `exports/` e `.tmp/` ficam fora do git (arquivos pesados).
 
+## Como começar
+
+Toda produção nova começa com a skill `/iniciar` (`.claude/skills/iniciar/SKILL.md`): briefing → inventário → transcrição local → estilo → plano → trecho de validação → vídeo inteiro.
+
 ## Regras
 
 1. **Originais nunca são alterados.** Nada de sobrescrever, recodificar no lugar, renomear ou apagar arquivos em `originais/`. Todo processamento gera arquivo novo em outro lugar (`.tmp/`, `public/` ou `exports/`).
