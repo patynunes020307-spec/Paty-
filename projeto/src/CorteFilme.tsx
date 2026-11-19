@@ -27,18 +27,19 @@ type Frase = { kicker: string; linha: string; italico: string };
 export type CorteProps = {
   arquivo: string; // em public/
   credito: string;
-  // trecho do vídeo original, em segundos
-  inicio: number;
-  fim: number;
-  // enquadramento fixo do recorte vertical (CSS object-position); nunca segue rosto
-  enquadramento: string;
+  // cenas do vídeo original, em segundos (só as aprovadas na medição de nitidez)
+  // enquadramento = recorte vertical fixo por cena (CSS object-position); nunca segue rosto
+  cenas: { inicio: number; fim: number; enquadramento: string }[];
   pretoEBranco: boolean;
   gancho: Frase;
   textos: Frase[];
 };
 
+const quadros = (c: { inicio: number; fim: number }) =>
+  Math.round((c.fim - c.inicio) * FPS);
+
 export const duracaoCorte = (p: CorteProps) =>
-  Math.round((p.fim - p.inicio + FINAL_SEGUNDOS) * FPS);
+  p.cenas.reduce((t, c) => t + quadros(c), 0) + Math.round(FINAL_SEGUNDOS * FPS);
 
 const visivel = (frame: number, duracao: number, fps: number, imediato = false) =>
   interpolate(
@@ -69,7 +70,7 @@ const BlocoFrase: React.FC<{ frase: Frase; duracao: number; imediato?: boolean }
       style={{
         position: "absolute",
         left: 96,
-        right: 96,
+        right: 60,
         bottom: 470,
         opacity: v,
         translate: `0px ${interpolate(v, [0, 1], [18, 0])}px`,
@@ -95,7 +96,7 @@ const BlocoFrase: React.FC<{ frase: Frase; duracao: number; imediato?: boolean }
           color: COR.fundoClaro,
           fontFamily: serif,
           fontWeight: 500,
-          fontSize: 88,
+          fontSize: 74,
           lineHeight: 1.08,
         }}
       >
@@ -141,28 +142,39 @@ const Fechamento: React.FC = () => {
 
 export const CorteFilme: React.FC<CorteProps> = (props) => {
   const { fps } = useVideoConfig();
-  const durFilme = Math.round((props.fim - props.inicio) * fps);
+  const durFilme = props.cenas.reduce((t, c) => t + quadros(c), 0);
+  const inicios = props.cenas.map((_, i) =>
+    props.cenas.slice(0, i).reduce((t, c) => t + quadros(c), 0),
+  );
   const durGancho = Math.round(GANCHO_SEGUNDOS * fps);
   const porTexto = Math.floor((durFilme - durGancho) / props.textos.length);
 
   return (
     <AbsoluteFill style={{ backgroundColor: COR.petroleoEscuro }}>
       <Sequence durationInFrames={durFilme} premountFor={fps}>
-        {/* Vídeo real em tela cheia, recorte vertical fixo */}
-        <Video
-          name="Filme"
-          src={staticFile(props.arquivo)}
-          trimBefore={Math.round(props.inicio * fps)}
-          muted
-          premountFor={fps}
-          objectFit="cover"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectPosition: props.enquadramento,
-            filter: props.pretoEBranco ? "grayscale(1)" : undefined,
-          }}
-        />
+        {/* Vídeo real em tela cheia, cortes secos, recorte vertical fixo por cena */}
+        {props.cenas.map((c, i) => (
+          <Sequence
+            key={i}
+            from={inicios[i]}
+            durationInFrames={quadros(c)}
+            premountFor={fps}
+          >
+            <Video
+              name={`Cena ${i + 1}`}
+              src={staticFile(props.arquivo)}
+              trimBefore={Math.round(c.inicio * fps)}
+              muted
+              objectFit="cover"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectPosition: c.enquadramento,
+                filter: props.pretoEBranco ? "grayscale(1)" : undefined,
+              }}
+            />
+          </Sequence>
+        ))}
         {/* Degradê petróleo só na base */}
         <AbsoluteFill
           style={{
@@ -218,9 +230,12 @@ export const CORTES: Record<string, CorteProps> = {
   CasamentoTC1MakingOf: {
     arquivo: ARQUIVO,
     credito: CREDITO,
-    inicio: 11.97,
-    fim: 35.7,
-    enquadramento: "50% 50%",
+    cenas: [
+      { inicio: 11.97, fim: 13.0, enquadramento: "50% 50%" },
+      { inicio: 16.57, fim: 18.2, enquadramento: "50% 50%" },
+      { inicio: 20.4, fim: 27.67, enquadramento: "50% 50%" },
+      { inicio: 37.7, fim: 42.47, enquadramento: "50% 50%" },
+    ],
     pretoEBranco: false,
     gancho: { kicker: "Dica para os noivos", linha: "Making of", italico: "sem correria." },
     textos: [
@@ -232,9 +247,12 @@ export const CORTES: Record<string, CorteProps> = {
   CasamentoTC2Entrada: {
     arquivo: ARQUIVO,
     credito: CREDITO,
-    inicio: 47.13,
-    fim: 70.07,
-    enquadramento: "50% 50%",
+    cenas: [
+      { inicio: 50.1, fim: 52.93, enquadramento: "50% 50%" },
+      { inicio: 64.33, fim: 70.07, enquadramento: "50% 50%" },
+      { inicio: 79.77, fim: 83.43, enquadramento: "50% 50%" },
+      { inicio: 87.03, fim: 92.4, enquadramento: "50% 50%" },
+    ],
     pretoEBranco: true,
     gancho: { kicker: "Bastidores da Impactar", linha: "Antes de cada", italico: "entrada." },
     textos: [
@@ -246,9 +264,11 @@ export const CORTES: Record<string, CorteProps> = {
   CasamentoTC3Aliancas: {
     arquivo: ARQUIVO,
     credito: CREDITO,
-    inicio: 87.03,
-    fim: 111.83,
-    enquadramento: "50% 50%",
+    cenas: [
+      { inicio: 92.4, fim: 98.9, enquadramento: "50% 50%" },
+      { inicio: 98.9, fim: 105.37, enquadramento: "50% 50%" },
+      { inicio: 117.1, fim: 124.1, enquadramento: "50% 50%" },
+    ],
     pretoEBranco: true,
     gancho: { kicker: "Erro e prevenção", linha: "Quem leva", italico: "as alianças?" },
     textos: [
@@ -260,9 +280,12 @@ export const CORTES: Record<string, CorteProps> = {
   CasamentoTC4Brinde: {
     arquivo: ARQUIVO,
     credito: CREDITO,
-    inicio: 140.8,
-    fim: 158.63,
-    enquadramento: "50% 50%",
+    cenas: [
+      { inicio: 140.8, fim: 150.87, enquadramento: "50% 50%" },
+      { inicio: 150.87, fim: 152.93, enquadramento: "50% 50%" },
+      { inicio: 152.93, fim: 155.43, enquadramento: "50% 50%" },
+      { inicio: 155.43, fim: 158.63, enquadramento: "50% 50%" },
+    ],
     pretoEBranco: false,
     gancho: { kicker: "Bastidores da Impactar", linha: "Um brinde", italico: "no tempo certo." },
     textos: [
