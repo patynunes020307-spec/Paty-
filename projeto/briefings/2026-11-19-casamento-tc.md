@@ -1,5 +1,5 @@
 # Cortes do filme de casamento (Thiago Costa Filmes)
-- Data: 2026-11-19 | Slug: `casamento-tc` | Composições: `CasamentoTC1MakingOf` … `CasamentoTC4Brinde` | Status: trecho de validação enviado
+- Data: 2026-11-19 | Slug: `casamento-tc` | Composições: `CasamentoTC1MakingOf` … `CasamentoTC4Brinde` | Status: prévias entregues para revisão (não publicar)
 
 ## Objetivo / CTA
 CONFIRMADO: cortes para o Instagram da Impactar mostrando valor de planejamento, coordenação e cuidado — cada corte ensina algo. Sem desconto, promessa ou frase genérica de venda.
@@ -49,3 +49,5 @@ Proibidos: sem tremida, sem pulsar, sem seguir rosto, sem SFX, nada parado (film
 
 ## Log de versões
 - 2026-11-19 — exports/casamento-tc-teste.mp4 (corte 1, 0–10 s) enviado para validação.
+- 2026-11-19 — trecho APROVADO pela Paty.
+- 2026-11-19 — **prévias entregues**: exports/casamento-tc-previa-1..4.mp4 — 1080×1920, 30 fps, sem áudio; 33,0 / 35,1 / 30,9 / 20,3 s. Conferido: quadros ao longo de cada uma, cartões e fechamento; freezedetect na faixa do filme sem nenhum trecho parado ≥ 2 s. Não assistido em tempo real. Original intacto (só leitura + hash em .tmp/originais.sha256).
