@@ -427,4 +427,27 @@ export const CORTES: Record<string, CorteProps> = {
       { kicker: "03", linha: "No dia,", italico: "só resta sentir." },
     ],
   },
+  // Casamento real — vídeo enviado pela Paty em 19/11/2026 (filme 1280×720, autoria a confirmar)
+  CasamentoDamarys: {
+    arquivo: "brutos/damaris/filme.mp4",
+    credito: "",
+    cenas: [
+      { inicio: 6.45, fim: 8.9, enquadramento: "32% 50%" },
+      { inicio: 9.95, fim: 12.2, enquadramento: "54% 50%" },
+      { inicio: 12.3, fim: 13.3, enquadramento: "50% 50%" },
+      { inicio: 13.4, fim: 15.4, enquadramento: "65% 50%" },
+      { inicio: 18.0, fim: 22.1, enquadramento: "41% 50%" },
+      { inicio: 32.9, fim: 34.15, enquadramento: "41% 50%" },
+      { inicio: 43.0, fim: 44.3, enquadramento: "59% 50%" },
+      { inicio: 44.35, fim: 48.4, enquadramento: "46% 50%" },
+      { inicio: 48.45, fim: 50.0, enquadramento: "50% 50%" },
+    ],
+    pretoEBranco: false,
+    gancho: { kicker: "Casamento real", linha: "Damarys", italico: "& Alex." },
+    textos: [
+      { kicker: "01", linha: "Ela só precisou", italico: "respirar." },
+      { kicker: "02", linha: "Juntos,", italico: "em cada passo." },
+      { kicker: "03", linha: "E o resto", italico: "foi só celebrar." },
+    ],
+  },
 };

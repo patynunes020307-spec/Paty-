@@ -114,6 +114,15 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      <Composition
+        id="CasamentoDamarys"
+        component={CorteFilme}
+        defaultProps={CORTES.CasamentoDamarys}
+        durationInFrames={duracaoCorte(CORTES.CasamentoDamarys)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
     </>
   );
 };
