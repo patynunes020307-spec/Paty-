@@ -29,7 +29,13 @@ export type CorteProps = {
   credito: string;
   // cenas do vídeo original, em segundos (só as aprovadas na medição de nitidez)
   // enquadramento = recorte vertical fixo por cena (CSS object-position); nunca segue rosto
-  cenas: { inicio: number; fim: number; enquadramento: string }[];
+  // arquivo na cena substitui o arquivo padrão (vídeos com vários brutos)
+  cenas: {
+    inicio: number;
+    fim: number;
+    enquadramento: string;
+    arquivo?: string;
+  }[];
   pretoEBranco: boolean;
   gancho: Frase;
   textos: Frase[];
@@ -39,9 +45,15 @@ const quadros = (c: { inicio: number; fim: number }) =>
   Math.round((c.fim - c.inicio) * FPS);
 
 export const duracaoCorte = (p: CorteProps) =>
-  p.cenas.reduce((t, c) => t + quadros(c), 0) + Math.round(FINAL_SEGUNDOS * FPS);
+  p.cenas.reduce((t, c) => t + quadros(c), 0) +
+  Math.round(FINAL_SEGUNDOS * FPS);
 
-const visivel = (frame: number, duracao: number, fps: number, imediato = false) =>
+const visivel = (
+  frame: number,
+  duracao: number,
+  fps: number,
+  imediato = false,
+) =>
   interpolate(
     frame,
     [0, imediato ? 0.15 * fps : 0.4 * fps, duracao - 0.4 * fps, duracao],
@@ -55,11 +67,11 @@ const visivel = (frame: number, duracao: number, fps: number, imediato = false) 
 
 // Bloco de texto das referências aprovadas: fio + etiqueta Montserrat,
 // frase em Cormorant com a segunda linha em itálico nude. Alinhado à esquerda, terço inferior.
-const BlocoFrase: React.FC<{ frase: Frase; duracao: number; imediato?: boolean }> = ({
-  frase,
-  duracao,
-  imediato,
-}) => {
+const BlocoFrase: React.FC<{
+  frase: Frase;
+  duracao: number;
+  imediato?: boolean;
+}> = ({ frase, duracao, imediato }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const v = visivel(frame, duracao, fps, imediato);
@@ -76,7 +88,14 @@ const BlocoFrase: React.FC<{ frase: Frase; duracao: number; imediato?: boolean }
         translate: `0px ${interpolate(v, [0, 1], [18, 0])}px`,
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 26 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 22,
+          marginBottom: 26,
+        }}
+      >
         <div style={{ width: 64, height: 3, backgroundColor: COR.nude }} />
         <div
           style={{
@@ -102,7 +121,9 @@ const BlocoFrase: React.FC<{ frase: Frase; duracao: number; imediato?: boolean }
       >
         {frase.linha}
         <br />
-        <span style={{ fontStyle: "italic", color: COR.nude }}>{frase.italico}</span>
+        <span style={{ fontStyle: "italic", color: COR.nude }}>
+          {frase.italico}
+        </span>
       </div>
     </Interactive.Div>
   );
@@ -162,7 +183,7 @@ export const CorteFilme: React.FC<CorteProps> = (props) => {
           >
             <Video
               name={`Cena ${i + 1}`}
-              src={staticFile(props.arquivo)}
+              src={staticFile(c.arquivo ?? props.arquivo)}
               trimBefore={Math.round(c.inicio * fps)}
               muted
               objectFit="cover"
@@ -182,21 +203,23 @@ export const CorteFilme: React.FC<CorteProps> = (props) => {
               "linear-gradient(to top, rgba(7,33,38,0.96) 0%, rgba(7,33,38,0.85) 25%, rgba(32,63,81,0) 58%)",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            bottom: 360,
-            left: 96,
-            color: COR.fundoClaro,
-            opacity: 0.6,
-            fontFamily: sans,
-            fontWeight: 500,
-            fontSize: 22,
-            letterSpacing: 2,
-          }}
-        >
-          {props.credito}
-        </div>
+        {props.credito ? (
+          <div
+            style={{
+              position: "absolute",
+              bottom: 360,
+              left: 96,
+              color: COR.fundoClaro,
+              opacity: 0.6,
+              fontFamily: sans,
+              fontWeight: 500,
+              fontSize: 22,
+              letterSpacing: 2,
+            }}
+          >
+            {props.credito}
+          </div>
+        ) : null}
         <Sequence durationInFrames={durGancho} premountFor={fps}>
           <BlocoFrase frase={props.gancho} duracao={durGancho} imediato />
         </Sequence>
@@ -237,11 +260,27 @@ export const CORTES: Record<string, CorteProps> = {
       { inicio: 37.7, fim: 42.47, enquadramento: "50% 50%" },
     ],
     pretoEBranco: false,
-    gancho: { kicker: "Dica para os noivos", linha: "Making of", italico: "sem correria." },
+    gancho: {
+      kicker: "Dica para os noivos",
+      linha: "Making of",
+      italico: "sem correria.",
+    },
     textos: [
-      { kicker: "01", linha: "Acessórios, perfume e convite", italico: "num só lugar." },
-      { kicker: "02", linha: "No quarto da noiva,", italico: "só quem precisa estar." },
-      { kicker: "03", linha: "Uma folga no cronograma", italico: "antes da saída." },
+      {
+        kicker: "01",
+        linha: "Acessórios, perfume e convite",
+        italico: "num só lugar.",
+      },
+      {
+        kicker: "02",
+        linha: "No quarto da noiva,",
+        italico: "só quem precisa estar.",
+      },
+      {
+        kicker: "03",
+        linha: "Uma folga no cronograma",
+        italico: "antes da saída.",
+      },
     ],
   },
   CasamentoTC2Entrada: {
@@ -254,10 +293,22 @@ export const CORTES: Record<string, CorteProps> = {
       { inicio: 87.03, fim: 92.4, enquadramento: "50% 50%" },
     ],
     pretoEBranco: true,
-    gancho: { kicker: "Bastidores da Impactar", linha: "Antes de cada", italico: "entrada." },
+    gancho: {
+      kicker: "Bastidores da Impactar",
+      linha: "Antes de cada",
+      italico: "entrada.",
+    },
     textos: [
-      { kicker: "01", linha: "Ordem, música e sinal", italico: "combinados antes." },
-      { kicker: "02", linha: "Conferimos quem está pronto", italico: "antes de abrir a porta." },
+      {
+        kicker: "01",
+        linha: "Ordem, música e sinal",
+        italico: "combinados antes.",
+      },
+      {
+        kicker: "02",
+        linha: "Conferimos quem está pronto",
+        italico: "antes de abrir a porta.",
+      },
       { kicker: "03", linha: "Para que vocês", italico: "só vivam o momento." },
     ],
   },
@@ -270,11 +321,27 @@ export const CORTES: Record<string, CorteProps> = {
       { inicio: 117.1, fim: 124.1, enquadramento: "50% 50%" },
     ],
     pretoEBranco: true,
-    gancho: { kicker: "Erro e prevenção", linha: "Quem leva", italico: "as alianças?" },
+    gancho: {
+      kicker: "Erro e prevenção",
+      linha: "Quem leva",
+      italico: "as alianças?",
+    },
     textos: [
-      { kicker: "01", linha: "Definam antes quem guarda", italico: "e quem entrega." },
-      { kicker: "02", linha: "Combinem o momento", italico: "e onde elas ficam." },
-      { kicker: "03", linha: "No dia, conferimos", italico: "antes de começar." },
+      {
+        kicker: "01",
+        linha: "Definam antes quem guarda",
+        italico: "e quem entrega.",
+      },
+      {
+        kicker: "02",
+        linha: "Combinem o momento",
+        italico: "e onde elas ficam.",
+      },
+      {
+        kicker: "03",
+        linha: "No dia, conferimos",
+        italico: "antes de começar.",
+      },
     ],
   },
   CasamentoTC4Brinde: {
@@ -287,10 +354,76 @@ export const CORTES: Record<string, CorteProps> = {
       { inicio: 155.43, fim: 158.63, enquadramento: "50% 50%" },
     ],
     pretoEBranco: false,
-    gancho: { kicker: "Bastidores da Impactar", linha: "Um brinde", italico: "no tempo certo." },
+    gancho: {
+      kicker: "Bastidores da Impactar",
+      linha: "Um brinde",
+      italico: "no tempo certo.",
+    },
     textos: [
-      { kicker: "01", linha: "Taças servidas,", italico: "fotografia posicionada." },
-      { kicker: "02", linha: "Quando vocês chegam,", italico: "tudo está pronto." },
+      {
+        kicker: "01",
+        linha: "Taças servidas,",
+        italico: "fotografia posicionada.",
+      },
+      {
+        kicker: "02",
+        linha: "Quando vocês chegam,",
+        italico: "tudo está pronto.",
+      },
+    ],
+  },
+  // Ensaio da cerimônia — 06/04/2025 (vídeos de celular da Paty, 1080×1920)
+  Ensaio1AntesDoGrandeDia: {
+    arquivo: "brutos/ensaio/153521913.mp4",
+    credito: "",
+    cenas: [
+      {
+        inicio: 2.0,
+        fim: 8.0,
+        enquadramento: "50% 50%",
+        arquivo: "brutos/ensaio/153521913.mp4",
+      },
+      {
+        inicio: 0.4,
+        fim: 4.4,
+        enquadramento: "50% 50%",
+        arquivo: "brutos/ensaio/152006934.mp4",
+      },
+      {
+        inicio: 3.0,
+        fim: 8.5,
+        enquadramento: "50% 50%",
+        arquivo: "brutos/ensaio/153820775.mp4",
+      },
+      {
+        inicio: 1.0,
+        fim: 5.5,
+        enquadramento: "50% 50%",
+        arquivo: "brutos/ensaio/154637375.mp4",
+      },
+      {
+        inicio: 19.0,
+        fim: 25.0,
+        enquadramento: "50% 50%",
+        arquivo: "brutos/ensaio/155522387.mp4",
+      },
+      {
+        inicio: 0.0,
+        fim: 1.45,
+        enquadramento: "50% 50%",
+        arquivo: "brutos/ensaio/155554714.mp4",
+      },
+    ],
+    pretoEBranco: false,
+    gancho: {
+      kicker: "Bastidores da Impactar",
+      linha: "Antes do grande dia,",
+      italico: "um ensaio.",
+    },
+    textos: [
+      { kicker: "01", linha: "Quem entra,", italico: "com quem e quando." },
+      { kicker: "02", linha: "Cada passo", italico: "já foi dado antes." },
+      { kicker: "03", linha: "No dia,", italico: "só resta sentir." },
     ],
   },
 };

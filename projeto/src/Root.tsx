@@ -60,6 +60,15 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      <Composition
+        id="Ensaio1AntesDoGrandeDia"
+        component={CorteFilme}
+        defaultProps={CORTES.Ensaio1AntesDoGrandeDia}
+        durationInFrames={duracaoCorte(CORTES.Ensaio1AntesDoGrandeDia)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
     </>
   );
 };
