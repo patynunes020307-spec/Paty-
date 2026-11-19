@@ -28,3 +28,14 @@ Substitui o "padrão visual v6" (Areia #FAF7F3, selo como tela final), que deixo
 
 ## Legenda do post
 Gancho · situação real em 2–3 frases (só fatos confirmados) · benefício para o casal · uma CTA · 3 a 5 hashtags. Sem preço/desconto (salvo campanha aprovada), sem "zero imprevistos", sem resultado garantido. "Mais de 12 anos de mercado"; planos Essencial, Plus e Premium.
+
+## Linguagem dos vídeos aprovados (referências enviadas pela Paty em 19/11/2026)
+Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" (APROVADO), bastidores 0F69F352, Dia da Cerimonialista, 7 músicas 15 anos, stories Chandon e Vestida de Branco.
+- Vídeo real vertical em tela cheia; degradê petróleo escuro forte na metade de baixo.
+- Bloco de texto **alinhado à esquerda**, no terço inferior (margem ~96 px):
+  fio nude curto + etiqueta em Montserrat caixa-alta espaçada (ou numeração "01 —"),
+  frase em Cormorant Garamond regular, clara, com a **segunda linha em itálico nude**.
+- Frases curtas e poéticas, uma por vez, trocando a cada ~3–6 s com fade suave; sem caixas.
+- Fechamento do Reel aprovado: fundo claro com a logo oficial (variação nude + verde-água).
+  ⚠ Conflita com o Guia ("sem tela final de logo"); aplicado por ser a referência aprovada mais recente — confirmar com a Paty.
+- Logos oficiais recebidas em 19/11/2026: `public/marca/oficial/` (selo circular petróleo, selo circular nude, logo script petróleo, logo script nude/verde-água). JPG com fundo branco: usar só sobre fundo claro (multiply), nunca recolorir.
