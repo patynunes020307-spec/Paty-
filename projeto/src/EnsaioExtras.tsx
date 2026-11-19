@@ -14,9 +14,19 @@ const DEGRADE =
   "linear-gradient(to top, rgba(7,33,38,0.96) 0%, rgba(7,33,38,0.85) 25%, rgba(32,63,81,0) 58%)";
 
 // Story: uma cena real em tela cheia + uma frase (máx. 2 linhas, Guia).
-export type StoryProps = { arquivo: string; inicio: number; frase: Frase };
+export type StoryProps = {
+  arquivo: string;
+  inicio: number;
+  frase: Frase;
+  enquadramento?: string;
+};
 
-export const Story: React.FC<StoryProps> = ({ arquivo, inicio, frase }) => {
+export const Story: React.FC<StoryProps> = ({
+  arquivo,
+  inicio,
+  frase,
+  enquadramento,
+}) => {
   const { fps, durationInFrames } = useVideoConfig();
   return (
     <AbsoluteFill style={{ backgroundColor: COR.petroleoEscuro }}>
@@ -26,7 +36,11 @@ export const Story: React.FC<StoryProps> = ({ arquivo, inicio, frase }) => {
         trimBefore={Math.round(inicio * fps)}
         muted
         objectFit="cover"
-        style={{ width: "100%", height: "100%" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectPosition: enquadramento ?? "50% 50%",
+        }}
       />
       <AbsoluteFill style={{ background: DEGRADE }} />
       <Sequence durationInFrames={durationInFrames} premountFor={fps}>
@@ -37,17 +51,51 @@ export const Story: React.FC<StoryProps> = ({ arquivo, inicio, frase }) => {
 };
 
 // Capa do Reel — modelo A "Foto protagonista" (Guia, 03/11/2026).
-export const CapaEnsaio: React.FC = () => {
+export type CapaProps = {
+  arquivo: string;
+  inicio: number;
+  enquadramento: string;
+  frase: Frase;
+};
+
+export const CAPA_ENSAIO: CapaProps = {
+  arquivo: "brutos/ensaio/153820775.mp4",
+  inicio: 5,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Antes do grande dia,",
+    italico: "um ensaio.",
+  },
+};
+
+export const CAPA_DAMARYS: CapaProps = {
+  arquivo: "brutos/damaris/filme.mp4",
+  inicio: 20,
+  enquadramento: "41% 50%",
+  frase: {
+    kicker: "Damarys & Alex",
+    linha: "Juntos,",
+    italico: "em cada passo.",
+  },
+};
+
+export const Capa: React.FC<CapaProps> = ({
+  arquivo,
+  inicio,
+  enquadramento,
+  frase,
+}) => {
   const { fps } = useVideoConfig();
   return (
     <AbsoluteFill style={{ backgroundColor: COR.petroleoEscuro }}>
       <Video
         name="Foto"
-        src={staticFile("brutos/ensaio/153820775.mp4")}
-        trimBefore={Math.round(5 * fps)}
+        src={staticFile(arquivo)}
+        trimBefore={Math.round(inicio * fps)}
         muted
         objectFit="cover"
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "100%", objectPosition: enquadramento }}
       />
       <AbsoluteFill style={{ background: DEGRADE }} />
       <Img
@@ -87,7 +135,7 @@ export const CapaEnsaio: React.FC = () => {
               textTransform: "uppercase",
             }}
           >
-            Bastidores da Impactar
+            {frase.kicker}
           </div>
         </div>
         <div
@@ -99,10 +147,10 @@ export const CapaEnsaio: React.FC = () => {
             lineHeight: 1.04,
           }}
         >
-          Antes do grande dia,
+          {frase.linha}
           <br />
           <span style={{ fontStyle: "italic", color: COR.nude }}>
-            um ensaio.
+            {frase.italico}
           </span>
         </div>
       </div>
@@ -138,5 +186,35 @@ export const STORIES: Record<string, StoryProps> = {
     arquivo: "brutos/ensaio/154637375.mp4",
     inicio: 1,
     frase: { kicker: "No perfil", linha: "Veja o Reel", italico: "do ensaio." },
+  },
+  StoryDamarys1: {
+    arquivo: "brutos/damaris/filme.mp4",
+    inicio: 3.0,
+    enquadramento: "35% 50%",
+    frase: {
+      kicker: "Casamento real",
+      linha: "Ela só precisou",
+      italico: "respirar.",
+    },
+  },
+  StoryDamarys2: {
+    arquivo: "brutos/damaris/filme.mp4",
+    inicio: 13.4,
+    enquadramento: "65% 50%",
+    frase: {
+      kicker: "Enquete",
+      linha: "Carro clássico",
+      italico: "ou moderno?",
+    },
+  },
+  StoryDamarys3: {
+    arquivo: "brutos/damaris/filme.mp4",
+    inicio: 44.35,
+    enquadramento: "46% 50%",
+    frase: {
+      kicker: "No perfil",
+      linha: "Veja o Reel de",
+      italico: "Damarys & Alex.",
+    },
   },
 };

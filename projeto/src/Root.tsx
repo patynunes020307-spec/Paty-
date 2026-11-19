@@ -3,7 +3,13 @@ import { MyComposition } from "./Composition";
 import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
 import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
-import { CapaEnsaio, STORIES, Story } from "./EnsaioExtras";
+import {
+  Capa,
+  CAPA_DAMARYS,
+  CAPA_ENSAIO,
+  STORIES,
+  Story,
+} from "./EnsaioExtras";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -108,7 +114,8 @@ export const RemotionRoot: React.FC = () => {
       />
       <Composition
         id="CapaEnsaio"
-        component={CapaEnsaio}
+        component={Capa}
+        defaultProps={CAPA_ENSAIO}
         durationInFrames={1}
         fps={FPS}
         width={1080}
@@ -119,6 +126,42 @@ export const RemotionRoot: React.FC = () => {
         component={CorteFilme}
         defaultProps={CORTES.CasamentoDamarys}
         durationInFrames={duracaoCorte(CORTES.CasamentoDamarys)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryDamarys1"
+        component={Story}
+        defaultProps={STORIES.StoryDamarys1}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryDamarys2"
+        component={Story}
+        defaultProps={STORIES.StoryDamarys2}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryDamarys3"
+        component={Story}
+        defaultProps={STORIES.StoryDamarys3}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaDamarys"
+        component={Capa}
+        defaultProps={CAPA_DAMARYS}
+        durationInFrames={1}
         fps={FPS}
         width={1080}
         height={1920}
