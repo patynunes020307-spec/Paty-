@@ -1,5 +1,5 @@
 # Cortes do filme de casamento (Thiago Costa Filmes)
-- Data: 2026-11-19 | Slug: `casamento-tc` | Composições: `CasamentoTC1MakingOf` … `CasamentoTC4Brinde` | Status: prévias entregues para revisão (não publicar)
+- Data: 2026-11-19 | Slug: `casamento-tc` | Composições: `CasamentoTC1MakingOf` … `CasamentoTC4Brinde` | Status: prévias 1–4 REPROVADAS pelo Guia oficial — aguardando arquivo HD do Drive
 
 ## Objetivo / CTA
 CONFIRMADO: cortes para o Instagram da Impactar mostrando valor de planejamento, coordenação e cuidado — cada corte ensina algo. Sem desconto, promessa ou frase genérica de venda.
@@ -51,3 +51,5 @@ Proibidos: sem tremida, sem pulsar, sem seguir rosto, sem SFX, nada parado (film
 - 2026-11-19 — exports/casamento-tc-teste.mp4 (corte 1, 0–10 s) enviado para validação.
 - 2026-11-19 — trecho APROVADO pela Paty.
 - 2026-11-19 — **prévias entregues**: exports/casamento-tc-previa-1..4.mp4 — 1080×1920, 30 fps, sem áudio; 33,0 / 35,1 / 30,9 / 20,3 s. Conferido: quadros ao longo de cada uma, cartões e fechamento; freezedetect na faixa do filme sem nenhum trecho parado ≥ 2 s. Não assistido em tempo real. Original intacto (só leitura + hash em .tmp/originais.sha256).
+- 2026-11-19 — Conferência contra o **Guia de Publicações oficial (Notion, versão 02/11/2026)**: prévias 1–4 não cumprem — vídeo não está em tela cheia (faixa), tela final de logo (proibida), 3 de 4 acima de 30 s, título sem palavra em itálico, sem degradê petróleo na base, sem logo original pequena, resolução da fonte (854×374) reprova no filtro de qualidade. **Não usar.**
+- Possível original em HD no Drive: `videos cerimonial / Vídeos / 26149_trailer-leila-thiago-camila-marcus-hd.mp4` (35,8 MB, 2017, dois casais no nome — a confirmar se é o mesmo filme). Pelo Guia, material do Drive tem uso de imagem autorizado (decisão 28/10/2026); crédito ao videomaker obrigatório.
