@@ -440,7 +440,7 @@ export const CORTES: Record<string, CorteProps> = {
       { inicio: 32.9, fim: 34.15, enquadramento: "41% 50%" },
       { inicio: 43.0, fim: 44.3, enquadramento: "59% 50%" },
       { inicio: 44.35, fim: 48.4, enquadramento: "46% 50%" },
-      { inicio: 48.45, fim: 50.0, enquadramento: "50% 50%" },
+      { inicio: 48.45, fim: 49.2, enquadramento: "57% 50%" },
     ],
     pretoEBranco: false,
     gancho: { kicker: "Casamento real", linha: "Damarys", italico: "& Alex." },
