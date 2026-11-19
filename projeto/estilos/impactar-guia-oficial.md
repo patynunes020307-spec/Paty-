@@ -1,0 +1,30 @@
+# Estilo padrão — Impactar Cerimonial (Guia de Publicações oficial)
+
+**Fonte única:** Notion › Marketing & Conteúdo › 🧭 Guia de Publicações — fonte única
+https://app.notion.com/p/4010c576a2f9813aba6cde5bedf53bb7
+**Versão aplicada:** consolidada de 02/11/2026 (página editada em 10/11/2026).
+**Antes de cada produção:** abrir o Guia no Notion e conferir se a versão mudou. Se mudou, atualizar esta ficha e `src/marca.ts` antes de editar.
+Hierarquia: decisão expressa mais recente da Paty → Guia → Calendário Editorial → referências históricas.
+Substitui o "padrão visual v6" (Areia #FAF7F3, selo como tela final), que deixou de valer.
+
+## Identidade
+- Cores: petróleo #203F51 · verde-água #84A9AC · nude #E9CEBB · petróleo escuro #072126 · azul auxiliar #3C6A78 · areia #E6DED4 · fundo claro #F7F2EF (em `src/marca.ts`).
+- Fontes: títulos Cormorant Garamond com **uma palavra-chave em itálico**; textos e etiquetas Montserrat. Geraldine só dentro da logo. Bodoni, Arial, Metropolis, Atten New: proibidas.
+- Logo: sempre o arquivo original (Drive › 08 — MARKETING › 00 — MARCA › Logo-original-*.png), pequena, nunca escrita em texto nem redesenhada.
+- 4 sinais: monograma IC suave no canto (telas sem foto); palavra em itálico; degradê petróleo só na base da foto; logo original pequena.
+- P&B para emoção (cerimônia, lágrimas, beijo); cor para festa, decoração e 15 anos.
+- Proibido: caixas com borda, faixas, ícones, pílulas, ramos/flores ilustrados, sombras pesadas, véu escuro sobre a foto toda, etiquetas internas visíveis, logo escrita em texto.
+
+## Reels
+- 9:16, MP4 1080 × 1920, **15 a 30 s**; gancho escrito nos 2 primeiros segundos; **um texto por vez**; foto/vídeo em **tela cheia**; termina na cena mais bonita, **sem tela final de logo**; música pela biblioteca do Instagram/Edits.
+- Série "Bastidor em 15 s": B-roll real + frase na tela.
+- Imagens: só reais do acervo; nada gerado/alterado por IA (só recorte, exposição, balanço de branco, contraste e nitidez sutis). Material do Drive/Notion tem uso de imagem autorizado (decisão 28/10/2026); creditar fotógrafo/videomaker.
+
+## Filtro obrigatório de qualidade (antes de mostrar qualquer prévia)
+- Resolução da área usada, após o recorte, suficiente para 1080 × 1920 em tela cheia; sem ampliação relevante de arquivo pequeno, sem granulação/borrão perceptível no celular.
+- Fontes, paleta e logo oficiais; textos revisados; áreas de segurança do Instagram.
+- Se não passar: buscar outro arquivo real de qualidade; se inviável, comunicar o impedimento — **não mostrar a peça reprovada**.
+- Prévia aprovada vai para Drive › Criativos como `AAAA-MM-DD_Formato_Tema_APROVADO`; publicar/agendar só com confirmação da Paty.
+
+## Legenda do post
+Gancho · situação real em 2–3 frases (só fatos confirmados) · benefício para o casal · uma CTA · 3 a 5 hashtags. Sem preço/desconto (salvo campanha aprovada), sem "zero imprevistos", sem resultado garantido. "Mais de 12 anos de mercado"; planos Essencial, Plus e Premium.

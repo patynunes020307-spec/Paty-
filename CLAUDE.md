@@ -24,6 +24,13 @@ projeto/
 
 Toda produção nova começa com a skill `/iniciar` (`.claude/skills/iniciar/SKILL.md`): briefing → inventário → transcrição local → estilo → plano → trecho de validação → vídeo inteiro.
 
+## Guia da marca (obrigatório)
+
+Toda edição segue o **Guia de Publicações oficial da Impactar no Notion** (fonte única de regras, fontes, cores e formatos).
+Resumo aplicado e link em `projeto/estilos/impactar-guia-oficial.md`; cores em `projeto/src/marca.ts`; fontes em `projeto/src/fontes.ts`.
+Antes de cada produção, conferir no Notion se a versão do Guia mudou. Logos: só os arquivos originais do Drive (08 — MARKETING › 00 — MARCA).
+O filtro de qualidade do Guia vale antes de mostrar qualquer prévia.
+
 ## Regras
 
 1. **Originais nunca são alterados.** Nada de sobrescrever, recodificar no lugar, renomear ou apagar arquivos em `originais/`. Todo processamento gera arquivo novo em outro lugar (`.tmp/`, `public/` ou `exports/`).

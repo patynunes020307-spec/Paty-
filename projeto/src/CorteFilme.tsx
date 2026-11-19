@@ -11,63 +11,103 @@ import {
   useVideoConfig,
 } from "remotion";
 import { SANS as sans, SERIF as serif } from "./fontes";
+import { COR } from "./marca";
 
-// Cores da marca (padrão visual Impactar v6 — confirmar se ainda é o vigente)
-const AZUL = "#203F51";
-const PESSEGO = "#E9CEBB";
-const AREIA = "#FAF7F3";
-
-const FILME = "brutos/casamento-tc/filme.mp4";
-// Fonte 854×374 → largura cheia 1080 px (ampliação de ~1,26x, sem recorte)
-const FAIXA_ALTURA = Math.round((1080 * 374) / 854);
-const FAIXA_TOPO = 700;
+// Reel no modelo A do Guia de Publicações (Notion, 02/11/2026):
+// vídeo real em tela cheia, degradê petróleo só na base, título em Cormorant com
+// uma palavra-chave em itálico, um texto por vez, logo original pequena,
+// 15–30 s, termina na cena (sem tela final de logo). Música entra pelo Instagram.
 
 export const FPS = 30;
-export const FINAL_SEGUNDOS = 2.5;
+const GANCHO_SEGUNDOS = 3.5;
 
 export type CorteProps = {
-  formato: string;
-  titulo: string;
-  // trecho do filme original, em segundos
+  arquivo: string; // em public/
+  credito: string;
+  // trecho do vídeo original, em segundos
   inicio: number;
   fim: number;
-  cartoes: string[];
+  // enquadramento fixo do recorte vertical (CSS object-position); nunca segue rosto
+  enquadramento: string;
+  pretoEBranco: boolean;
+  gancho: { antes: string; italico: string; depois: string };
+  textos: string[];
 };
 
 export const duracaoCorte = (p: CorteProps) =>
-  Math.round((p.fim - p.inicio + FINAL_SEGUNDOS) * FPS);
+  Math.round((p.fim - p.inicio) * FPS);
 
-const suave = (frame: number, de: number, ate: number, fps: number) =>
-  interpolate(frame, [de, de + 0.4 * fps, ate - 0.4 * fps, ate], [0, 1, 1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.bezier(0.16, 1, 0.3, 1),
-  });
+const visivel = (frame: number, duracao: number, fps: number, entradaImediata = false) =>
+  interpolate(
+    frame,
+    [0, entradaImediata ? 0.15 * fps : 0.35 * fps, duracao - 0.35 * fps, duracao],
+    [entradaImediata ? 0.6 : 0, 1, 1, 0],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.bezier(0.16, 1, 0.3, 1),
+    },
+  );
 
-const Cartao: React.FC<{ texto: string; duracao: number }> = ({
-  texto,
+// Área de texto: acima da interface do Reels (legenda/botões ficam abaixo de ~1560 px)
+const TEXTO_BASE = 460;
+
+const Gancho: React.FC<{ gancho: CorteProps["gancho"]; duracao: number }> = ({
+  gancho,
   duracao,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const v = suave(frame, 0, duracao, fps);
+  const v = visivel(frame, duracao, fps, true);
 
   return (
     <Interactive.Div
-      name="Cartao"
+      name="Gancho"
       style={{
         position: "absolute",
-        top: FAIXA_TOPO + FAIXA_ALTURA + 90,
+        left: 80,
+        right: 80,
+        bottom: TEXTO_BASE,
+        color: COR.fundoClaro,
+        fontFamily: serif,
+        fontWeight: 600,
+        fontSize: 104,
+        lineHeight: 1.04,
+        textAlign: "center",
+        opacity: v,
+        translate: `0px ${interpolate(v, [0, 1], [20, 0])}px`,
+      }}
+    >
+      {gancho.antes}
+      <span style={{ fontStyle: "italic", fontWeight: 500, color: COR.nude }}>
+        {gancho.italico}
+      </span>
+      {gancho.depois}
+    </Interactive.Div>
+  );
+};
+
+const Texto: React.FC<{ texto: string; duracao: number }> = ({ texto, duracao }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const v = visivel(frame, duracao, fps);
+
+  return (
+    <Interactive.Div
+      name="Texto"
+      style={{
+        position: "absolute",
         left: 90,
         right: 90,
-        color: AZUL,
+        bottom: TEXTO_BASE,
+        color: COR.fundoClaro,
         fontFamily: sans,
         fontWeight: 500,
         fontSize: 50,
-        lineHeight: 1.38,
+        lineHeight: 1.36,
         textAlign: "center",
         opacity: v,
-        translate: `0px ${interpolate(v, [0, 1], [24, 0])}px`,
+        translate: `0px ${interpolate(v, [0, 1], [20, 0])}px`,
       }}
     >
       {texto}
@@ -75,212 +115,131 @@ const Cartao: React.FC<{ texto: string; duracao: number }> = ({
   );
 };
 
-const CardFinal: React.FC = () => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+export const CorteFilme: React.FC<CorteProps> = (props) => {
+  const { fps, durationInFrames } = useVideoConfig();
+  const durGancho = Math.round(GANCHO_SEGUNDOS * fps);
+  const porTexto = Math.floor((durationInFrames - durGancho) / props.textos.length);
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor: AREIA,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Img
-        src={staticFile("marca/selo-impactar.png")}
+    <AbsoluteFill style={{ backgroundColor: COR.petroleoEscuro }}>
+      {/* Vídeo real em tela cheia, recorte vertical fixo */}
+      <Video
+        name="Filme"
+        src={staticFile(props.arquivo)}
+        trimBefore={Math.round(props.inicio * fps)}
+        muted
+        premountFor={fps}
+        objectFit="cover"
         style={{
-          width: 520,
-          opacity: interpolate(frame, [0, 0.5 * fps], [0, 1], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          }),
-          // Aproximação lenta e contínua, sem pulsar
-          scale: interpolate(frame, [0, FINAL_SEGUNDOS * fps], [0.95, 1], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.16, 1, 0.3, 1),
-          }),
+          width: "100%",
+          height: "100%",
+          objectPosition: props.enquadramento,
+          filter: props.pretoEBranco ? "grayscale(1)" : undefined,
         }}
+      />
+      {/* Degradê petróleo só na base */}
+      <AbsoluteFill
+        style={{
+          background:
+            "linear-gradient(to top, rgba(7,33,38,0.92) 0%, rgba(32,63,81,0.78) 22%, rgba(32,63,81,0) 48%)",
+        }}
+      />
+      {/* Logo original, pequena (arquivo oficial — trocar pelo do Drive quando anexado) */}
+      <Img
+        src={staticFile("marca/logo-impactar.png")}
+        style={{ position: "absolute", top: 230, left: 72, width: 150 }}
       />
       <div
         style={{
           position: "absolute",
-          top: 1420,
-          color: AZUL,
+          bottom: 330,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          color: COR.fundoClaro,
+          opacity: 0.7,
           fontFamily: sans,
           fontWeight: 500,
-          fontSize: 34,
-          letterSpacing: 6,
-          opacity: interpolate(frame, [0.4 * fps, 0.9 * fps], [0, 1], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          }),
+          fontSize: 22,
+          letterSpacing: 2,
         }}
       >
-        @impactarcerimonial
+        {props.credito}
       </div>
-    </AbsoluteFill>
-  );
-};
 
-export const CorteFilme: React.FC<CorteProps> = (props) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const durFilme = Math.round((props.fim - props.inicio) * fps);
-  const porCartao = Math.floor(durFilme / props.cartoes.length);
-  const entrada = interpolate(frame, [0, 0.6 * fps], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.bezier(0.16, 1, 0.3, 1),
-  });
-
-  return (
-    <AbsoluteFill style={{ backgroundColor: AREIA }}>
-      <Sequence durationInFrames={durFilme} premountFor={fps}>
-        {/* Rótulo do formato */}
-        <div
-          style={{
-            position: "absolute",
-            top: 300,
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            color: AZUL,
-            fontFamily: sans,
-            fontWeight: 600,
-            fontSize: 30,
-            letterSpacing: 10,
-            textTransform: "uppercase",
-            opacity: entrada,
-          }}
-        >
-          {props.formato}
-        </div>
-        {/* Título (capa) */}
-        <div
-          style={{
-            position: "absolute",
-            top: 360,
-            left: 70,
-            right: 70,
-            textAlign: "center",
-            color: AZUL,
-            fontFamily: serif,
-            fontWeight: 600,
-            fontSize: 96,
-            lineHeight: 1.05,
-            opacity: entrada,
-            translate: `0px ${interpolate(entrada, [0, 1], [30, 0])}px`,
-          }}
-        >
-          {props.titulo}
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            top: FAIXA_TOPO - 28,
-            left: 470,
-            right: 470,
-            height: 4,
-            backgroundColor: PESSEGO,
-            opacity: entrada,
-          }}
-        />
-        {/* Filme inteiro em faixa, sem recorte */}
-        <Video
-          name="Filme"
-          src={staticFile(FILME)}
-          trimBefore={Math.round(props.inicio * fps)}
-          muted
+      <Sequence durationInFrames={durGancho} premountFor={fps}>
+        <Gancho gancho={props.gancho} duracao={durGancho} />
+      </Sequence>
+      {props.textos.map((texto, i) => (
+        <Sequence
+          key={i}
+          from={durGancho + i * porTexto}
+          durationInFrames={porTexto}
           premountFor={fps}
-          style={{
-            position: "absolute",
-            top: FAIXA_TOPO,
-            left: 0,
-            width: 1080,
-            height: FAIXA_ALTURA,
-          }}
-        />
-        {/* Crédito da produtora */}
-        <div
-          style={{
-            position: "absolute",
-            top: FAIXA_TOPO + FAIXA_ALTURA + 18,
-            right: 30,
-            color: AZUL,
-            opacity: 0.6,
-            fontFamily: sans,
-            fontWeight: 500,
-            fontSize: 22,
-            letterSpacing: 2,
-          }}
         >
-          Filme: Thiago Costa Filmes
-        </div>
-        {props.cartoes.map((texto, i) => (
-          <Sequence
-            key={i}
-            from={i * porCartao}
-            durationInFrames={porCartao}
-            premountFor={fps}
-          >
-            <Cartao texto={texto} duracao={porCartao} />
-          </Sequence>
-        ))}
-      </Sequence>
-      <Sequence
-        from={durFilme}
-        durationInFrames={Math.round(FINAL_SEGUNDOS * fps)}
-        premountFor={fps}
-      >
-        <CardFinal />
-      </Sequence>
+          <Texto texto={texto} duracao={porTexto} />
+        </Sequence>
+      ))}
     </AbsoluteFill>
   );
 };
 
-// Os 4 cortes (tempos = segundos do vídeo original, alinhados aos cortes de cena)
+const ARQUIVO = "brutos/casamento-tc/filme.mp4";
+const CREDITO = "Filme: Thiago Costa Filmes";
+
+// Tempos = segundos do vídeo original, alinhados aos cortes de cena. 15–30 s cada.
 export const CORTES: Record<string, CorteProps> = {
   CasamentoTC1MakingOf: {
-    formato: "Dica para os noivos",
-    titulo: "Making of sem correria",
+    arquivo: ARQUIVO,
+    credito: CREDITO,
     inicio: 11.97,
-    fim: 42.47,
-    cartoes: [
+    fim: 35.7,
+    enquadramento: "50% 50%",
+    pretoEBranco: false,
+    gancho: { antes: "Making of sem ", italico: "correria", depois: "" },
+    textos: [
       "Separe acessórios, perfume e convite num só lugar antes de a equipe de foto chegar.",
       "Defina quem fica no quarto da noiva. Menos gente, menos interrupção.",
       "Deixe uma folga no cronograma antes da saída para a cerimônia.",
     ],
   },
   CasamentoTC2Entrada: {
-    formato: "Bastidor explicado",
-    titulo: "O que acontece antes de cada entrada",
+    arquivo: ARQUIVO,
+    credito: CREDITO,
     inicio: 47.13,
-    fim: 79.77,
-    cartoes: [
+    fim: 70.07,
+    enquadramento: "50% 50%",
+    pretoEBranco: true,
+    gancho: { antes: "O que acontece antes de cada ", italico: "entrada", depois: "" },
+    textos: [
       "Cada entrada tem ordem, música e sinal combinados com antecedência.",
       "Antes de abrir a porta, a assessoria confere se todos estão prontos e posicionados.",
       "Assim o casal e a família só precisam viver o momento.",
     ],
   },
   CasamentoTC3Aliancas: {
-    formato: "Erro e prevenção",
-    titulo: "Quem leva as alianças?",
-    inicio: 83.43,
+    arquivo: ARQUIVO,
+    credito: CREDITO,
+    inicio: 87.03,
     fim: 111.83,
-    cartoes: [
-      "Um detalhe que costuma ficar para a última hora: quem guarda e quem entrega as alianças.",
+    enquadramento: "50% 50%",
+    pretoEBranco: true,
+    gancho: { antes: "Quem leva as ", italico: "alianças", depois: "?" },
+    textos: [
+      "Um detalhe que costuma ficar para a última hora: quem guarda e quem entrega.",
       "Defina antes: quem leva, em que momento entrega e onde elas ficam até lá.",
       "No dia, as alianças são conferidas antes de a cerimônia começar.",
     ],
   },
   CasamentoTC4Brinde: {
-    formato: "Bastidor explicado",
-    titulo: "Um brinde no tempo certo",
+    arquivo: ARQUIVO,
+    credito: CREDITO,
     inicio: 140.8,
     fim: 158.63,
-    cartoes: [
+    enquadramento: "50% 50%",
+    pretoEBranco: false,
+    gancho: { antes: "Um brinde no tempo ", italico: "certo", depois: "" },
+    textos: [
       "Taças servidas, fotografia posicionada e casal avisado antes.",
       "Quando os noivos chegam à mesa, o momento já está pronto para acontecer.",
     ],
