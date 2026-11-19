@@ -231,6 +231,8 @@ const TelaCTA: React.FC<{ cta: MotionProps["cta"] }> = ({ cta }) => {
         backgroundColor: COR.petroleo,
         justifyContent: "center",
         padding: "0 96px",
+        // aproximação lenta e contínua (nada parado; sem pulsar)
+        scale: interpolate(frame, [0, cta.segundos * fps], [0.97, 1], clamp),
       }}
     >
       <div

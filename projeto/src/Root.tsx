@@ -6,7 +6,9 @@ import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
 import { ASSESSORA, duracaoMotion, MONTAGEM, MotionReel } from "./MotionReel";
 import {
   Capa,
+  CAPA_ASSESSORA,
   CAPA_DAMARYS,
+  CAPA_MONTAGEM,
   CAPA_ENSAIO,
   STORIES,
   Story,
@@ -181,6 +183,24 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={MONTAGEM}
         durationInFrames={duracaoMotion(MONTAGEM)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaAssessora"
+        component={Capa}
+        defaultProps={CAPA_ASSESSORA}
+        durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaMontagem"
+        component={Capa}
+        defaultProps={CAPA_MONTAGEM}
+        durationInFrames={1}
         fps={FPS}
         width={1080}
         height={1920}

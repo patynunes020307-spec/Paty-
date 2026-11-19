@@ -80,6 +80,28 @@ export const CAPA_DAMARYS: CapaProps = {
   },
 };
 
+export const CAPA_ASSESSORA: CapaProps = {
+  arquivo: "brutos/lote/IMG_9998.mp4",
+  inicio: 1,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "A assessora apareceu pouco.",
+    italico: "O que ela fazia?",
+  },
+};
+
+export const CAPA_MONTAGEM: CapaProps = {
+  arquivo: "brutos/lote/31f6a747.mp4",
+  inicio: 19,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Dia de",
+    italico: "montagem.",
+  },
+};
+
 export const Capa: React.FC<CapaProps> = ({
   arquivo,
   inicio,
