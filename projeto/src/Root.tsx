@@ -3,6 +3,7 @@ import { MyComposition } from "./Composition";
 import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
 import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
+import { CapaEnsaio, STORIES, Story } from "./EnsaioExtras";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -65,6 +66,50 @@ export const RemotionRoot: React.FC = () => {
         component={CorteFilme}
         defaultProps={CORTES.Ensaio1AntesDoGrandeDia}
         durationInFrames={duracaoCorte(CORTES.Ensaio1AntesDoGrandeDia)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryEnsaio1"
+        component={Story}
+        defaultProps={STORIES.StoryEnsaio1}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryEnsaio2"
+        component={Story}
+        defaultProps={STORIES.StoryEnsaio2}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryEnsaio3"
+        component={Story}
+        defaultProps={STORIES.StoryEnsaio3}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryEnsaio4"
+        component={Story}
+        defaultProps={STORIES.StoryEnsaio4}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaEnsaio"
+        component={CapaEnsaio}
+        durationInFrames={1}
         fps={FPS}
         width={1080}
         height={1920}

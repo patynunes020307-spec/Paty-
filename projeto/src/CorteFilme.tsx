@@ -22,7 +22,7 @@ export const FPS = 30;
 const GANCHO_SEGUNDOS = 3;
 export const FINAL_SEGUNDOS = 2;
 
-type Frase = { kicker: string; linha: string; italico: string };
+export type Frase = { kicker: string; linha: string; italico: string };
 
 export type CorteProps = {
   arquivo: string; // em public/
@@ -67,7 +67,7 @@ const visivel = (
 
 // Bloco de texto das referências aprovadas: fio + etiqueta Montserrat,
 // frase em Cormorant com a segunda linha em itálico nude. Alinhado à esquerda, terço inferior.
-const BlocoFrase: React.FC<{
+export const BlocoFrase: React.FC<{
   frase: Frase;
   duracao: number;
   imediato?: boolean;
