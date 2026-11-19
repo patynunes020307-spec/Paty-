@@ -377,23 +377,18 @@ export const CORTES: Record<string, CorteProps> = {
     arquivo: "brutos/ensaio/153521913.mp4",
     credito: "",
     cenas: [
+      // mais presença da cerimonialista (pedido da Paty, 19/11/2026)
       {
-        inicio: 2.0,
-        fim: 8.0,
+        inicio: 12.0,
+        fim: 18.0,
         enquadramento: "50% 50%",
         arquivo: "brutos/ensaio/153521913.mp4",
       },
       {
-        inicio: 0.4,
-        fim: 4.4,
+        inicio: 5.0,
+        fim: 10.0,
         enquadramento: "50% 50%",
-        arquivo: "brutos/ensaio/152006934.mp4",
-      },
-      {
-        inicio: 3.0,
-        fim: 8.5,
-        enquadramento: "50% 50%",
-        arquivo: "brutos/ensaio/153820775.mp4",
+        arquivo: "brutos/ensaio/153905101.mp4",
       },
       {
         inicio: 1.0,
@@ -402,8 +397,14 @@ export const CORTES: Record<string, CorteProps> = {
         arquivo: "brutos/ensaio/154637375.mp4",
       },
       {
+        inicio: 4.0,
+        fim: 9.0,
+        enquadramento: "50% 50%",
+        arquivo: "brutos/ensaio/155422176.mp4",
+      },
+      {
         inicio: 19.0,
-        fim: 25.0,
+        fim: 24.0,
         enquadramento: "50% 50%",
         arquivo: "brutos/ensaio/155522387.mp4",
       },
