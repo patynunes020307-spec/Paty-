@@ -87,6 +87,7 @@ Formato: fundo claro com monograma IC ou foto real; Cormorant com palavra em it�
 | Número subindo | Já aprovada (só dado real) | "12 anos · mais de 500 eventos" |
 | Chat aparecendo | **Nova — decisão Paty** | Só com mensagem real de casal, com autorização |
 | Notificação de celular | **Não recomendo** | Exigiria inventar mensagem; Guia proíbe |
+| Tela final com CTA ("Comenta SKILL") | **Adaptar** | O Guia proíbe tela final separada. Usar a palavra-chave animada no bloco de texto **sobre a última cena**: "Comenta *DIAGNÓSTICO*". Depende da automação de direct. |
 → AUTOMATIZAR: transformar as 3 aprovadas em componentes prontos no Remotion.
 
 ### Para a operação (não é post)
