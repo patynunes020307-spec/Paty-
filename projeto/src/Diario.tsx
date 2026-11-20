@@ -234,38 +234,39 @@ export const DIARIO: DiarioProps = {
     { arquivo: B + "8146.mp4", inicio: 3.8, fim: 6.3, hora: 19, min: 5 },
     { arquivo: B + "8219.mp4", inicio: 1.5, fim: 4.0, hora: 19, min: 33 },
   ],
-  narracao: null,
+  narracao: "audio/diario-narracao.wav",
   // provisórias = roteiro enviado; serão sincronizadas com a narração gravada
   legendas: [
+    // sincronizadas com a narração da Paty (transcrição local + detecção de silêncio)
     {
       texto: "Das duas da tarde até a festa: um casamento pelos bastidores.",
-      de: 0.2,
-      ate: 4.0,
+      de: 0.3,
+      ate: 4.65,
     },
     {
       texto: "Antes da cerimônia, a gente confere o espaço e recebe a família.",
-      de: 4.0,
-      ate: 9.0,
+      de: 4.75,
+      ate: 8.85,
     },
     {
       texto:
         "Revisa o roteiro com o noivo, arruma a cauda do vestido, ajusta o véu.",
       de: 9.0,
-      ate: 15.0,
+      ate: 13.6,
     },
     {
       texto: "Depois do sim, organiza as fotos com quem precisa estar nelas.",
       de: 15.0,
-      ate: 20.0,
+      ate: 18.95,
     },
     {
-      texto: "E na festa, segue acompanhando cada momento.",
+      texto: "E na festa, seguimos acompanhando cada momento,",
       de: 20.0,
-      ate: 25.0,
+      ate: 24.95,
     },
   ],
   cta: {
-    linha: "Pra que vocês só",
+    linha: "Para que vocês só",
     italico: "precisem viver o dia.",
     acao: "Manda a data e a cidade no direct.",
     segundos: 4.0,
