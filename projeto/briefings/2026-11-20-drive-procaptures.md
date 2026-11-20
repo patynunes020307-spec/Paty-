@@ -9,3 +9,4 @@
 - ⚠ Aparecem convidadas adolescentes (menores). Autorização geral dada pela Paty em 20/11 — reconfirmar para este evento.
 - ⚠ Sem logo do Impactar 15 no projeto: capa ainda não feita.
 - 2026-11-20 — exports/15-festa-v1.mp4 enviado. Pastas Drive criadas para Aliança (1b7ykKZdP-isWq4mwAb9ftYJZ1YAHMBhE) e Última Volta (1yGolg3ITuLu6imykvlIFIxoyO-cw_CaH), capa + legenda; vídeos a subir pela Paty.
+- 2026-11-20 — Paty: vai usar no **perfil Impactar normal** (decisão expressa, sobrepõe "perfil Impactar 15"). Vídeo subido por ela → Drive › Criativos › `2026-11-20_Reel_15_Festa` (1HyrXHph8BZmqxm7ITTGJ56nlhLXOVsh6) como `2026-11-20_Reel_15_Festa_APROVADO.mp4`. ⚠ Etiqueta "Impactar 15" e CTA "Seus 15 anos…" no vídeo; sem legenda nem capa na pasta.
