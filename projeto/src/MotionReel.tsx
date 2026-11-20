@@ -687,7 +687,7 @@ export const ALIANCA: MotionProps = {
       ate: 23.4,
     },
   ],
-  audio: { arquivo: "audio/4112.wav", de: 3.0 },
+  // sem som (pedido da Paty, 20/11): a fala vira texto na tela
   falas: [
     {
       texto:

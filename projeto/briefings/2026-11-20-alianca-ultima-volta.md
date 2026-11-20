@@ -17,7 +17,8 @@ Mistura dois casamentos (29/05 no gancho, 23/05 no resto).
 ⚠ 1291 mostra o monograma com as iniciais do casal.
 
 ## Não confirmado
-Autorização de imagem dos eventos de 06/03, 23/05 e 29/05/2026. Uso do áudio original no Reel G (no diário a Paty pediu para não usar o som; aqui a fala é o conteúdo).
+Autorização de imagem: CONFIRMADA (Paty, 20/11). Som: NÃO usar nenhum som (Paty, 20/11) — Reel G refeito mudo, fala mantida como texto na tela. Monograma: liberado.
 
 ## Log
 - 2026-11-20 — exports/alianca-v1.mp4 e exports/ultima-volta-v1.mp4 enviados.
+- 2026-11-20 — Reel G v2 sem som: exports/alianca-v2.mp4 (26,9 s, sem trilha de áudio). Reel H v1 mantido.
