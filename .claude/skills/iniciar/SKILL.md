@@ -66,7 +66,17 @@ Sempre local, nunca serviço pago ou API externa.
    `transcribe` com `language: "pt"` e `tokenLevelTimestamps: true`, `toCaptions` para o formato `Caption` de `@remotion/captions`.
    Modelo padrão: `medium`; use `large-v3-turbo` se a máquina aguentar.
 3. Salve em `public/legendas/<slug>.json`.
-4. Revise nomes próprios, termos do setor e marcas — liste no briefing as correções feitas e o que ficou em dúvida.
+4. Corrija os termos de `estilos/glossario-transcricao.md` (Impactar, Alma & Afeto, nomes recorrentes).
+   Revise também os outros nomes próprios, termos do setor e marcas — liste no briefing as correções feitas e o que ficou em dúvida.
+   Erro que aparecer em mais de um vídeo vai para o glossário (resolve na origem, não a cada vídeo).
+5. **Calibre o silêncio desta gravação** (nunca use limite fixo como `-30dB`: celular em salão tem ruído de fundo alto).
+   Meça o volume médio (RMS) em janelas de 50 ms:
+   `ffmpeg -i .tmp/<slug>.wav -af "asetnsamples=800,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level:file=.tmp/<slug>-rms.txt" -f null -`
+   (800 amostras = 50 ms a 16 kHz). Ruído de fundo F ≈ percentil 10 das janelas, fala S ≈ percentil 90.
+   **Silêncio = sequência de janelas abaixo de F + 6 dB que dure pelo menos 0,14 s.**
+   Não use `silencedetect` com áudio ruidoso: ele compara amostra por amostra, os picos do ruído passam do limite e ele não acha
+   silêncio nenhum (testado em 20/11).
+   Se `S − F < 8 dB` (áudio ruidoso), o volume não separa fala de silêncio: corte só pelos tempos das palavras e avise no briefing.
 
 (A skill `remotion-captions` sugere `@remotion/whisper-webgpu`; aqui o padrão é whisper.cpp porque roda em CPU em qualquer máquina. WebGPU só se a Paty pedir.)
 
@@ -85,8 +95,40 @@ Sempre local, nunca serviço pago ou API externa.
 No briefing, escreva o plano antes de codar: trechos usados (in/out em segundos), cortes de silêncio e repetições,
 gancho dos primeiros 3 s, legendas, textos de apoio, b-roll, SFX (um por evento — nunca empilhar) e fechamento/CTA.
 
+### Regras de corte
+
+- **Nunca comer palavra.** A borda de cada corte vai para o silêncio real medido no áudio (limite da etapa 3), não para o
+  tempo da transcrição (que costuma marcar fim de palavra cedo). Folga de 30–40 ms antes e 40–60 ms depois; fade de áudio de ~12 ms.
+  Corte só onde há pausa dos dois lados. **Melhor sobrar uma hesitação do que comer meia palavra.**
+- **Quanto cortar:**
+  - Vídeo falado (ficha `ficha-paty-celular.md`, regra 2 "corta quase todo silêncio"): pausa de 0,25–1 s vira ~0,1 s; acima de 1 s vira ~0,2 s.
+  - Demais vídeos: pausa de 0,25–1 s vira 0,3 s; de 1–3 s vira 0,8 s; acima de 3 s vira 0,5 s.
+  - Pausa abaixo de 0,25 s fica. Pausa intencional depois de frase forte fica com pelo menos 0,4 s.
+- **Regravações:** procure a mesma frase repetida em até 60 s (mesmo começo de frase ou 4 palavras seguidas iguais).
+  Mantenha a **última** tomada, salvo se ela estiver incompleta ou com tropeço. Liste cada grupo no plano —
+  `"<frase>" → tomadas em 12,4 s e 31,0 s → mantendo 31,0 s` — para a Paty poder trocar.
+- **Nunca cortar:** risada, suspiro, reação ("nossa", "ai"). Antes de cortar um "silêncio", confira o volume: se a janela
+  estiver mais de ~10 dB acima do ruído de fundo, tem som ali — mantenha e cite no plano.
+- **O CTA final nunca é cortado.** Para encurtar, corte o meio.
+
 Confira o plano contra a lista do que é proibido (CLAUDE.md): sem tremida, sem pulsar, sem seguir rosto quadro a quadro,
 sem sons empilhados, nada parado mais de 2 s em vídeo falado.
+
+## 5.5 Conferência (antes de cada ⛔ e antes de entregar)
+
+Nada vai para a Paty sem passar por aqui. Se você não publicaria, não mostre.
+
+1. **Fala completa:** extraia o áudio do vídeo renderizado e transcreva de novo (whisper.cpp local, mesmo modelo).
+   Compare com as palavras que deviam estar no trecho (a legenda já cortada), ignorando acento, pontuação e fala coloquial
+   (pra/para, tá/está, tô/estou). Se mais de 1,2x, espere a mesma fala, só mais rápida.
+   - **Menos de 97% das palavras encontradas, ou palavra faltando a até 0,5 s de um corte = palavra comida.** Volte a borda
+     daquele corte e renderize de novo.
+   - Atenção: a retranscrição pode "inventar" palavra numa emenda ou "juntar" uma repetição real. Na dúvida, transcreva
+     só uma janela de ~4 s em volta daquele corte.
+2. **Folha dos cortes:** extraia o quadro logo depois de cada corte (`ffmpeg -ss <t+0.05> -i <video> -frames:v 1 .tmp/qa/corte-NN.jpg`)
+   e olhe as imagens: pulo de enquadramento estranho, olho fechado, elemento cobrindo o rosto.
+3. **Proibidos e técnico:** passe de novo pela lista do que é proibido; `ffprobe` com 1080 × 1920, 30 fps e áudio presente.
+4. Registre no briefing (Log de versões): % de fala encontrada, cortes corrigidos, o que ficou em dúvida.
 
 ## 6. Trecho de validação ⛔ (portão 2)
 
@@ -94,6 +136,7 @@ sem sons empilhados, nada parado mais de 2 s em vídeo falado.
 - Valide com `npm run lint` e `npx remotion compositions`.
 - Renderize só um trecho curto e representativo (5–10 s, com legenda e pelo menos um SFX):
   `npx remotion render <Id> exports/<slug>-teste.mp4 --frames=<ini>-<fim>`.
+- Rode a **Conferência (5.5)** no trecho e corrija o que ela apontar.
 - Mostre o trecho e o link do Studio para a Paty. **Pare e espere a aprovação.** Ajuste e repita se ela pedir.
 
 ## 7. Vídeo inteiro
@@ -101,7 +144,7 @@ sem sons empilhados, nada parado mais de 2 s em vídeo falado.
 Só depois da aprovação:
 
 - `npx remotion render <Id> exports/<slug>-v1.mp4` (versões seguintes: `-v2`, `-v3`…; nunca sobrescreva uma versão entregue).
-- Confira com `ffprobe`: 1080 × 1920, 30 fps, duração esperada, áudio presente.
+- Rode a **Conferência (5.5)** no vídeo inteiro (inclui `ffprobe`: 1080 × 1920, 30 fps, duração esperada, áudio presente).
 - Faça mais uma passada pela lista do que é proibido.
 - Atualize o briefing: status "entregue", versão, o que mudou.
 - Entregue em poucas linhas: arquivo, duração, o que ficou "não confirmado" ou em dúvida.
