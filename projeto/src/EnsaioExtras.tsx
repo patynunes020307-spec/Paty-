@@ -290,4 +290,41 @@ export const STORIES: Record<string, StoryProps> = {
       italico: "Damarys & Alex.",
     },
   },
+  // Casamento 09/08/2025 — fotos depois do sim (enquete) e pirulito
+  StoryFotos1: {
+    arquivo: "brutos/diario/8104.mp4",
+    inicio: 0,
+    frase: {
+      kicker: "Depois do sim",
+      linha: "Quem organiza",
+      italico: "as fotos?",
+    },
+  },
+  StoryFotos2: {
+    arquivo: "brutos/diario/8107.mp4",
+    inicio: 1.5,
+    frase: {
+      kicker: "Bastidores da Impactar",
+      linha: "Cada grupo,",
+      italico: "na hora certa.",
+    },
+  },
+  StoryFotos3: {
+    arquivo: "brutos/diario/8104.mp4",
+    inicio: 4.3,
+    frase: {
+      kicker: "Enquete",
+      linha: "Vocês já fizeram a lista",
+      italico: "de fotos com a família?",
+    },
+  },
+  StoryPirulito: {
+    arquivo: "brutos/diario/8045.mp4",
+    inicio: 0.1,
+    frase: {
+      kicker: "Na pochete da cerimonialista",
+      linha: "Tem até pirulito",
+      italico: "para acalmar uma criança.",
+    },
+  },
 };

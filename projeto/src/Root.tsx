@@ -11,6 +11,7 @@ import {
   MONTAGEM,
   MotionReel,
   PADRINHOS,
+  ROTEIRO,
   CAUDA,
 } from "./MotionReel";
 import {
@@ -286,6 +287,51 @@ export const RemotionRoot: React.FC = () => {
         component={Capa}
         defaultProps={CAPA_DIARIO}
         durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelRoteiro"
+        component={MotionReel}
+        defaultProps={ROTEIRO}
+        durationInFrames={duracaoMotion(ROTEIRO)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryFotos1"
+        component={Story}
+        defaultProps={STORIES.StoryFotos1}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryFotos2"
+        component={Story}
+        defaultProps={STORIES.StoryFotos2}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryFotos3"
+        component={Story}
+        defaultProps={STORIES.StoryFotos3}
+        durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="StoryPirulito"
+        component={Story}
+        defaultProps={STORIES.StoryPirulito}
+        durationInFrames={5 * FPS}
         fps={FPS}
         width={1080}
         height={1920}

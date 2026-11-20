@@ -547,7 +547,11 @@ export const CAUDA: MotionProps = {
       ate: 10.0,
     },
     {
-      frase: { kicker: "03", linha: "Depois do sim,", italico: "ainda cuidando." },
+      frase: {
+        kicker: "03",
+        linha: "Depois do sim,",
+        italico: "ainda cuidando.",
+      },
       de: 10.1,
       ate: 11.8,
     },
@@ -555,6 +559,53 @@ export const CAUDA: MotionProps = {
   cta: {
     linha: "Cada detalhe,",
     italico: "até o último.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};
+
+// Reel F — "Enquanto todo mundo olha para o altar, a gente olha para o roteiro". Casamento 09/08/2025.
+export const ROTEIRO: MotionProps = {
+  cenas: [
+    { arquivo: DI + "8030.mp4", inicio: 0.2, fim: 4.2 },
+    { arquivo: DI + "8033.mp4", inicio: 12.2, fim: 15.3 },
+    { arquivo: DI + "8054.mp4", inicio: 5.0, fim: 8.0 },
+    { arquivo: DI + "8053.mp4", inicio: 2.0, fim: 6.0 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Enquanto todo mundo olha para o altar,",
+    italico: "a gente olha para o roteiro.",
+    ate: 4.1,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "01",
+        linha: "Cada momento",
+        italico: "na ordem certa.",
+      },
+      de: 4.3,
+      ate: 7.2,
+    },
+    {
+      frase: {
+        kicker: "02",
+        linha: "Um olho no roteiro,",
+        italico: "outro no véu.",
+      },
+      de: 7.4,
+      ate: 10.2,
+    },
+    {
+      frase: { kicker: "03", linha: "E acompanha", italico: "cada palavra." },
+      de: 10.4,
+      ate: 14.0,
+    },
+  ],
+  cta: {
+    linha: "Vocês vivem o sim.",
+    italico: "A gente cuida do resto.",
     acao: "Manda a data e a cidade no direct.",
     segundos: 3.5,
   },
