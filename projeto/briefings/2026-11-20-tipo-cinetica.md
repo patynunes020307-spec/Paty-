@@ -13,7 +13,7 @@ Props em `TIPO_PADRAO` (src/TipoCinetica.tsx): `texto`, `destaque` (palavra em i
 ## Pendências
 - Frase: a Paty pediu para eu criar ("Pode criar"). v1: etiqueta "Assessoria de casamentos" + "Vocês vivem o dia. / A gente cuida do *resto.*" — APROVADA.
 - Monograma IC no canto (telas sem foto): o arquivo oficial é JPG com fundo branco e não pode ir sobre fundo escuro.
-- Reels pedem 15–30 s; esta peça de 10 s serve como abertura/trecho, não como Reel sozinho.
+- Reels pedem 15–20 s (até 30 s se narrativo, regra de 20/11); esta peça de 10 s serve como abertura/trecho, não como Reel sozinho.
 
 ## Log
 - 2026-11-20 — exports/tipo-cinetica-previa.mp4 (texto provisório). Quadros conferidos: 10, 22, 45, 120, 285, 299; corrigido vazamento do "]" itálico pela máscara.
