@@ -2,7 +2,7 @@
 
 **Fonte única:** Notion › Marketing & Conteúdo › 🧭 Guia de Publicações — fonte única
 https://app.notion.com/p/4010c576a2f9813aba6cde5bedf53bb7
-**Versão aplicada:** consolidada de 02/11/2026 (página editada em 10/11/2026).
+**Versão aplicada:** consolidada de 02/11/2026 (página editada em 10/11/2026; decisões de 20/11/2026 incluídas no Notion pelo Claude a pedido da Paty).
 **Antes de cada produção:** abrir o Guia no Notion e conferir se a versão mudou. Se mudou, atualizar esta ficha e `src/marca.ts` antes de editar.
 Hierarquia: decisão expressa mais recente da Paty → Guia → Calendário Editorial → referências históricas.
 Substitui o "padrão visual v6" (Areia #FAF7F3, selo como tela final), que deixou de valer.
@@ -12,12 +12,13 @@ Substitui o "padrão visual v6" (Areia #FAF7F3, selo como tela final), que deixo
 - Fontes: títulos Cormorant Garamond com **uma palavra-chave em itálico**; textos e etiquetas Montserrat. Geraldine só dentro da logo. Bodoni, Arial, Metropolis, Atten New: proibidas.
 - Logo: sempre o arquivo original (Drive › 08 — MARKETING › 00 — MARCA › Logo-original-*.png), pequena, nunca escrita em texto nem redesenhada.
 - 4 sinais: monograma IC suave no canto (telas sem foto); palavra em itálico; degradê petróleo só na base da foto; logo original pequena.
-- P&B para emoção (cerimônia, lágrimas, beijo); cor para festa, decoração e 15 anos.
+- P&B para emoção (cerimônia, lágrimas, beijo); cor para festa, decoração e 15 anos. Exceção (20/11/2026): cena cujo protagonista é a luz (fogos, iluminação) fica em cor.
 - Proibido: caixas com borda, faixas, ícones, pílulas, ramos/flores ilustrados, sombras pesadas, véu escuro sobre a foto toda, etiquetas internas visíveis, logo escrita em texto.
 
 ## Reels
-- 9:16, MP4 1080 × 1920, **15 a 30 s**; gancho escrito nos 2 primeiros segundos; **um texto por vez**; foto/vídeo em **tela cheia**; termina na cena mais bonita, **sem tela final de logo**; música pela biblioteca do Instagram/Edits.
+- 9:16, MP4 1080 × 1920, **15 a 30 s**; gancho escrito nos 2 primeiros segundos; **um texto por vez**; foto/vídeo em **tela cheia**; termina na cena mais bonita, **sem tela final de logo** — tela final só com frase + CTA em fundo petróleo é permitida (20/11/2026); música pela biblioteca do Instagram/Edits.
 - Série "Bastidor em 15 s": B-roll real + frase na tela.
+- Vídeos (20/11/2026): vídeo já editado com trilha (inclusive da Impactar) não reaproveita o áudio original; câmera lenta até 0,8x por repetição de quadros permitida para chegar à duração mínima (sem interpolação/IA); vídeo filmado pela Impactar = crédito Impactar.
 - Imagens: só reais do acervo; nada gerado/alterado por IA (só recorte, exposição, balanço de branco, contraste e nitidez sutis). Material do Drive/Notion tem uso de imagem autorizado (decisão 28/10/2026); creditar fotógrafo/videomaker.
 
 ## Filtro obrigatório de qualidade (antes de mostrar qualquer prévia)
@@ -37,5 +38,5 @@ Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" 
   frase em Cormorant Garamond regular, clara, com a **segunda linha em itálico nude**.
 - Frases curtas e poéticas, uma por vez, trocando a cada ~3–6 s com fade suave; sem caixas.
 - Fechamento do Reel aprovado: fundo claro com a logo oficial (variação nude + verde-água).
-  ⚠ Conflita com o Guia ("sem tela final de logo"); aplicado por ser a referência aprovada mais recente — confirmar com a Paty.
+  ⚠ Fechamento COM logo continua em conflito com o Guia. Resolvido em 20/11: a tela final padrão dos Reels é frase + CTA, sem logo.
 - Logos oficiais recebidas em 19/11/2026: `public/marca/oficial/` (selo circular petróleo, selo circular nude, logo script petróleo, logo script nude/verde-água). JPG com fundo branco: usar só sobre fundo claro (multiply), nunca recolorir.

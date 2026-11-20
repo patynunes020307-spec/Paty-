@@ -58,6 +58,8 @@ export type CapaProps = {
   frase: Frase;
   // posição da logo (precisa cair sobre área clara: a logo é JPG com fundo branco)
   logo?: { top: number; left: number; width: number };
+  // imagem escura (noite): não há logo oficial clara; recolorir é proibido pelo Guia
+  semLogo?: boolean;
 };
 
 export const CAPA_ENSAIO: CapaProps = {
@@ -188,12 +190,25 @@ export const CAPA_ULTIMA_VOLTA: CapaProps = {
   logo: { top: 60, left: 60, width: 300 },
 };
 
+export const CAPA_FOGOS: CapaProps = {
+  arquivo: "brutos/fogos/fogos_lento.mp4",
+  inicio: 3.0,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Esse beijo teve",
+    italico: "hora marcada.",
+  },
+  semLogo: true,
+};
+
 export const Capa: React.FC<CapaProps> = ({
   arquivo,
   inicio,
   enquadramento,
   frase,
   logo,
+  semLogo,
 }) => {
   const { fps } = useVideoConfig();
   return (
@@ -207,16 +222,18 @@ export const Capa: React.FC<CapaProps> = ({
         style={{ width: "100%", height: "100%", objectPosition: enquadramento }}
       />
       <AbsoluteFill style={{ background: DEGRADE }} />
-      <Img
-        src={staticFile("marca/oficial/logo-script-nude-verdeagua.jpg")}
-        style={{
-          position: "absolute",
-          top: logo?.top ?? 120,
-          left: logo?.left ?? 380,
-          width: logo?.width ?? 320,
-          mixBlendMode: "multiply",
-        }}
-      />
+      {semLogo ? null : (
+        <Img
+          src={staticFile("marca/oficial/logo-script-nude-verdeagua.jpg")}
+          style={{
+            position: "absolute",
+            top: logo?.top ?? 120,
+            left: logo?.left ?? 380,
+            width: logo?.width ?? 320,
+            mixBlendMode: "multiply",
+          }}
+        />
+      )}
       <div
         style={{
           position: "absolute",

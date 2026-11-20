@@ -23,6 +23,7 @@ import {
   Capa,
   CAPA_ALIANCA,
   CAPA_ANTES_CONVIDADOS,
+  CAPA_FOGOS,
   CAPA_ASSESSORA,
   CAPA_CAUDA,
   CAPA_DIARIO,
@@ -232,6 +233,15 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={FOGOS}
         durationInFrames={duracaoMotion(FOGOS)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaFogos"
+        component={Capa}
+        defaultProps={CAPA_FOGOS}
+        durationInFrames={1}
         fps={FPS}
         width={1080}
         height={1920}

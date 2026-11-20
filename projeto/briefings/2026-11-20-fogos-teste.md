@@ -1,5 +1,5 @@
 # Reel TESTE — Fornecedor na hora certa (fogos no beijo)
-- Data: 2026-11-20 | Slug: `fogos-teste` | Composição: `ReelFogosTeste` (src/MotionReel.tsx, preset `FOGOS`) | Status: v2 de teste enviada — NÃO aprovada
+- Data: 2026-11-20 | Slug: `fogos-teste` | Composição: `ReelFogosTeste` (src/MotionReel.tsx, preset `FOGOS`) | Status: v2 APROVADA — pacote no Drive (falta subir vídeo)
 
 ## Objetivo / CTA
 Teste pedido pela Paty ("um vídeo só pra teste"). Tema escolhido por Claude: a Impactar coordenando fornecedores (assunto ainda não usado nos reels). CTA: "Manda a data e a cidade no direct." (mesmo dos reels aprovados).
@@ -34,8 +34,8 @@ Casal não identificado (nome não aparece). Sem SFX (padrão dos reels aprovado
 
 ## Não confirmado / decisões para a Paty
 1. ~~Coordenação da pirotecnia~~ — CONFIRMADO pela Paty em 20/11: a Impactar coordenou. Não há vídeo de bastidor do sinal.
-2. Autoria do vídeo (videomaker?) — o Guia pede crédito.
-3. Cor x P&B: o Guia pede P&B para beijo; mantido em cor porque o assunto são os fogos.
+2. ~~Autoria~~ — CONFIRMADO em 20/11: vídeo feito pela Impactar (crédito Impactar).
+3. ~~Cor x P&B~~ — cor aprovada; virou exceção no Guia (cena cujo protagonista é a luz).
 4. O bloco de texto passa sobre a parte de baixo do vestido (rostos livres). Alternativa: subir o texto só neste reel.
 
 ## Log de versões
@@ -45,3 +45,6 @@ Casal não identificado (nome não aparece). Sem SFX (padrão dos reels aprovado
 - 2026-11-20 — Paty pediu sugestões; aplicadas na v2: gancho "Esse beijo teve / *hora marcada.*" (coordenação confirmada); plano dos fogos (2–9,7 s do bruto) a 0,8x por duplicação de quadros, sem interpolação → `public/brutos/fogos/fogos_lento.mp4`, total 15,1 s.
 - 2026-11-20 — Som original NÃO usado: espectrograma mostra música com voz cantada (vibrato 3–9 s) — o bruto já é um vídeo editado com trilha (cortes em 0,63 s, 1,03 s e 2,0 s). Risco de direitos autorais. Reforça a pendência de crédito ao videomaker.
 - 2026-11-20 — Conferência 5.5 da v2: 1080 × 1920, 30 fps, 15,1 s; folha de quadros ok (gancho, frase, tela final sem quebra ruim). Câmera lenta conferida só em quadros parados — possível leve tranco no movimento, a avaliar no celular. exports/fogos-teste-v2.mp4 enviado.
+- 2026-11-20 — APROVADA ("Aprovado nós que fizemos"). Paty autorizou mudar o Guia: 3 decisões registradas no Notion (Guia de Publicações) e em estilos/impactar-guia-oficial.md — exceção de cor para cenas de luz; tela final frase + CTA sem logo; vídeo editado com trilha não reaproveita áudio + câmera lenta ≤ 0,8x + crédito Impactar.
+- 2026-11-20 — Capa `CapaFogos` (exports/fogos-capa.png/.jpg) SEM logo: as 4 logos originais do Drive (Logo-original-1 a 4) e os JPGs oficiais são escuros; recolorir é proibido. Pendência: versão clara oficial da logo para imagens noturnas.
+- 2026-11-20 — Drive › Criativos › 2026-11-20_Reel_Fogos_Hora_Marcada (1THlD1o3qgvmxcdGbAyHAUn3Y8_5GUN9Q): capa APROVADO.jpg + legenda (Google Doc). Vídeo (15,5 MB) acima do limite de 10 MB do conector → a subir pela Paty como 2026-11-20_Reel_Fogos_Hora_Marcada_APROVADO.mp4 (cópia local: exports/fogos-v2-APROVADO.mp4).
