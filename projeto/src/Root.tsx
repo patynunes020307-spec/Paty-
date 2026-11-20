@@ -3,7 +3,13 @@ import { MyComposition } from "./Composition";
 import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
 import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
-import { ASSESSORA, duracaoMotion, MONTAGEM, MotionReel } from "./MotionReel";
+import {
+  ANTES_CONVIDADOS,
+  ASSESSORA,
+  duracaoMotion,
+  MONTAGEM,
+  MotionReel,
+} from "./MotionReel";
 import {
   Capa,
   CAPA_ASSESSORA,
@@ -201,6 +207,15 @@ export const RemotionRoot: React.FC = () => {
         component={Capa}
         defaultProps={CAPA_MONTAGEM}
         durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelAntesConvidados"
+        component={MotionReel}
+        defaultProps={ANTES_CONVIDADOS}
+        durationInFrames={duracaoMotion(ANTES_CONVIDADOS)}
         fps={FPS}
         width={1080}
         height={1920}

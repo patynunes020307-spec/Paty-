@@ -432,3 +432,36 @@ export const MONTAGEM: MotionProps = {
     segundos: 3.5,
   },
 };
+
+// Reel C — "Bastidor em 15 s" (Guia): equipe Impactar de bege, 18/04 e 01/05/2026.
+// 2298 e 2303 gravados a 60 fps → câmera lenta real 0,5x (sem interpolar quadros).
+export const ANTES_CONVIDADOS: MotionProps = {
+  cenas: [
+    { arquivo: L + "IMG_2298_lento.mp4", inicio: 0, fim: 7.7 },
+    { arquivo: L + "IMG_2303_lento.mp4", inicio: 0, fim: 3.85 },
+    { arquivo: L + "IMG_2791.mp4", inicio: 0, fim: 2.45 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Os convidados ainda não chegaram.",
+    italico: "A gente já está aqui.",
+    ate: 4.0,
+  },
+  textos: [],
+  checklist: {
+    titulo: "Antes da cerimônia:",
+    de: 4.2,
+    ate: 14.0,
+    itens: [
+      { texto: "Flores no corredor", em: 4.8 },
+      { texto: "Cada cadeira conferida", em: 8.0 },
+      { texto: "Kits organizados", em: 11.8 },
+    ],
+  },
+  cta: {
+    linha: "Quando vocês chegam,",
+    italico: "tudo já está no lugar.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};
