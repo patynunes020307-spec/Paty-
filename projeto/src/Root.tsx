@@ -35,10 +35,26 @@ import {
   Story,
 } from "./EnsaioExtras";
 
+import {
+  TIPO_DURACAO,
+  TIPO_FPS,
+  TIPO_PADRAO,
+  TipoCinetica,
+} from "./TipoCinetica";
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       <MyComposition />
+      <Composition
+        id="TipoCinetica"
+        component={TipoCinetica}
+        defaultProps={TIPO_PADRAO}
+        durationInFrames={TIPO_DURACAO}
+        fps={TIPO_FPS}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="TesteEdita"
         component={TesteEdita}
