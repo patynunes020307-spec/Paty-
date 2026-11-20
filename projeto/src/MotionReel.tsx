@@ -859,14 +859,15 @@ export const CONJUNTO: MotionProps = {
         italico: "se algo atrasar?",
       },
       de: 11.6,
-      ate: 16.9,
+      ate: 13.6,
     },
   ],
   cta: {
     linha: "Alguém precisa olhar",
     italico: "o casamento inteiro.",
     acao: "Manda a data e a cidade no direct.",
-    segundos: 3.5,
+    segundos: 3.2,
+    sobreFoto: true,
   },
 };
 
