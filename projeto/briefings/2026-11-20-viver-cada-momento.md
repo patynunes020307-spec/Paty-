@@ -7,6 +7,6 @@
 - 2026-11-20_Reel_Para-viver-cada-momento_LEGENDA (Google Docs) — conferida após upload
 
 ## Atenção
-- O vídeo diz "12 anos, mais de 500 eventos". O Guia só confirma "mais de 12 anos de mercado"; "500 eventos" não está documentado. Confirmar antes de publicar. A legenda usa só o dado oficial.
+- O vídeo diz "12 anos, mais de 500 eventos": confirmado pela Paty e no Guia.
 - Fotos da capa em public/viver/ (copiadas da branch HyperFrames; já estavam no git lá).
-- 2026-11-20 — Capa e legenda APROVADAS ("Aprovado"). Pacote completo. Publicar/agendar só com confirmação da Paty. Dado "500 eventos" no vídeo segue sem confirmação documental.
+- 2026-11-20 — Capa e legenda APROVADAS ("Aprovado"). Pacote completo. Publicar/agendar só com confirmação da Paty. "Mais de 500 eventos" confirmado pela Paty (já é dado oficial no Guia desde 20/11).

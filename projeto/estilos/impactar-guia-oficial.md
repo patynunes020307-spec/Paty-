@@ -28,7 +28,7 @@ Substitui o "padrão visual v6" (Areia #FAF7F3, selo como tela final), que deixo
 - Prévia aprovada vai para Drive › Criativos como `AAAA-MM-DD_Formato_Tema_APROVADO`; publicar/agendar só com confirmação da Paty.
 
 ## Legenda do post
-Gancho · situação real em 2–3 frases (só fatos confirmados) · benefício para o casal · uma CTA · 3 a 5 hashtags. Sem preço/desconto (salvo campanha aprovada), sem "zero imprevistos", sem resultado garantido. "Mais de 12 anos de mercado"; planos Essencial, Plus e Premium.
+Gancho · situação real em 2–3 frases (só fatos confirmados) · benefício para o casal · uma CTA · 3 a 5 hashtags. Sem preço/desconto (salvo campanha aprovada), sem "zero imprevistos", sem resultado garantido. "12 anos · mais de 500 eventos" (dado oficial, decisão de 20/11/2026; não usar outros números); planos Essencial, Plus e Premium.
 
 ## Linguagem dos vídeos aprovados (referências enviadas pela Paty em 19/11/2026)
 Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" (APROVADO), bastidores 0F69F352, Dia da Cerimonialista, 7 músicas 15 anos, stories Chandon e Vestida de Branco.
