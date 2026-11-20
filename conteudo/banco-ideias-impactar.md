@@ -53,6 +53,47 @@ Formato: foto real de papelaria/convite do acervo (sem IA) ou fundo claro com o 
 
 ---
 
+## Lote 2 — recebido em 20/11/2026 (11 imagens + 5 vídeos)
+
+### Referência D — Edna Moreira, "Erros no dia do evento que parecem pequenos" (8 telas)
+**O que funciona:** autoridade por opinião técnica ("competência não é impedir imprevisto, é decidir bem quando ele acontece"); exemplos concretos (5 minutos de atraso, cronograma rígido, solução que afeta foto/buffet/banda); foto no topo + texto em fundo claro.
+**Atenção:** o original fala com outros profissionais. Para a Impactar, o público é o casal: transformar em "sinais de que o seu cerimonial está preparado".
+
+**Ideia D1 — Carrossel "5 sinais de que o seu cerimonial está preparado de verdade"** · Status: IDEIA
+1. (foto real de detalhe da cerimônia) "Sinais de que o seu cerimonial está *preparado*, e não só presente."
+2. Ele não trata o cronograma como regra imutável. A cerimônia acabou antes? A festa se ajusta sem ninguém perceber.
+3. Ele sabe o que vem depois de cada atraso. Cinco minutos de um fornecedor podem não ser nada, ou podem atrasar a entrada inteira.
+4. Antes de mudar uma etapa, ele avisa foto, buffet e banda. No evento, uma decisão quase nunca afeta só uma coisa.
+5. Ele olha a festa pelo convidado: fila se formando, mesa sem abastecer, alguém procurando informação.
+6. (foto P&B emoção) "Imprevisto acontece. O que importa é que ele *não chegue* até vocês."
+7. CTA: "Comenta *DIAGNÓSTICO* e a gente te explica como trabalhamos."
+Combina com o Guia (sem "zero imprevistos"). Também vira Reel: uma frase por vez sobre bastidor real.
+
+### Referência E — Edna Moreira, "A noiva chega com uma ideia" / "Casamento não é portfólio"
+**O que funciona:** posicionamento de valor ("não substituir o sonho do casal"), frase-manifesto curta.
+**Risco:** soa como crítica a fornecedores e colegas. Manter o foco no casal, sem apontar ninguém.
+
+**Ideia E1 — Post-manifesto "A gente não substitui o sonho de vocês"** · Status: IDEIA
+- Tela 1: "Vocês chegam com uma *ideia*. Um sonho, um sentimento."
+- Tela 2: "O nosso trabalho não é dizer 'isso não funciona'. É encontrar o jeito de *funcionar*."
+- Tela 3: "Casamento não é vitrine de quem organiza. É a *memória* de vocês."
+Formato: fundo claro com monograma IC ou foto real; Cormorant com palavra em itálico.
+
+### Referência F — @mariananunes.mkt, 5 animações para Reels (vídeos)
+| Animação | Situação no Guia | Uso na Impactar |
+|---|---|---|
+| Texto digitado no gancho | Já aprovada | Gancho de todo Reel falado |
+| Checklist sendo marcado | Já aprovada (máx. 4 itens) | Bastidor: "Alianças ✓ Cronograma ✓ Fornecedores alinhados ✓" |
+| Número subindo | Já aprovada (só dado real) | "12 anos · mais de 500 eventos" |
+| Chat aparecendo | **Nova — decisão Paty** | Só com mensagem real de casal, com autorização |
+| Notificação de celular | **Não recomendo** | Exigiria inventar mensagem; Guia proíbe |
+→ AUTOMATIZAR: transformar as 3 aprovadas em componentes prontos no Remotion.
+
+### Para a operação (não é post)
+"Sua equipe sabe executar ou sabe pensar?" → seção **Leitura do evento** no checklist operacional (ver auditoria, seção 6).
+
+---
+
 ## Ideias para o Instagram da empresa (levar para a auditoria)
 - CTA por palavra-chave nos comentários pede **automação de DM** (ex.: ManyChat). Avaliar custo antes de adotar.
 - Os carrosséis A1 e C1 podem virar **Reels** no padrão do Guia: uma frase por vez sobre B-roll real, 15 a 20 s.
