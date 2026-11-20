@@ -28,3 +28,4 @@
 - Textos: gancho "Casamento real" / "O brinde dura um minuto." / "A foto, a vida inteira." · 01 "Taças servidas / antes de chamar os noivos." · 02 "Fotógrafo avisado, / convidados de frente." · Final "Cada minuto da festa, / pensado antes." + "Manda para quem vai casar com você."
 - exports/brinde-v1.mp4 (18,4 s, 1080×1920) — **APROVADO** pela Paty (20/11). Música: biblioteca do Instagram/Edits.
 - Drive › Criativos › `2026-11-20_Reel_Brinde` (1mIBtaIj4JlIN0ecIjcxGRA5aY_tqjpo2) com legenda (doc 1qDyqgI26sEvSOSu024Hkc3qe8Blfq6hBUTPnj5EV_7s). Vídeo (21 MB) acima do limite de upload do conector: Paty sobe como `2026-11-20_Reel_Brinde_APROVADO.mp4`. Conferir o 🤍 da legenda no doc. Publicar só com confirmação.
+- 2026-11-20 — Vídeo subido pela Paty (Criativos raiz, `brinde-v1.mp4`, 21.253.058 bytes = export idêntico) → movido para a pasta e renomeado `2026-11-20_Reel_Brinde_APROVADO.mp4` (102aR6_D0G8MNE96k_tkmWizZeAvgrax9). Pacote completo; publicar só com confirmação.
