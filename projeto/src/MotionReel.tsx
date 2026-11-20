@@ -1,6 +1,7 @@
 import { Audio, Video } from "@remotion/media";
 import {
   AbsoluteFill,
+  Img,
   Easing,
   interpolate,
   Sequence,
@@ -34,7 +35,14 @@ export type MotionProps = {
   gancho: { linha: string; italico: string; kicker: string; ate: number };
   textos: TextoTimed[];
   checklist?: { titulo: string; de: number; ate: number; itens: Item[] };
-  cta: { linha: string; italico: string; acao: string; segundos: number };
+  cta: {
+    linha: string;
+    italico: string;
+    acao: string;
+    segundos: number;
+    // logo oficial PNG no fim (decisão da Paty, 20/11/2026: logo no final a partir de agora)
+    logo?: boolean;
+  };
   // áudio real (fala da equipe) + legenda sincronizada — opcional
   audio?: { arquivo: string; de: number };
   falas?: { texto: string; de: number; ate: number }[];
@@ -309,6 +317,18 @@ const TelaCTA: React.FC<{ cta: MotionProps["cta"] }> = ({ cta }) => {
           backgroundColor: COR.nude,
         }}
       />
+      {cta.logo ? (
+        <Img
+          src={staticFile("marca/png/script-nude.png")}
+          style={{
+            position: "absolute",
+            left: 96,
+            bottom: 380,
+            width: 330,
+            opacity: interpolate(frame, [1.5 * fps, 2.1 * fps], [0, 1], clamp),
+          }}
+        />
+      ) : null}
     </AbsoluteFill>
   );
 };

@@ -48,3 +48,8 @@ Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" 
 - Preferir estas às JPG: funcionam sobre qualquer fundo, sem multiply. Nude/verde-água sobre áreas escuras, petróleo sobre áreas claras.
 - Fontes: a prancha de identidade antiga lista Metropolis/Atten New, mas **vale o Guia (Cormorant + Montserrat)** — decisão da Paty, 20/11/2026.
 - Números oficiais (decisão da Paty, 20/11/2026): **"12 anos · mais de 500 eventos"**. O story antigo com "11 anos" está desatualizado.
+
+## Logo no final e animações (decisão da Paty, 20/11/2026 — vale sobre o Guia do Notion)
+- A partir de agora os Reels terminam com a logo: na tela final petróleo, abaixo da chamada, logo PNG **script nude** (`marca/png/script-nude.png`), alinhada à esquerda, ~330 px, entrando em fade em 1,5–2,1 s. Tela final de 4 s. No código: `cta.logo: true`.
+- O Guia do Notion ainda diz "sem tela final de logo": precisa ser atualizado lá.
+- Animações permitidas: ver seção 2B de `prompt-outras-ias.md` (biblioteca fechada).

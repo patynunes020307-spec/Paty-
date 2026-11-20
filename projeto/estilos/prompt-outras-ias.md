@@ -12,9 +12,21 @@ Você vai editar vídeos para o Instagram da Impactar Cerimonial (assessoria e c
 - Vídeo real em tela cheia. Degradê petróleo escuro só na metade de baixo; nada de véu escuro no vídeo todo.
 - Bloco de texto alinhado à esquerda, no terço de baixo. Por cima, um fio nude curto + uma etiqueta em Montserrat maiúscula espaçada ("BASTIDORES DA IMPACTAR" ou "01", "02"…). Embaixo, a frase em Cormorant: 1ª linha clara, 2ª linha em itálico nude. Máximo de 2 linhas por frase; se quebrar em 3, encurte o texto.
 - O gancho (a frase de abertura) aparece nos 2 primeiros segundos, com efeito de digitação. Depois, um texto de cada vez, trocando a cada 3 a 6 s com fade suave.
-- Fechamento: tela petróleo com frase curta (2ª linha em itálico nude) + "Manda a data e a cidade no direct." Sem tela final só com a logo.
+- Fechamento (4 s): tela petróleo #203F51 com frase curta (2ª linha em itálico nude), "Manda a data e a cidade no direct." com um fio nude embaixo, e a LOGO no fim: versão script nude em PNG transparente, pequena (cerca de 1/3 da largura da tela), alinhada à esquerda com o texto, na parte de baixo mas acima da faixa de botões do Instagram (deixe ~380 px livres embaixo). A logo entra por último, em fade suave, depois que o texto já está na tela. Nunca use a logo petróleo ou preta sobre fundo petróleo (some).
 - Proibido: tremida de câmera, elemento pulsando em loop, reenquadrar seguindo o rosto quadro a quadro, caixas com borda, faixas, ícones, flores desenhadas, sombra pesada, imagem gerada ou alterada por IA (só são permitidos recorte, exposição, cor, contraste e nitidez sutis).
 - Nada pode ficar parado na tela por mais de 2 s.
+
+2B. ANIMAÇÕES (use SÓ estas, para todos os vídeos ficarem da mesma família)
+- Digitação: o gancho aparece letra por letra (cerca de 25 letras por segundo), cursor fino parado, sem piscar.
+- Entrada de texto: fade + subida curta (20 a 30 px) em 0,4 a 0,5 s, com desaceleração suave no fim. Saída: fade de 0,2 s.
+- Fio nude: linha fina que se desenha da esquerda para a direita em 0,5 s, antes ou embaixo do texto.
+- Lista com check: um item por vez, o ✓ é desenhado (traço) em 0,3 s no momento em que o item aparece no vídeo. Máximo de 4 itens.
+- Número subindo: relógio ou contador que corre até o valor em 0,5 s (para horários reais do evento ou números confirmados, como "12 anos · mais de 500 eventos").
+- Movimento de câmera: aproximação lenta e contínua no vídeo ou na tela final (de 97% a 100%, ou de 100% a 105% durante a cena inteira). Nunca vai e volta.
+- Transição entre cenas: corte seco no ritmo da ação, ou fade cruzado de no máximo 0,3 s.
+- Regras de ritmo: uma animação de cada vez (nunca texto entrando junto com check e contador); durações entre 0,3 e 0,6 s; sempre desaceleração suave, nunca efeito de mola, quique ou elástico.
+- PROIBIDO: glitch, giro, zoom rápido, flash, luz vazando (light leak), shake/tremida, pulsar em loop, quique (bounce), letras saltando uma a uma, adesivos/emojis animados, 3D, transições de "slide" ou "cortina", efeitos prontos de app (CapCut, Canva) que não estejam nesta lista.
+- Animação nunca cobre rosto, nem as alianças, nem o momento principal da cena.
 
 3. SOM E CRÉDITO
 - O vídeo final vai SEM SOM. A música é colocada pela biblioteca do Instagram na hora de postar. Única exceção: quando eu pedir para manter uma fala.
