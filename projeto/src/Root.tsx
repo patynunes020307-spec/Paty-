@@ -3,6 +3,7 @@ import { MyComposition } from "./Composition";
 import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
 import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
+import { DIARIO, Diario, duracaoDiario } from "./Diario";
 import {
   ANTES_CONVIDADOS,
   ASSESSORA,
@@ -226,6 +227,15 @@ export const RemotionRoot: React.FC = () => {
         component={Capa}
         defaultProps={CAPA_ANTES_CONVIDADOS}
         durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelDiario"
+        component={Diario}
+        defaultProps={DIARIO}
+        durationInFrames={duracaoDiario(DIARIO)}
         fps={FPS}
         width={1080}
         height={1920}
