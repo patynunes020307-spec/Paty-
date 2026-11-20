@@ -1,5 +1,5 @@
 # Reel TESTE — Fornecedor na hora certa (fogos no beijo)
-- Data: 2026-11-20 | Slug: `fogos-teste` | Composição: `ReelFogosTeste` (src/MotionReel.tsx, preset `FOGOS`) | Status: v2 APROVADA — pacote no Drive (falta subir vídeo)
+- Data: 2026-11-20 | Slug: `fogos-teste` | Composição: `ReelFogosTeste` (src/MotionReel.tsx, preset `FOGOS`) | Status: v3 (tela final com logo) — aguardando aprovação; v2 aprovada no Drive
 
 ## Objetivo / CTA
 Teste pedido pela Paty ("um vídeo só pra teste"). Tema escolhido por Claude: a Impactar coordenando fornecedores (assunto ainda não usado nos reels). CTA: "Manda a data e a cidade no direct." (mesmo dos reels aprovados).
@@ -48,3 +48,4 @@ Casal não identificado (nome não aparece). Sem SFX (padrão dos reels aprovado
 - 2026-11-20 — APROVADA ("Aprovado nós que fizemos"). Paty autorizou mudar o Guia: 3 decisões registradas no Notion (Guia de Publicações) e em estilos/impactar-guia-oficial.md — exceção de cor para cenas de luz; tela final frase + CTA sem logo; vídeo editado com trilha não reaproveita áudio + câmera lenta ≤ 0,8x + crédito Impactar.
 - 2026-11-20 — Capa `CapaFogos` (exports/fogos-capa.png/.jpg) SEM logo: as 4 logos originais do Drive (Logo-original-1 a 4) e os JPGs oficiais são escuros; recolorir é proibido. Pendência: versão clara oficial da logo para imagens noturnas.
 - 2026-11-20 — Drive › Criativos › 2026-11-20_Reel_Fogos_Hora_Marcada (1THlD1o3qgvmxcdGbAyHAUn3Y8_5GUN9Q): capa APROVADO.jpg + legenda (Google Doc). Vídeo (15,5 MB) acima do limite de 10 MB do conector → a subir pela Paty como 2026-11-20_Reel_Fogos_Hora_Marcada_APROVADO.mp4 (cópia local: exports/fogos-v2-APROVADO.mp4).
+- 2026-11-20 — Paty: "Até lá final com logo é melhor, a logo aparecendo." v3: tela final em fundo claro #F7F2EF, texto petróleo, itálico azul auxiliar, logo original nude + verde-água (multiply) a 480 px da base, fora da área da legenda do Instagram. Guia no Notion e ficha local corrigidos (substitui a regra "sem logo" registrada mais cedo no mesmo dia). exports/fogos-v3.mp4 (15,1 s, 1080 × 1920, 30 fps) conferido e enviado.

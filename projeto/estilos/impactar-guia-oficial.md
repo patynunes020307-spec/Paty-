@@ -16,7 +16,7 @@ Substitui o "padrão visual v6" (Areia #FAF7F3, selo como tela final), que deixo
 - Proibido: caixas com borda, faixas, ícones, pílulas, ramos/flores ilustrados, sombras pesadas, véu escuro sobre a foto toda, etiquetas internas visíveis, logo escrita em texto.
 
 ## Reels
-- 9:16, MP4 1080 × 1920, **15 a 30 s**; gancho escrito nos 2 primeiros segundos; **um texto por vez**; foto/vídeo em **tela cheia**; termina na cena mais bonita, **sem tela final de logo** — tela final só com frase + CTA em fundo petróleo é permitida (20/11/2026); música pela biblioteca do Instagram/Edits.
+- 9:16, MP4 1080 × 1920, **15 a 30 s**; gancho escrito nos 2 primeiros segundos; **um texto por vez**; foto/vídeo em **tela cheia**; termina na cena mais bonita, **a logo deve aparecer** (decisão da Paty, 20/11/2026) — enquanto não houver logo clara oficial, vídeo escuro termina em tela final de fundo claro #F7F2EF com frase + CTA e a logo original nude + verde-água pequena, fora da área da legenda do Instagram (`cta.comLogo` no MotionReel); música pela biblioteca do Instagram/Edits.
 - Série "Bastidor em 15 s": B-roll real + frase na tela.
 - Vídeos (20/11/2026): vídeo já editado com trilha (inclusive da Impactar) não reaproveita o áudio original; câmera lenta até 0,8x por repetição de quadros permitida para chegar à duração mínima (sem interpolação/IA); vídeo filmado pela Impactar = crédito Impactar.
 - Imagens: só reais do acervo; nada gerado/alterado por IA (só recorte, exposição, balanço de branco, contraste e nitidez sutis). Material do Drive/Notion tem uso de imagem autorizado (decisão 28/10/2026); creditar fotógrafo/videomaker.
@@ -38,5 +38,5 @@ Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" 
   frase em Cormorant Garamond regular, clara, com a **segunda linha em itálico nude**.
 - Frases curtas e poéticas, uma por vez, trocando a cada ~3–6 s com fade suave; sem caixas.
 - Fechamento do Reel aprovado: fundo claro com a logo oficial (variação nude + verde-água).
-  ⚠ Fechamento COM logo continua em conflito com o Guia. Resolvido em 20/11: a tela final padrão dos Reels é frase + CTA, sem logo.
+  Resolvido em 20/11: o Guia no Notion passou a pedir a logo aparecendo no Reel (tela final clara com logo enquanto não houver versão clara).
 - Logos oficiais recebidas em 19/11/2026: `public/marca/oficial/` (selo circular petróleo, selo circular nude, logo script petróleo, logo script nude/verde-água). JPG com fundo branco: usar só sobre fundo claro (multiply), nunca recolorir.

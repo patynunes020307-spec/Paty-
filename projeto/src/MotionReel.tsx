@@ -2,6 +2,7 @@ import { Audio, Video } from "@remotion/media";
 import {
   AbsoluteFill,
   Easing,
+  Img,
   interpolate,
   Sequence,
   staticFile,
@@ -34,7 +35,14 @@ export type MotionProps = {
   gancho: { linha: string; italico: string; kicker: string; ate: number };
   textos: TextoTimed[];
   checklist?: { titulo: string; de: number; ate: number; itens: Item[] };
-  cta: { linha: string; italico: string; acao: string; segundos: number };
+  cta: {
+    linha: string;
+    italico: string;
+    acao: string;
+    segundos: number;
+    // fundo claro + logo original (decisão da Paty 20/11: final com logo aparecendo)
+    comLogo?: boolean;
+  };
   // áudio real (fala da equipe) + legenda sincronizada — opcional
   audio?: { arquivo: string; de: number };
   falas?: { texto: string; de: number; ate: number }[];
@@ -262,10 +270,14 @@ const TelaCTA: React.FC<{ cta: MotionProps["cta"] }> = ({ cta }) => {
     ...clamp,
     easing: Easing.out(Easing.cubic),
   });
+  const claro = cta.comLogo === true;
+  const corTexto = claro ? COR.petroleo : COR.areia;
+  const corItalico = claro ? COR.azulAuxiliar : COR.nude;
+  const corFio = claro ? COR.verdeAgua : COR.nude;
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: COR.petroleo,
+        backgroundColor: claro ? COR.fundoClaro : COR.petroleo,
         justifyContent: "center",
         padding: "0 96px",
         // aproximação lenta e contínua (nada parado; sem pulsar)
@@ -276,7 +288,7 @@ const TelaCTA: React.FC<{ cta: MotionProps["cta"] }> = ({ cta }) => {
         style={{
           opacity: a,
           translate: `0px ${interpolate(a, [0, 1], [24, 0])}px`,
-          color: COR.areia,
+          color: corTexto,
           fontFamily: serif,
           fontWeight: 500,
           fontSize: 96,
@@ -285,7 +297,7 @@ const TelaCTA: React.FC<{ cta: MotionProps["cta"] }> = ({ cta }) => {
       >
         {cta.linha}
         <br />
-        <span style={{ fontStyle: "italic", color: COR.nude }}>
+        <span style={{ fontStyle: "italic", color: corItalico }}>
           {cta.italico}
         </span>
       </div>
@@ -293,7 +305,7 @@ const TelaCTA: React.FC<{ cta: MotionProps["cta"] }> = ({ cta }) => {
         style={{
           opacity: b,
           marginTop: 60,
-          color: COR.areia,
+          color: corTexto,
           fontFamily: sans,
           fontWeight: 500,
           fontSize: 40,
@@ -306,9 +318,22 @@ const TelaCTA: React.FC<{ cta: MotionProps["cta"] }> = ({ cta }) => {
           marginTop: 18,
           height: 3,
           width: 420 * fio,
-          backgroundColor: COR.nude,
+          backgroundColor: corFio,
         }}
       />
+      {claro ? (
+        <Img
+          src={staticFile("marca/oficial/logo-script-nude-verdeagua.jpg")}
+          style={{
+            position: "absolute",
+            left: 96,
+            bottom: 480,
+            width: 330,
+            mixBlendMode: "multiply",
+            opacity: b,
+          }}
+        />
+      ) : null}
     </AbsoluteFill>
   );
 };
@@ -819,6 +844,7 @@ export const FOGOS: MotionProps = {
     italico: "O relógio é nosso.",
     acao: "Manda a data e a cidade no direct.",
     segundos: 3.5,
+    comLogo: true,
   },
 };
 
