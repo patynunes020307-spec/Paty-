@@ -20,6 +20,11 @@ import {
   STORIES,
   Story,
 } from "./EnsaioExtras";
+import {
+  calcularVersao,
+  VERSAO_GANCHO_PADRAO,
+  VersaoGancho,
+} from "./VersaoGancho";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -217,6 +222,16 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={ANTES_CONVIDADOS}
         durationInFrames={duracaoMotion(ANTES_CONVIDADOS)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="VersaoGancho"
+        component={VersaoGancho}
+        defaultProps={VERSAO_GANCHO_PADRAO}
+        calculateMetadata={calcularVersao}
+        durationInFrames={1}
         fps={FPS}
         width={1080}
         height={1920}

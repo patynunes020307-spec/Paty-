@@ -59,6 +59,7 @@ Se precisar converter (ex.: HEVC/VFR → H.264 30 fps), o resultado vai para `pu
 ## 3. Transcrição local
 
 Sempre local, nunca serviço pago ou API externa.
+Atalho pronto: `npm run transcrever -- <video> <slug>` (faz os passos 1–3 abaixo; modelo via `WHISPER_MODELO`).
 
 1. Extraia o áudio para `.tmp/<slug>.wav` (16 kHz, mono): `ffmpeg -i <bruto> -ar 16000 -ac 1 .tmp/<slug>.wav`.
 2. Use `@remotion/install-whisper-cpp` (instale com `npx remotion add @remotion/install-whisper-cpp` na primeira vez):
@@ -105,3 +106,38 @@ Só depois da aprovação:
 - Faça mais uma passada pela lista do que é proibido.
 - Atualize o briefing: status "entregue", versão, o que mudou.
 - Entregue em poucas linhas: arquivo, duração, o que ficou "não confirmado" ou em dúvida.
+
+---
+
+## Variante: versões de gancho (uma gravação, 5 começos)
+
+Use quando a Paty gravar **vários ganchos seguidos + o corpo uma vez só** (ou pedir "versões de gancho", "testar ganchos", "5 versões").
+Cada versão = 1 gancho + o MESMO corpo, para postar como **Reels de teste** (só para não seguidores) e levar o vencedor ao feed.
+Composição `VersaoGancho` (`src/VersaoGancho.tsx`), dados em `ganchos/<slug>.json`, registro de resultados em `ganchos/registro.md`.
+
+**Como a Paty grava (mandar antes, se ela perguntar):** 5 ganchos de tipos diferentes (pergunta, dor, número real, promessa, polêmica),
+pausa de **2 s** entre eles; depois o corpo inteiro uma vez. Errou? Para, respira e repete a frase inteira. Corpo de 15–30 s (Guia).
+Conferir antes se a conta mostra a opção de Reels de teste; sem ela, as 5 versões no feed viram repetição — não fazer.
+Se aparecer casal/cliente, confirmar autorização de uso de imagem para 5 publicações.
+
+Etapas 0–2 iguais (briefing, inventário). Copie o bruto para `public/brutos/<slug>/gravacao.mp4`. Depois:
+
+1. **Transcrição:** `npm run transcrever -- public/brutos/<slug>/gravacao.mp4 <slug>` → `public/legendas/<slug>.json`.
+   Revise nomes e termos (corrija direto no JSON).
+2. **Achar ganchos:** `npm run ganchos:achar -- <slug>` (opções `--ganchos 5`, `--pausa 1.0`).
+   Lista os blocos de fala com tempo e texto e grava `ganchos/<slug>.json` como **RASCUNHO**.
+   Remova à mão do `corpo` as tentativas erradas e frases repetidas; preencha `palavrasChave` (2–5 palavras de destaque)
+   e ajuste `enquadramento` (fixo, olhando um quadro do bruto).
+3. ⛔ **Portão 1b:** mostre à Paty a tabela "versão · início–fim · texto do gancho" e o texto do corpo.
+   Só depois da confirmação troque `status` para `"confirmado"` (o render recusa rascunho).
+4. ⛔ **Portão 2 (validação):** `npm run ganchos:render -- <slug> --teste` → `exports/<slug>-teste.mp4` (versão 1, 8 s) + relatório.
+5. **Todas as versões:** `npm run ganchos:render -- <slug>` → `exports/<slug>-versao-N.mp4` + `exports/<slug>-relatorio.md`.
+   Nova rodada: `--rodada v2` (nunca sobrescreve). Uma versão só: `--so 3`.
+   O script iguala o volume da voz (-14 LUFS) e confere cada arquivo: 1080×1920, 30 fps, duração, áudio,
+   quadro preto, pausa > 1,2 s e **nova transcrição comparada ao texto esperado** (acusa palavra faltando/sobrando).
+6. Assista ao menos o primeiro corte de cada versão (estalo e legenda sobre o rosto não são detectados automaticamente).
+   Entregue a tabela do relatório e abra a rodada em `ganchos/registro.md` com os textos e tipos dos ganchos.
+
+Na nuvem (sessão do Claude Code), exporte antes `NODE_EXTRA_CA_CERTS=/root/.ccr/ca-bundle.crt` para o download do modelo
+do whisper passar pelo proxy (os scripts `npm run` já ligam `NODE_USE_ENV_PROXY=1`). Modelo: `WHISPER_MODELO` (padrão `medium`).
+Correção pedida duas vezes pela Paty vira regra fixa: na composição, nesta skill ou em `estilos/`.
