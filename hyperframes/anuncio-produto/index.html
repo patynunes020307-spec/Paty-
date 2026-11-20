@@ -1,0 +1,197 @@
+<!doctype html>
+<html
+  lang="pt-BR"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"kicker","type":"string","label":"Selo","default":"Novidade","maxLength":20},
+    {"id":"produto","type":"string","label":"Nome do produto","default":"[SEU PRODUTO]","maxLength":24},
+    {"id":"frase","type":"string","label":"Frase de apoio","default":"[sua frase de apoio aqui]","maxLength":48},
+    {"id":"cta","type":"string","label":"Chamada final","default":"[link ou @perfil]","maxLength":32}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Cormorant Garamond";
+        src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Cormorant Garamond";
+        src: url("assets/fonts/cormorant-garamond-latin-600-italic.woff2") format("woff2");
+        font-weight: 600;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: "Montserrat";
+        src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2");
+        font-weight: 500;
+      }
+      @font-face {
+        font-family: "Montserrat";
+        src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2");
+        font-weight: 600;
+      }
+      /* Paleta Impactar (projeto/src/marca.ts) */
+      :root {
+        --ground: #f7f2ef;
+        --ink: #203f51;
+        --accent: #84a9ac;
+        --soft: #e9cebb;
+        --serif: "Cormorant Garamond", serif;
+        --sans: "Montserrat", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        background: var(--ground);
+        overflow: hidden;
+      }
+      /* Forma suave de fundo: só deriva devagar, sem pulsar */
+      #halo {
+        position: absolute;
+        left: 50px;
+        top: 380px;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(233, 206, 187, 0.75) 0%, rgba(233, 206, 187, 0) 70%);
+        z-index: 0;
+      }
+      .stack {
+        position: absolute;
+        left: 120px;
+        width: 660px;
+        text-align: center;
+        z-index: 2;
+      }
+      #kicker-wrap { top: 560px; }
+      #kicker {
+        display: inline-block;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 30px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--ink);
+        padding: 14px 30px 14px 40px;
+        border: 2px solid var(--accent);
+        border-radius: 999px;
+      }
+      #title-wrap { top: 660px; }
+      .mask { overflow: hidden; padding-bottom: 12px; }
+      #title {
+        display: block;
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 84px;
+        white-space: nowrap;
+        line-height: 1.02;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+      }
+      #rule-wrap { top: 790px; height: 4px; }
+      #rule {
+        width: 220px;
+        height: 4px;
+        margin: 0 auto;
+        background: var(--accent);
+        border-radius: 2px;
+        transform-origin: 50% 50%;
+      }
+      #frase-wrap { top: 830px; }
+      #frase {
+        display: block;
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 600;
+        font-size: 58px;
+        line-height: 1.15;
+        color: var(--ink);
+      }
+      #cta-wrap { top: 1010px; }
+      #cta {
+        display: inline-block;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 40px;
+        letter-spacing: 0.04em;
+        color: var(--ground);
+        background: var(--ink);
+        padding: 26px 56px;
+        border-radius: 999px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="12"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="halo" class="clip" data-start="0" data-duration="12" data-track-index="0"></div>
+
+      <div id="kicker-wrap" class="stack clip" data-start="0" data-duration="12" data-track-index="1">
+        <span id="kicker" data-var-text="kicker">Novidade</span>
+      </div>
+
+      <div id="title-wrap" class="stack clip" data-start="0" data-duration="12" data-track-index="2">
+        <div class="mask"><span id="title" data-var-text="produto">[SEU PRODUTO]</span></div>
+      </div>
+
+      <div id="rule-wrap" class="stack clip" data-start="0" data-duration="12" data-track-index="3">
+        <div id="rule"></div>
+      </div>
+
+      <div id="frase-wrap" class="stack clip" data-start="3.6" data-duration="8.4" data-track-index="4">
+        <div class="mask"><span id="frase" data-var-text="frase">[sua frase de apoio aqui]</span></div>
+      </div>
+
+      <div id="cta-wrap" class="stack clip" data-start="7.2" data-duration="4.8" data-track-index="5">
+        <span id="cta" data-var-text="cta">[link ou @perfil]</span>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const out = "expo.out";
+
+      // Deriva contínua e lenta (nada fica parado >2 s, sem loop/pulso)
+      tl.fromTo("#halo", { scale: 0.9, x: -40, y: 30 }, { scale: 1.12, x: 40, y: -30, duration: 12, ease: "none" }, 0);
+
+      // 0–1.6 s: selo já visível no frame 0, título sobe de dentro da máscara
+      tl.fromTo("#kicker", { y: 24 }, { y: 0, duration: 0.6, ease: out }, 0);
+      tl.fromTo("#title", { yPercent: 60 }, { yPercent: 0, duration: 1.1, ease: out }, 0);
+      tl.fromTo("#rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.8);
+
+      // Título ganha leve aproximação contínua até o fim
+      tl.fromTo("#title-wrap", { scale: 1 }, { scale: 1.05, duration: 10.7, ease: "none" }, 1.3);
+
+      // 3.6 s: frase de apoio
+      tl.fromTo("#frase", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: out }, 3.6);
+
+      // 7.2 s: chamada final
+      tl.fromTo("#cta", { opacity: 0, y: 40, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.6)" }, 7.2);
+
+      // 11.3 s: saída limpa
+      tl.to(["#kicker", "#title", "#rule", "#frase", "#cta"], { opacity: 0, y: -20, duration: 0.6, ease: "power2.in", stagger: 0.04 }, 11.3);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
