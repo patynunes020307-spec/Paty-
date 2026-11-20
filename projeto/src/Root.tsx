@@ -1,4 +1,5 @@
 import { Composition } from "remotion";
+import { duracaoShortVotos, ShortVotos, SHORTS_VOTOS } from "./ShortsVotos";
 import { MyComposition } from "./Composition";
 import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
@@ -403,6 +404,33 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={CONJUNTO}
         durationInFrames={duracaoMotion(CONJUNTO)}
         fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ShortVotos1"
+        component={ShortVotos}
+        defaultProps={SHORTS_VOTOS[0]}
+        durationInFrames={duracaoShortVotos(SHORTS_VOTOS[0])}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ShortVotos2"
+        component={ShortVotos}
+        defaultProps={SHORTS_VOTOS[1]}
+        durationInFrames={duracaoShortVotos(SHORTS_VOTOS[1])}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ShortVotos3"
+        component={ShortVotos}
+        defaultProps={SHORTS_VOTOS[2]}
+        durationInFrames={duracaoShortVotos(SHORTS_VOTOS[2])}
+        fps={30}
         width={1080}
         height={1920}
       />
