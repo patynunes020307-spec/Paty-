@@ -18,4 +18,5 @@ referencias/*
 !referencias/.gitkeep
 # Cópias de trabalho dos brutos e whisper.cpp local
 public/brutos/
+public/audio/
 whisper.cpp/
