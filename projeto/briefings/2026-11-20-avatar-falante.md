@@ -11,6 +11,11 @@
 - **Ferramenta:** ElevenLabs (foto + áudio → vídeo com lip-sync; modelos omnihuman-v1.5 / creatify-aurora / heygen-avatar6). Orçar créditos antes de gerar.
 - **Entregável:** `exports/2026-11-20_Story_Avatar-FAQ-cerimonialista.mp4` — só publicar com confirmação.
 
+## Áudio real da Paty (recebido 20/11)
+- Original: `originais/avatar/audio-paty-bastidores.m4a` (38 s, somente leitura). Cópia tratada (volume normalizado, cortado em 35,2 s): `.tmp/avatar/audio-paty-tratado.m4a`.
+- Transcrição local (whisper.cpp): "Das duas da tarde até a festa: um casamento pelos bastidores. Antes da cerimônia a gente confere o espaço, recebe a família, revisa o roteiro com o noivo, arruma a cauda do vestido, ajusta o véu. Depois do sim, organiza as fotos com quem precisa estar nelas. E na festa seguimos acompanhando cada momento, para vocês só precisarem viver o dia."
+- Substitui o roteiro-rascunho. Duração ~35 s (story único aceita até 60 s).
+
 ## Status
 - Concluído: fotos em originais/avatar/ (somente leitura); exceção registrada no Guia local e no Notion (seção 4, 20/11); flow ElevenLabs criado: "Impactar — Avatar falante (TESTE interno)" (id MaZv6QlwAJCJWHVvUyL6).
 - Voz de teste interno escolhida: "Isabela" (pt-BR, voz sintética — nunca publicar). Orçamento do áudio: 193 créditos (~US$ 0,02). Geração não iniciou: fila gratuita do ElevenLabs ocupada (nada cobrado).
