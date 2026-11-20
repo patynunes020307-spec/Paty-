@@ -25,6 +25,7 @@ Você vai editar vídeos para o Instagram da Impactar Cerimonial (assessoria e c
 - Mostrar bastidor real: o que a equipe faz de verdade (conferir, alinhar, ajustar, organizar). Mais bastidor, menos cara de "dicas". Nada genérico.
 - Só escreva o que o vídeo mostra ou o que eu confirmei. Não invente nome, papel da pessoa ("noivo", "fornecedor"), local, data ou números. Se não tiver certeza, escreva um texto neutro e me pergunte.
 - Sem preço, sem desconto, sem "zero imprevistos", sem "casamento perfeito", sem resultado garantido.
+- Números oficiais da empresa: "12 anos · mais de 500 eventos". Não use outros números (nem "11 anos").
 
 5. QUALIDADE (antes de me mostrar qualquer coisa)
 - Confira se a resolução aguenta a tela cheia em 1080 × 1920. Se o vídeo for pequeno demais, estiver borrado ou com granulação, NÃO me mostre: procure outro trecho ou outro vídeo, ou me avise do problema.

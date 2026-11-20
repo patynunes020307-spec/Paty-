@@ -47,4 +47,4 @@ Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" 
 - `public/marca/png/`: selo-bicolor, selo-nude, selo-petroleo, selo-preto, script-nude, script-petroleo, script-preto (reduzidas para 1400 px; originais de ~7300 px enviados no chat).
 - Preferir estas às JPG: funcionam sobre qualquer fundo, sem multiply. Nude/verde-água sobre áreas escuras, petróleo sobre áreas claras.
 - ⚠ A prancha de identidade enviada junto lista Metropolis/Atten New; o Guia do Notion (02/11/2026) proíbe essas fontes e manda Cormorant + Montserrat. Segue valendo o Guia até a Paty decidir.
-- ⚠ Um story de referência diz "11 anos · mais de 500 eventos"; o Guia diz "mais de 12 anos de mercado". Não usar nenhum dos dois números em peça nova sem confirmar.
+- Números oficiais (decisão da Paty, 20/11/2026): **"12 anos · mais de 500 eventos"**. O story antigo com "11 anos" está desatualizado.
