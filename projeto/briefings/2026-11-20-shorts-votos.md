@@ -1,5 +1,5 @@
 # Shorts — votos do casamento (3 cortes do filme)
-- Data: 2026-11-20 | Slug: shorts-votos | Status: v1 renderizada — aguardando a Paty assistir
+- Data: 2026-11-20 | Slug: shorts-votos | Status: APROVADO pela Paty em 20/11/2026 ("Todos aprovados"), mesmo com a trilha do videomaker e a tela final (decisão dela prevalece sobre o Guia) — a Paty vai subir no Drive
 
 ## Objetivo / CTA
 Pedido da Paty: "encontrar os 3 melhores momentos e transformar em Shorts verticais com legenda animada". CTA (criada a pedido da Paty, 20/11): tela final "Cada história merece / *ser bem cuidada.*" + logo oficial + "Chame a gente no direct"; na legenda do post, "chame a gente no direct".
@@ -32,3 +32,4 @@ Autorização do casal e do videomaker: CONFIRMADAS pela Paty em 20/11/2026 ("os
 - **v1**: exports/shorts-votos-1-v1.mp4 (30,2 s), -2-v1 (24,1 s), -3-v1 (30,5 s). 1080×1920, 30 fps, áudio −16 a −18 LUFS. Fonte 720p ampliada 1,5× (15 Mbit/s, nítida no celular). Cortes 1 e 3 passam 0,2–0,5 s do teto de 30 s do Guia por causa da tela final de 2 s.
 - Legendas dos posts: briefings/2026-11-20-shorts-votos-legendas-post.md (cópia também em exports/).
 - Pendente: subir no Drive › Criativos como _APROVADO só depois do OK da Paty; publicar/agendar só com confirmação dela.
+- 2026-11-20 — Aprovado. Cópias com nomes de entrega e conferência de bytes/hash em exports/entrega-2026-11-20/ (conferencia.tsv). Upload no Drive feito pela Paty; conferir bytes depois.

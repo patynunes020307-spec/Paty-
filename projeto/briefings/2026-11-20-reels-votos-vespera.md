@@ -1,5 +1,5 @@
 # Reels sem fala — "Votos" e "Véspera" (cenas do filme de casamento)
-- Data: 2026-11-20 | Composições: `ReelVotosDicas`, `ReelVespera` (src/MotionReel.tsx), capas `CapaVotosDicas`, `CapaVespera` | Status: PRÉVIA — aguardando a Paty
+- Data: 2026-11-20 | Composições: `ReelVotosDicas`, `ReelVespera` (src/MotionReel.tsx), capas `CapaVotosDicas`, `CapaVespera` | Status: APROVADO pela Paty em 20/11/2026 ("Todos aprovados") — a Paty vai subir no Drive
 - Pedido da Paty (20/11): outro vídeo sobre votos, sem a voz da noiva, só texto ("como produzir os votos"), e aproveitar as cenas para outros conteúdos relevantes, conforme o Guia.
 - Guia conferido no Notion em 20/11/2026 (atualizado hoje; seção 11 = instrução vigente de vídeo).
 
@@ -27,3 +27,4 @@ Sem som (música pela biblioteca do Instagram) · gancho digitado nos 2 primeiro
 ## Log
 - 2026-11-20 — exports/ReelVotosDicas-v1.mp4 (22,4 s) e exports/ReelVespera-v1.mp4 (16,9 s), 1080×1920, 30 fps, sem áudio; capas exports/CapaVotosDicas.jpg e exports/CapaVespera.jpg. Conferidos em quadros a cada 0,5 s (cenas limpas, sem transição escura do filme, texto fora da marca d'água e dos rostos/mãos).
 - Legendas dos posts: briefings/2026-11-20-reels-votos-vespera-legendas.md.
+- 2026-11-20 — Aprovado. Cópias com nomes de entrega e conferência de bytes/hash em exports/entrega-2026-11-20/ (conferencia.tsv). Upload no Drive feito pela Paty; conferir bytes depois.
