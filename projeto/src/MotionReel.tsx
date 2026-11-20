@@ -1,7 +1,6 @@
 import { Audio, Video } from "@remotion/media";
 import {
   AbsoluteFill,
-  Img,
   Easing,
   interpolate,
   Sequence,
@@ -40,8 +39,9 @@ export type MotionProps = {
     italico: string;
     acao: string;
     segundos: number;
-    // logo oficial PNG no fim (decisão da Paty, 20/11/2026: logo no final a partir de agora)
-    logo?: boolean;
+    // decisão da Paty (20/11/2026): sem tela final e sem logo — a chamada entra
+    // sobre os últimos `segundos` da última cena (padrão para Reels novos)
+    sobreFoto?: boolean;
   };
   // áudio real (fala da equipe) + legenda sincronizada — opcional
   audio?: { arquivo: string; de: number };
@@ -84,7 +84,8 @@ const Fala: React.FC<{ texto: string; duracao: number }> = ({
 
 const dur = (c: Cena) => Math.round((c.fim - c.inicio) * FPS);
 export const duracaoMotion = (p: MotionProps) =>
-  p.cenas.reduce((t, c) => t + dur(c), 0) + Math.round(p.cta.segundos * FPS);
+  p.cenas.reduce((t, c) => t + dur(c), 0) +
+  (p.cta.sobreFoto ? 0 : Math.round(p.cta.segundos * FPS));
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -317,18 +318,6 @@ const TelaCTA: React.FC<{ cta: MotionProps["cta"] }> = ({ cta }) => {
           backgroundColor: COR.nude,
         }}
       />
-      {cta.logo ? (
-        <Img
-          src={staticFile("marca/png/script-nude.png")}
-          style={{
-            position: "absolute",
-            left: 96,
-            bottom: 380,
-            width: 330,
-            opacity: interpolate(frame, [1.5 * fps, 2.1 * fps], [0, 1], clamp),
-          }}
-        />
-      ) : null}
     </AbsoluteFill>
   );
 };
@@ -390,13 +379,30 @@ export const MotionReel: React.FC<MotionProps> = (p) => {
           />
         </Sequence>
       ) : null}
-      <Sequence
-        from={durFilme}
-        durationInFrames={s(p.cta.segundos)}
-        premountFor={fps}
-      >
-        <TelaCTA cta={p.cta} />
-      </Sequence>
+      {p.cta.sobreFoto ? (
+        <Sequence
+          from={durFilme - s(p.cta.segundos)}
+          durationInFrames={s(p.cta.segundos)}
+          premountFor={fps}
+        >
+          <BlocoFrase
+            frase={{
+              kicker: p.cta.acao,
+              linha: p.cta.linha,
+              italico: p.cta.italico,
+            }}
+            duracao={s(p.cta.segundos) + 12}
+          />
+        </Sequence>
+      ) : (
+        <Sequence
+          from={durFilme}
+          durationInFrames={s(p.cta.segundos)}
+          premountFor={fps}
+        >
+          <TelaCTA cta={p.cta} />
+        </Sequence>
+      )}
       {(p.falas ?? []).map((f, i) => (
         <Sequence
           key={"f" + i}
