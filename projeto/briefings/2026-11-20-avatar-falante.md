@@ -12,6 +12,8 @@
 - **Entregável:** `exports/2026-11-20_Story_Avatar-FAQ-cerimonialista.mp4` — só publicar com confirmação.
 
 ## Status
-- Último item concluído: fotos copiadas (somente leitura), exceção e briefing registrados.
-- Próxima ação: receber o áudio da Paty → orçar → gerar 1 take de teste.
-- Bloqueio: áudio + aprovação do roteiro.
+- Concluído: fotos em originais/avatar/ (somente leitura); exceção registrada no Guia local e no Notion (seção 4, 20/11); flow ElevenLabs criado: "Impactar — Avatar falante (TESTE interno)" (id MaZv6QlwAJCJWHVvUyL6).
+- Voz de teste interno escolhida: "Isabela" (pt-BR, voz sintética — nunca publicar). Orçamento do áudio: 193 créditos (~US$ 0,02). Geração não iniciou: fila gratuita do ElevenLabs ocupada (nada cobrado).
+- Bloqueio 1: o ambiente não consegue enviar a foto ao ElevenLabs (rede bloqueia o envio). A Paty sobe THI00422 direto no flow.
+- Bloqueio 2: o orçamento do vídeo só sai depois que a foto estiver no flow.
+- Próxima ação: Paty sobe a foto → gerar áudio de teste → orçar vídeo → gerar 1 take com o ok dela.
