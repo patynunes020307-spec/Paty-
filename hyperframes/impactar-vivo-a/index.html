@@ -1,5 +1,22 @@
 <!doctype html>
-<html lang="pt-BR" data-resolution="portrait">
+<html
+  lang="pt-BR"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"e1","type":"string","label":"Etiqueta 1","default":"Assessoria e cerimonial"},
+    {"id":"a1","type":"string","label":"Frase 1 — linha 1","default":"Para viver"},
+    {"id":"b1","type":"string","label":"Frase 1 — itálico","default":"cada momento."},
+    {"id":"e2","type":"string","label":"Etiqueta 2","default":"Planejamento cuidadoso"},
+    {"id":"a2","type":"string","label":"Frase 2 — linha 1","default":"Presença"},
+    {"id":"b2","type":"string","label":"Frase 2 — itálico","default":"em cada detalhe."},
+    {"id":"e3","type":"string","label":"Etiqueta 3","default":"Impactar Cerimonial"},
+    {"id":"a3","type":"string","label":"Frase 3 — linha 1","default":"12 anos,"},
+    {"id":"b3","type":"string","label":"Frase 3 — itálico","default":"mais de 500 eventos."},
+    {"id":"e4","type":"string","label":"Etiqueta 4","default":"Vai casar?"},
+    {"id":"a4","type":"string","label":"Frase 4 — linha 1","default":"Manda para quem"},
+    {"id":"b4","type":"string","label":"Frase 4 — itálico","default":"vai casar com você."}
+  ]'
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
@@ -8,85 +25,94 @@
       @font-face { font-family: "Cormorant Garamond"; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
       @font-face { font-family: "Cormorant Garamond"; src: url("assets/fonts/cormorant-garamond-latin-600-italic.woff2") format("woff2"); font-weight: 600; font-style: italic; }
       @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
-      :root { --petroleo: #203f51; --nude: #e9cebb; --branco: #fffaf6; }
+      /* Guia de Publicações (Notion, 20/11/2026) */
+      :root { --escuro: #072126; --nude: #e9cebb; --claro: #f7f2ef; }
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--petroleo); }
-      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--petroleo); }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--escuro); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--escuro); }
 
-      .cena { position: absolute; inset: 0; overflow: hidden; }
+      .cena { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
       .foto { position: absolute; inset: 0; width: 1080px; height: 1920px; display: block; }
-      /* Faixa escura só para leitura do texto */
-      .scrim { position: absolute; left: 0; width: 1080px; height: 1150px; }
-      .scrim.topo { top: 0; background: linear-gradient(180deg, rgba(7, 33, 38, 0.85) 0%, rgba(7, 33, 38, 0.55) 45%, rgba(7, 33, 38, 0) 100%); }
-      .scrim.base { bottom: 0; background: linear-gradient(0deg, rgba(7, 33, 38, 0.88) 0%, rgba(7, 33, 38, 0.6) 50%, rgba(7, 33, 38, 0) 100%); }
 
-      .txt { position: absolute; left: 120px; width: 700px; color: var(--branco); }
-      .serif { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 150px; line-height: 0.98; letter-spacing: -0.01em; }
-      .serif em { font-style: italic; color: var(--nude); }
-      .mask { overflow: hidden; padding-bottom: 14px; }
-      .palavra { display: inline-block; }
-      .sans { font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 50px; line-height: 1.25; }
-      .regua { width: 120px; height: 4px; background: var(--nude); margin-bottom: 26px; transform-origin: 0 50%; }
+      /* Degradê petróleo escuro só na base da foto */
+      #degrade {
+        position: absolute; left: 0; bottom: 0; width: 1080px; height: 960px; z-index: 5;
+        background: linear-gradient(0deg, rgba(7, 33, 38, 0.92) 0%, rgba(7, 33, 38, 0.7) 38%, rgba(7, 33, 38, 0) 100%);
+      }
+
+      #logo-wrap { position: absolute; left: 120px; top: 310px; width: 240px; z-index: 6; }
+      #logo { width: 240px; height: auto; display: block; }
+
+      /* Bloco de texto: esquerda, terço inferior */
+      .bloco { position: absolute; left: 96px; top: 1120px; width: 800px; z-index: 7; }
+      .fio { width: 96px; height: 3px; background: var(--nude); margin-bottom: 22px; transform-origin: 0 50%; }
+      .etiqueta { font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 26px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--claro); margin-bottom: 14px; }
+      .frase { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 88px; line-height: 1.02; color: var(--claro); }
+      .frase em { display: block; font-style: italic; color: var(--nude); }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="6" data-width="1080" data-height="1920">
-      <!-- Cena 1 -->
-      <div id="c1" class="cena clip" data-start="0" data-duration="2.15" data-track-index="0">
-        <img id="f1" class="foto" src="assets/img/cerimonia.jpg" alt="" />
-        <div class="scrim topo"></div>
-        <div class="txt" style="top: 330px">
-          <div class="mask"><span id="w1" class="serif palavra">Para</span></div>
-          <div class="mask"><span id="w2" class="serif palavra">viver</span></div>
-        </div>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16" data-width="1080" data-height="1920">
+      <!-- Fotos (corte seco) -->
+      <div id="c1" class="cena clip" data-start="0" data-duration="2.6" data-track-index="0"><img id="f1" class="foto" src="assets/img/01-convidados.jpg" alt="" /></div>
+      <div id="c2" class="cena clip" data-start="2.6" data-duration="2.6" data-track-index="1"><img id="f2" class="foto" src="assets/img/02-noiva.jpg" alt="" /></div>
+      <div id="c3" class="cena clip" data-start="5.2" data-duration="2.6" data-track-index="2"><img id="f3" class="foto" src="assets/img/03-decoracao.jpg" alt="" /></div>
+      <div id="c4" class="cena clip" data-start="7.8" data-duration="2.6" data-track-index="3"><img id="f4" class="foto" src="assets/img/04-cerimonia.jpg" alt="" /></div>
+      <div id="c5" class="cena clip" data-start="10.4" data-duration="2.6" data-track-index="4"><img id="f5" class="foto" src="assets/img/05-saida.jpg" alt="" /></div>
+      <div id="c6" class="cena clip" data-start="13" data-duration="3" data-track-index="5"><img id="f6" class="foto" src="assets/img/06-fogos.jpg" alt="" /></div>
+
+      <div id="degrade" class="clip" data-start="0" data-duration="16" data-track-index="6"></div>
+
+      <!-- Logo original pequena na capa -->
+      <div id="logo-wrap" class="clip" data-start="0" data-duration="2.6" data-track-index="7">
+        <img id="logo" src="assets/img/logo-petroleo.png" alt="Impactar Cerimonial" />
       </div>
 
-      <!-- Cena 2 -->
-      <div id="c2" class="cena clip" data-start="2" data-duration="2.15" data-track-index="1">
-        <img id="f2" class="foto" src="assets/img/lapela.jpg" alt="" />
-        <div class="scrim base"></div>
-        <div class="txt" style="top: 850px">
-          <div class="mask"><span id="w3" class="serif palavra">cada</span></div>
-          <div class="mask"><span id="w4" class="serif palavra"><em>momento.</em></span></div>
-        </div>
+      <!-- Uma frase por vez -->
+      <div id="t1" class="bloco clip" data-start="0" data-duration="4" data-track-index="8">
+        <div class="fio" id="fio1"></div>
+        <div class="etiqueta" data-var-text="e1">Assessoria e cerimonial</div>
+        <div class="frase"><span data-var-text="a1">Para viver</span><em data-var-text="b1">cada momento.</em></div>
       </div>
-
-      <!-- Cena 3 -->
-      <div id="c3" class="cena clip" data-start="4" data-duration="2" data-track-index="2">
-        <img id="f3" class="foto" src="assets/img/noiva.jpg" alt="" />
-        <div class="scrim topo"></div>
-        <div class="txt" style="top: 360px">
-          <div id="r3" class="regua"></div>
-          <div class="mask"><span id="s1" class="sans palavra">Presença</span></div>
-          <div class="mask"><span id="s2" class="sans palavra">em cada detalhe.</span></div>
-        </div>
+      <div id="t2" class="bloco clip" data-start="4" data-duration="4" data-track-index="9">
+        <div class="fio" id="fio2"></div>
+        <div class="etiqueta" data-var-text="e2">Planejamento cuidadoso</div>
+        <div class="frase"><span data-var-text="a2">Presença</span><em data-var-text="b2">em cada detalhe.</em></div>
       </div>
-
-      <!-- Um efeito por corte -->
-      <audio id="sfx1" class="clip" src="assets/sfx/whoosh.wav" data-start="1.85" data-duration="0.6" data-track-index="10" data-volume="0.5"></audio>
-      <audio id="sfx2" class="clip" src="assets/sfx/whoosh.wav" data-start="3.85" data-duration="0.6" data-track-index="11" data-volume="0.5"></audio>
+      <div id="t3" class="bloco clip" data-start="8" data-duration="4" data-track-index="10">
+        <div class="fio" id="fio3"></div>
+        <div class="etiqueta" data-var-text="e3">Impactar Cerimonial</div>
+        <div class="frase"><span data-var-text="a3">12 anos,</span><em data-var-text="b3">mais de 500 eventos.</em></div>
+      </div>
+      <div id="t4" class="bloco clip" data-start="12" data-duration="4" data-track-index="11">
+        <div class="fio" id="fio4"></div>
+        <div class="etiqueta" data-var-text="e4">Vai casar?</div>
+        <div class="frase"><span data-var-text="a4">Manda para quem</span><em data-var-text="b4">vai casar com você.</em></div>
+      </div>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
-      const out = "expo.out";
+      const suave = "power2.out";
 
-      // Cena 1: aproximação + palavras caindo uma a uma
-      tl.fromTo("#f1", { scale: 1.0 }, { scale: 1.12, duration: 2.15, ease: "none" }, 0);
-      tl.fromTo("#w1", { yPercent: 40 }, { yPercent: 0, duration: 0.7, ease: out }, 0);
-      tl.fromTo("#w2", { yPercent: 105 }, { yPercent: 0, duration: 0.7, ease: out }, 0.35);
+      // Aproximação lenta e contínua, sempre no mesmo sentido
+      [["#f1", 0, 2.6], ["#f2", 2.6, 2.6], ["#f3", 5.2, 2.6], ["#f4", 7.8, 2.6], ["#f5", 10.4, 2.6], ["#f6", 13, 3]].forEach(([f, s, d]) => {
+        tl.fromTo(f, { scale: 1.0 }, { scale: 1.06, duration: d, ease: "none" }, s);
+      });
 
-      // Corte 2: entra deslizando de baixo, câmera se afasta
-      tl.fromTo("#c2", { yPercent: 100 }, { yPercent: 0, duration: 0.35, ease: "power3.out" }, 2.0);
-      tl.fromTo("#f2", { scale: 1.18 }, { scale: 1.0, duration: 2.15, ease: "power1.out" }, 2.0);
-      tl.fromTo("#w3", { yPercent: 105 }, { yPercent: 0, duration: 0.6, ease: out }, 2.25);
-      tl.fromTo("#w4", { yPercent: 105 }, { yPercent: 0, duration: 0.6, ease: out }, 2.55);
+      // Logo: só fade suave na saída da capa
+      tl.to("#logo", { opacity: 0, duration: 0.3, ease: "power1.in" }, 2.3);
 
-      // Corte 3: entra pela direita, aproximação
-      tl.fromTo("#c3", { xPercent: 100 }, { xPercent: 0, duration: 0.35, ease: "power3.out" }, 4.0);
-      tl.fromTo("#f3", { scale: 1.0 }, { scale: 1.1, duration: 2.0, ease: "none" }, 4.0);
-      tl.fromTo("#r3", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 4.25);
-      tl.fromTo("#s1", { yPercent: 105 }, { yPercent: 0, duration: 0.55, ease: out }, 4.35);
-      tl.fromTo("#s2", { yPercent: 105 }, { yPercent: 0, duration: 0.55, ease: out }, 4.6);
+      // Frases: fade + subida curta (0,45 s), fio nude se desenhando, saída em fade 0,3 s
+      [["#t1", "#fio1", 0], ["#t2", "#fio2", 4], ["#t3", "#fio3", 8], ["#t4", "#fio4", 12]].forEach(([t, fio, s], i) => {
+        const entra = i === 0 ? s : s + 0.05;
+        if (i === 0) {
+          tl.fromTo(t, { y: 14 }, { y: 0, duration: 0.45, ease: suave }, entra);
+        } else {
+          tl.fromTo(t, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: suave }, entra);
+        }
+        tl.fromTo(fio, { scaleX: 0.15 }, { scaleX: 1, duration: 0.5, ease: suave }, entra + 0.1);
+        if (i < 3) tl.to(t, { opacity: 0, duration: 0.3, ease: "power1.in" }, s + 3.65);
+      });
 
       window.__timelines["main"] = tl;
       tl.seek(0);
