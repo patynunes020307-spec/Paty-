@@ -757,3 +757,37 @@ export const ULTIMA_VOLTA: MotionProps = {
     segundos: 3.5,
   },
 };
+
+// Reel I — Impactar 15 (perfil próprio, Guia): festa de 15 anos de 04/07/2026, vídeos do Drive (procaptures).
+const PC = "brutos/pc/";
+export const QUINZE_FESTA: MotionProps = {
+  cenas: [
+    { arquivo: PC + "IMG_0753.mp4", inicio: 0, fim: 5.2 },
+    { arquivo: PC + "IMG_0769.mp4", inicio: 0, fim: 5.7 },
+    { arquivo: PC + "IMG_0805.mp4", inicio: 0, fim: 4.85 },
+  ],
+  gancho: {
+    kicker: "Impactar 15",
+    linha: "Enquanto você dança,",
+    italico: "a gente cuida da festa.",
+    ate: 5.1,
+  },
+  textos: [
+    {
+      frase: { kicker: "01", linha: "Cuidando de", italico: "quem chega." },
+      de: 5.3,
+      ate: 10.8,
+    },
+    {
+      frase: { kicker: "02", linha: "E presente", italico: "a festa inteira." },
+      de: 11.0,
+      ate: 15.7,
+    },
+  ],
+  cta: {
+    linha: "Seus 15 anos,",
+    italico: "vividos sem preocupação.",
+    acao: "Manda a data no direct.",
+    segundos: 3.5,
+  },
+};

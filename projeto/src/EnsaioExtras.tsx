@@ -164,6 +164,30 @@ export const CAPA_ROTEIRO: CapaProps = {
   logo: { top: 60, left: 700, width: 300 },
 };
 
+export const CAPA_ALIANCA: CapaProps = {
+  arquivo: "brutos/l20d/4112.mp4",
+  inicio: 9.0,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Até a aliança",
+    italico: "tem ensaio.",
+  },
+  logo: { top: 120, left: 380, width: 320 },
+};
+
+export const CAPA_ULTIMA_VOLTA: CapaProps = {
+  arquivo: "brutos/l20d/IMG_1291_lento.mp4",
+  inicio: 2.0,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "A última volta",
+    italico: "antes de abrir as portas.",
+  },
+  logo: { top: 60, left: 60, width: 300 },
+};
+
 export const Capa: React.FC<CapaProps> = ({
   arquivo,
   inicio,

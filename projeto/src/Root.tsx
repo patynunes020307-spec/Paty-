@@ -11,6 +11,7 @@ import {
   MONTAGEM,
   MotionReel,
   PADRINHOS,
+  QUINZE_FESTA,
   ALIANCA,
   ULTIMA_VOLTA,
   ROTEIRO,
@@ -18,12 +19,14 @@ import {
 } from "./MotionReel";
 import {
   Capa,
+  CAPA_ALIANCA,
   CAPA_ANTES_CONVIDADOS,
   CAPA_ASSESSORA,
   CAPA_CAUDA,
   CAPA_DIARIO,
   CAPA_PADRINHOS,
   CAPA_ROTEIRO,
+  CAPA_ULTIMA_VOLTA,
   CAPA_DAMARYS,
   CAPA_MONTAGEM,
   CAPA_ENSAIO,
@@ -362,6 +365,33 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={ULTIMA_VOLTA}
         durationInFrames={duracaoMotion(ULTIMA_VOLTA)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaAlianca"
+        component={Capa}
+        defaultProps={CAPA_ALIANCA}
+        durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaUltimaVolta"
+        component={Capa}
+        defaultProps={CAPA_ULTIMA_VOLTA}
+        durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Reel15Festa"
+        component={MotionReel}
+        defaultProps={QUINZE_FESTA}
+        durationInFrames={duracaoMotion(QUINZE_FESTA)}
         fps={FPS}
         width={1080}
         height={1920}

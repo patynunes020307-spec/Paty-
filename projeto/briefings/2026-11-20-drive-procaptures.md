@@ -1,6 +1,11 @@
 # Vídeos do Drive (pasta 17WXptfMTf6Pe1Sj5KPI8dztcttwztPW2, dono procaptures25)
-- Data: 2026-11-20 | Status: inventário; aguardando tipo de evento
+- Data: 2026-11-20 | Composição: `Reel15Festa` | Status: prévia enviada
 - Baixados pelo conector (limite 10 MB): IMG_0753, IMG_0769, IMG_0805 → originais/drive-procaptures/. Todos de 04/07/2026, 1080p vertical, ~5 s.
 - NÃO baixados (acima de 10 MB): IMG_0804 (21 MB), IMG_0754 (11 MB).
 - Conteúdo: equipe de preto; 0753 cerimonialista com um senhor de terno, falando; 0769 equipe orientando convidadas jovens; 0805 equipe sorrindo e circulando na festa com sacolas pretas grandes. Monograma "AK" no painel; perfil de convidados sugere festa de 15 anos — NÃO confirmado. Se for 15 anos, o conteúdo vai para o perfil Impactar 15 (Guia: não misturar).
 - Som: não usar (regra da Paty, 20/11).
+- Paty (20/11): "2 sim" → interpretado como: é festa de 15 anos → perfil Impactar 15.
+- **Reel I** (19,25 s, sem som): 0753 0–5,2 (gancho digitado "Enquanto você dança, a gente cuida da festa.") · 0769 0–5,7 ("Cuidando de quem chega.") · 0805 0–4,85 ("E presente a festa inteira.") · CTA "Seus 15 anos, vividos sem preocupação." + "Manda a data no direct." Kicker "Impactar 15" (como no Reel aprovado "7 músicas 15 anos").
+- ⚠ Aparecem convidadas adolescentes (menores). Autorização geral dada pela Paty em 20/11 — reconfirmar para este evento.
+- ⚠ Sem logo do Impactar 15 no projeto: capa ainda não feita.
+- 2026-11-20 — exports/15-festa-v1.mp4 enviado. Pastas Drive criadas para Aliança (1b7ykKZdP-isWq4mwAb9ftYJZ1YAHMBhE) e Última Volta (1yGolg3ITuLu6imykvlIFIxoyO-cw_CaH), capa + legenda; vídeos a subir pela Paty.
