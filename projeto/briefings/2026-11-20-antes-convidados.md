@@ -15,3 +15,4 @@ Mistura dois eventos (18/04 e 01/05) sem identificar nenhum.
 ## Log
 - 2026-11-20 — exports/antes-convidados-v1.mp4 enviada.
 - 2026-11-20 — APROVADA. Drive › Criativos › 2026-11-20_Reel_Antes_dos_Convidados (1rN47gFSQ22oGQPx2K2XOhr60fgsUs34b): capa (logo sobre o céu, posição configurável na Capa) + legenda. Vídeo (45,9 MB) a subir pela Paty. Kits: tipo não confirmado — texto mantido genérico ("Kits organizados").
+- 2026-11-20 — Drive conferido: vídeo idêntico ao export (45.926.814 bytes), renomeado para 2026-11-20_Reel_Antes_dos_Convidados_APROVADO.mp4. Pacote completo.
