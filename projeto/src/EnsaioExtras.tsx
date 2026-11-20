@@ -116,6 +116,30 @@ export const CAPA_ANTES_CONVIDADOS: CapaProps = {
   logo: { top: 70, left: 60, width: 300 },
 };
 
+export const CAPA_PADRINHOS: CapaProps = {
+  arquivo: "brutos/diario/8017.mp4",
+  inicio: 4.5,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Antes de os padrinhos",
+    italico: "entrarem.",
+  },
+  logo: { top: 90, left: 60, width: 300 },
+};
+
+export const CAPA_CAUDA: CapaProps = {
+  arquivo: "brutos/diario/8054.mp4",
+  inicio: 3.0,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Ninguém vê,",
+    italico: "mas alguém arruma a cauda.",
+  },
+  logo: { top: 6, left: 560, width: 250 },
+};
+
 export const Capa: React.FC<CapaProps> = ({
   arquivo,
   inicio,
