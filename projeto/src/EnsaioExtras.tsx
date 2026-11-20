@@ -58,6 +58,7 @@ export type CapaProps = {
   frase: Frase;
   // posição da logo (precisa cair sobre área clara: a logo é JPG com fundo branco)
   logo?: { top: number; left: number; width: number; png?: string };
+  semLogo?: boolean; // Impactar 15: sem logo própria (decisão da Paty, 20/11/2026)
 };
 
 export const CAPA_ENSAIO: CapaProps = {
@@ -206,6 +207,7 @@ export const Capa: React.FC<CapaProps> = ({
   enquadramento,
   frase,
   logo,
+  semLogo,
 }) => {
   const { fps } = useVideoConfig();
   return (
@@ -219,19 +221,21 @@ export const Capa: React.FC<CapaProps> = ({
         style={{ width: "100%", height: "100%", objectPosition: enquadramento }}
       />
       <AbsoluteFill style={{ background: DEGRADE }} />
-      <Img
-        src={staticFile(
-          logo?.png ?? "marca/oficial/logo-script-nude-verdeagua.jpg",
-        )}
-        style={{
-          position: "absolute",
-          top: logo?.top ?? 120,
-          left: logo?.left ?? 380,
-          width: logo?.width ?? 320,
-          // PNG oficial transparente (recebido em 20/11) não precisa de multiply
-          mixBlendMode: logo?.png ? "normal" : "multiply",
-        }}
-      />
+      {semLogo ? null : (
+        <Img
+          src={staticFile(
+            logo?.png ?? "marca/oficial/logo-script-nude-verdeagua.jpg",
+          )}
+          style={{
+            position: "absolute",
+            top: logo?.top ?? 120,
+            left: logo?.left ?? 380,
+            width: logo?.width ?? 320,
+            // PNG oficial transparente (recebido em 20/11) não precisa de multiply
+            mixBlendMode: logo?.png ? "normal" : "multiply",
+          }}
+        />
+      )}
       <div
         style={{
           position: "absolute",
@@ -390,5 +394,23 @@ export const CAPA_GOLA: CapaProps = {
     linha: "Antes do altar,",
     italico: "conferimos até a gola.",
   },
-  logo: { top: 50, left: 690, width: 290, png: "marca/png/script-petroleo.png" },
+  logo: {
+    top: 50,
+    left: 690,
+    width: 290,
+    png: "marca/png/script-petroleo.png",
+  },
+};
+
+// Impactar 15 — festa de 15 anos (procaptures). Sem logo, a pedido da Paty.
+export const CAPA_15_FESTA: CapaProps = {
+  arquivo: "brutos/pc/IMG_0805.mp4",
+  inicio: 2.0,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Impactar 15",
+    linha: "Você dança,",
+    italico: "a gente cuida da festa.",
+  },
+  semLogo: true,
 };

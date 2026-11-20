@@ -9,3 +9,4 @@
 - ⚠ Aparecem convidadas adolescentes (menores). Autorização geral dada pela Paty em 20/11 — reconfirmar para este evento.
 - ⚠ Sem logo do Impactar 15 no projeto: capa ainda não feita.
 - 2026-11-20 — exports/15-festa-v1.mp4 enviado. Pastas Drive criadas para Aliança (1b7ykKZdP-isWq4mwAb9ftYJZ1YAHMBhE) e Última Volta (1yGolg3ITuLu6imykvlIFIxoyO-cw_CaH), capa + legenda; vídeos a subir pela Paty.
+- 2026-11-20 — **APROVADO** pela Paty ("pode deixar sem a logo e tá aprovado; as adolescentes podem aparecer"). Pasta `2026-11-20_Reel_15_Festa` (id 1HyrXHph8BZmqxm7ITTGJ56nlhLXOVsh6, criada por outra sessão com o vídeo 20187218 bytes = export): adicionadas CAPA (Capa15Festa, sem logo, "Você dança, / a gente cuida da festa.") e LEGENDA (perfil Impactar 15).
