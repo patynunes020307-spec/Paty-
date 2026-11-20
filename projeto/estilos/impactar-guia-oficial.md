@@ -2,7 +2,7 @@
 
 **Fonte única:** Notion › Marketing & Conteúdo › 🧭 Guia de Publicações — fonte única
 https://app.notion.com/p/4010c576a2f9813aba6cde5bedf53bb7
-**Versão aplicada:** consolidada de 02/11/2026 (atualizada em 20/11/2026: duração e edição de Reels).
+**Versão aplicada:** consolidada de 02/11/2026 (atualizada em 20/11/2026: duração, edição e fechamento de Reels; monograma; campanha 11/11 encerrada).
 **Antes de cada produção:** abrir o Guia no Notion e conferir se a versão mudou. Se mudou, atualizar esta ficha e `src/marca.ts` antes de editar.
 Hierarquia: decisão expressa mais recente da Paty → Guia → Calendário Editorial → referências históricas.
 Substitui o "padrão visual v6" (Areia #FAF7F3, selo como tela final), que deixou de valer.
@@ -37,6 +37,6 @@ Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" 
   fio nude curto + etiqueta em Montserrat caixa-alta espaçada (ou numeração "01 —"),
   frase em Cormorant Garamond regular, clara, com a **segunda linha em itálico nude**.
 - Frases curtas e poéticas, uma por vez, trocando a cada ~3–6 s com fade suave; sem caixas.
-- Fechamento do Reel aprovado: fundo claro com a logo oficial (variação nude + verde-água).
-  ⚠ Conflita com o Guia ("sem tela final de logo"); aplicado por ser a referência aprovada mais recente — confirmar com a Paty.
+- Fechamento (decisão da Paty, 20/11/2026): termina numa cena bonita do próprio vídeo, com frase final + CTA sobre ela; **sem tela final e sem logo no final**. Logo original pequena na capa. Substitui o fechamento em fundo claro com logo do Reel de 02/11.
+- Monograma IC: `public/marca/oficial/monograma-IC-nude.png` e `-petroleo.png` (PNG transparente, recorte do selo Logo-original-3/4, sem redesenho). Logos PNG transparentes do Drive 00 — MARCA: `Logo-original-1` (nude + verde-água, p/ fundo escuro), `-2` (petróleo), `-3` (selo nude), `-4` (selo petróleo).
 - Logos oficiais recebidas em 19/11/2026: `public/marca/oficial/` (selo circular petróleo, selo circular nude, logo script petróleo, logo script nude/verde-água). JPG com fundo branco: usar só sobre fundo claro (multiply), nunca recolorir.
