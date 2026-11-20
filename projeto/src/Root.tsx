@@ -6,6 +6,7 @@ import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
 import { DIARIO, Diario, duracaoDiario } from "./Diario";
 import {
   ANTES_CONVIDADOS,
+  FOGOS,
   ASSESSORA,
   duracaoMotion,
   MONTAGEM,
@@ -222,6 +223,15 @@ export const RemotionRoot: React.FC = () => {
         component={Capa}
         defaultProps={CAPA_MONTAGEM}
         durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelFogosTeste"
+        component={MotionReel}
+        defaultProps={FOGOS}
+        durationInFrames={duracaoMotion(FOGOS)}
         fps={FPS}
         width={1080}
         height={1920}

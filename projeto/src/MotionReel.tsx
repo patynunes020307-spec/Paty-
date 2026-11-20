@@ -792,6 +792,35 @@ export const QUINZE_FESTA: MotionProps = {
   },
 };
 
+// Reel K — TESTE "Fornecedor na hora certa". Fogos no beijo, casamento de 20/05/2026
+// (Drive › 06 — Institucional › Durante o Evento / Execução, arquivo d973d512…mp4). Casal não identificado.
+export const FOGOS: MotionProps = {
+  cenas: [{ arquivo: "brutos/fogos/fogos.mp4", inicio: 0, fim: 9.7 }],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Você vê os fogos.",
+    italico: "A gente vê o relógio.",
+    ate: 4.6,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "No grande dia",
+        linha: "Cada fornecedor entra",
+        italico: "na hora certa.",
+      },
+      de: 4.8,
+      ate: 9.6,
+    },
+  ],
+  cta: {
+    linha: "O momento é de vocês.",
+    italico: "O relógio é nosso.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};
+
 // Reel J — Banco de Ideias, Proposta 1 "Qual parte ficou por sua conta?". Casamento 09/08/2025.
 export const CONJUNTO: MotionProps = {
   cenas: [
