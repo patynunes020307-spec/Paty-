@@ -140,6 +140,18 @@ export const CAPA_CAUDA: CapaProps = {
   logo: { top: 6, left: 560, width: 250 },
 };
 
+export const CAPA_DIARIO: CapaProps = {
+  arquivo: "brutos/diario/7919.mp4",
+  inicio: 6.5,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Das 14h às 19h33",
+    linha: "Um casamento",
+    italico: "pelos bastidores.",
+  },
+  logo: { top: 10, left: 760, width: 290 },
+};
+
 export const Capa: React.FC<CapaProps> = ({
   arquivo,
   inicio,

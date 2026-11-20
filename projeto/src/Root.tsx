@@ -18,6 +18,7 @@ import {
   CAPA_ANTES_CONVIDADOS,
   CAPA_ASSESSORA,
   CAPA_CAUDA,
+  CAPA_DIARIO,
   CAPA_PADRINHOS,
   CAPA_DAMARYS,
   CAPA_MONTAGEM,
@@ -275,6 +276,15 @@ export const RemotionRoot: React.FC = () => {
         id="CapaCauda"
         component={Capa}
         defaultProps={CAPA_CAUDA}
+        durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaDiario"
+        component={Capa}
+        defaultProps={CAPA_DIARIO}
         durationInFrames={1}
         fps={FPS}
         width={1080}
