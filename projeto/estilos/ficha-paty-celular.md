@@ -1,6 +1,6 @@
 # Ficha de estilo da Paty — "editado no celular"
 - Criada em 20/11/2026 a pedido da Paty: "salva essa ficha de estilo e segue ela toda vez que editar pra mim".
-- Status: **item 7 incompleto** (a mensagem terminou em "7.") — aguardando o texto.
+- Status: **completa** (6 regras; o "7." da mensagem original era só um número que sobrou — confirmado pela Paty em 20/11).
 - Escopo: **CONFIRMADO pela Paty em 20/11 ("Ok"): vale para vídeos falados (pessoa falando para a câmera).** Reels de bastidor da Impactar seguem o Guia do Notion. Histórico: Conflita com o Guia de Publicações da Impactar (Notion) em: caixa branca e faixa preta (o Guia proíbe "caixas com borda, faixas"), legenda minúscula sem fonte da marca, logos de outros sistemas. Até a resposta: vale para **vídeos falados (pessoa falando para a câmera)**; os Reels de bastidor da Impactar seguem `impactar-guia-oficial.md`.
 
 ## Regras
@@ -29,7 +29,6 @@
    - O zoom **nunca mostra a borda do quadro**.
    - No plano fechado, **olhos a ~35% da altura**, com espaço acima da cabeça (onde entram as peças).
    - **Um movimento de escala por vez** (a aproximação lenta é a única que corre por baixo).
-7. _(pendente — a Paty não terminou)_
 
 ## Som (efeitos sonoros)
 - **Um efeito por evento** (regra do projeto; nada empilhado).

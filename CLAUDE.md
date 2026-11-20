@@ -31,7 +31,7 @@ Resumo aplicado e link em `projeto/estilos/impactar-guia-oficial.md`; cores em `
 Antes de cada produção, conferir no Notion se a versão do Guia mudou. Logos: só os arquivos originais do Drive (08 — MARKETING › 00 — MARCA).
 O filtro de qualidade do Guia vale antes de mostrar qualquer prévia.
 
-**Ficha pessoal da Paty (vídeos falados):** `projeto/estilos/ficha-paty-celular.md` — seguir sempre que editar vídeo dela falando para a câmera (escopo confirmado em 20/11; item 7 ainda pendente).
+**Ficha pessoal da Paty (vídeos falados):** `projeto/estilos/ficha-paty-celular.md` — seguir sempre que editar vídeo dela falando para a câmera (escopo confirmado em 20/11).
 
 ## Regras
 
