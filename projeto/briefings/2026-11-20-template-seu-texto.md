@@ -26,4 +26,5 @@
 - 2026-11-20 — Paty pediu os textos "do jeito que achar", seguindo o Guia (Notion conferido, editado 20/11/2026).
 - Objetivo: Descoberta. Cena do beijo em P&B (regra de emoção do Guia; MotionReel ganhou `pretoEBranco` por cena). Tela final frase + CTA em petróleo, sem logo. Crédito: Impactar (gravação própria).
 - Textos: gancho "Casamento real" / "O brinde dura um minuto." / "A foto, a vida inteira." · 01 "Taças servidas / antes de chamar os noivos." · 02 "Fotógrafo avisado, / convidados de frente." · Final "Cada minuto da festa, / pensado antes." + "Manda para quem vai casar com você."
-- exports/brinde-v1.mp4 (18,4 s, 1080×1920) enviado — PRÉVIA, aguardando aprovação. Música: biblioteca do Instagram/Edits.
+- exports/brinde-v1.mp4 (18,4 s, 1080×1920) — **APROVADO** pela Paty (20/11). Música: biblioteca do Instagram/Edits.
+- Drive › Criativos › `2026-11-20_Reel_Brinde` (1mIBtaIj4JlIN0ecIjcxGRA5aY_tqjpo2) com legenda (doc 1qDyqgI26sEvSOSu024Hkc3qe8Blfq6hBUTPnj5EV_7s). Vídeo (21 MB) acima do limite de upload do conector: Paty sobe como `2026-11-20_Reel_Brinde_APROVADO.mp4`. Conferir o 🤍 da legenda no doc. Publicar só com confirmação.
