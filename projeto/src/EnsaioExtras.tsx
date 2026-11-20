@@ -188,6 +188,18 @@ export const CAPA_ULTIMA_VOLTA: CapaProps = {
   logo: { top: 60, left: 60, width: 300 },
 };
 
+export const CAPA_LAPELA: CapaProps = {
+  arquivo: "brutos/df/CDF677A1.mp4",
+  inicio: 5.5,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Ninguém vê,",
+    italico: "mas o cortejo foi alinhado antes.",
+  },
+  logo: { top: 40, left: 390, width: 300 },
+};
+
 export const Capa: React.FC<CapaProps> = ({
   arquivo,
   inicio,

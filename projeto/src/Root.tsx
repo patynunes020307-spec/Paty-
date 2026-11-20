@@ -26,6 +26,7 @@ import {
   CAPA_ASSESSORA,
   CAPA_CAUDA,
   CAPA_DIARIO,
+  CAPA_LAPELA,
   CAPA_PADRINHOS,
   CAPA_ROTEIRO,
   CAPA_ULTIMA_VOLTA,
@@ -412,6 +413,15 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={LAPELA}
         durationInFrames={duracaoMotion(LAPELA)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaLapela"
+        component={Capa}
+        defaultProps={CAPA_LAPELA}
+        durationInFrames={1}
         fps={FPS}
         width={1080}
         height={1920}

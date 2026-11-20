@@ -17,3 +17,8 @@ C56 0–2,0 · CDF 0–1,1 (gancho digitado "Flor na lapela, lista na mão.") ·
 Material do Drive: uso autorizado (Guia, decisão 28/10/2026). Créditos: não precisa (Paty, 20/11: vídeos feitos pela equipe).
 - exports/lapela-v1.mp4 enviado.
 - 2026-11-20 — Paty: "pode ser outro título". **v2**: gancho "O que a gente faz antes do cortejo." (exports/lapela-v2.mp4). Mais vídeos do Daniele e Fabrício: "agora não".
+
+## Reel Lapela — APROVADO (20/11/2026)
+- Gancho final (pedido da Paty): "Ninguém vê, / mas o cortejo foi alinhado antes." · 01 Cada padrinho na sua vez · 02 Cada par na ordem certa · 03 E cada lembrança, uma por uma · CTA.
+- Export: `exports/lapela-v3.mp4` (18,7 s, sem som, sem crédito). Capa: frame CDF677A1 5,5 s, logo no céu.
+- Drive › Criativos › `2026-11-20_Reel_Lapela` (id 1ayK26aiJzydDhqI0dtpzhsgMTYqSa3K0): capa + LEGENDA. Vídeo: Paty sobe `lapela-v3.mp4`; eu confiro tamanho e renomeio para `_APROVADO.mp4`.

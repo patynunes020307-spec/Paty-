@@ -857,18 +857,18 @@ export const LAPELA: MotionProps = {
   ],
   gancho: {
     kicker: "Bastidores da Impactar",
-    linha: "O que a gente faz",
-    italico: "antes do cortejo.",
-    ate: 3.1,
+    linha: "Ninguém vê,",
+    italico: "mas o cortejo foi alinhado antes.",
+    ate: 4.2,
   },
   textos: [
     {
       frase: { kicker: "01", linha: "Cada padrinho", italico: "na sua vez." },
-      de: 3.3,
+      de: 4.4,
       ate: 7.4,
     },
     {
-      frase: { kicker: "02", linha: "O cortejo", italico: "alinhado antes." },
+      frase: { kicker: "02", linha: "Cada par", italico: "na ordem certa." },
       de: 7.6,
       ate: 10.2,
     },
