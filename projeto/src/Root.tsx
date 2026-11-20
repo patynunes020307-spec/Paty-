@@ -34,7 +34,7 @@ import {
   STORIES,
   Story,
 } from "./EnsaioExtras";
-import { TEMPLATE_SEU_TEXTO } from "./TemplateSeuTexto";
+import { BRINDE, TEMPLATE_SEU_TEXTO } from "./TemplateSeuTexto";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -412,6 +412,15 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={TEMPLATE_SEU_TEXTO}
         durationInFrames={duracaoMotion(TEMPLATE_SEU_TEXTO)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelBrinde"
+        component={MotionReel}
+        defaultProps={BRINDE}
+        durationInFrames={duracaoMotion(BRINDE)}
         fps={FPS}
         width={1080}
         height={1920}

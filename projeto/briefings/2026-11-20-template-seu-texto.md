@@ -21,3 +21,9 @@
 - Clipes do Drive até 10 MB eram 720p; originais 4K baixados direto (drive.usercontent.google.com, já liberado no ambiente): IMG_9461/9462/9463.MOV (mesmo casamento do clipe do teste, brinde dos noivos) → originais/template-seu-texto/; cópias 1080×1920 H.264 em public/brutos/template/. clip.mp4 (720p) removido.
 - **v1**: exports/template-seu-texto-v1.mp4 (18,4 s, 1080×1920): 9463 0–4,0 · 9462 0–3,8 · 9461 0–2,7 · 9463 13,0–17,4 · CTA 3,5 s. Textos: gancho 0–3,8 · 01 4,0–10,3 · 02 10,7–14,7. freezedetect ok. Filtro de qualidade: ok (fonte 4K reduzida).
 - 2026-11-20 — v1 APROVADA ("Aprovo"). Gravação da própria equipe Impactar → sem crédito externo.
+
+## Reel "Brinde" (`ReelBrinde`, a partir do modelo)
+- 2026-11-20 — Paty pediu os textos "do jeito que achar", seguindo o Guia (Notion conferido, editado 20/11/2026).
+- Objetivo: Descoberta. Cena do beijo em P&B (regra de emoção do Guia; MotionReel ganhou `pretoEBranco` por cena). Tela final frase + CTA em petróleo, sem logo. Crédito: Impactar (gravação própria).
+- Textos: gancho "Casamento real" / "O brinde dura um minuto." / "A foto, a vida inteira." · 01 "Taças servidas / antes de chamar os noivos." · 02 "Fotógrafo avisado, / convidados de frente." · Final "Cada minuto da festa, / pensado antes." + "Manda para quem vai casar com você."
+- exports/brinde-v1.mp4 (18,4 s, 1080×1920) enviado — PRÉVIA, aguardando aprovação. Música: biblioteca do Instagram/Edits.

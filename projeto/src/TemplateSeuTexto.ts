@@ -26,3 +26,44 @@ export const TEMPLATE_SEU_TEXTO: MotionProps = {
   // 3) tela final petróleo com fio desenhado sob a ação
   cta: { linha: T, italico: T, acao: T, segundos: 3.5 },
 };
+
+// Reel "Brinde" — textos do modelo preenchidos (Guia de Publicações, 20/11/2026).
+// Objetivo: Descoberta. Cenas iguais ao modelo; beijo em P&B (regra de emoção do Guia).
+export const BRINDE: MotionProps = {
+  ...TEMPLATE_SEU_TEXTO,
+  cenas: TEMPLATE_SEU_TEXTO.cenas.map((c, i) =>
+    i === 1 ? { ...c, pretoEBranco: true } : c,
+  ),
+  gancho: {
+    kicker: "Casamento real",
+    linha: "O brinde dura um minuto.",
+    italico: "A foto, a vida inteira.",
+    ate: 3.8,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "01",
+        linha: "Taças servidas",
+        italico: "antes de chamar os noivos.",
+      },
+      de: 4.0,
+      ate: 10.3,
+    },
+    {
+      frase: {
+        kicker: "02",
+        linha: "Fotógrafo avisado,",
+        italico: "convidados de frente.",
+      },
+      de: 10.7,
+      ate: 14.7,
+    },
+  ],
+  cta: {
+    linha: "Cada minuto da festa,",
+    italico: "pensado antes.",
+    acao: "Manda para quem vai casar com você.",
+    segundos: 3.5,
+  },
+};

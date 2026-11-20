@@ -25,6 +25,7 @@ type Cena = {
   inicio: number;
   fim: number;
   enquadramento?: string;
+  pretoEBranco?: boolean; // Guia: P&B para emoção (cerimônia, lágrimas, beijo)
 };
 type TextoTimed = { frase: Frase; de: number; ate: number }; // segundos no Reel
 type Item = { texto: string; em: number }; // segundos no Reel
@@ -338,6 +339,7 @@ export const MotionReel: React.FC<MotionProps> = (p) => {
               width: "100%",
               height: "100%",
               objectPosition: c.enquadramento ?? "50% 50%",
+              filter: c.pretoEBranco ? "grayscale(1)" : undefined,
             }}
           />
         </Sequence>
