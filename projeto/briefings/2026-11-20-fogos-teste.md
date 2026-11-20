@@ -25,11 +25,12 @@ Casal não identificado (nome não aparece). Sem SFX (padrão dos reels aprovado
 - Convertido para `public/brutos/fogos/fogos.mp4` (H.264 CRF 16, sem áudio).
 - Filtro de qualidade: ampliação 1,5x (720 → 1080). Quadro ampliado conferido: levemente macio, sem blocos/granulação visível. Passa para teste; para publicar, buscar arquivo maior se existir.
 
-## Plano de edição
-- 0–4,6 s: gancho digitado "Você vê os fogos. / *A gente vê o relógio.*" (etiqueta "Bastidores da Impactar").
-- 4,8–9,6 s: "Cada fornecedor entra / *na hora certa.*" (etiqueta "No grande dia").
-- 9,7–13,2 s: tela final "O momento é de vocês. / *O relógio é nosso.*" + "Manda a data e a cidade no direct."
-- Clipe inteiro, sem cortes internos (não há fala).
+## Plano de edição (v2)
+- 0–4,6 s: gancho digitado "Esse beijo teve / *hora marcada.*" (etiqueta "Bastidores da Impactar").
+- 4,9–11,4 s: "Cada fornecedor entra / *na hora certa.*" (etiqueta "No grande dia").
+- 11,6–15,1 s: tela final "O momento é de vocês. / *O relógio é nosso.*" + "Manda a data e a cidade no direct."
+- Vídeo: 0–2 s no ritmo original; plano dos fogos a 0,8x. Sem áudio (som original tem música).
+- v1 (histórico): gancho "Você vê os fogos. / *A gente vê o relógio.*", 13,2 s, sem câmera lenta.
 
 ## Não confirmado / decisões para a Paty
 1. ~~Coordenação da pirotecnia~~ — CONFIRMADO pela Paty em 20/11: a Impactar coordenou. Não há vídeo de bastidor do sinal.
