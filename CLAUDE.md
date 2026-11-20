@@ -31,6 +31,8 @@ Resumo aplicado e link em `projeto/estilos/impactar-guia-oficial.md`; cores em `
 Antes de cada produção, conferir no Notion se a versão do Guia mudou. Logos: só os arquivos originais do Drive (08 — MARKETING › 00 — MARCA).
 O filtro de qualidade do Guia vale antes de mostrar qualquer prévia.
 
+**Ficha pessoal da Paty (vídeos falados):** `projeto/estilos/ficha-paty-celular.md` — seguir sempre que editar vídeo dela falando para a câmera (escopo e item 7 ainda a confirmar; ver a ficha).
+
 ## Regras
 
 1. **Originais nunca são alterados.** Nada de sobrescrever, recodificar no lugar, renomear ou apagar arquivos em `originais/`. Todo processamento gera arquivo novo em outro lugar (`.tmp/`, `public/` ou `exports/`).
