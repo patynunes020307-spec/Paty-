@@ -791,3 +791,55 @@ export const QUINZE_FESTA: MotionProps = {
     segundos: 3.5,
   },
 };
+
+// Reel J — Banco de Ideias, Proposta 1 "Qual parte ficou por sua conta?". Casamento 09/08/2025.
+export const CONJUNTO: MotionProps = {
+  cenas: [
+    { arquivo: DI + "7883.mp4", inicio: 0, fim: 5.0 },
+    { arquivo: DI + "7884.mp4", inicio: 0.5, fim: 3.5 },
+    { arquivo: DI + "7967.mp4", inicio: 2.0, fim: 5.4 },
+    { arquivo: DI + "8146.mp4", inicio: 2.0, fim: 5.5 },
+    { arquivo: DI + "8148.mp4", inicio: 0, fim: 2.0 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Qual parte do casamento",
+    italico: "ficou por sua conta?",
+    ate: 5.0,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "01",
+        linha: "Quem confere o horário",
+        italico: "de montagem de todos?",
+      },
+      de: 5.2,
+      ate: 8.0,
+    },
+    {
+      frase: {
+        kicker: "02",
+        linha: "Quem alinha a chegada",
+        italico: "de cada fornecedor?",
+      },
+      de: 8.2,
+      ate: 11.4,
+    },
+    {
+      frase: {
+        kicker: "03",
+        linha: "Quem decide",
+        italico: "se algo atrasar?",
+      },
+      de: 11.6,
+      ate: 16.9,
+    },
+  ],
+  cta: {
+    linha: "Alguém precisa olhar",
+    italico: "o casamento inteiro.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};
