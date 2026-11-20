@@ -10,3 +10,4 @@
 - O vídeo diz "12 anos, mais de 500 eventos": confirmado pela Paty e no Guia.
 - Fotos da capa em public/viver/ (copiadas da branch HyperFrames; já estavam no git lá).
 - 2026-11-20 — Capa e legenda APROVADAS ("Aprovado"). Pacote completo. Publicar/agendar só com confirmação da Paty. "Mais de 500 eventos" confirmado pela Paty (já é dado oficial no Guia desde 20/11).
+- 2026-11-20 — Legenda ajustada (a pedido da Paty): "12 anos e mais de 500 casamentos e eventos em assessoria e cerimonial em BH e região."
