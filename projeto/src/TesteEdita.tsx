@@ -11,7 +11,6 @@ import {
 } from "remotion";
 import { SANS } from "./fontes";
 
-
 // Teste de configuração: 5 s, tela cheia, "EDITA" entrando letra a letra.
 export const TesteEdita: React.FC = () => {
   const frame = useCurrentFrame();

@@ -889,3 +889,67 @@ export const LAPELA: MotionProps = {
     segundos: 3.5,
   },
 };
+
+// Reel "Até a gola" — bruto 2025-09-12-002344150.mp4 (já vinha editado: cortes só nos trechos limpos,
+// sem fades, sem luz e sem a música original). Quem é o rapaz não foi confirmado: texto neutro.
+const GL = "brutos/gola/gola.mp4";
+export const GOLA: MotionProps = {
+  cenas: [
+    { arquivo: GL, inicio: 0.2, fim: 2.9 },
+    { arquivo: GL, inicio: 4.0, fim: 6.8 },
+    { arquivo: GL, inicio: 7.4, fim: 10.6 },
+    { arquivo: GL, inicio: 17.4, fim: 20.4 },
+    { arquivo: GL, inicio: 21.5, fim: 24.5 },
+    { arquivo: GL, inicio: 25.5, fim: 29.0 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Antes do altar,",
+    italico: "conferimos até a gola.",
+    ate: 5.3,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "01",
+        linha: "Roteiro repassado",
+        italico: "com a equipe.",
+      },
+      de: 5.6,
+      ate: 8.5,
+    },
+    {
+      frase: {
+        kicker: "02",
+        linha: "Cada horário",
+        italico: "na palma da mão.",
+      },
+      de: 8.8,
+      ate: 11.5,
+    },
+    {
+      frase: {
+        kicker: "03",
+        linha: "Cada combinado",
+        italico: "alinhado antes.",
+      },
+      de: 11.8,
+      ate: 14.5,
+    },
+    {
+      frase: {
+        kicker: "04",
+        linha: "E tudo anotado,",
+        italico: "para nada se perder.",
+      },
+      de: 14.8,
+      ate: 18.0,
+    },
+  ],
+  cta: {
+    linha: "Vocês vivem o dia.",
+    italico: "A gente cuida do resto.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};

@@ -57,7 +57,7 @@ export type CapaProps = {
   enquadramento: string;
   frase: Frase;
   // posição da logo (precisa cair sobre área clara: a logo é JPG com fundo branco)
-  logo?: { top: number; left: number; width: number };
+  logo?: { top: number; left: number; width: number; png?: string };
 };
 
 export const CAPA_ENSAIO: CapaProps = {
@@ -220,13 +220,16 @@ export const Capa: React.FC<CapaProps> = ({
       />
       <AbsoluteFill style={{ background: DEGRADE }} />
       <Img
-        src={staticFile("marca/oficial/logo-script-nude-verdeagua.jpg")}
+        src={staticFile(
+          logo?.png ?? "marca/oficial/logo-script-nude-verdeagua.jpg",
+        )}
         style={{
           position: "absolute",
           top: logo?.top ?? 120,
           left: logo?.left ?? 380,
           width: logo?.width ?? 320,
-          mixBlendMode: "multiply",
+          // PNG oficial transparente (recebido em 20/11) não precisa de multiply
+          mixBlendMode: logo?.png ? "normal" : "multiply",
         }}
       />
       <div
@@ -375,4 +378,17 @@ export const STORIES: Record<string, StoryProps> = {
       italico: "para acalmar uma criança.",
     },
   },
+};
+
+// Reel "Até a gola" — vídeo do lote 2026-11-20d (equipe Impactar, sem crédito).
+export const CAPA_GOLA: CapaProps = {
+  arquivo: "brutos/gola/gola.mp4",
+  inicio: 5.0,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Antes do altar,",
+    italico: "conferimos até a gola.",
+  },
+  logo: { top: 50, left: 690, width: 290, png: "marca/png/script-petroleo.png" },
 };
