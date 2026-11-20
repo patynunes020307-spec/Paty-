@@ -1,0 +1,43 @@
+# Modelo: montagem.md
+
+O caderno da montagem do fluxo. Fica na pasta de ferramentas da pessoa e é atualizado ao fim de cada fase. É por ele que a skill `/fluxo-de-edicao` retoma de onde parou, em qualquer conversa.
+
+---
+
+```markdown
+# Montagem do fluxo de edição
+
+Fase atual: <0–7> · Atualizado em <data>
+
+## Ambiente
+- Sistema: <…> · Python: <…> · FFmpeg: <…> · Node.js: <…>
+- CPU: <modelo, núcleos> · RAM: <…> · GPU: <modelo, VRAM> · Codificadores de hardware testados: <…>
+- Instalado nesta montagem: <…>
+
+## Decisões
+- Revisão: <programa | vídeo pronto>
+- Tipo e formato: <…>
+- Pastas: projeto <padrão>; ferramentas <caminho>
+- Transcrição: <…>
+- Processamento (CPU, GPU ou nuvem, por tarefa, com o tempo medido): <transcrição · prévias · final · recorte · animações>
+- Notas faladas: "<abertura>" … "<fechamento>"
+- Animação: <sim/não, ferramenta, densidade>
+- Câmera: <…>
+- Som: <biblioteca, fonte, música>
+- Revisões: <em quais etapas>
+- Nomes: prefixo <…>; skill mestra /<…>
+
+## Perfil
+- <nome>: <o que já existe e o que falta>
+
+## Fluxo aprovado
+1. <etapa> — <uma linha>
+2. …
+
+## Skills escritas
+- [x] regras comuns
+- [ ] <…>
+
+## Próximo passo
+<…>
+```
