@@ -1,0 +1,133 @@
+<!doctype html>
+<html
+  lang="pt-BR"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"linha1","type":"string","label":"Título linha 1","default":"Para viver"},
+    {"id":"linha2","type":"string","label":"Título linha 2","default":"cada momento."},
+    {"id":"apoio1","type":"string","label":"Apoio 1","default":"Planejamento cuidadoso."},
+    {"id":"apoio2","type":"string","label":"Apoio 2","default":"Presença em cada detalhe."},
+    {"id":"servico","type":"string","label":"Serviço","default":"Assessoria e cerimonial"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Cormorant Garamond"; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      /* Guia Impactar (projeto/src/marca.ts) */
+      :root {
+        --fundo: #f7f2ef;
+        --petroleo: #203f51;
+        --verde: #84a9ac;
+        --azul: #3c6a78;
+        --nude: #e9cebb;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--fundo); }
+      #root { position: relative; width: 1080px; height: 1920px; background: var(--fundo); overflow: hidden; }
+      .bloco { position: absolute; left: 120px; width: 700px; z-index: 2; }
+      #selo-wrap { top: 320px; height: 236px; }
+      #selo { width: 310px; height: auto; display: block; }
+      #titulo-wrap { top: 610px; }
+      .mask { overflow: hidden; padding-bottom: 10px; }
+      .titulo {
+        display: block;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        font-size: 100px;
+        line-height: 1.0;
+        letter-spacing: -0.01em;
+        color: var(--petroleo);
+        white-space: nowrap;
+      }
+      #apoio-wrap { top: 860px; }
+      .apoio {
+        display: block;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 1.45;
+        color: var(--azul);
+      }
+      #regua-wrap { top: 1060px; height: 2px; }
+      #regua { width: 640px; height: 2px; background: var(--nude); transform-origin: 0 50%; }
+      #servico-wrap { top: 1100px; }
+      #servico {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: var(--azul);
+      }
+      /* Fecho: selo grande no centro da área segura */
+      #fecho-wrap { position: absolute; left: 140px; top: 560px; width: 728px; height: 553px; z-index: 3; }
+      #fecho { width: 728px; height: auto; display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="12" data-width="1080" data-height="1920">
+      <div id="selo-wrap" class="bloco clip" data-start="0" data-duration="10.4" data-track-index="0">
+        <img id="selo" src="assets/img/logo-petroleo.png" alt="Logo Impactar Cerimonial" />
+      </div>
+
+      <div id="titulo-wrap" class="bloco clip" data-start="0" data-duration="10.4" data-track-index="1">
+        <div class="mask"><span id="l1" class="titulo" data-var-text="linha1">Para viver</span></div>
+        <div class="mask"><span id="l2" class="titulo" data-var-text="linha2">cada momento.</span></div>
+      </div>
+
+      <div id="apoio-wrap" class="bloco clip" data-start="2.6" data-duration="7.8" data-track-index="2">
+        <span id="a1" class="apoio" data-var-text="apoio1">Planejamento cuidadoso.</span>
+        <span id="a2" class="apoio" data-var-text="apoio2">Presença em cada detalhe.</span>
+      </div>
+
+      <div id="regua-wrap" class="bloco clip" data-start="5.6" data-duration="4.8" data-track-index="3">
+        <div id="regua"></div>
+      </div>
+
+      <div id="servico-wrap" class="bloco clip" data-start="6.2" data-duration="4.2" data-track-index="4">
+        <span id="servico" data-var-text="servico">Assessoria e cerimonial</span>
+      </div>
+
+      <div id="fecho-wrap" class="clip" data-start="10" data-duration="2" data-track-index="5">
+        <img id="fecho" src="assets/img/logo-petroleo.png" alt="Logo Impactar Cerimonial" />
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const out = "expo.out";
+
+      // 0 s: selo e título já em cena no primeiro quadro (gancho visível)
+      tl.fromTo("#selo", { y: 16 }, { y: 0, duration: 0.8, ease: out }, 0);
+      tl.fromTo("#l1", { yPercent: 55 }, { yPercent: 0, duration: 1.0, ease: out }, 0);
+      tl.fromTo("#l2", { yPercent: 110 }, { yPercent: 0, duration: 1.0, ease: out }, 0.35);
+
+      // Aproximação lenta e contínua do bloco (sem pulso)
+      tl.fromTo("#titulo-wrap", { scale: 1 }, { scale: 1.04, transformOrigin: "0% 50%", duration: 10, ease: "none" }, 0.4);
+      tl.fromTo("#selo-wrap", { y: 0 }, { y: -18, duration: 10, ease: "none" }, 0.4);
+
+      // 2.6 s e 4.0 s: frases de apoio
+      tl.fromTo("#a1", { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.8, ease: out }, 2.6);
+      tl.fromTo("#a2", { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.8, ease: out }, 4.0);
+
+      // 5.6 s: régua nude se desenha; 6.2 s: serviço
+      tl.fromTo("#regua", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 5.6);
+      tl.fromTo("#servico", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1.0, ease: out }, 6.2);
+
+      // 8.2 s: régua avança mais um pouco (movimento antes do fecho)
+      tl.to("#regua", { scaleX: 0.55, duration: 1.4, ease: "power2.inOut" }, 8.2);
+
+      // 9.6 s: texto sai, selo grande assume o fecho
+      tl.to(["#selo", "#l1", "#l2", "#a1", "#a2", "#regua", "#servico"], { opacity: 0, y: -24, duration: 0.5, ease: "power2.in", stagger: 0.03 }, 9.6);
+      tl.fromTo("#fecho", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 1.0, ease: out }, 10.0);
+      tl.fromTo("#fecho-wrap", { scale: 1 }, { scale: 1.03, duration: 1.95, ease: "none" }, 10.0);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
