@@ -494,6 +494,66 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      <Composition
+        id="CapaVotosPai"
+        component={Capa}
+        defaultProps={{
+          arquivo: "brutos/shorts-votos/corte1.mp4",
+          inicio: 26.0,
+          enquadramento: "50% 50%",
+          frase: {
+            kicker: "Votos da noiva",
+            linha: "Pai, eu escolhi",
+            italico: "o homem certo.",
+          },
+          logo: { top: 70, left: 400, width: 300 },
+          bottom: 340,
+        }}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaVotosVitrine"
+        component={Capa}
+        defaultProps={{
+          arquivo: "brutos/shorts-votos/corte2.mp4",
+          inicio: 3.0,
+          enquadramento: "50% 50%",
+          frase: {
+            kicker: "Votos da noiva",
+            linha: "O vestido",
+            italico: "na vitrine.",
+          },
+          logo: { top: 20, left: 90, width: 300 },
+          bottom: 340,
+        }}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaVotosPrometo"
+        component={Capa}
+        defaultProps={{
+          arquivo: "brutos/shorts-votos/corte3.mp4",
+          inicio: 27.0,
+          enquadramento: "50% 50%",
+          frase: {
+            kicker: "Votos da noiva",
+            linha: "Eu prometo escolher",
+            italico: "você todos os dias.",
+          },
+          logo: { top: 30, left: 230, width: 290 },
+          bottom: 340,
+        }}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
     </>
   );
 };
