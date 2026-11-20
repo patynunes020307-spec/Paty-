@@ -22,3 +22,4 @@ Autorização de imagem: CONFIRMADA (Paty, 20/11). Som: NÃO usar nenhum som (Pa
 ## Log
 - 2026-11-20 — exports/alianca-v1.mp4 e exports/ultima-volta-v1.mp4 enviados.
 - 2026-11-20 — Reel G v2 sem som: exports/alianca-v2.mp4 (26,9 s, sem trilha de áudio). Reel H v1 mantido.
+- 2026-11-20 — Paty: "Pode aparecer o áudio das alianças" (exceção só para este Reel). **v3 com som**: exports/alianca-v3.mp4 (fala 3,0–20,7 s, legendas mantidas).

@@ -687,7 +687,8 @@ export const ALIANCA: MotionProps = {
       ate: 23.4,
     },
   ],
-  // sem som (pedido da Paty, 20/11): a fala vira texto na tela
+  // exceção à regra "sem som": a Paty liberou o áudio da fala das alianças (20/11)
+  audio: { arquivo: "audio/4112.wav", de: 3.0 },
   falas: [
     {
       texto:
