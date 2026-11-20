@@ -25,6 +25,7 @@ type Cena = {
   inicio: number;
   fim: number;
   enquadramento?: string;
+  pb?: boolean; // preto e branco (emoção: cerimônia, lágrimas, beijo)
 };
 type TextoTimed = { frase: Frase; de: number; ate: number }; // segundos no Reel
 type Item = { texto: string; em: number }; // segundos no Reel
@@ -38,6 +39,11 @@ export type MotionProps = {
   // áudio real (fala da equipe) + legenda sincronizada — opcional
   audio?: { arquivo: string; de: number };
   falas?: { texto: string; de: number; ate: number }[];
+  // Guia seção 11 (20/11/2026): aproximação lenta 100→105% por cena,
+  // CTA sobre a última cena (sem tela final), bloco de texto mais baixo se preciso
+  zoom?: boolean;
+  ctaNaCena?: boolean;
+  bottom?: number;
 };
 
 // Legenda de fala (Montserrat, terço inferior)
@@ -76,15 +82,45 @@ const Fala: React.FC<{ texto: string; duracao: number }> = ({
 
 const dur = (c: Cena) => Math.round((c.fim - c.inicio) * FPS);
 export const duracaoMotion = (p: MotionProps) =>
-  p.cenas.reduce((t, c) => t + dur(c), 0) + Math.round(p.cta.segundos * FPS);
+  p.cenas.reduce((t, c) => t + dur(c), 0) +
+  (p.ctaNaCena ? 0 : Math.round(p.cta.segundos * FPS));
+
+// Cena em tela cheia; com zoom, aproximação lenta e contínua (100% → 105%), num sentido só.
+const CenaVideo: React.FC<{ c: Cena; zoom?: boolean }> = ({ c, zoom }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const total = dur(c);
+  const esc = zoom
+    ? interpolate(frame, [0, total], [1, 1.05], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      })
+    : 1;
+  return (
+    <Video
+      src={staticFile(c.arquivo)}
+      trimBefore={Math.round(c.inicio * fps)}
+      muted
+      objectFit="cover"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectPosition: c.enquadramento ?? "50% 50%",
+        scale: esc,
+        filter: c.pb ? "grayscale(1)" : undefined,
+      }}
+    />
+  );
+};
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 // 1) Texto sendo digitado no gancho
-const Digitado: React.FC<{ g: MotionProps["gancho"]; duracao: number }> = ({
-  g,
-  duracao,
-}) => {
+const Digitado: React.FC<{
+  g: MotionProps["gancho"];
+  duracao: number;
+  bottom?: number;
+}> = ({ g, duracao, bottom = 470 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const total = g.linha.length + g.italico.length;
@@ -110,7 +146,7 @@ const Digitado: React.FC<{ g: MotionProps["gancho"]; duracao: number }> = ({
         position: "absolute",
         left: 96,
         right: 60,
-        bottom: 470,
+        bottom,
         opacity: saida,
       }}
     >
@@ -186,7 +222,8 @@ const Check: React.FC<{ inicio: number }> = ({ inicio }) => {
 const Checklist: React.FC<{
   c: NonNullable<MotionProps["checklist"]>;
   duracao: number;
-}> = ({ c, duracao }) => {
+  bottom?: number;
+}> = ({ c, duracao, bottom = 430 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const v = interpolate(
@@ -201,7 +238,7 @@ const Checklist: React.FC<{
         position: "absolute",
         left: 96,
         right: 60,
-        bottom: 430,
+        bottom,
         opacity: v,
       }}
     >
@@ -329,24 +366,14 @@ export const MotionReel: React.FC<MotionProps> = (p) => {
           durationInFrames={dur(c)}
           premountFor={fps}
         >
-          <Video
-            src={staticFile(c.arquivo)}
-            trimBefore={Math.round(c.inicio * fps)}
-            muted
-            objectFit="cover"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectPosition: c.enquadramento ?? "50% 50%",
-            }}
-          />
+          <CenaVideo c={c} zoom={p.zoom} />
         </Sequence>
       ))}
       <Sequence durationInFrames={durFilme}>
         <AbsoluteFill style={{ background: DEGRADE }} />
       </Sequence>
       <Sequence durationInFrames={s(p.gancho.ate)} premountFor={fps}>
-        <Digitado g={p.gancho} duracao={s(p.gancho.ate)} />
+        <Digitado g={p.gancho} duracao={s(p.gancho.ate)} bottom={p.bottom} />
       </Sequence>
       {p.textos.map((t, i) => (
         <Sequence
@@ -355,7 +382,11 @@ export const MotionReel: React.FC<MotionProps> = (p) => {
           durationInFrames={s(t.ate - t.de)}
           premountFor={fps}
         >
-          <BlocoFrase frase={t.frase} duracao={s(t.ate - t.de)} />
+          <BlocoFrase
+            frase={t.frase}
+            duracao={s(t.ate - t.de)}
+            bottom={p.bottom}
+          />
         </Sequence>
       ))}
       {p.checklist ? (
@@ -367,16 +398,35 @@ export const MotionReel: React.FC<MotionProps> = (p) => {
           <Checklist
             c={p.checklist}
             duracao={s(p.checklist.ate - p.checklist.de)}
+            bottom={p.bottom ? p.bottom - 40 : undefined}
           />
         </Sequence>
       ) : null}
-      <Sequence
-        from={durFilme}
-        durationInFrames={s(p.cta.segundos)}
-        premountFor={fps}
-      >
-        <TelaCTA cta={p.cta} />
-      </Sequence>
+      {p.ctaNaCena ? (
+        <Sequence
+          from={durFilme - s(p.cta.segundos)}
+          durationInFrames={s(p.cta.segundos)}
+          premountFor={fps}
+        >
+          <BlocoFrase
+            frase={{
+              kicker: p.cta.acao,
+              linha: p.cta.linha,
+              italico: p.cta.italico,
+            }}
+            duracao={s(p.cta.segundos) + Math.round(0.4 * fps)}
+            bottom={p.bottom}
+          />
+        </Sequence>
+      ) : (
+        <Sequence
+          from={durFilme}
+          durationInFrames={s(p.cta.segundos)}
+          premountFor={fps}
+        >
+          <TelaCTA cta={p.cta} />
+        </Sequence>
+      )}
       {(p.falas ?? []).map((f, i) => (
         <Sequence
           key={"f" + i}
@@ -841,5 +891,101 @@ export const CONJUNTO: MotionProps = {
     italico: "o casamento inteiro.",
     acao: "Manda a data e a cidade no direct.",
     segundos: 3.5,
+  },
+};
+
+// Filme do casamento (videomaker @leo_henriquephotos, Drive › Banco de imagens › Videos), sem som.
+// Guia seção 11 (20/11/2026): zoom lento, CTA sobre a última cena, sem tela final.
+const VF = "brutos/votos-filme/filme.mp4";
+
+// Reel — votos (pedido da Paty, 20/11): passo a passo sem a fala, cerimônia em P&B.
+export const VOTOS_DICAS: MotionProps = {
+  zoom: true,
+  ctaNaCena: true,
+  bottom: 380,
+  cenas: [
+    { arquivo: VF, inicio: 46.2, fim: 50.4, pb: true },
+    { arquivo: VF, inicio: 136.0, fim: 141.0, pb: true },
+    { arquivo: VF, inicio: 115.0, fim: 120.0, pb: true },
+    { arquivo: VF, inicio: 110.2, fim: 114.2, pb: true },
+    { arquivo: VF, inicio: 155.3, fim: 159.5, pb: true },
+  ],
+  gancho: {
+    kicker: "Para quem vai casar",
+    linha: "Vai escrever",
+    italico: "os seus votos?",
+    ate: 4.2,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "01",
+        linha: "Comece por uma lembrança",
+        italico: "que só vocês dois têm.",
+      },
+      de: 4.4,
+      ate: 9.0,
+    },
+    {
+      frase: {
+        kicker: "02",
+        linha: "Troque frases prontas",
+        italico: "por promessas do dia a dia.",
+      },
+      de: 9.2,
+      ate: 13.9,
+    },
+    {
+      frase: {
+        kicker: "03",
+        linha: "Leia em voz alta antes",
+        italico: "e leve tudo impresso.",
+      },
+      de: 14.1,
+      ate: 18.2,
+    },
+  ],
+  cta: {
+    linha: "Vocês cuidam das palavras.",
+    italico: "A gente cuida do dia.",
+    acao: "Manda para quem vai casar",
+    segundos: 4.2,
+  },
+};
+
+// Reel — véspera do casamento: checklist marcado no que aparece na cena (cor: detalhes e making of).
+export const VESPERA: MotionProps = {
+  zoom: true,
+  ctaNaCena: true,
+  bottom: 380,
+  cenas: [
+    { arquivo: VF, inicio: 0.3, fim: 6.4 },
+    { arquivo: VF, inicio: 22.2, fim: 24.6 },
+    { arquivo: VF, inicio: 28.9, fim: 31.3 },
+    { arquivo: VF, inicio: 13.6, fim: 19.6 },
+  ],
+  gancho: {
+    kicker: "Para quem vai casar",
+    linha: "O que separar",
+    italico: "na véspera?",
+    ate: 3.0,
+  },
+  textos: [],
+  checklist: {
+    titulo: "Separe num só lugar:",
+    de: 3.2,
+    ate: 11.4,
+    itens: [
+      { texto: "Sapatos", em: 3.9 },
+      { texto: "Joias e acessórios", em: 4.7 },
+      { texto: "Convite para as fotos", em: 5.5 },
+      { texto: "Vestido pendurado", em: 8.7 },
+    ],
+  },
+  cta: {
+    linha: "Na manhã do casamento,",
+    italico: "só o que importa.",
+    acao: "Salva para a sua véspera",
+    segundos: 5.0,
   },
 };

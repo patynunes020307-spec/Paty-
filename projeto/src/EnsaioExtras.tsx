@@ -58,6 +58,7 @@ export type CapaProps = {
   frase: Frase;
   // posição da logo (precisa cair sobre área clara: a logo é JPG com fundo branco)
   logo?: { top: number; left: number; width: number };
+  bottom?: number; // altura do bloco de texto (padrão 520)
 };
 
 export const CAPA_ENSAIO: CapaProps = {
@@ -194,6 +195,7 @@ export const Capa: React.FC<CapaProps> = ({
   enquadramento,
   frase,
   logo,
+  bottom = 520,
 }) => {
   const { fps } = useVideoConfig();
   return (
@@ -222,7 +224,7 @@ export const Capa: React.FC<CapaProps> = ({
           position: "absolute",
           left: 96,
           right: 60,
-          bottom: 520,
+          bottom,
         }}
       >
         <div

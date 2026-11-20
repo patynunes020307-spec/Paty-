@@ -71,7 +71,8 @@ export const BlocoFrase: React.FC<{
   frase: Frase;
   duracao: number;
   imediato?: boolean;
-}> = ({ frase, duracao, imediato }) => {
+  bottom?: number;
+}> = ({ frase, duracao, imediato, bottom = 470 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const v = visivel(frame, duracao, fps, imediato);
@@ -83,9 +84,9 @@ export const BlocoFrase: React.FC<{
         position: "absolute",
         left: 96,
         right: 60,
-        bottom: 470,
+        bottom,
         opacity: v,
-        translate: `0px ${interpolate(v, [0, 1], [18, 0])}px`,
+        translate: `0px ${interpolate(v, [0, 1], [24, 0])}px`,
       }}
     >
       <div

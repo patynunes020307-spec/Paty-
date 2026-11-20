@@ -11,6 +11,8 @@ import {
   duracaoMotion,
   MONTAGEM,
   MotionReel,
+  VOTOS_DICAS,
+  VESPERA,
   PADRINHOS,
   CONJUNTO,
   QUINZE_FESTA,
@@ -430,6 +432,64 @@ export const RemotionRoot: React.FC = () => {
         component={ShortVotos}
         defaultProps={SHORTS_VOTOS[2]}
         durationInFrames={duracaoShortVotos(SHORTS_VOTOS[2])}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelVotosDicas"
+        component={MotionReel}
+        defaultProps={VOTOS_DICAS}
+        durationInFrames={duracaoMotion(VOTOS_DICAS)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelVespera"
+        component={MotionReel}
+        defaultProps={VESPERA}
+        durationInFrames={duracaoMotion(VESPERA)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaVotosDicas"
+        component={Capa}
+        defaultProps={{
+          arquivo: "brutos/votos-filme/filme.mp4",
+          inicio: 138.0,
+          enquadramento: "50% 50%",
+          frase: {
+            kicker: "Para quem vai casar",
+            linha: "Vai escrever",
+            italico: "os seus votos?",
+          },
+          logo: { top: 50, left: 400, width: 300 },
+          bottom: 340,
+        }}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaVespera"
+        component={Capa}
+        defaultProps={{
+          arquivo: "brutos/votos-filme/filme.mp4",
+          inicio: 2.0,
+          enquadramento: "50% 50%",
+          frase: {
+            kicker: "Para quem vai casar",
+            linha: "O que separar",
+            italico: "na véspera?",
+          },
+          logo: { top: 120, left: 720, width: 300 },
+          bottom: 340,
+        }}
+        durationInFrames={1}
         fps={30}
         width={1080}
         height={1920}
