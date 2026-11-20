@@ -1,5 +1,5 @@
 # Reel TESTE — Fornecedor na hora certa (fogos no beijo)
-- Data: 2026-11-20 | Slug: `fogos-teste` | Composição: `ReelFogosTeste` (src/MotionReel.tsx, preset `FOGOS`) | Status: v3 (tela final com logo) — aguardando aprovação; v2 aprovada no Drive
+- Data: 2026-11-20 | Slug: `fogos-teste` | Composição: `ReelFogosTeste` (src/MotionReel.tsx, preset `FOGOS`) | Status: v3 APROVADA — pacote no Drive (falta a Paty subir o vídeo v3)
 
 ## Objetivo / CTA
 Teste pedido pela Paty ("um vídeo só pra teste"). Tema escolhido por Claude: a Impactar coordenando fornecedores (assunto ainda não usado nos reels). CTA: "Manda a data e a cidade no direct." (mesmo dos reels aprovados).
@@ -49,3 +49,4 @@ Casal não identificado (nome não aparece). Sem SFX (padrão dos reels aprovado
 - 2026-11-20 — Capa `CapaFogos` (exports/fogos-capa.png/.jpg) SEM logo: as 4 logos originais do Drive (Logo-original-1 a 4) e os JPGs oficiais são escuros; recolorir é proibido. Pendência: versão clara oficial da logo para imagens noturnas.
 - 2026-11-20 — Drive › Criativos › 2026-11-20_Reel_Fogos_Hora_Marcada (1THlD1o3qgvmxcdGbAyHAUn3Y8_5GUN9Q): capa APROVADO.jpg + legenda (Google Doc). Vídeo (15,5 MB) acima do limite de 10 MB do conector → a subir pela Paty como 2026-11-20_Reel_Fogos_Hora_Marcada_APROVADO.mp4 (cópia local: exports/fogos-v2-APROVADO.mp4).
 - 2026-11-20 — Paty: "Até lá final com logo é melhor, a logo aparecendo." v3: tela final em fundo claro #F7F2EF, texto petróleo, itálico azul auxiliar, logo original nude + verde-água (multiply) a 480 px da base, fora da área da legenda do Instagram. Guia no Notion e ficha local corrigidos (substitui a regra "sem logo" registrada mais cedo no mesmo dia). exports/fogos-v3.mp4 (15,1 s, 1080 × 1920, 30 fps) conferido e enviado.
+- 2026-11-20 — v3 APROVADA ("Aprovado"). Substitui a v2 (que não chegou a subir). Cópia local: exports/fogos-v3-APROVADO.mp4. A subir pela Paty em Criativos › 2026-11-20_Reel_Fogos_Hora_Marcada como 2026-11-20_Reel_Fogos_Hora_Marcada_APROVADO.mp4.
