@@ -35,6 +35,7 @@ import {
   Story,
 } from "./EnsaioExtras";
 
+import { CAPA_VIVER, CapaFoto } from "./CapaFoto";
 import {
   TIPO_DURACAO,
   TIPO_FPS,
@@ -46,6 +47,15 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <MyComposition />
+      <Composition
+        id="CapaViverCadaMomento"
+        component={CapaFoto}
+        defaultProps={CAPA_VIVER}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="TipoCinetica"
         component={TipoCinetica}
