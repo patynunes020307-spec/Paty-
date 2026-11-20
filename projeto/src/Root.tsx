@@ -21,6 +21,7 @@ import {
   CAPA_CAUDA,
   CAPA_DIARIO,
   CAPA_PADRINHOS,
+  CAPA_ROTEIRO,
   CAPA_DAMARYS,
   CAPA_MONTAGEM,
   CAPA_ENSAIO,
@@ -332,6 +333,15 @@ export const RemotionRoot: React.FC = () => {
         component={Story}
         defaultProps={STORIES.StoryPirulito}
         durationInFrames={5 * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaRoteiro"
+        component={Capa}
+        defaultProps={CAPA_ROTEIRO}
+        durationInFrames={1}
         fps={FPS}
         width={1080}
         height={1920}
