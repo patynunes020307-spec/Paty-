@@ -1,0 +1,131 @@
+<!doctype html>
+<html
+  lang="pt-BR"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"marca","type":"string","label":"Marca","default":"Loja Manda Chuva"},
+    {"id":"produto","type":"string","label":"Produto","default":"Sombrinha transparente"},
+    {"id":"cta","type":"string","label":"Chamada final","default":"[link ou @perfil]"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      /* Cores tiradas das artes da Loja Manda Chuva */
+      :root {
+        --fundo: #f6f7f7;
+        --tinta: #0e333c;
+        --teal: #47888a;
+        --branco: #ffffff;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--fundo); }
+      #root { position: relative; width: 1080px; height: 1920px; background: var(--fundo); overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+      .bloco { position: absolute; left: 120px; width: 700px; z-index: 4; }
+      #kicker-wrap { top: 560px; }
+      .pill {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 30px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--branco);
+        background: var(--teal);
+        padding: 14px 30px;
+        border-radius: 999px;
+      }
+      #titulo-wrap { top: 660px; }
+      .mask { overflow: hidden; padding-bottom: 8px; }
+      #titulo {
+        display: block;
+        font-weight: 700;
+        font-size: 92px;
+        line-height: 1.04;
+        letter-spacing: -0.02em;
+        color: var(--tinta);
+      }
+
+      /* Cartões com as artes do produto */
+      .card {
+        position: absolute;
+        left: 120px;
+        top: 330px;
+        width: 840px;
+        height: 840px;
+        border-radius: 36px;
+        overflow: hidden;
+        box-shadow: 0 30px 70px rgba(14, 51, 60, 0.18);
+        z-index: 2;
+      }
+      .card img { width: 840px; height: 840px; display: block; object-fit: cover; }
+
+      #fim-marca-wrap { top: 700px; }
+      #fim-marca {
+        display: block;
+        font-weight: 700;
+        font-size: 96px;
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        color: var(--tinta);
+      }
+      #fim-cta-wrap { top: 940px; }
+      #fim-cta { text-transform: none; letter-spacing: 0.04em; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="12" data-width="1080" data-height="1920">
+      <div id="kicker-wrap" class="bloco clip" data-start="0" data-duration="2.3" data-track-index="0">
+        <span id="kicker" class="pill" data-var-text="marca">Loja Manda Chuva</span>
+      </div>
+      <div id="titulo-wrap" class="bloco clip" data-start="0" data-duration="2.3" data-track-index="1">
+        <div class="mask"><span id="titulo" data-var-text="produto">Sombrinha transparente</span></div>
+      </div>
+
+      <div id="c1" class="card clip" data-start="2" data-duration="3.1" data-track-index="2" data-layout-allow-safe-zone>
+        <img id="i1" src="assets/img/visibilidade.jpg" alt="Melhor visibilidade" />
+      </div>
+      <div id="c2" class="card clip" data-start="4.8" data-duration="3.1" data-track-index="3" data-layout-allow-safe-zone>
+        <img id="i2" src="assets/img/cabo.jpg" alt="Abertura automática e cabo bengala" />
+      </div>
+      <div id="c3" class="card clip" data-start="7.6" data-duration="2.9" data-track-index="4" data-layout-allow-safe-zone>
+        <img id="i3" src="assets/img/fechamento.jpg" alt="Fechamento com botão de pressão" />
+      </div>
+
+      <div id="fim-marca-wrap" class="bloco clip" data-start="10.2" data-duration="1.8" data-track-index="5">
+        <div class="mask"><span id="fim-marca" data-var-text="marca">Loja Manda Chuva</span></div>
+      </div>
+      <div id="fim-cta-wrap" class="bloco clip" data-start="10.2" data-duration="1.8" data-track-index="6">
+        <span id="fim-cta" class="pill" data-var-text="cta">[link ou @perfil]</span>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const out = "expo.out";
+
+      // 0–2.3 s: abertura (selo e título já visíveis no primeiro quadro)
+      tl.fromTo("#kicker", { y: 20 }, { y: 0, duration: 0.6, ease: out }, 0);
+      tl.fromTo("#titulo", { yPercent: 45 }, { yPercent: 0, duration: 0.9, ease: out }, 0);
+      tl.fromTo("#titulo-wrap", { scale: 1 }, { scale: 1.04, transformOrigin: "0% 50%", duration: 1.8, ease: "none" }, 0.2);
+      tl.to(["#kicker", "#titulo"], { opacity: 0, y: -30, duration: 0.35, ease: "power2.in" }, 1.95);
+
+      // Cartões: entram pela direita, aproximação lenta, saem para a esquerda
+      const cards = [["#c1", "#i1", 2.0, 5.1], ["#c2", "#i2", 4.8, 7.9], ["#c3", "#i3", 7.6, 10.5]];
+      cards.forEach(([c, i, s, e]) => {
+        tl.fromTo(c, { x: 260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: out }, s);
+        tl.fromTo(i, { scale: 1 }, { scale: 1.07, duration: e - s, ease: "none" }, s);
+        tl.to(c, { x: -260, opacity: 0, duration: 0.4, ease: "power2.in" }, e - 0.45);
+      });
+
+      // 10.2 s: fecho com marca e chamada
+      tl.fromTo("#fim-marca", { yPercent: 110 }, { yPercent: 0, duration: 0.8, ease: out }, 10.2);
+      tl.fromTo("#fim-cta", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, 10.6);
+      tl.fromTo("#fim-marca-wrap", { scale: 1 }, { scale: 1.03, transformOrigin: "0% 50%", duration: 1.75, ease: "none" }, 10.2);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
