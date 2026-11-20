@@ -1,6 +1,6 @@
 # Auditoria de conteúdo e Instagram — Impactar Cerimonial
 **Data:** 20/11/2026 · **Escopo:** só Impactar (@impactarcerimonial)
-**Fontes:** Metricool (dados reais, 22/08 a 20/11/2026), Notion (Central de Marketing, Calendário Editorial, Linha de base 28/10), referências enviadas pela Paty (27 imagens + 5 vídeos).
+**Fontes:** Metricool (dados reais, 22/08 a 20/11/2026), Notion (Central de Marketing, Calendário Editorial, Linha de base 28/10), referências enviadas pela Paty (27 imagens + 6 animações + análise de 31 vídeos).
 **Legenda:** [DADO] = medido · [SUGESTÃO] = recomendação minha · [DECISÃO PATY] = depende de você
 
 ---
@@ -77,7 +77,7 @@ Postar mais não resolve. Postar menos, com gancho melhor e uma porta só para o
 | Ferramenta | Situação | Recomendação |
 |---|---|---|
 | **Metricool** | Conectado ao @impactarcerimonial desde 05/11 e funcionando (o Notion ainda diz "sem sessão utilizável", o que está desatualizado) | **Usar** para: (1) agendar carrosséis e stories; (2) relatório mensal automático no lugar do campo manual "Métrica 7 dias"; (3) avaliar o **SmartLinks** do Metricool como link da bio com contagem de cliques. Reels com música da biblioteca continuam manuais pelo app. |
-| **ManyChat** (ou similar, parceiro oficial da Meta) | Não existe hoje | **Adicionar.** Responde automaticamente quem comenta DIAGNÓSTICO e manda o link do WhatsApp. É a única ferramenta nova que eu recomendo. Tem plano gratuito para começar; conferir o preço atual antes de assinar. AUTOMATIZAR. |
+| **Automação de comentário → direct** | Não existe hoje | **Primeiro testar a da própria Meta (Meta Business Suite)**, que é gratuita e nativa. Ela tem saudação, perguntas frequentes, palavras-chave e comentário para mensagem (vídeo 30 da análise). Só se ela não der conta, partir para o **ManyChat**: conferir o preço antes. Regra do vídeo 23: **testar com 1 caso real antes de anunciar "Comenta DIAGNÓSTICO"** nos posts. AUTOMATIZAR. |
 | **Notion** | Central, Calendário, Leads | Manter e simplificar (seção 5). |
 | **Canva** | Conectado | Manter para carrosséis e o modelo fixo de stories. |
 | **Remotion** (repositório) | Em uso para Reels | Manter. Transformar as animações aprovadas em modelos reutilizáveis (seção 6). |
@@ -126,8 +126,48 @@ Postar mais não resolve. Postar menos, com gancho melhor e uma porta só para o
 
 ---
 
-## 7. Próximos passos (ordem)
+## 7. Os 31 vídeos (análise feita pela Paty em outra ferramenta, cruzada aqui com dados e Guia)
+
+**Filtro:** dos 31 vídeos, 12 entram e 19 saem. Saem os vídeos de afiliados Shopee, avatar ou influenciador gerado por IA, animação infantil e "dobrar alcance" sem prova (02, 04, 06, 07*, 08, 09, 10, 13*, 15, 19, 21, 28, 31). Também sai o 17 (react), que vai para o BACKLOG.
+*Do 07 e do 13 aproveitei uma parte só (está indicado abaixo).
+
+### O que entra e por quê
+| Vídeo | Ideia | Por que entra (cruzando com dados) | Classificação |
+|---|---|---|---|
+| **18** | **Testar 5 ganchos no mesmo roteiro**, mudando só a abertura | Ataca o problema nº 1 dos dados: 50 a 90% pulam no começo. Junto com o campo "Tipo de gancho" no Notion, em 1 mês você descobre qual abertura segura. Usar os **Reels de teste** do Instagram, que mostram o vídeo só para quem não segue, quando estiverem disponíveis na conta. | FAZER AGORA |
+| **14 + 13** | **Mais voz da Paty**: série falada "Uma decisão do casamento por vez", gravada no celular, natural | A linha de base de 28/10 mostra que o conteúdo com mais interações foi a Paty falando para a câmera. Hoje a maior parte dos Reels é imagem + música + texto. Já existe a ficha `ficha-paty-celular.md` para esse formato, então **não conflita com o Guia**. | PLANEJAR (1 por semana) |
+| **24** | **Promessa x evidência**: cada promessa da bio precisa ter um post que prove | A bio promete "planejamento e coordenação". Mostrar a coordenação acontecendo, por exemplo "O que a equipe faz enquanto os convidados veem a cerimônia?". | PLANEJAR |
+| **01 + 16** | **Reaproveitar o que funcionou** em outro formato | O melhor Reel do período (dicas da entrada da noiva, 37% de saída no começo) vira carrossel e versão falada. A revisão mensal escolhe 1 tema para reaproveitar. | PLANEJAR |
+| **12 + 05** | **Stories em blocos de 3**: dúvida, bastidor, pergunta. Falando com "você" no singular | Os stories estão sem registro desde 04/11. Blocos curtos são mais fáceis de manter do que 15 seguidos. | FAZER AGORA (teste de 2 semanas) |
+| **27 + 03** | Sequência de venda nos stories com **objeção + evidência** | Reforça a ideia B1 que já estava no banco e acrescenta uma **biblioteca de objeções reais** respondidas com prova própria. | PLANEJAR |
+| **29** | **Homenagem a quem não poderá estar presente** | Conteúdo sensível e muito ligado a casamento, que também melhora a operação (ver seção 8). Sem soltura de balões. | PLANEJAR (carrossel) |
+| **25** | Carrossel "Antes de fechar o próximo fornecedor, quanto ainda cabe no orçamento?" | Bate com o Reel de 26/10 ("Só mais uma coisinha"), que já trata do tema. Formato de passo a passo, que costuma gerar salvamento. | PLANEJAR |
+| **22** | **Séries de Reels** ("Da primeira decisão ao cortejo") com o acervo que já existe | Organiza os 7 Reels aprovados e parados sem produzir nada novo. Conferir se a função existe na conta. | PLANEJAR |
+| **11** | Gancho local: "Vai casar em BH?" | 43% do público é de BH (dado de 30/10). É uma variação para o teste de ganchos do vídeo 18, não uma regra. | Dentro do teste 18 |
+| **20** | Banco de repertório fora do nicho (origem, o que chamou atenção, problema do casal, adaptação) | Bate com o `banco-ideias-impactar.md`. Acrescentar esses 4 campos ao banco. | PLANEJAR |
+| **23** | Antes de adotar qualquer ferramenta ou automação: **demonstração com 1 caso real** | Vale para a automação de direct e para qualquer IA nova. | REGRA |
+
+### O que muda na auditoria por causa dos vídeos
+1. **Ferramenta de automação:** testar primeiro a da Meta, que é gratuita. O ManyChat fica só como plano B (seção 4 atualizada).
+2. **Formato:** acrescentar a série falada da Paty ao mix: 1 Reel falado por semana dentro dos 3 Reels semanais.
+3. **Gancho:** o teste de 5 aberturas passa a ser o método oficial para resolver as saídas no começo do vídeo.
+
+---
+
+## 8. Para implementar na operação (vindo dos vídeos e das referências)
+| Ideia | O que fazer | Classificação |
+|---|---|---|
+| **Homenagens** (vídeo 29) | Incluir no briefing do casal uma pergunta opcional e reservada: "Desejam homenagear alguém que não poderá estar presente? Como?" Registrar foto, texto, música, responsável e alinhar com o celebrante. Evita surpresa emocional no dia. | PLANEJAR: entra no briefing do casal |
+| **Lista de captação** (vídeo 07, parte útil) | Antes de cada evento, uma lista de 6 cenas que o storymaker ou a equipe precisa gravar: cronograma, equipe alinhando, fornecedores, entrada, bastidor, momento final. Resolve a falta de material de bastidor para Reels. | DELEGAR |
+| **Leitura do evento** (referência Edna) | Seção no checklist operacional (ver seção 6). | PLANEJAR + DELEGAR |
+| **Controle financeiro por casal** (vídeo 25) | Valor contratado, parcelas, pagos e estimativa do que falta. Avaliar se já existe no atendimento antes de criar. | [DECISÃO PATY] |
+| **Biblioteca de objeções** (vídeo 27) | Lista das objeções reais que aparecem nas reuniões de diagnóstico, cada uma com a resposta e uma prova autorizada. Serve para os stories e para a venda. | PLANEJAR |
+
+---
+
+## 9. Próximos passos (ordem)
 1. **Você:** conferir o Reel de 18/11 e as duplicatas; decidir o link da bio (item 4 da seção 3); confirmar se os stories estão sendo postados.
 2. **Eu, com o seu OK:** reescrever a Central do Notion em uma tela e ajustar os campos do calendário.
 3. **Eu, com o seu OK:** montar o calendário de dezembro usando os 7 Reels aprovados mais 2 ideias novas, para sua aprovação.
-4. **Você decide:** assinar o ManyChat (ou similar). Eu escrevo as mensagens da automação.
+4. **Você ou eu, com o seu OK:** testar a automação de comentário da Meta Business Suite com 1 caso real. Eu escrevo as mensagens. ManyChat só se a da Meta não servir.
+5. **Eu, com o seu OK:** roteiro do teste de 5 ganchos para o próximo Reel e as 4 primeiras pautas da série falada "Uma decisão do casamento por vez".
