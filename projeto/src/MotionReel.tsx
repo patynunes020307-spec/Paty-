@@ -857,8 +857,8 @@ export const LAPELA: MotionProps = {
   ],
   gancho: {
     kicker: "Bastidores da Impactar",
-    linha: "Flor na lapela,",
-    italico: "lista na mão.",
+    linha: "O que a gente faz",
+    italico: "antes do cortejo.",
     ate: 3.1,
   },
   textos: [

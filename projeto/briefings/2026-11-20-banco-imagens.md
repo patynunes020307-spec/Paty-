@@ -14,5 +14,6 @@ Conteúdo: equipe de azul colocando flor na lapela dos padrinhos, organizando pa
 
 ## Reel K — `ReelLapela` (18,7 s, sem som)
 C56 0–2,0 · CDF 0–1,1 (gancho digitado "Flor na lapela, lista na mão.") · C56 3,2–7,6 "Cada padrinho na sua vez." · CDF 4,0–7,2 "O cortejo alinhado antes." · 9474 1,0–5,5 "E cada lembrança, uma por uma." · CTA "Cada detalhe tem alguém cuidando."
-Pendente: autorização de imagem deste casamento (material do Drive: Guia diz que tem uso autorizado — decisão de 28/10/2026) e crédito do videomaker.
+Material do Drive: uso autorizado (Guia, decisão 28/10/2026). Créditos: não precisa (Paty, 20/11: vídeos feitos pela equipe).
 - exports/lapela-v1.mp4 enviado.
+- 2026-11-20 — Paty: "pode ser outro título". **v2**: gancho "O que a gente faz antes do cortejo." (exports/lapela-v2.mp4). Mais vídeos do Daniele e Fabrício: "agora não".

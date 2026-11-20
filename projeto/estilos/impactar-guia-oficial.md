@@ -39,3 +39,6 @@ Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" 
 - Fechamento do Reel aprovado: fundo claro com a logo oficial (variação nude + verde-água).
   ⚠ Conflita com o Guia ("sem tela final de logo"); aplicado por ser a referência aprovada mais recente — confirmar com a Paty.
 - Logos oficiais recebidas em 19/11/2026: `public/marca/oficial/` (selo circular petróleo, selo circular nude, logo script petróleo, logo script nude/verde-água). JPG com fundo branco: usar só sobre fundo claro (multiply), nunca recolorir.
+
+## Créditos
+- Vídeos gravados pela equipe Impactar: **sem crédito** na tela ou na legenda (decisão da Paty, 20/11/2026). Crédito só quando o material for de fotógrafo/videomaker contratado.
