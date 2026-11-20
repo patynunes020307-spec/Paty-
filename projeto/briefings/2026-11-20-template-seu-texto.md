@@ -1,5 +1,5 @@
 # Modelo editável "[SEU TEXTO]"
-- Data: 2026-11-20 | Composição: `TemplateSeuTexto` (src/TemplateSeuTexto.ts + src/MotionReel.tsx) | Status: modelo aprovado (20/11); v1 1080p com mais cenas enviada
+- Data: 2026-11-20 | Composição: `TemplateSeuTexto` (src/TemplateSeuTexto.ts + src/MotionReel.tsx) | Status: v1 APROVADA (20/11)
 
 ## Origem
 - Pedido: instalar blixvip/MotionClone e recriar as animações de `referencia.mp4` como projeto editável com "[SEU TEXTO]".
@@ -20,3 +20,4 @@
 - 2026-11-20 — Paty: "Aprovado, coloque mais cenas e troque por 1080".
 - Clipes do Drive até 10 MB eram 720p; originais 4K baixados direto (drive.usercontent.google.com, já liberado no ambiente): IMG_9461/9462/9463.MOV (mesmo casamento do clipe do teste, brinde dos noivos) → originais/template-seu-texto/; cópias 1080×1920 H.264 em public/brutos/template/. clip.mp4 (720p) removido.
 - **v1**: exports/template-seu-texto-v1.mp4 (18,4 s, 1080×1920): 9463 0–4,0 · 9462 0–3,8 · 9461 0–2,7 · 9463 13,0–17,4 · CTA 3,5 s. Textos: gancho 0–3,8 · 01 4,0–10,3 · 02 10,7–14,7. freezedetect ok. Filtro de qualidade: ok (fonte 4K reduzida).
+- 2026-11-20 — v1 APROVADA ("Aprovo"). Gravação da própria equipe Impactar → sem crédito externo.
