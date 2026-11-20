@@ -22,3 +22,4 @@
 - Bloqueio 1: o ambiente não consegue enviar a foto ao ElevenLabs (rede bloqueia o envio). A Paty sobe THI00422 direto no flow.
 - Bloqueio 2: o orçamento do vídeo só sai depois que a foto estiver no flow.
 - Próxima ação: Paty sobe a foto → gerar áudio de teste → orçar vídeo → gerar 1 take com o ok dela.
+- 20/11: Paty subiu THI00420/421/422 no flow (áudio não subiu). Bloqueio: ElevenLabs exige plano pago para gerar vídeo (avatar). Decisão pendente da Paty: pagar plano / versão sem IA no Remotion (foto + voz + legenda) / gravar o texto em vídeo no celular.
