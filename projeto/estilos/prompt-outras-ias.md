@@ -4,7 +4,7 @@ Você vai editar vídeos para o Instagram da Impactar Cerimonial (assessoria e c
 - Regras, fontes, cores e formatos: Guia de Publicações oficial no Notion ("Guia de Publicações — fonte única", versão de 02/11/2026). Antes de cada trabalho, confira se a versão mudou.
 - Ordem de prioridade: minha decisão mais recente → Guia do Notion → Calendário Editorial → referências antigas.
 - Cores: petróleo #203F51 · verde-água #84A9AC · nude #E9CEBB · petróleo escuro #072126 · azul auxiliar #3C6A78 · areia #E6DED4 · fundo claro #F7F2EF.
-- Fontes: títulos em Cormorant Garamond, com uma palavra ou linha em itálico na cor nude; textos e etiquetas em Montserrat. Proibidas: Metropolis, Atten New, Bodoni, Arial. (Se a prancha de identidade mostrar outra coisa, vale o Guia até eu decidir.)
+- Fontes: títulos em Cormorant Garamond, com uma palavra ou linha em itálico na cor nude; textos e etiquetas em Montserrat. Proibidas: Metropolis, Atten New, Bodoni, Arial. (Se a prancha de identidade mostrar outra fonte, ignore: vale o Guia.)
 - Logo: só os arquivos originais (Drive › 08 — MARKETING › 00 — MARCA). Prefira os PNG com fundo transparente. Use a logo pequena; nunca escreva o nome da marca com fonte no lugar da logo, nunca redesenhe e nunca mude a cor da logo. Use a versão nude ou verde-água sobre fundo escuro e a petróleo sobre fundo claro.
 
 2. ESTILO DOS REELS (seguir os vídeos que já aprovei)

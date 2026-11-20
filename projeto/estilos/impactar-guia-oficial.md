@@ -46,5 +46,5 @@ Arquivos em `referencias/` (fora do git): Reel 02/11 "Antes de abrir as portas" 
 ## Logos PNG transparentes (recebidas da Paty em 20/11/2026)
 - `public/marca/png/`: selo-bicolor, selo-nude, selo-petroleo, selo-preto, script-nude, script-petroleo, script-preto (reduzidas para 1400 px; originais de ~7300 px enviados no chat).
 - Preferir estas às JPG: funcionam sobre qualquer fundo, sem multiply. Nude/verde-água sobre áreas escuras, petróleo sobre áreas claras.
-- ⚠ A prancha de identidade enviada junto lista Metropolis/Atten New; o Guia do Notion (02/11/2026) proíbe essas fontes e manda Cormorant + Montserrat. Segue valendo o Guia até a Paty decidir.
+- Fontes: a prancha de identidade antiga lista Metropolis/Atten New, mas **vale o Guia (Cormorant + Montserrat)** — decisão da Paty, 20/11/2026.
 - Números oficiais (decisão da Paty, 20/11/2026): **"12 anos · mais de 500 eventos"**. O story antigo com "11 anos" está desatualizado.
