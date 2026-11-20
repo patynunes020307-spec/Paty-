@@ -22,7 +22,11 @@ export type TipoProps = {
   etiqueta?: string; // Montserrat caixa-alta acima da frase (opcional)
 };
 
-export const TIPO_PADRAO: TipoProps = { texto: "[SEU TEXTO]" };
+export const TIPO_PADRAO: TipoProps = {
+  texto: "Vocês vivem o dia.\nA gente cuida do resto.",
+  destaque: "resto.",
+  etiqueta: "Assessoria de casamentos",
+};
 
 const EXPO = Easing.bezier(0.16, 1, 0.3, 1);
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -39,7 +43,12 @@ export const TipoCinetica: React.FC<TipoProps> = ({
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const palavras = texto.trim().split(/\s+/);
+  // "\n" no texto força quebra de linha
+  const palavras = texto
+    .trim()
+    .split(/[ \t]+/)
+    .flatMap((w) => w.split("\n").flatMap((x, j) => (j ? ["\n", x] : [x])))
+    .filter(Boolean);
   const chave = (destaque ?? palavras[palavras.length - 1]).trim();
   const nChave = chave.split(/\s+/).length;
   const inicioChave = Math.max(0, palavras.length - nChave);
@@ -131,6 +140,9 @@ export const TipoCinetica: React.FC<TipoProps> = ({
           }}
         >
           {palavras.map((p, i) => {
+            if (p === "\n") {
+              return <div key={i} style={{ flexBasis: "100%", height: 0 }} />;
+            }
             const ini = entrada + i * passo;
             const kw = ehChave(i);
             const sai = saida + i * 2;
@@ -160,8 +172,8 @@ export const TipoCinetica: React.FC<TipoProps> = ({
                   display: "inline-block",
                   overflow: "hidden",
                   // folga para descendentes e itálico não serem cortados
-                  padding: "0.04em 0.12em 0.16em 0",
-                  margin: "-0.04em -0.12em -0.16em 0",
+                  padding: "0.22em 0.12em 0.16em 0",
+                  margin: "-0.22em -0.12em -0.16em 0",
                 }}
               >
                 <span
