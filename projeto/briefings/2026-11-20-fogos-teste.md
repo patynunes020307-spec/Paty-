@@ -1,11 +1,11 @@
 # Reel TESTE — Fornecedor na hora certa (fogos no beijo)
-- Data: 2026-11-20 | Slug: `fogos-teste` | Composição: `ReelFogosTeste` (src/MotionReel.tsx, preset `FOGOS`) | Status: prévia de teste enviada — NÃO aprovada
+- Data: 2026-11-20 | Slug: `fogos-teste` | Composição: `ReelFogosTeste` (src/MotionReel.tsx, preset `FOGOS`) | Status: v2 de teste enviada — NÃO aprovada
 
 ## Objetivo / CTA
 Teste pedido pela Paty ("um vídeo só pra teste"). Tema escolhido por Claude: a Impactar coordenando fornecedores (assunto ainda não usado nos reels). CTA: "Manda a data e a cidade no direct." (mesmo dos reels aprovados).
 
 ## Plataforma e duração
-Reels 9:16, 13,2 s (9,7 s de vídeo + 3,5 s de tela final). ⚠ Abaixo dos 15 s do Guia — aceito por ser teste.
+Reels 9:16, 15,1 s (11,6 s de vídeo + 3,5 s de tela final) na v2.
 
 ## Público
 Casais noivos (não confirmado para este teste).
@@ -32,7 +32,7 @@ Casal não identificado (nome não aparece). Sem SFX (padrão dos reels aprovado
 - Clipe inteiro, sem cortes internos (não há fala).
 
 ## Não confirmado / decisões para a Paty
-1. Se a pirotecnia desse casamento foi de fato coordenada pela Impactar (o texto sugere coordenação de fornecedores).
+1. ~~Coordenação da pirotecnia~~ — CONFIRMADO pela Paty em 20/11: a Impactar coordenou. Não há vídeo de bastidor do sinal.
 2. Autoria do vídeo (videomaker?) — o Guia pede crédito.
 3. Cor x P&B: o Guia pede P&B para beijo; mantido em cor porque o assunto são os fogos.
 4. O bloco de texto passa sobre a parte de baixo do vestido (rostos livres). Alternativa: subir o texto só neste reel.
@@ -41,3 +41,6 @@ Casal não identificado (nome não aparece). Sem SFX (padrão dos reels aprovado
 - 2026-11-20 — Conferência 5.5: ffprobe 1080 × 1920, 30 fps, 13,2 s. Sem fala → checagem de palavras não se aplica; sem áudio por padrão. Folha de quadros: quebra ruim no itálico da tela final ("gente." sozinha) → frase trocada para "O relógio é nosso." e re-render conferido.
 - 2026-11-20 — exports/fogos-teste.mp4 enviado para validação.
 - Render local: `npx remotion render ReelFogosTeste exports/fogos-teste.mp4 --browser-executable=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell` (o download do Chrome do Remotion é bloqueado na rede deste ambiente).
+- 2026-11-20 — Paty pediu sugestões; aplicadas na v2: gancho "Esse beijo teve / *hora marcada.*" (coordenação confirmada); plano dos fogos (2–9,7 s do bruto) a 0,8x por duplicação de quadros, sem interpolação → `public/brutos/fogos/fogos_lento.mp4`, total 15,1 s.
+- 2026-11-20 — Som original NÃO usado: espectrograma mostra música com voz cantada (vibrato 3–9 s) — o bruto já é um vídeo editado com trilha (cortes em 0,63 s, 1,03 s e 2,0 s). Risco de direitos autorais. Reforça a pendência de crédito ao videomaker.
+- 2026-11-20 — Conferência 5.5 da v2: 1080 × 1920, 30 fps, 15,1 s; folha de quadros ok (gancho, frase, tela final sem quebra ruim). Câmera lenta conferida só em quadros parados — possível leve tranco no movimento, a avaliar no celular. exports/fogos-teste-v2.mp4 enviado.
