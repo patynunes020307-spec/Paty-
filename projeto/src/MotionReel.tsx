@@ -843,3 +843,49 @@ export const CONJUNTO: MotionProps = {
     segundos: 3.5,
   },
 };
+
+// Reel K — "Flor na lapela, lista na mão" (Bastidor em 15 s). Casamento Daniele e Fabrício, 28/09/2025.
+// Fonte: Drive › Banco de imagens › Daniele e Fabrício › Vídeos › Bastidores e equipe (cópias 720p).
+const DF = "brutos/df/";
+export const LAPELA: MotionProps = {
+  cenas: [
+    { arquivo: DF + "C56FCAF8.mp4", inicio: 0, fim: 2.0 },
+    { arquivo: DF + "CDF677A1.mp4", inicio: 0, fim: 1.1 },
+    { arquivo: DF + "C56FCAF8.mp4", inicio: 3.2, fim: 7.6 },
+    { arquivo: DF + "CDF677A1.mp4", inicio: 4.0, fim: 7.2 },
+    { arquivo: DF + "IMG_9474.mp4", inicio: 1.0, fim: 5.5 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Flor na lapela,",
+    italico: "lista na mão.",
+    ate: 3.1,
+  },
+  textos: [
+    {
+      frase: { kicker: "01", linha: "Cada padrinho", italico: "na sua vez." },
+      de: 3.3,
+      ate: 7.4,
+    },
+    {
+      frase: { kicker: "02", linha: "O cortejo", italico: "alinhado antes." },
+      de: 7.6,
+      ate: 10.2,
+    },
+    {
+      frase: {
+        kicker: "03",
+        linha: "E cada lembrança,",
+        italico: "uma por uma.",
+      },
+      de: 10.5,
+      ate: 14.7,
+    },
+  ],
+  cta: {
+    linha: "Cada detalhe tem",
+    italico: "alguém cuidando.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};

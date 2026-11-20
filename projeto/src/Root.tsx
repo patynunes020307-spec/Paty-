@@ -11,6 +11,7 @@ import {
   MONTAGEM,
   MotionReel,
   PADRINHOS,
+  LAPELA,
   CONJUNTO,
   QUINZE_FESTA,
   ALIANCA,
@@ -402,6 +403,15 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={CONJUNTO}
         durationInFrames={duracaoMotion(CONJUNTO)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelLapela"
+        component={MotionReel}
+        defaultProps={LAPELA}
+        durationInFrames={duracaoMotion(LAPELA)}
         fps={FPS}
         width={1080}
         height={1920}
