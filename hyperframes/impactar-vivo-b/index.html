@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Cormorant Garamond"; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "Cormorant Garamond"; src: url("assets/fonts/cormorant-garamond-latin-600-italic.woff2") format("woff2"); font-weight: 600; font-style: italic; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      :root { --petroleo: #203f51; --escuro: #072126; --nude: #e9cebb; --claro: #f7f2ef; --verde: #84a9ac; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--petroleo); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--petroleo); }
+
+      .bloco { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #b-nude { background: var(--nude); transform-origin: 50% 100%; z-index: 1; }
+      #b-claro { background: var(--claro); transform-origin: 0% 50%; z-index: 2; }
+
+      .txt { position: absolute; left: 120px; width: 700px; }
+      .mask { overflow: hidden; padding-bottom: 34px; }
+      .gigante { display: inline-block; font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 230px; line-height: 0.92; letter-spacing: -0.02em; }
+      .gigante em { font-style: italic; }
+      .sans { display: inline-block; font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 48px; line-height: 1.3; }
+
+      #t1 { top: 440px; z-index: 3; }
+      #t1 .gigante { color: var(--claro); }
+      #t2 { top: 520px; z-index: 4; }
+      #t2 .gigante { color: var(--escuro); font-size: 172px; }
+      #t3 { top: 600px; z-index: 5; }
+      #t3 .gigante { color: var(--petroleo); font-size: 160px; }
+      #t3 .sans { color: var(--petroleo); }
+      .regua { width: 140px; height: 5px; background: var(--nude); margin: 30px 0 26px; transform-origin: 0 50%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="6" data-width="1080" data-height="1920">
+      <!-- Batida 1: fundo petróleo, "Para viver" -->
+      <div id="t1" class="txt clip" data-start="0" data-duration="1.8" data-track-index="0">
+        <div class="mask"><span id="w1" class="gigante">Para</span></div>
+        <div class="mask"><span id="w2" class="gigante">viver</span></div>
+      </div>
+
+      <!-- Batida 2: bloco nude sobe, "cada momento." -->
+      <div id="b-nude" class="bloco clip" data-start="1.6" data-duration="4.4" data-track-index="1"></div>
+      <div id="t2" class="txt clip" data-start="1.75" data-duration="2.05" data-track-index="2">
+        <div class="mask"><span id="w3" class="gigante">cada</span></div>
+        <div class="mask"><span id="w4" class="gigante"><em>momento.</em></span></div>
+      </div>
+
+      <!-- Batida 3: bloco claro varre, frases de apoio -->
+      <div id="b-claro" class="bloco clip" data-start="3.6" data-duration="2.4" data-track-index="3"></div>
+      <div id="t3" class="txt clip" data-start="3.75" data-duration="2.25" data-track-index="4">
+        <div class="mask"><span id="w5" class="gigante"><em>Presença</em></span></div>
+        <div id="r3" class="regua"></div>
+        <div class="mask"><span id="s1" class="sans">Planejamento cuidadoso.</span></div>
+        <div class="mask"><span id="s2" class="sans">Em cada detalhe.</span></div>
+      </div>
+
+      <audio id="sfx1" class="clip" src="assets/sfx/whoosh.wav" data-start="1.5" data-duration="0.6" data-track-index="10" data-volume="0.5"></audio>
+      <audio id="sfx2" class="clip" src="assets/sfx/whoosh.wav" data-start="3.5" data-duration="0.6" data-track-index="11" data-volume="0.5"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const out = "expo.out";
+
+      // Batida 1 (já em cena no quadro 0)
+      tl.fromTo("#w1", { yPercent: 35, scale: 1.08 }, { yPercent: 0, scale: 1, transformOrigin: "0% 100%", duration: 0.7, ease: out }, 0);
+      tl.fromTo("#w2", { yPercent: 105 }, { yPercent: 0, duration: 0.7, ease: out }, 0.3);
+      tl.fromTo("#t1", { x: 0 }, { x: 30, duration: 1.8, ease: "none" }, 0);
+
+      // Batida 2: bloco nude sobe de baixo
+      tl.fromTo("#b-nude", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power4.inOut" }, 1.6);
+      tl.fromTo("#w3", { yPercent: 105 }, { yPercent: 0, duration: 0.6, ease: out }, 1.8);
+      tl.fromTo("#w4", { yPercent: 105 }, { yPercent: 0, duration: 0.6, ease: out }, 2.1);
+      tl.fromTo("#t2", { scale: 1 }, { scale: 1.05, transformOrigin: "0% 50%", duration: 2.0, ease: "none" }, 1.8);
+
+      // Batida 3: bloco claro varre da esquerda
+      tl.fromTo("#b-claro", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power4.inOut" }, 3.6);
+      tl.fromTo("#w5", { yPercent: 105 }, { yPercent: 0, duration: 0.6, ease: out }, 3.85);
+      tl.fromTo("#r3", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 4.2);
+      tl.fromTo("#s1", { yPercent: 105 }, { yPercent: 0, duration: 0.55, ease: out }, 4.35);
+      tl.fromTo("#s2", { yPercent: 105 }, { yPercent: 0, duration: 0.55, ease: out }, 4.65);
+      tl.fromTo("#t3", { y: 0 }, { y: -24, duration: 2.2, ease: "none" }, 3.8);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
