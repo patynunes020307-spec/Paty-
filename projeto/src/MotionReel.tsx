@@ -1,4 +1,4 @@
-import { Video } from "@remotion/media";
+import { Audio, Video } from "@remotion/media";
 import {
   AbsoluteFill,
   Easing,
@@ -35,6 +35,43 @@ export type MotionProps = {
   textos: TextoTimed[];
   checklist?: { titulo: string; de: number; ate: number; itens: Item[] };
   cta: { linha: string; italico: string; acao: string; segundos: number };
+  // áudio real (fala da equipe) + legenda sincronizada — opcional
+  audio?: { arquivo: string; de: number };
+  falas?: { texto: string; de: number; ate: number }[];
+};
+
+// Legenda de fala (Montserrat, terço inferior)
+const Fala: React.FC<{ texto: string; duracao: number }> = ({
+  texto,
+  duracao,
+}) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const v = interpolate(
+    frame,
+    [0, 0.15 * fps, duracao - 0.15 * fps, duracao],
+    [0, 1, 1, 0],
+    clamp,
+  );
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 96,
+        right: 80,
+        bottom: 470,
+        opacity: v,
+        color: COR.fundoClaro,
+        fontFamily: sans,
+        fontWeight: 600,
+        fontSize: 50,
+        lineHeight: 1.3,
+        textShadow: "0 2px 18px rgba(7,33,38,0.6)",
+      }}
+    >
+      {texto}
+    </div>
+  );
 };
 
 const dur = (c: Cena) => Math.round((c.fim - c.inicio) * FPS);
@@ -340,6 +377,20 @@ export const MotionReel: React.FC<MotionProps> = (p) => {
       >
         <TelaCTA cta={p.cta} />
       </Sequence>
+      {(p.falas ?? []).map((f, i) => (
+        <Sequence
+          key={"f" + i}
+          from={s(f.de)}
+          durationInFrames={s(f.ate - f.de)}
+        >
+          <Fala texto={f.texto} duracao={s(f.ate - f.de)} />
+        </Sequence>
+      ))}
+      {p.audio ? (
+        <Sequence from={s(p.audio.de)}>
+          <Audio src={staticFile(p.audio.arquivo)} />
+        </Sequence>
+      ) : null}
     </AbsoluteFill>
   );
 };
@@ -606,6 +657,101 @@ export const ROTEIRO: MotionProps = {
   cta: {
     linha: "Vocês vivem o sim.",
     italico: "A gente cuida do resto.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};
+
+// Reel G — "Até a aliança tem ensaio": fala real da cerimonialista orientando a noiva (23/05/2026).
+const LD = "brutos/l20d/";
+export const ALIANCA: MotionProps = {
+  cenas: [
+    { arquivo: LD + "92062e38.mp4", inicio: 0.5, fim: 3.5 },
+    { arquivo: LD + "4112.mp4", inicio: 0, fim: 17.67 },
+    { arquivo: LD + "IMG_3374.mp4", inicio: 0, fim: 2.7 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Até a aliança",
+    italico: "tem ensaio.",
+    ate: 3.0,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "Na hora",
+        linha: "E no altar,",
+        italico: "sem pressa.",
+      },
+      de: 20.7,
+      ate: 23.4,
+    },
+  ],
+  audio: { arquivo: "audio/4112.wav", de: 3.0 },
+  falas: [
+    {
+      texto:
+        "Você vai pegar as alianças assim, aparecendo essa parte de cima aqui,",
+      de: 3.0,
+      ate: 7.1,
+    },
+    {
+      texto: "e na hora de colocar você vai bem devagar. Tá vendo?",
+      de: 7.2,
+      ate: 10.6,
+    },
+    {
+      texto: "Vem devagar, olha pra ele, dá um sorriso pra ele.",
+      de: 10.6,
+      ate: 15.0,
+    },
+    {
+      texto: "Pegou a mão, beijou, tá bom? É a mesma coisa aí.",
+      de: 15.0,
+      ate: 19.0,
+    },
+    { texto: "Prontinho!", de: 19.1, ate: 20.6 },
+  ],
+  cta: {
+    linha: "Cada momento ensaiado",
+    italico: "para ser vivido com calma.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};
+
+// Reel H — "A última volta antes de abrir as portas" (06/03/2026). Clipes de Live Photo (0,2 s) em sequência rápida.
+export const ULTIMA_VOLTA: MotionProps = {
+  cenas: [
+    { arquivo: LD + "IMG_1270.mp4", inicio: 0, fim: 4.1 },
+    { arquivo: LD + "IMG_1273.mp4", inicio: 0, fim: 0.2 },
+    { arquivo: LD + "IMG_1275.mp4", inicio: 0, fim: 0.16 },
+    { arquivo: LD + "IMG_1277.mp4", inicio: 0, fim: 0.2 },
+    { arquivo: LD + "IMG_1279.mp4", inicio: 0, fim: 0.96 },
+    { arquivo: LD + "IMG_1281.mp4", inicio: 0, fim: 0.2 },
+    { arquivo: LD + "IMG_1337_lento.mp4", inicio: 0, fim: 2.95 },
+    { arquivo: LD + "IMG_1291_lento.mp4", inicio: 0, fim: 4.7 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "A última volta",
+    italico: "antes de abrir as portas.",
+    ate: 4.0,
+  },
+  textos: [],
+  checklist: {
+    titulo: "Conferido:",
+    de: 4.1,
+    ate: 13.4,
+    itens: [
+      { texto: "Banheiros revisados", em: 4.4 },
+      { texto: "Taças separadas", em: 6.2 },
+      { texto: "Decoração no lugar", em: 9.2 },
+    ],
+  },
+  cta: {
+    linha: "Quando as portas abrem,",
+    italico: "tudo já foi visto.",
     acao: "Manda a data e a cidade no direct.",
     segundos: 3.5,
   },

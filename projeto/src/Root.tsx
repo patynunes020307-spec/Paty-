@@ -11,6 +11,8 @@ import {
   MONTAGEM,
   MotionReel,
   PADRINHOS,
+  ALIANCA,
+  ULTIMA_VOLTA,
   ROTEIRO,
   CAUDA,
 } from "./MotionReel";
@@ -342,6 +344,24 @@ export const RemotionRoot: React.FC = () => {
         component={Capa}
         defaultProps={CAPA_ROTEIRO}
         durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelAlianca"
+        component={MotionReel}
+        defaultProps={ALIANCA}
+        durationInFrames={duracaoMotion(ALIANCA)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelUltimaVolta"
+        component={MotionReel}
+        defaultProps={ULTIMA_VOLTA}
+        durationInFrames={duracaoMotion(ULTIMA_VOLTA)}
         fps={FPS}
         width={1080}
         height={1920}
