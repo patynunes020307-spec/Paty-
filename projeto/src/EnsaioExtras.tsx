@@ -56,6 +56,8 @@ export type CapaProps = {
   inicio: number;
   enquadramento: string;
   frase: Frase;
+  // posição da logo (precisa cair sobre área clara: a logo é JPG com fundo branco)
+  logo?: { top: number; left: number; width: number };
 };
 
 export const CAPA_ENSAIO: CapaProps = {
@@ -102,11 +104,24 @@ export const CAPA_MONTAGEM: CapaProps = {
   },
 };
 
+export const CAPA_ANTES_CONVIDADOS: CapaProps = {
+  arquivo: "brutos/lote/IMG_2303_lento.mp4",
+  inicio: 1.5,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Antes dos convidados,",
+    italico: "a gente já está aqui.",
+  },
+  logo: { top: 70, left: 60, width: 300 },
+};
+
 export const Capa: React.FC<CapaProps> = ({
   arquivo,
   inicio,
   enquadramento,
   frase,
+  logo,
 }) => {
   const { fps } = useVideoConfig();
   return (
@@ -124,9 +139,9 @@ export const Capa: React.FC<CapaProps> = ({
         src={staticFile("marca/oficial/logo-script-nude-verdeagua.jpg")}
         style={{
           position: "absolute",
-          top: 120,
-          left: 380,
-          width: 320,
+          top: logo?.top ?? 120,
+          left: logo?.left ?? 380,
+          width: logo?.width ?? 320,
           mixBlendMode: "multiply",
         }}
       />

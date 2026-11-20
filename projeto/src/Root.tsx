@@ -12,6 +12,7 @@ import {
 } from "./MotionReel";
 import {
   Capa,
+  CAPA_ANTES_CONVIDADOS,
   CAPA_ASSESSORA,
   CAPA_DAMARYS,
   CAPA_MONTAGEM,
@@ -216,6 +217,15 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={ANTES_CONVIDADOS}
         durationInFrames={duracaoMotion(ANTES_CONVIDADOS)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaAntesConvidados"
+        component={Capa}
+        defaultProps={CAPA_ANTES_CONVIDADOS}
+        durationInFrames={1}
         fps={FPS}
         width={1080}
         height={1920}

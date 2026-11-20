@@ -1,5 +1,5 @@
 # Reel — Os convidados ainda não chegaram (Bastidor em 15 s)
-- Data: 2026-11-20 | Composição: `ReelAntesConvidados` (src/MotionReel.tsx) | Status: prévia enviada
+- Data: 2026-11-20 | Composição: `ReelAntesConvidados` (src/MotionReel.tsx) | Status: v1 APROVADA — pacote no Drive
 
 ## Brutos (originais/lote-2026-11-20/)
 - IMG_2298 (18/04/2026, 4K ~60 fps, 3,85 s): equipe de bege colocando flores no corredor da cerimônia.
@@ -14,3 +14,4 @@ Mistura dois eventos (18/04 e 01/05) sem identificar nenhum.
 
 ## Log
 - 2026-11-20 — exports/antes-convidados-v1.mp4 enviada.
+- 2026-11-20 — APROVADA. Drive › Criativos › 2026-11-20_Reel_Antes_dos_Convidados (1rN47gFSQ22oGQPx2K2XOhr60fgsUs34b): capa (logo sobre o céu, posição configurável na Capa) + legenda. Vídeo (45,9 MB) a subir pela Paty. Kits: tipo não confirmado — texto mantido genérico ("Kits organizados").
