@@ -171,3 +171,13 @@ Postar mais não resolve. Postar menos, com gancho melhor e uma porta só para o
 3. **Eu, com o seu OK:** montar o calendário de dezembro usando os 7 Reels aprovados mais 2 ideias novas, para sua aprovação.
 4. **Você ou eu, com o seu OK:** testar a automação de comentário da Meta Business Suite com 1 caso real. Eu escrevo as mensagens. ManyChat só se a da Meta não servir.
 5. **Eu, com o seu OK:** roteiro do teste de 5 ganchos para o próximo Reel e as 4 primeiras pautas da série falada "Uma decisão do casamento por vez".
+
+---
+
+## 10. Execução — 20/11/2026 (aprovado pela Paty: itens 1 a 5)
+- **Link da bio:** decisão registrada. A troca é feita pela Paty no app (o Instagram na web não edita links). Passo a passo no Notion › Central › "Automação DIAGNÓSTICO + link da bio".
+- **Central do Notion:** reescrita em uma tela (próximas publicações, aguardando Paty, checklist de quem publica, números, decisões, acessos). O histórico antigo foi para a subpágina "Arquivo". Nenhuma página ou banco foi apagado e nenhuma rotina foi alterada.
+- **Calendário:** novos campos (Tipo de gancho, Alcance, % pulou no início, Salvos, Comentários, Publicado por) e etapa "Ideia". O campo "Métrica 7 dias" foi mantido.
+- **Dezembro:** 16 publicações com data proposta (12 cartões que já existiam + 4 novos: 3 perguntas 02/12, 5 sinais 09/12, Série falada #3 17/12, Homenagem 23/12). Mais 6 cartões na etapa "Ideia". Nada foi marcado como aprovado.
+- **Automação:** mensagens e roteiro de teste na página do Notion. Configuração pela Paty no Meta Business Suite.
+- **Teste de ganchos e série falada:** 5 aberturas no cartão "Série falada #3". A série usa 3 Reels que já tinham roteiro aprovado (#1 horários, #2 família, #4 depois do sim) mais o #3 novo.
