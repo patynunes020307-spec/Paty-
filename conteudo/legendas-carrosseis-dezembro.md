@@ -1,6 +1,6 @@
 # Legendas — carrosséis de dezembro (Impactar)
-Formato da legenda (Guia): gancho, situação real em 2 a 3 frases, benefício para o casal, uma CTA e de 3 a 5 hashtags. Status: **PRÉVIA**, ainda não aprovada.
-Fotos: acervo real do Drive (Banco de Imagens). Fotos (v3): Daniele e Fabrício 2025 (crédito a confirmar: equipe?), Manu e Marlon 2025 (fotógrafa Renata, @ a confirmar) e ensaio institucional Paty e Vivi.
+Formato da legenda (Guia): gancho, situação real em 2 a 3 frases, benefício para o casal, uma CTA e de 3 a 5 hashtags. Status: **APROVADO pela Paty em 20/11/2026.**
+Fotos: acervo real do Drive (Banco de Imagens). Fotos (v3): Daniele e Fabrício 2025 (feitas pela equipe: sem crédito), Manu e Marlon 2025 (fotógrafa Renata: crédito só pelo nome, @ desconhecido) e ensaio institucional Paty e Vivi.
 
 ---
 
@@ -24,7 +24,7 @@ Um cerimonial preparado lê o evento: ajusta o cronograma quando a cerimônia ac
 
 Salve para usar como critério na hora de escolher, e me chama no direct se quiser saber como a gente trabalha.
 
-📸 Fotos Manu e Marlon: Renata [@ a confirmar]
+📸 Fotos Manu e Marlon: Renata
 
 #assessoriadecasamento #cerimonialbh #casamentobh #impactarcerimonial #noivasbh
 
@@ -38,7 +38,7 @@ Uma homenagem pode ser um objeto afetivo no buquê, uma música que era dela ou 
 
 No planejamento, a gente pergunta com cuidado e combina cada detalhe antes, para que nada vire surpresa no dia. Se quiser conversar sobre isso, me chama no direct.
 
-📸 Fotos Manu e Marlon: Renata [@ a confirmar]
+📸 Fotos Manu e Marlon: Renata
 
 #assessoriadecasamento #casamentobh #impactarcerimonial #cerimonialbh
 
