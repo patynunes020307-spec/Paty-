@@ -10,6 +10,8 @@ import {
   duracaoMotion,
   MONTAGEM,
   MotionReel,
+  PADRINHOS,
+  CAUDA,
 } from "./MotionReel";
 import {
   Capa,
@@ -236,6 +238,24 @@ export const RemotionRoot: React.FC = () => {
         component={Diario}
         defaultProps={DIARIO}
         durationInFrames={duracaoDiario(DIARIO)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelPadrinhos"
+        component={MotionReel}
+        defaultProps={PADRINHOS}
+        durationInFrames={duracaoMotion(PADRINHOS)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelCauda"
+        component={MotionReel}
+        defaultProps={CAUDA}
+        durationInFrames={duracaoMotion(CAUDA)}
         fps={FPS}
         width={1080}
         height={1920}

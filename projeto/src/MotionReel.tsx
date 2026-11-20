@@ -465,3 +465,97 @@ export const ANTES_CONVIDADOS: MotionProps = {
     segundos: 3.5,
   },
 };
+
+// Reel D — "Antes de os padrinhos entrarem" (Banco de Ideias, Referência 2). Casamento 09/08/2025.
+const DI = "brutos/diario/";
+export const PADRINHOS: MotionProps = {
+  cenas: [
+    { arquivo: DI + "8011.mp4", inicio: 1.5, fim: 4.5 },
+    { arquivo: DI + "8017.mp4", inicio: 2.0, fim: 6.5 },
+    { arquivo: DI + "8027.mp4", inicio: 2.0, fim: 4.5 },
+    { arquivo: DI + "8032.mp4", inicio: 0, fim: 6.0 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Antes de os padrinhos entrarem,",
+    italico: "muita coisa já aconteceu.",
+    ate: 4.4,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "01",
+        linha: "Uma conversa rápida",
+        italico: "antes da fila.",
+      },
+      de: 4.6,
+      ate: 7.4,
+    },
+    {
+      frase: {
+        kicker: "02",
+        linha: "Últimos combinados",
+        italico: "com o noivo.",
+      },
+      de: 7.6,
+      ate: 9.9,
+    },
+    {
+      frase: {
+        kicker: "03",
+        linha: "E o cortejo entra",
+        italico: "no tempo certo.",
+      },
+      de: 10.1,
+      ate: 15.9,
+    },
+  ],
+  cta: {
+    linha: "A calma dos noivos",
+    italico: "começa antes da cerimônia.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};
+
+// Reel E — "Ninguém vê, mas alguém arruma a cauda" (Bastidor em 15 s). Casamento 09/08/2025.
+export const CAUDA: MotionProps = {
+  cenas: [
+    { arquivo: DI + "8035.mp4", inicio: 4.0, fim: 11.0 },
+    { arquivo: DI + "8054.mp4", inicio: 2.0, fim: 5.0 },
+    { arquivo: DI + "8103.mp4", inicio: 3.8, fim: 5.6 },
+  ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Ninguém vê,",
+    italico: "mas alguém arruma a cauda.",
+    ate: 3.6,
+  },
+  textos: [
+    {
+      frase: {
+        kicker: "01",
+        linha: "Antes da entrada,",
+        italico: "no chão, com calma.",
+      },
+      de: 3.8,
+      ate: 7.0,
+    },
+    {
+      frase: { kicker: "02", linha: "No altar,", italico: "o véu no lugar." },
+      de: 7.2,
+      ate: 10.0,
+    },
+    {
+      frase: { kicker: "03", linha: "Depois do sim,", italico: "ainda cuidando." },
+      de: 10.1,
+      ate: 11.8,
+    },
+  ],
+  cta: {
+    linha: "Cada detalhe,",
+    italico: "até o último.",
+    acao: "Manda a data e a cidade no direct.",
+    segundos: 3.5,
+  },
+};
