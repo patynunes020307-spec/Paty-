@@ -75,21 +75,8 @@ Roteiro aprovado: https://docs.google.com/document/d/1psQcMteCo13kLtvoGijRFzXbH0
 
 ## CRÉDITOS QUE FALTAM (para você conferir)
 
-### Carrossel Orçamento · 16/12
-Prévia (7 telas): https://drive.google.com/file/d/1Zhc4D1jFfhzs8f11BcKnX6ojoOvdYRkf/view
-Fotos para identificar o casamento e quem fotografou:
-1. Mesa posta com guardanapo e rosas
-2. Noiva dançando na pista, com globos espelhados
-3. Noiva entrando na igreja de portas abertas
-4. Três pessoas da equipe de uniforme azul, conferindo um papel
-5. Lembrancinhas numa estante de madeira
-6. Topo de bolo com bonecos de Star Wars
-7. Membro da equipe de azul conversando com um rapaz de terno
-
-**Legenda aprovada:**
-Se tudo parece importante no casamento, voltem à experiência que vocês querem viver. Depois, olhem o orçamento por inteiro: o que já foi contratado, o que falta e quando cada pagamento acontece. Essa visão ajuda a decidir o que preservar e o que adaptar, sem escolher só pela parcela ou por um item isolado. Salve para conversar a dois. Quer planejar seu casamento com esse cuidado? Me chama no direct para conversar sobre a assessoria.
-
-📸 [crédito]
+### Carrossel Orçamento
+✅ Já publicado pela Paty (informado em 21/11). Sem pendência de crédito.
 
 ### Carrossel Convidados de fora · 23/12
 Prévia (7 telas): https://drive.google.com/file/d/1Bn-HAQG9f70xvh6hQhD3_5QS56l0K4r-/view
