@@ -68,7 +68,7 @@ Roteiro aprovado: https://docs.google.com/document/d/1psQcMteCo13kLtvoGijRFzXbH0
 ---
 
 ## 4) Depois do sim: por onde começar? · prazo de gravação: 21/12 · vai ao ar 28/12
-✍️ Versão nova escrita em 21/11 (o roteiro original estava num link externo). **Aguardando aprovação da Paty.**
+✍️ Versão nova escrita em 21/11 (o roteiro original estava num link externo). **Aprovado pela Paty em 21/11.**
 Público: quem ficou noiva no fim do ano. Cerca de 35 a 40 segundos. Pode gravar no mesmo dia dos outros.
 
 **Bloco 1 (gancho):**
