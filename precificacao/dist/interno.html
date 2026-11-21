@@ -114,7 +114,7 @@ details.adj[open]>summary::after{content:"Ocultar"}
 <script>
 "use strict";
 const MODE = "interno";
-const SEED = {"versao":1,"empresa":{"nome":"Impactar Cerimonial","despesas":6956,"proLabore":0,"notaEstrutura":"R$ 6.956 já inclui o pró-labore e as duas guias DAS, por isso o pró-labore está em zero aqui.","eventosAno":25,"formas":[{"id":"pix","nome":"Pix","taxa":0}],"ajudas":[{"id":"manha","nome":"Ajuda de manhã","valor":25},{"id":"desloc50","nome":"Deslocamento acima de 50 km","valor":40}],"meta":{"tipo":"reais","valor":1000}},"pacotes":[{"id":"essencial","nome":"Essencial","precoRef":4200,"duracaoMeses":null,"nota":"","atividades":[{"id":"e-a1","nome":"Reuniões","qtd":3,"duracao":2,"prof":1,"rec":"unica"},{"id":"e-a2","nome":"Preparação final","qtd":1,"duracao":30,"prof":1,"rec":"unica"}],"escala":[{"id":"e-s1","funcao":"Sócias (turnos mais cedo)","qtd":2,"rem":"prolabore","horas":null,"valor":null,"extra":0,"ajudas":[],"nota":""},{"id":"e-s2","funcao":"Contratadas até o encerramento","qtd":2,"rem":"hora","horas":9,"valor":35,"extra":0,"ajudas":[],"nota":""}],"despesas":[{"id":"e-d1","nome":"Gasolina","valor":100},{"id":"e-d2","nome":"Impressos (reserva)","valor":40},{"id":"e-d3","nome":"Maleta (reposição, opcional: R$ 50 a R$ 100)","valor":0}]},{"id":"plus","nome":"Plus","precoRef":6900,"duracaoMeses":null,"nota":"","atividades":[{"id":"p-a1","nome":"Reuniões","qtd":4,"duracao":2,"prof":1,"rec":"unica"},{"id":"p-a2","nome":"Alinhamentos","qtd":1,"duracao":30,"prof":1,"rec":"unica"},{"id":"p-a3","nome":"Visitas","qtd":3,"duracao":3.5,"prof":1,"rec":"unica"}],"escala":[{"id":"p-s1","funcao":"Sócias (turnos mais cedo)","qtd":2,"rem":"prolabore","horas":null,"valor":null,"extra":0,"ajudas":[],"nota":""},{"id":"p-s2","funcao":"Contratadas até o encerramento","qtd":2,"rem":"hora","horas":9,"valor":35,"extra":0,"ajudas":[],"nota":""}],"despesas":[{"id":"p-d1","nome":"Gasolina","valor":100},{"id":"p-d2","nome":"Impressos (reserva)","valor":40},{"id":"p-d3","nome":"Maleta (reposição, opcional: R$ 50 a R$ 100)","valor":0}]},{"id":"premium","nome":"Premium Completa","precoRef":10435,"duracaoMeses":12,"nota":"Contrato de 12 meses. Duração e quantidade de encontros são editáveis.","atividades":[{"id":"m-a1","nome":"Reuniões bimestrais","qtd":6,"duracao":2,"prof":1,"rec":"unica"},{"id":"m-a2","nome":"Reunião final","qtd":1,"duracao":2,"prof":1,"rec":"unica"},{"id":"m-a3","nome":"Encontros","qtd":5,"duracao":3.5,"prof":1,"rec":"unica"},{"id":"m-a4","nome":"Alinhamentos","qtd":1,"duracao":30,"prof":1,"rec":"unica"},{"id":"m-a5","nome":"Cotações","qtd":1,"duracao":3,"prof":1,"rec":"mensal"}],"escala":[{"id":"m-s1","funcao":"Sócias (turnos mais cedo)","qtd":2,"rem":"prolabore","horas":null,"valor":null,"extra":0,"ajudas":[],"nota":""},{"id":"m-s2","funcao":"Contratadas até o encerramento","qtd":2,"rem":"hora","horas":9,"valor":35,"extra":0,"ajudas":[],"nota":""},{"id":"m-s3","funcao":"Profissional adicional","qtd":1,"rem":"hora","horas":4,"valor":35,"extra":0,"ajudas":[],"nota":"Previsto de 4 a 5h (R$ 910 a R$ 945 de custo direto). Ajuste conforme o evento."}],"despesas":[{"id":"m-d1","nome":"Gasolina","valor":100},{"id":"m-d2","nome":"Impressos (reserva)","valor":40},{"id":"m-d3","nome":"Maleta (reposição, opcional: R$ 50 a R$ 100)","valor":0}]}]};
+const SEED = {"versao":1,"empresa":{"nome":"Impactar Cerimonial","despesas":6956,"proLabore":0,"notaEstrutura":"R$ 6.956 já inclui o pró-labore e as duas guias DAS, por isso o pró-labore está em zero aqui.","eventosAno":25,"formas":[{"id":"pix","nome":"Pix","taxa":0}],"ajudas":[{"id":"manha","nome":"Ajuda de manhã","valor":25},{"id":"desloc50","nome":"Deslocamento acima de 50 km","valor":40}],"meta":{"tipo":"reais","valor":1000},"imposto":0,"cnpjs":2,"limiteAnual":81000,"tolerancia":20,"mix":{}},"pacotes":[{"id":"essencial","nome":"Essencial","precoRef":4200,"duracaoMeses":null,"nota":"","atividades":[{"id":"e-a1","nome":"Reuniões","qtd":3,"duracao":2,"prof":1,"rec":"unica"},{"id":"e-a2","nome":"Preparação final","qtd":1,"duracao":30,"prof":1,"rec":"unica"}],"escala":[{"id":"e-s1","funcao":"Sócias (turnos mais cedo)","qtd":2,"rem":"prolabore","horas":null,"valor":null,"extra":0,"ajudas":[],"nota":""},{"id":"e-s2","funcao":"Contratadas até o encerramento","qtd":2,"rem":"hora","horas":9,"valor":35,"extra":0,"ajudas":[],"nota":""}],"despesas":[{"id":"e-d1","nome":"Gasolina","valor":100},{"id":"e-d2","nome":"Impressos (reserva)","valor":40},{"id":"e-d3","nome":"Maleta (reposição, opcional: R$ 50 a R$ 100)","valor":0}]},{"id":"plus","nome":"Plus","precoRef":6900,"duracaoMeses":null,"nota":"","atividades":[{"id":"p-a1","nome":"Reuniões","qtd":4,"duracao":2,"prof":1,"rec":"unica"},{"id":"p-a2","nome":"Alinhamentos","qtd":1,"duracao":30,"prof":1,"rec":"unica"},{"id":"p-a3","nome":"Visitas","qtd":3,"duracao":3.5,"prof":1,"rec":"unica"}],"escala":[{"id":"p-s1","funcao":"Sócias (turnos mais cedo)","qtd":2,"rem":"prolabore","horas":null,"valor":null,"extra":0,"ajudas":[],"nota":""},{"id":"p-s2","funcao":"Contratadas até o encerramento","qtd":2,"rem":"hora","horas":9,"valor":35,"extra":0,"ajudas":[],"nota":""}],"despesas":[{"id":"p-d1","nome":"Gasolina","valor":100},{"id":"p-d2","nome":"Impressos (reserva)","valor":40},{"id":"p-d3","nome":"Maleta (reposição, opcional: R$ 50 a R$ 100)","valor":0}]},{"id":"premium","nome":"Premium Completa","precoRef":10435,"duracaoMeses":12,"nota":"Contrato de 12 meses. Duração e quantidade de encontros são editáveis.","atividades":[{"id":"m-a1","nome":"Reuniões bimestrais","qtd":6,"duracao":2,"prof":1,"rec":"unica"},{"id":"m-a2","nome":"Reunião final","qtd":1,"duracao":2,"prof":1,"rec":"unica"},{"id":"m-a3","nome":"Encontros","qtd":5,"duracao":3.5,"prof":1,"rec":"unica"},{"id":"m-a4","nome":"Alinhamentos","qtd":1,"duracao":30,"prof":1,"rec":"unica"},{"id":"m-a5","nome":"Cotações","qtd":1,"duracao":3,"prof":1,"rec":"mensal"}],"escala":[{"id":"m-s1","funcao":"Sócias (turnos mais cedo)","qtd":2,"rem":"prolabore","horas":null,"valor":null,"extra":0,"ajudas":[],"nota":""},{"id":"m-s2","funcao":"Contratadas até o encerramento","qtd":2,"rem":"hora","horas":9,"valor":35,"extra":0,"ajudas":[],"nota":""},{"id":"m-s3","funcao":"Profissional adicional","qtd":1,"rem":"hora","horas":4,"valor":35,"extra":0,"ajudas":[],"nota":"Previsto de 4 a 5h (R$ 910 a R$ 945 de custo direto). Ajuste conforme o evento."}],"despesas":[{"id":"m-d1","nome":"Gasolina","valor":100},{"id":"m-d2","nome":"Impressos (reserva)","valor":40},{"id":"m-d3","nome":"Maleta (reposição, opcional: R$ 50 a R$ 100)","valor":0}]}]};
 const BRAND = {"nome":"Impactar Cerimonial","sub":"Precificação interna"};
 
 /* ---------- utilidades ---------- */
@@ -142,7 +142,8 @@ const r2 = n => Math.round(n * 100) / 100;
 function contaVazia(){
   return { versao: 1,
     empresa: { nome: "", despesas: null, proLabore: null, notaEstrutura: "", eventosAno: null,
-      formas: [{ id: uid(), nome: "", taxa: null }], ajudas: [], meta: { tipo: "pct", valor: null } },
+      formas: [{ id: uid(), nome: "", taxa: null }], ajudas: [], meta: { tipo: "pct", valor: null },
+      imposto: null, cnpjs: null, limiteAnual: null, tolerancia: null, mix: {} },
     pacotes: [] };
 }
 function pacoteVazio(nome){
@@ -197,31 +198,44 @@ function calcSim(sim, emp){
   const forma = (emp.formas || []).find(f => f.id === sim.formaId) || (emp.formas || [])[0];
   if (!forma) falta.push("Empresa: forma de recebimento");
   else if (!isNum(forma.taxa)) falta.push(`Taxa de recebimento "${forma.nome || "sem nome"}"`);
+  if (!isNum(emp.imposto)) falta.push("Empresa: imposto sobre a venda (use 0 se o imposto é fixo mensal)");
   if (!isNum(sim.preco)) falta.push("Simulação: preço que pretende cobrar");
   const meta = sim.meta;
   if (!isNum(meta.valor)) falta.push("Meta de sobra");
-  const taxa = forma && isNum(forma.taxa) ? forma.taxa / 100 : 0;
+  const taxaForma = forma && isNum(forma.taxa) ? forma.taxa / 100 : 0;
+  const imp = isNum(emp.imposto) ? emp.imposto / 100 : 0;
+  const taxa = taxaForma + imp;
   const d = sim.desconto || { tipo: "reais", valor: 0 };
   const descV = !isNum(d.valor) ? 0 : d.tipo === "pct" ? (sim.preco || 0) * d.valor / 100 : d.valor;
   const preco = (sim.preco || 0) - descV;
   const base = P.custoDireto + (E.rateio || 0);
-  const taxasVenda = preco * taxa;
-  const sobra = preco - taxasVenda - base;
+  const taxasVenda = preco * taxaForma, impostoV = preco * imp;
+  const sobra = preco - taxasVenda - impostoV - base;
   const margem = preco > 0 ? sobra / preco : null;
   let precoMin = null, precoMeta = null, metaReais = null;
-  if (taxa >= 1) avisos.push("A taxa de recebimento é de 100% ou mais. Nenhum preço cobre os custos com essa taxa.");
+  if (taxa >= 1) avisos.push("Taxa de recebimento e imposto somam 100% ou mais da venda. Nenhum preço cobre os custos assim.");
   else precoMin = base / (1 - taxa);
   if (isNum(meta.valor)) {
     if (meta.tipo === "reais") { metaReais = meta.valor; if (taxa < 1) precoMeta = (base + meta.valor) / (1 - taxa); }
     else {
       const m = meta.valor / 100, div = 1 - taxa - m;
       metaReais = preco * m;
-      if (div <= 0) avisos.push(`Taxa de ${pct(taxa)} somada à margem desejada de ${pct(m)} chega a 100% ou mais da venda. Nenhum preço atinge essa meta: reduza a margem desejada ou use outra forma de recebimento.`);
+      if (div <= 0) avisos.push(`Taxa e imposto (${pct(taxa)}) somados à margem desejada de ${pct(m)} chega a 100% ou mais da venda. Nenhum preço atinge essa meta: reduza a margem desejada ou use outra forma de recebimento.`);
       else precoMeta = base / div;
     }
   }
   const ok = falta.length === 0 && E.rateio != null;
-  return { ...P, rateio: E.rateio, mensal: E.mensal, taxa, taxasVenda, descV, preco, sobra, margem, precoMin, precoMeta, metaReais, folga: metaReais == null ? null : sobra - metaReais, falta, avisos, ok, forma };
+  return { ...P, rateio: E.rateio, mensal: E.mensal, taxa, taxaForma, imp, impostoV, taxasVenda, descV, preco, sobra, margem, precoMin, precoMeta, metaReais, folga: metaReais == null ? null : sobra - metaReais, falta, avisos, ok, forma };
+}
+
+function calcLimite(emp, pacotes){
+  if (!isNum(emp.cnpjs) || !isNum(emp.limiteAnual) || emp.cnpjs <= 0 || emp.limiteAnual <= 0) return null;
+  const cap = emp.cnpjs * emp.limiteAnual, tol = isNum(emp.tolerancia) ? emp.tolerancia : 0, teto = cap * (1 + tol / 100);
+  const mix = emp.mix || {};
+  let fat = 0, n = 0;
+  pacotes.forEach(p => { const q = mix[p.id] || 0; n += q; fat += q * (p.precoRef || 0); });
+  const status = n === 0 ? null : fat <= cap ? "ok" : fat <= teto ? "faixa" : "acima";
+  return { cap, tol, teto, fat, n, status, precoMedioMax: isNum(emp.eventosAno) && emp.eventosAno > 0 ? cap / emp.eventosAno : null };
 }
 
 /* ---------- estado ---------- */
@@ -269,6 +283,9 @@ async function initStore(){
     S.sims = l && l.sims ? l.sims : [];
     setStatus("Só neste aparelho");
   }
+  // Contas criadas antes dos campos de imposto e limite recebem os valores iniciais.
+  const emp = S.conta.empresa, base = SEED ? SEED.empresa : contaVazia().empresa;
+  ["imposto", "cnpjs", "limiteAnual", "tolerancia", "mix"].forEach(k => { if (!(k in emp)) emp[k] = clone(base[k]); });
   const rascunho = lsGet(LKEY() + "-rascunho");
   S.sim = rascunho && rascunho.pac ? rascunho : novaSim(S.conta.pacotes[0]);
 }
@@ -431,7 +448,8 @@ function resultadoHTML(R, s){
     <div class="kpi ${good ? "good" : "bad"}"><div class="k">Margem</div><div class="v">${pct(R.margem)}</div></div></div>
     ${verdict}
     <div class="ln"><span class="l">Preço cobrado${R.descV ? `<small>${brl(s.preco)} − desconto ${brl(R.descV)}</small>` : ""}</span><span class="v">${brl(R.preco)}</span></div>
-    <div class="ln"><span class="l">− Taxas sobre a venda<small>${esc(R.forma ? R.forma.nome || "" : "")} ${pct(R.taxa)}</small></span><span class="v">${brl(R.taxasVenda)}</span></div>
+    <div class="ln"><span class="l">− Taxa de recebimento<small>${esc(R.forma ? R.forma.nome || "" : "")} ${pct(R.taxaForma)}</small></span><span class="v">${brl(R.taxasVenda)}</span></div>
+    ${R.imp ? `<div class="ln"><span class="l">− Imposto sobre a venda<small>${pct(R.imp)}</small></span><span class="v">${brl(R.impostoV)}</span></div>` : ""}
     <div class="ln"><span class="l">− Custo do evento<small>Equipe ${brl(R.equipe)} · ajudas ${brl(R.ajudas)} · despesas ${brl(R.despesas)}</small></span><span class="v">${brl(R.custoDireto)}</span></div>
     <div class="ln"><span class="l">− Parcela da estrutura<small>Média: ${brl(R.mensal)} × 12 ÷ ${S.conta.empresa.eventosAno} eventos</small></span><span class="v">${brl(R.rateio)}</span></div>
     <div class="ln"><span class="l"><b style="color:var(--fg)">= Sobra estimada</b></span><span class="v">${brl(R.sobra)}</span></div>
@@ -442,6 +460,9 @@ function resultadoHTML(R, s){
     <div class="ln"><span class="l">Horas de preparação</span><span class="v">${hrs(R.horasPrep)}</span></div>
     <div class="ln"><span class="l">Sobra por hora de preparação</span><span class="v">${R.horasPrep > 0 ? brl(R.sobra / R.horasPrep) : "—"}</span></div>
     <div class="ln"><span class="l">Pessoas na escala · horas no dia</span><span class="v">${R.pessoas} · ${hrs(R.horasDia)}</span></div>
+    ${(() => { const L = calcLimite(S.conta.empresa, S.conta.pacotes); if (!L || !isNum(S.conta.empresa.eventosAno)) return "";
+      const ano = R.preco * S.conta.empresa.eventosAno, cor = ano <= L.cap ? "good" : ano <= L.teto ? "warn" : "bad";
+      return `<div style="height:10px"></div><div class="verdict ${cor}" style="font-weight:500">Se os ${S.conta.empresa.eventosAno} eventos do ano fossem a este preço: ${brl(ano)} de faturamento. Limite: ${brl(L.cap)}${L.tol ? ` (${brl(L.teto)} com a tolerância de ${L.tol}%)` : ""}.</div>`; })()}
     <p class="note">A parcela da estrutura é uma média anual por evento. Pró-labore entra só na estrutura; na escala conta apenas pagamento extra.</p>`;
 }
 
@@ -480,10 +501,37 @@ function viewEmpresa(){
       <div class="ln"><span class="l">Parcela média por evento<small>Estrutura mensal × 12 ÷ eventos por ano</small></span><span class="v" data-out="rateio">${brl(E.rateio)}</span></div>
       ${E.avisos.map(a => `<div class="verdict warn">${esc(a)}</div>`).join("")}</div>
     <div class="card stack"><h3>Taxas de recebimento</h3><p class="note" style="margin:0">Percentual descontado da venda. Zero é válido.</p>${formas}<div class="actions"><button class="b sm" data-act="add" data-path="conta.empresa.formas" data-kind="forma">+ Forma de recebimento</button></div></div>
+    <div class="card stack"><h3>Imposto sobre a venda</h3><div class="row">${fNum("Imposto sobre cada venda", "conta.empresa.imposto", { req: 1, suf: "%", hint: "0 se o imposto é fixo mensal e já está na estrutura" })}</div></div>
+    ${limiteCard()}
     <div class="card stack"><h3>Ajudas de custo</h3><p class="note" style="margin:0">Cadastre aqui e marque por pessoa na escala de cada pacote ou simulação.</p>${ajudas || `<p class="empty-s">Nenhuma ajuda cadastrada.</p>`}<div class="actions"><button class="b sm" data-act="add" data-path="conta.empresa.ajudas" data-kind="ajuda">+ Ajuda de custo</button></div></div>
     <div class="card stack"><h3>Meta padrão de sobra</h3><div class="row">${fSel("Meta em", "conta.empresa.meta.tipo", [["reais", "Reais por evento"], ["pct", "Percentual sobre a venda"]])}${fNum("Meta", "conta.empresa.meta.valor", e.meta.tipo === "pct" ? { req: 1, suf: "%" } : { req: 1, pre: "R$" })}</div><p class="note" style="margin:0">Cada simulação começa com esta meta e pode alterá-la.</p></div>
     ${SEED ? `<div class="card stack"><h3>Cenário original</h3><p class="note" style="margin:0">Restaura empresa e pacotes para os valores iniciais. Simulações salvas não são afetadas.</p><div class="actions">${S.confirm === "seed" ? `<button class="b danger" data-act="seed">Restaurar agora</button><button class="b ghost" data-act="cancel">Cancelar</button>` : `<button class="b" data-act="ask" data-path="seed">Restaurar cenário original</button>`}</div></div>` : ""}
   </div>`;
+}
+
+function limiteCard(){
+  const e = S.conta.empresa;
+  const mix = S.conta.pacotes.map(p => `<label class="f">${esc(p.nome || "Sem nome")} <span class="hint">${brl(p.precoRef)}</span><span class="inp"><input type="text" inputmode="decimal" autocomplete="off" data-k="conta.empresa.mix.${p.id}" data-t="num" value="${esc(fmtIn((e.mix || {})[p.id]))}" placeholder="0"><span>eventos</span></span></label>`).join("");
+  return `<div class="card stack"><div class="sec-t"><h3>Limite de faturamento</h3></div>
+    <p class="note" style="margin:0">Opcional. Preencha se o seu enquadramento tem teto de faturamento anual.</p>
+    <div class="row">${fNum("CNPJs que emitem nota", "conta.empresa.cnpjs", {})}${fNum("Limite anual por CNPJ", "conta.empresa.limiteAnual", { pre: "R$" })}${fNum("Tolerância", "conta.empresa.tolerancia", { suf: "%", hint: "antes do desenquadramento" })}</div>
+    ${mix ? `<div><div class="note" style="margin:0 0 6px">Quantos eventos de cada pacote você espera fechar no ano</div><div class="row">${mix}</div></div>` : ""}
+    <div id="limiteOut"></div></div>`;
+}
+function limiteOutHTML(){
+  const e = S.conta.empresa, L = calcLimite(e, S.conta.pacotes);
+  if (!L) return "";
+  let h = `<div class="ln"><span class="l">Limite somado<small>${e.cnpjs} × ${brl(e.limiteAnual)}, supondo faturamento bem dividido entre os CNPJs</small></span><span class="v">${brl(L.cap)}</span></div>`;
+  if (L.precoMedioMax != null) h += `<div class="ln"><span class="l">Preço médio máximo por evento<small>Limite ÷ ${e.eventosAno} eventos previstos</small></span><span class="v">${brl(L.precoMedioMax)}</span></div>`;
+  if (L.status) {
+    h += `<div class="ln"><span class="l">Faturamento previsto<small>${L.n} eventos no preço de referência</small></span><span class="v">${brl(L.fat)}</span></div>`;
+    const msg = L.status === "ok" ? ["good", `Dentro do limite. Sobram ${brl(L.cap - L.fat)} de folga no ano.`]
+      : L.status === "faixa" ? ["warn", `Passa o limite em ${brl(L.fat - L.cap)}, dentro da tolerância de ${L.tol}%. O excesso paga imposto complementar. Confirme com a contabilidade.`]
+      : ["bad", `Passa o limite em ${brl(L.fat - L.cap)}, acima da tolerância de ${L.tol}%. Risco de desenquadramento e imposto sobre o faturamento do ano. Fale com a contabilidade antes de fechar esses contratos.`];
+    h += `<div class="verdict ${msg[0]}">${msg[1]}</div>`;
+    if (isNum(e.eventosAno) && L.n !== e.eventosAno) h += `<p class="note" style="margin:0">A soma dos eventos por pacote (${L.n}) é diferente dos ${e.eventosAno} eventos usados no rateio da estrutura.</p>`;
+  }
+  return h;
 }
 
 function viewSalvas(){
@@ -509,7 +557,7 @@ function recalc(){
       : `<div><div class="k">Sobra</div><div class="v" style="color:var(${R.sobra >= 0 ? "--good" : "--bad"})">${brl(R.sobra)}</div></div><div><div class="k">Margem</div><div class="v">${pct(R.margem)}</div></div><div><div class="k">Preço p/ meta</div><div class="v">${brl(R.precoMeta)}</div></div>`;
   }
   if (S.view === "pacotes" && S.conta.pacotes[S.pacIdx]) { const p = S.conta.pacotes[S.pacIdx]; updOuts(p, calcPacote(p, e)); }
-  if (S.view === "empresa") { const E = calcEstrutura(e); const a = document.querySelector('[data-out="estr"]'); if (a) a.textContent = brl(E.mensal) + " / mês"; const r = document.querySelector('[data-out="rateio"]'); if (r) r.textContent = brl(E.rateio); }
+  if (S.view === "empresa") { const lo = $("#limiteOut"); if (lo) lo.innerHTML = limiteOutHTML(); const E = calcEstrutura(e); const a = document.querySelector('[data-out="estr"]'); if (a) a.textContent = brl(E.mensal) + " / mês"; const r = document.querySelector('[data-out="rateio"]'); if (r) r.textContent = brl(E.rateio); }
 }
 function updOuts(pac, C){
   const set = (k, t) => { const el = document.querySelector(`[data-out="${k}"]`); if (el) el.textContent = t; };
