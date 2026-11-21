@@ -288,12 +288,12 @@
       "valor": 82
     },
     {
-      "nome": "Assessoria",
-      "valor": null
+      "nome": "Assessoria VIP",
+      "valor": 150
     },
     {
       "nome": "Contador",
-      "valor": null
+      "valor": 90
     },
     {
       "nome": "Caixa (reserva)",
@@ -304,8 +304,12 @@
       "valor": 200
     },
     {
-      "nome": "Pró-labore",
-      "valor": null
+      "nome": "Pró-labore Paty",
+      "valor": 3000
+    },
+    {
+      "nome": "Pró-labore Viviane",
+      "valor": 3000
     }
   ]
 }
