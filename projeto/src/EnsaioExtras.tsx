@@ -414,3 +414,21 @@ export const CAPA_15_FESTA: CapaProps = {
   },
   semLogo: true,
 };
+
+// Reel Conjunto — "Qual parte ficou por sua conta?" (casamento 09/08/2025, equipe Impactar).
+export const CAPA_CONJUNTO: CapaProps = {
+  arquivo: "brutos/diario/7967.mp4",
+  inicio: 3.5,
+  enquadramento: "50% 50%",
+  frase: {
+    kicker: "Bastidores da Impactar",
+    linha: "Qual parte",
+    italico: "ficou por sua conta?",
+  },
+  logo: {
+    top: 50,
+    left: 690,
+    width: 290,
+    png: "marca/png/script-petroleo.png",
+  },
+};

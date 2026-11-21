@@ -30,6 +30,7 @@ import {
   CAPA_LAPELA,
   CAPA_GOLA,
   CAPA_15_FESTA,
+  CAPA_CONJUNTO,
   CAPA_PADRINHOS,
   CAPA_ROTEIRO,
   CAPA_ULTIMA_VOLTA,
@@ -451,6 +452,15 @@ export const RemotionRoot: React.FC = () => {
         id="Capa15Festa"
         component={Capa}
         defaultProps={CAPA_15_FESTA}
+        durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaConjunto"
+        component={Capa}
+        defaultProps={CAPA_CONJUNTO}
         durationInFrames={1}
         fps={FPS}
         width={1080}

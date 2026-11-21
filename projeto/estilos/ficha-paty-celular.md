@@ -1,6 +1,6 @@
 # Ficha de estilo da Paty — "editado no celular"
 - Criada em 20/11/2026 a pedido da Paty: "salva essa ficha de estilo e segue ela toda vez que editar pra mim".
-- Status: **item 7 incompleto** (a mensagem terminou em "7.") — aguardando o texto.
+- Status: **FECHADA com 6 itens** (21/11/2026: a Paty deixou a decisão comigo; o item 7 nunca foi enviado). Se ela mandar um item novo, acrescentar.
 - Escopo: **CONFIRMADO pela Paty em 20/11 ("Ok"): vale para vídeos falados (pessoa falando para a câmera).** Reels de bastidor da Impactar seguem o Guia do Notion. Histórico: Conflita com o Guia de Publicações da Impactar (Notion) em: caixa branca e faixa preta (o Guia proíbe "caixas com borda, faixas"), legenda minúscula sem fonte da marca, logos de outros sistemas. Até a resposta: vale para **vídeos falados (pessoa falando para a câmera)**; os Reels de bastidor da Impactar seguem `impactar-guia-oficial.md`.
 
 ## Regras
@@ -19,7 +19,6 @@
    - fluxo caixa → caixa.
    - **No máximo uma a cada 8 a 10 s.**
 6. **Movimento:** cada peça entra com **um pulo rápido (0,3 s)** e **sai seca**. **Aproximação seca de ~14%** no começo das frases fortes.
-7. _(pendente — a Paty não terminou)_
 
 ## Como aplicar no Remotion (notas técnicas)
 - Posição: detectar o rosto **uma vez por plano** (não seguir quadro a quadro — proibido no CLAUDE.md) e reservar a faixa acima da cabeça para abertura/peças e a faixa do peito para a legenda.
