@@ -131,54 +131,45 @@ for col, w in zip("ABCDEFGH", (12, 15, 10, 20, 28, 14, 12, 40)):
 wl.freeze_panes = "A4"
 
 # ---------------------------------------------------------------- Eventos
-NE = 60  # eventos
+NE = 80  # eventos
 we = ws_new("Eventos")
 put(we, "A1", "Eventos e parcelas a receber", f_tit)
-put(we, "A2", "Uma linha por evento fechado. A planilha distribui a entrada e as parcelas nos meses e soma quanto entra por mês. " + LEG, f_nota)
-MC = [chr(ord("L") + i) for i in range(len(MESES))]  # colunas dos meses: L a X
+put(we, "A2", "Uma linha por evento fechado. Em cada mês, escreva quanto daquele contrato vai entrar (entrada e parcelas, mesmo com valores diferentes ou meses pulados). " + LEG, f_nota)
+MC = [chr(ord("G") + i) for i in range(len(MESES))]  # colunas dos meses: G a S
 c0, c1 = MC[0], MC[-1]
-hdr = ["Evento / cliente", "Data do evento", "Pacote", "Valor do contrato", "Forma de pagamento", "Valor da entrada",
-       "Mês da entrada", "Nº de parcelas", "Valor de cada parcela", "Mês da 1ª parcela", "Posição da 1ª parcela"] + MESES + [
-       "Total no período", "Total em 2027", "Fora do período"]
+TC, T27, FD = "T", "U", "V"
+hdr = ["Evento / cliente", "Data do evento", "Pacote", "Valor do contrato", "Forma de pagamento", "Como foi combinado"] + MESES + [
+       "Total combinado no período", "Total em 2027", "Falta distribuir"]
 header(we, 4, hdr, height=48)
-for i in range(len(MESES)):  # linha 3: posição do mês, usada nas fórmulas
-    put(we, f"{MC[i]}3", i + 1, f_nota, align="center")
-put(we, "K3", "posição →", f_nota, align="right")
 fim = 4 + NE
 tot = fim + 1
-TC, T27, FP = "Y", "Z", "AA"
 for r in range(5, fim + 1):
-    put(we, f"A{r}", None, f_in)
-    put(we, f"B{r}", None, f_in, DATA)
-    put(we, f"C{r}", None, f_in)
-    put(we, f"D{r}", None, f_in, BRL)
-    put(we, f"E{r}", None, f_in)
-    put(we, f"F{r}", None, f_in, BRL)
-    put(we, f"G{r}", None, f_in)
-    put(we, f"H{r}", None, f_in, "0")
-    put(we, f"I{r}", f'=IF(OR(D{r}="",N(H{r})=0),0,(D{r}-N(F{r}))/H{r})', fmt=BRL)
-    put(we, f"J{r}", None, f_in)
-    put(we, f"K{r}", f'=IFERROR(MATCH(J{r},${c0}$4:${c1}$4,0),"")', fmt="0", align="center")
+    put(we, f"A{r}", None, f_in, fill=fill_in)
+    put(we, f"B{r}", None, f_in, DATA, fill_in)
+    put(we, f"C{r}", None, f_in, fill=fill_in)
+    put(we, f"D{r}", None, f_in, BRL, fill_in)
+    put(we, f"E{r}", None, f_in, fill=fill_in)
+    put(we, f"F{r}", None, f_in, fill=fill_in)
     for col in MC:
-        put(we, f"{col}{r}", f'=IF($A{r}="",0,IF({col}$4=$G{r},N($F{r}),0)+IF(AND($K{r}<>"",{col}$3>=$K{r},{col}$3<$K{r}+N($H{r})),$I{r},0))', fmt=BRL)
+        put(we, f"{col}{r}", None, f_in, BRL, fill_in)
     put(we, f"{TC}{r}", f"=SUM({c0}{r}:{c1}{r})", f_tot, BRL)
     put(we, f"{T27}{r}", f"=SUM({MC[1]}{r}:{c1}{r})", fmt=BRL)
-    put(we, f"{FP}{r}", f'=IF(A{r}="","",N(D{r})-{TC}{r})', fmt=BRL)
+    put(we, f"{FD}{r}", f'=IF(A{r}="","",N(D{r})-{TC}{r})', fmt=BRL)
 put(we, f"A{tot}", "Total que entra por mês", f_tot, fill=fill_tot)
-for col in ["D", "F"] + MC + [TC, T27]:
+for col in ["D"] + MC + [TC, T27]:
     put(we, f"{col}{tot}", f"=SUM({col}5:{col}{fim})", f_tot, BRL, fill_tot)
-put(we, f"A{tot + 2}", "Fora do período: parte do contrato que não cai entre dez/2026 e dez/2027 (parcela antes ou depois), ou meses não preenchidos. Se tudo cair no período, fica zero.", f_nota)
-put(we, f"A{tot + 3}", "As parcelas de clientes ficam só aqui. Na aba Lançamentos, registre o que realmente entrou, como Realizado.", f_nota)
+put(we, f"A{tot + 2}", "Falta distribuir: valor do contrato menos o que foi escrito nos meses. Tem que ficar zero. Se não ficar, faltou ou sobrou parcela (ou ela cai depois de dez/2027).", f_nota)
+put(we, f"A{tot + 3}", "Parcela que vai entrar fica só aqui. Dinheiro que entrou de verdade vai na aba Lançamentos, como Cliente e Realizado.", f_nota)
 for ref, lista in ((f"E5:E{fim}", ["Pix", "Transferência", "Boleto", "Cartão de crédito", "Dinheiro", "Misto"]),
-                   (f"C5:C{fim}", ["Essencial", "Plus", "Premium Completa", "Outro"]),
-                   (f"G5:G{fim}", MESES), (f"J5:J{fim}", MESES)):
+                   (f"C5:C{fim}", ["Essencial", "Plus", "Premium Completa", "Outro"])):
     dv = DataValidation(type="list", formula1='"' + ",".join(lista) + '"', allow_blank=True)
     we.add_data_validation(dv)
     dv.add(ref)
-we.conditional_formatting.add(f"{FP}5:{FP}{fim}", FormulaRule(formula=[f'AND({FP}5<>"",ABS({FP}5)>=0.01)'], fill=amar))
-for col, w in zip("ABCDEFGHIJK", (26, 12, 14, 14, 15, 13, 14, 9, 13, 14, 9)):
+we.conditional_formatting.add(f"{FD}5:{FD}{fim}", FormulaRule(formula=[f'AND({FD}5<>"",ABS({FD}5)>=0.01)'], fill=amar, font=font_verm))
+we.conditional_formatting.add(f"{FD}5:{FD}{fim}", FormulaRule(formula=[f'AND({FD}5<>"",ABS({FD}5)<0.01)'], fill=verde, font=font_verde))
+for col, w in zip("ABCDEF", (26, 12, 15, 14, 15, 24)):
     we.column_dimensions[col].width = w
-for col in MC + [TC, T27, FP]:
+for col in MC + [TC, T27, FD]:
     we.column_dimensions[col].width = 13
 we.freeze_panes = "B5"
 EV_MESES = f"Eventos!${c0}$4:${c1}$4"
@@ -248,7 +239,42 @@ for col in "IKL":
     wr.column_dimensions[col].width = 13
 wr.freeze_panes = "B5"
 
-wb._sheets.sort(key=lambda w: ["Mês a mês", "Eventos", "Lançamentos", "Metas e fixos"].index(w.title))
+# ---------------------------------------------------------------- Como usar
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from manual_conteudo import MANUAL
+wh = ws_new("Como usar")
+r = 1
+for tipo, txt in MANUAL:
+    if tipo == "tab":
+        for k, linha in enumerate(txt):
+            for j, v in enumerate(linha):
+                c = wh.cell(row=r, column=1 + j, value=v)
+                c.alignment = Alignment(wrap_text=True, vertical="top")
+                if k == 0:
+                    c.font = f_head; c.fill = fill_head
+                else:
+                    c.font = f_base
+            r += 1
+        r += 1
+        continue
+    if tipo == "s":
+        r += 1
+    c = wh.cell(row=r, column=1, value=txt)
+    c.alignment = Alignment(wrap_text=True, vertical="top")
+    c.font = {"t": f_tit, "s": Font(name=F, size=12, bold=True, color="203F51"), "a": font_verm,
+              "d": Font(name=F, size=10, italic=True, color="1E6B4A"), "x": Font(name=F, size=10, color="3C6A78")}.get(tipo, f_base)
+    if tipo in ("x", "a", "d"):
+        c.fill = {"x": PatternFill("solid", fgColor="EAF1F1"), "a": verm, "d": verde}[tipo]
+    if tipo in ("p", "n", "x", "a", "d"):
+        wh.merge_cells(start_row=r, start_column=1, end_row=r, end_column=3)
+        wh.row_dimensions[r].height = 16 * max(1, -(-len(txt) // 110))
+    r += 1
+wh.column_dimensions["A"].width = 40
+wh.column_dimensions["B"].width = 55
+wh.column_dimensions["C"].width = 40
+
+wb._sheets.sort(key=lambda w: ["Como usar", "Mês a mês", "Eventos", "Lançamentos", "Metas e fixos"].index(w.title))
 wb.active = 0
 wb.save(OUT)
 print(OUT, OUT.stat().st_size)
