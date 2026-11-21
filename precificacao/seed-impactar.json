@@ -2,9 +2,9 @@
   "versao": 1,
   "empresa": {
     "nome": "Impactar Cerimonial",
-    "despesas": 6956,
+    "despesas": 6704,
     "proLabore": 0,
-    "notaEstrutura": "R$ 6.956 já inclui o pró-labore e as duas guias DAS, por isso o pró-labore está em zero aqui.",
+    "notaEstrutura": "R$ 6.704 por mês = pró-labore Paty R$ 3.000 + pró-labore Viviane R$ 3.000 + décimo terceiro R$ 200 + assessoria VIP R$ 150 + caixa (reserva) R$ 100 + contador R$ 90 + DAS CNPJ 1 R$ 82 + DAS CNPJ 2 R$ 82. O pró-labore está em zero no campo ao lado porque já está somado aqui. Mesma lista das saídas fixas da aba Financeiro.",
     "eventosAno": 25,
     "formas": [
       {
