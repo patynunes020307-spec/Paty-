@@ -400,7 +400,7 @@ function btnDel(path, what){
 }
 
 /* ---------- views ---------- */
-const TABS = [["simular", "Simular"], ["pacotes", "Pacotes"], ["empresa", "Empresa"], ["salvas", "Salvas"], ...(FIN ? [["financeiro", "Financeiro"]] : [])];
+const TABS = [["simular", "Simular"], ["pacotes", "Pacotes"], ["empresa", "Empresa"], ["salvas", "Salvas"], ];
 function renderTabs(){ $("#tabs").innerHTML = TABS.map(([k, t]) => `<button data-act="tab" data-v="${k}" aria-current="${S.view === k}">${t}${k === "salvas" && S.sims.length ? ` (${S.sims.length})` : ""}</button>`).join(""); }
 
 function render(){
@@ -532,6 +532,7 @@ function viewEmpresa(){
       <div class="ln"><span class="l">Parcela média por evento<small>Estrutura mensal × 12 ÷ eventos por ano</small></span><span class="v" data-out="rateio">${brl(E.rateio)}</span></div>
       ${E.avisos.map(a => `<div class="verdict warn">${esc(a)}</div>`).join("")}</div>
     <div class="card stack"><h3>Taxas de recebimento</h3><p class="note" style="margin:0">Percentual descontado da venda. Zero é válido.</p>${formas}<div class="actions"><button class="b sm" data-act="add" data-path="conta.empresa.formas" data-kind="forma">+ Forma de recebimento</button></div></div>
+    ${FIN ? composicaoCard() : ""}
     <div class="card stack"><h3>Imposto sobre a venda</h3><div class="row">${fNum("Imposto sobre cada venda", "conta.empresa.imposto", { req: 1, suf: "%", hint: "0 se o imposto é fixo mensal e já está na estrutura" })}</div></div>
     ${limiteCard()}
     <div class="card stack"><h3>Ajudas de custo</h3><p class="note" style="margin:0">Cadastre aqui e marque por pessoa na escala de cada pacote ou simulação.</p>${ajudas || `<p class="empty-s">Nenhuma ajuda cadastrada.</p>`}<div class="actions"><button class="b sm" data-act="add" data-path="conta.empresa.ajudas" data-kind="ajuda">+ Ajuda de custo</button></div></div>
@@ -540,6 +541,17 @@ function viewEmpresa(){
   </div>`;
 }
 
+function composicaoCard(){
+  const F = S.fin, e = S.conta.empresa;
+  const soma = (F.fixas || []).reduce((a, f) => a + (isNum(f.valor) ? f.valor : 0), 0);
+  const est = (e.despesas || 0) + (e.proLabore || 0);
+  const itens = (F.fixas || []).map((f, i) => { const p = `fin.fixas.${i}`; return `<div class="item"><div class="head"><span></span>${btnDel(p, "custo fixo")}</div><div class="row">${fTxt("Custo fixo", p + ".nome", "Contador, DAS, internet…")}${fNum("Valor por mês", p + ".valor", { req: 1, pre: "R$" })}</div></div>`; }).join("");
+  return `<div class="card stack"><div class="sec-t"><h3>Composição da estrutura</h3><span class="tot" data-out="compsoma">${brl(soma)} / mês</span></div>
+    <p class="note" style="margin:0">Detalhe que aparece no resultado da simulação. O controle financeiro do mês fica na planilha Google; mantenha os mesmos valores nos dois lugares.</p>
+    ${itens}
+    <div class="actions"><button class="b sm" data-act="add" data-path="fin.fixas" data-kind="fixa">+ Custo fixo</button>${Math.abs(soma - est) >= 1 ? `<button class="b sm pri" data-act="usarsoma">Usar ${brl(soma)} como estrutura mensal</button>` : ""}</div>
+    ${Math.abs(soma - est) >= 1 ? `<div class="verdict warn">A composição soma ${brl(soma)}, mas a estrutura usada no cálculo é ${brl(est)}.</div>` : ""}</div>`;
+}
 function limiteCard(){
   const e = S.conta.empresa;
   const mix = S.conta.pacotes.map(p => `<label class="f">${esc(p.nome || "Sem nome")} <span class="hint">${brl(p.precoRef)}</span><span class="inp"><input type="text" inputmode="decimal" autocomplete="off" data-k="conta.empresa.mix.${p.id}" data-t="num" value="${esc(fmtIn((e.mix || {})[p.id]))}" placeholder="0"><span>eventos</span></span></label>`).join("");
@@ -682,6 +694,7 @@ function recalc(){
   }
   if (S.view === "pacotes" && S.conta.pacotes[S.pacIdx]) { const p = S.conta.pacotes[S.pacIdx]; updOuts(p, calcPacote(p, e)); }
   if (S.view === "financeiro") { const fr = $("#finResumo"); if (fr) fr.innerHTML = finResumoHTML(); document.querySelectorAll("[data-ctsum]").forEach(el => { const c = S.fin.contratos.find(x => x.id === el.dataset.ctsum); if (c) el.innerHTML = ctSumHTML(c); }); }
+  if (S.view === "empresa" && FIN) { const cs = document.querySelector('[data-out="compsoma"]'); if (cs) cs.textContent = brl((S.fin.fixas || []).reduce((a, f) => a + (isNum(f.valor) ? f.valor : 0), 0)) + " / mês"; }
   if (S.view === "empresa") { const lo = $("#limiteOut"); if (lo) lo.innerHTML = limiteOutHTML(); const E = calcEstrutura(e); const a = document.querySelector('[data-out="estr"]'); if (a) a.textContent = brl(E.mensal) + " / mês"; const r = document.querySelector('[data-out="rateio"]'); if (r) r.textContent = brl(E.rateio); }
 }
 function updOuts(pac, C){
@@ -779,6 +792,7 @@ document.addEventListener("click", async ev => {
     else { S.sim = s; S.view = "simular"; saveDraft(); }
   }
   else if (a === "delsim") { const id = b.dataset.id; S.sims = S.sims.filter(x => x.id !== id); if (S.sim.id === id) S.sim.id = null; await deleteSimDoc(id); }
+  else if (a === "usarsoma") { S.conta.empresa.despesas = r2((S.fin.fixas || []).reduce((x, f) => x + (isNum(f.valor) ? f.valor : 0), 0)); S.conta.empresa.proLabore = 0; saveConta(); }
   else if (a === "finano") { S.fin.ano += +b.dataset.d; saveFin(); }
   else if (a === "ctopen") S.finOpen = S.finOpen === b.dataset.id ? null : b.dataset.id;
   else if (a === "ctcusto") { const c = S.fin.contratos[+b.dataset.i], p = S.conta.pacotes.find(x => x.id === c.pacoteId); if (p) { const C = calcPacote(p, S.conta.empresa); c.custo = r2(C.custoDireto); if (!isNum(c.valor)) c.valor = p.precoRef; saveFin(); } }
