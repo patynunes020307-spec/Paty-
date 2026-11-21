@@ -68,8 +68,29 @@ Roteiro aprovado: https://docs.google.com/document/d/1psQcMteCo13kLtvoGijRFzXbH0
 ---
 
 ## 4) Depois do sim: por onde começar? · prazo de gravação: 21/12 · vai ao ar 28/12
-⚠ O roteiro aprovado em 19/11 ficou no material "Direções de gravação — Impactar" (link externo), que eu não consigo abrir. No Drive e no Notion não tem cópia.
-→ **Me mande o texto ou um print das 4 falas**, ou peça que eu escreva uma versão nova para você aprovar.
+✍️ Versão nova escrita em 21/11 (o roteiro original estava num link externo). **Aguardando aprovação da Paty.**
+Público: quem ficou noiva no fim do ano. Cerca de 35 a 40 segundos. Pode gravar no mesmo dia dos outros.
+
+**Bloco 1 (gancho):**
+"Ficou noiva agora? Antes de sair pesquisando tudo, faz só três coisas, nessa ordem."
+
+**Bloco 2:**
+"Primeiro: conversem a dois sobre o casamento que vocês querem viver. Grande ou íntimo, de dia ou à noite, cerimônia religiosa ou não. É isso que guia todas as escolhas."
+
+**Bloco 3:**
+"Segundo: tenham uma ideia de quantos convidados e de quanto querem investir no total. Terceiro: só então procurem o espaço, porque ele depende desses dois números e define a data."
+
+**Bloco 4 (CTA):**
+"Com isso claro, o resto fica muito mais leve. Quer começar com calma? Me chama no direct."
+
+**Legenda sugerida:**
+Ficou noiva? Que alegria! 🤍
+
+Antes de abrir mil abas de pesquisa, comecem pelo que organiza todo o resto: o casamento que vocês querem viver, uma estimativa de convidados e o valor total que faz sentido investir. Com isso em mãos, a escolha do espaço e da data fica muito mais clara.
+
+Salve para o primeiro encontro de planejamento a dois. Quer começar com calma? Me chama no direct.
+
+#noivas2027 #casamentobh #assessoriadecasamento #impactarcerimonial #noivadoano
 
 ---
 
