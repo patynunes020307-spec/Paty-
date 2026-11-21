@@ -73,38 +73,5 @@ Roteiro aprovado: https://docs.google.com/document/d/1psQcMteCo13kLtvoGijRFzXbH0
 
 ---
 
-## CRÉDITOS QUE FALTAM (para você conferir)
-
-### Carrossel Orçamento · 16/12
-Prévia (7 telas): https://drive.google.com/file/d/1Zhc4D1jFfhzs8f11BcKnX6ojoOvdYRkf/view
-Fotos para identificar o casamento e quem fotografou:
-1. Mesa posta com guardanapo e rosas
-2. Noiva dançando na pista, com globos espelhados
-3. Noiva entrando na igreja de portas abertas
-4. Três pessoas da equipe de uniforme azul, conferindo um papel
-5. Lembrancinhas numa estante de madeira
-6. Topo de bolo com bonecos de Star Wars
-7. Membro da equipe de azul conversando com um rapaz de terno
-
-**Legenda aprovada:**
-Se tudo parece importante no casamento, voltem à experiência que vocês querem viver. Depois, olhem o orçamento por inteiro: o que já foi contratado, o que falta e quando cada pagamento acontece. Essa visão ajuda a decidir o que preservar e o que adaptar, sem escolher só pela parcela ou por um item isolado. Salve para conversar a dois. Quer planejar seu casamento com esse cuidado? Me chama no direct para conversar sobre a assessoria.
-
-📸 [crédito]
-
-### Carrossel Convidados de fora · 23/12
-Prévia (7 telas): https://drive.google.com/file/d/1Bn-HAQG9f70xvh6hQhD3_5QS56l0K4r-/view
-Fotos para identificar o casamento e quem fotografou:
-1. Assessora de blusa rosa com mala (ensaio Paty e Vivi?)
-2. Assessora de preto orientando um senhor
-3. Noivos brindando sob as flores
-4. Noivos entrando pela porta em arco
-5. Abraço no salão, com a assessora ao lado
-6. Salão com lustre e convidados
-7. Assessora de preto conduzindo o casal
-
-**Legenda aprovada:**
-O convite conta onde e quando. Quem vem de outra cidade pode precisar de outras orientações: hospedagem, acesso ao espaço, ida e volta e um contato para dúvidas. Confiram as informações, expliquem o que está combinado e deixem claro o que cada convidado precisa organizar. Salve para preparar essa recepção com carinho. Quer conversar sobre a assessoria do seu casamento? Me chama no direct.
-
-📸 [crédito]
-
-**Como me responder:** "Orçamento: fotos do casamento X, fotógrafo Y" (ou "equipe", que fica sem crédito). Com isso, eu agendo os dois no Metricool.
+## CARROSSÉIS ORÇAMENTO (16/12) E CONVIDADOS DE FORA (23/12)
+✅ Agendados no Metricool em 21/11, às 10h, **sem crédito na legenda** (decisão da Paty).
