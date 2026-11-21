@@ -453,6 +453,17 @@ function pickPac(){
   return `<p class="lead">Escolha o pacote para começar.</p><div class="list">${S.conta.pacotes.map(p => `<button class="b" style="text-align:left" data-act="pick" data-id="${p.id}">${esc(p.nome || "Sem nome")} <span class="meta num" style="color:var(--muted);font-weight:500">· ${brl(p.precoRef)}</span></button>`).join("")}</div>`;
 }
 
+function estruturaDetalhe(R){
+  const ev = S.conta.empresa.eventosAno, ym = new Date().toISOString().slice(0, 7);
+  const itens = FIN && S.fin ? (S.fin.fixas || []).filter(f => isNum(f.valor) && fixaAtiva(f, ym)) : [];
+  if (!itens.length || !ev) return "";
+  const soma = itens.reduce((a, f) => a + f.valor, 0);
+  const linhas = itens.slice().sort((a, b) => b.valor - a.valor).map(f => `<div class="ln"><span class="l">${esc(f.nome || "Sem nome")}<small>${brl(f.valor)} por mês</small></span><span class="v">${brl(f.valor * 12 / ev)}</span></div>`).join("");
+  const dif = Math.abs(soma - R.mensal) >= 1;
+  return `<details class="adj" style="margin:2px 0 6px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface2)"><summary style="font-size:13px">O que compõe a estrutura por evento</summary><div style="margin-top:6px">${linhas}
+    <div class="ln"><span class="l"><b style="color:var(--fg)">Total</b><small>${brl(soma)} por mês × 12 ÷ ${ev} eventos</small></span><span class="v">${brl(soma * 12 / ev)}</span></div>
+    ${dif ? `<div class="verdict warn" style="margin-top:8px">As saídas fixas do Financeiro somam ${brl(soma)} por mês, mas a estrutura da aba Empresa está em ${brl(R.mensal)}. O cálculo usa o valor da aba Empresa.</div>` : ""}</div></details>`;
+}
 function resultadoHTML(R, s){
   if (R.falta.length || R.rateio == null) {
     return `<h3>Resultado</h3>${R.avisos.map(a => `<div class="verdict warn">${esc(a)}</div>`).join("")}${R.falta.length ? `<div class="miss"><b>Preencha para calcular:</b><ul>${R.falta.slice(0, 8).map(f => `<li>${esc(f)}</li>`).join("")}${R.falta.length > 8 ? `<li>e mais ${R.falta.length - 8}</li>` : ""}</ul></div>` : ""}`;
@@ -473,6 +484,7 @@ function resultadoHTML(R, s){
     ${R.imp ? `<div class="ln"><span class="l">− Imposto sobre a venda<small>${pct(R.imp)}</small></span><span class="v">${brl(R.impostoV)}</span></div>` : ""}
     <div class="ln"><span class="l">− Custo do evento<small>Equipe ${brl(R.equipe)} · ajudas ${brl(R.ajudas)} · despesas ${brl(R.despesas)}</small></span><span class="v">${brl(R.custoDireto)}</span></div>
     <div class="ln"><span class="l">− Parcela da estrutura<small>Média: ${brl(R.mensal)} × 12 ÷ ${S.conta.empresa.eventosAno} eventos</small></span><span class="v">${brl(R.rateio)}</span></div>
+    ${estruturaDetalhe(R)}
     <div class="ln"><span class="l"><b style="color:var(--fg)">= Sobra estimada</b></span><span class="v">${brl(R.sobra)}</span></div>
     <div style="height:10px"></div>
     <div class="ln"><span class="l">Preço mínimo<small>Cobre custos e estrutura, sobra zero</small></span><span class="v">${brl(R.precoMin)}</span></div>
