@@ -105,7 +105,7 @@ wm.row_dimensions[23].height = 30
 # ---------------------------------------------------------------- Lançamentos
 wl = ws_new("Lançamentos")
 put(wl, "A1", "Lançamentos", f_tit)
-put(wl, "A2", "Uma linha por entrada ou saída. Status Previsto: valor que ainda vai entrar ou sair (entra na projeção). Quando acontecer, troque para Realizado.", f_nota)
+put(wl, "A2", "Uma linha por entrada ou saída. Parcelas de clientes a receber ficam na aba Eventos; aqui entra o que realmente foi recebido (Realizado). Use Previsto para outras entradas e contas a pagar.", f_nota)
 header(wl, 3, ["Data", "Mês", "Tipo", "Categoria", "Descrição", "Valor", "Status", "Observação"], height=24)
 dados = []
 for i in range(N):
@@ -130,13 +130,67 @@ for col, w in zip("ABCDEFGH", (12, 15, 10, 20, 28, 14, 12, 40)):
     wl.column_dimensions[col].width = w
 wl.freeze_panes = "A4"
 
+# ---------------------------------------------------------------- Eventos
+NE = 60  # eventos
+we = ws_new("Eventos")
+put(we, "A1", "Eventos e parcelas a receber", f_tit)
+put(we, "A2", "Uma linha por evento fechado. A planilha distribui a entrada e as parcelas nos meses e soma quanto entra por mês. " + LEG, f_nota)
+MC = [chr(ord("L") + i) for i in range(len(MESES))]  # colunas dos meses: L a X
+c0, c1 = MC[0], MC[-1]
+hdr = ["Evento / cliente", "Data do evento", "Pacote", "Valor do contrato", "Forma de pagamento", "Valor da entrada",
+       "Mês da entrada", "Nº de parcelas", "Valor de cada parcela", "Mês da 1ª parcela", "Posição da 1ª parcela"] + MESES + [
+       "Total no período", "Total em 2027", "Fora do período"]
+header(we, 4, hdr, height=48)
+for i in range(len(MESES)):  # linha 3: posição do mês, usada nas fórmulas
+    put(we, f"{MC[i]}3", i + 1, f_nota, align="center")
+put(we, "K3", "posição →", f_nota, align="right")
+fim = 4 + NE
+tot = fim + 1
+TC, T27, FP = "Y", "Z", "AA"
+for r in range(5, fim + 1):
+    put(we, f"A{r}", None, f_in)
+    put(we, f"B{r}", None, f_in, DATA)
+    put(we, f"C{r}", None, f_in)
+    put(we, f"D{r}", None, f_in, BRL)
+    put(we, f"E{r}", None, f_in)
+    put(we, f"F{r}", None, f_in, BRL)
+    put(we, f"G{r}", None, f_in)
+    put(we, f"H{r}", None, f_in, "0")
+    put(we, f"I{r}", f'=IF(OR(D{r}="",N(H{r})=0),0,(D{r}-N(F{r}))/H{r})', fmt=BRL)
+    put(we, f"J{r}", None, f_in)
+    put(we, f"K{r}", f'=IFERROR(MATCH(J{r},${c0}$4:${c1}$4,0),"")', fmt="0", align="center")
+    for col in MC:
+        put(we, f"{col}{r}", f'=IF($A{r}="",0,IF({col}$4=$G{r},N($F{r}),0)+IF(AND($K{r}<>"",{col}$3>=$K{r},{col}$3<$K{r}+N($H{r})),$I{r},0))', fmt=BRL)
+    put(we, f"{TC}{r}", f"=SUM({c0}{r}:{c1}{r})", f_tot, BRL)
+    put(we, f"{T27}{r}", f"=SUM({MC[1]}{r}:{c1}{r})", fmt=BRL)
+    put(we, f"{FP}{r}", f'=IF(A{r}="","",N(D{r})-{TC}{r})', fmt=BRL)
+put(we, f"A{tot}", "Total que entra por mês", f_tot, fill=fill_tot)
+for col in ["D", "F"] + MC + [TC, T27]:
+    put(we, f"{col}{tot}", f"=SUM({col}5:{col}{fim})", f_tot, BRL, fill_tot)
+put(we, f"A{tot + 2}", "Fora do período: parte do contrato que não cai entre dez/2026 e dez/2027 (parcela antes ou depois), ou meses não preenchidos. Se tudo cair no período, fica zero.", f_nota)
+put(we, f"A{tot + 3}", "As parcelas de clientes ficam só aqui. Na aba Lançamentos, registre o que realmente entrou, como Realizado.", f_nota)
+for ref, lista in ((f"E5:E{fim}", ["Pix", "Transferência", "Boleto", "Cartão de crédito", "Dinheiro", "Misto"]),
+                   (f"C5:C{fim}", ["Essencial", "Plus", "Premium Completa", "Outro"]),
+                   (f"G5:G{fim}", MESES), (f"J5:J{fim}", MESES)):
+    dv = DataValidation(type="list", formula1='"' + ",".join(lista) + '"', allow_blank=True)
+    we.add_data_validation(dv)
+    dv.add(ref)
+we.conditional_formatting.add(f"{FP}5:{FP}{fim}", FormulaRule(formula=[f'AND({FP}5<>"",ABS({FP}5)>=0.01)'], fill=amar))
+for col, w in zip("ABCDEFGHIJK", (26, 12, 14, 14, 15, 13, 14, 9, 13, 14, 9)):
+    we.column_dimensions[col].width = w
+for col in MC + [TC, T27, FP]:
+    we.column_dimensions[col].width = 13
+we.freeze_panes = "B5"
+EV_MESES = f"Eventos!${c0}$4:${c1}$4"
+EV_TOT = f"Eventos!${c0}${tot}:${c1}${tot}"
+
 # ---------------------------------------------------------------- Mês a mês
 wr = ws_new("Mês a mês")
 put(wr, "A1", "Financeiro mês a mês: dez/2026 a dez/2027", f_tit)
-put(wr, "A2", "Realizado: o que já entrou e saiu. Projeção: realizado mais o que está como Previsto nos lançamentos. Meses sem saídas lançadas usam a meta de custos fixos na projeção.", f_nota)
+put(wr, "A2", "Realizado: o que já entrou e saiu (aba Lançamentos). Projeção: realizado mais as parcelas da aba Eventos ainda não recebidas e os valores Previsto. Meses sem saídas lançadas usam a meta de custos fixos.", f_nota)
 heads = ["Mês", "Entrou", "Saiu", "Sobrou no mês", "Pró-labore Paty", "Pró-labore Vivi", "Guardado (caixa e 13º)",
          "Meta de entradas", "Bateu a meta de entradas?", "Falta para a meta", "Pró-labore na meta?",
-         "Gastou mais do que entrou?", "A receber (previsto)", "A pagar (previsto)", "Sobra projetada", "Caixa acumulado"]
+         "Gastou mais do que entrou?", "A receber (eventos e previstos)", "A pagar (previsto)", "Sobra projetada", "Caixa acumulado"]
 header(wr, 4, heads)
 L = "'Lançamentos'!"
 V, M, T, C, S = (f"{L}$F$4:$F${last}", f"{L}$B$4:$B${last}", f"{L}$C$4:$C${last}", f"{L}$D$4:$D${last}", f"{L}$G$4:$G${last}")
@@ -155,7 +209,7 @@ for i, mes in enumerate(MESES):
     put(wr, f"J{r}", f'=IF(B{r}=0,"",MAX(0,H{r}-B{r}))', fmt=BRL)
     put(wr, f"K{r}", f'=IF(E{r}+F{r}=0,"",IF(AND(E{r}>={MF}$B$6,F{r}>={MF}$B$7),"Sim","Não"))', align="center")
     put(wr, f"L{r}", f'=IF(AND(B{r}=0,C{r}=0),"",IF(C{r}>B{r},"Sim","Não"))', align="center")
-    put(wr, f"M{r}", f'=SUMIFS({V},{M},$A{r},{T},"Entrada",{S},"Previsto")', fmt=BRL)
+    put(wr, f"M{r}", f'=MAX(0,IFERROR(INDEX({EV_TOT},MATCH($A{r},{EV_MESES},0)),0)-SUMIFS({V},{M},$A{r},{C},"Cliente",{S},"Realizado"))+SUMIFS({V},{M},$A{r},{T},"Entrada",{S},"Previsto")', fmt=BRL)
     put(wr, f"N{r}", f'=SUMIFS({V},{M},$A{r},{T},"Saída",{S},"Previsto")', fmt=BRL)
     put(wr, f"O{r}", f"=B{r}+M{r}-IF(C{r}+N{r}=0,H{r},C{r}+N{r})", fmt=BRL)
     put(wr, f"P{r}", f"={MF}$B$8+D{r}" if i == 0 else f"=P{r - 1}+D{r}", fmt=BRL)
@@ -194,7 +248,7 @@ for col in "IKL":
     wr.column_dimensions[col].width = 13
 wr.freeze_panes = "B5"
 
-wb.move_sheet("Mês a mês", offset=-2)  # Mês a mês primeiro
+wb._sheets.sort(key=lambda w: ["Mês a mês", "Eventos", "Lançamentos", "Metas e fixos"].index(w.title))
 wb.active = 0
 wb.save(OUT)
 print(OUT, OUT.stat().st_size)
