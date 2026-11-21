@@ -287,7 +287,7 @@ async function initStore(){
   if (!S.fin) S.fin = finVazio();
   if (!S.fin.fixas) S.fin.fixas = [];
   if (SEED && SEED.fixasPadrao && !S.fin.fixas.length && !S.fin.fixasIniciadas) {
-    S.fin.fixas = SEED.fixasPadrao.map(n => ({ id: uid(), nome: n, valor: null, inicio: `${S.fin.ano}-01`, fim: "" }));
+    S.fin.fixas = SEED.fixasPadrao.map(n => ({ id: uid(), nome: n.nome, valor: n.valor, inicio: `${S.fin.ano}-01`, fim: "" }));
     S.fin.fixasIniciadas = true;
   }
   // Contas criadas antes dos campos de imposto e limite recebem os valores iniciais.

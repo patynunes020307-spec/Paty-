@@ -279,10 +279,33 @@
     }
   ],
   "fixasPadrao": [
-    "Assessoria",
-    "Contador",
-    "Caixa (reserva)",
-    "Décimo terceiro",
-    "Pró-labore"
+    {
+      "nome": "DAS (CNPJ 1)",
+      "valor": 82
+    },
+    {
+      "nome": "DAS (CNPJ 2)",
+      "valor": 82
+    },
+    {
+      "nome": "Assessoria",
+      "valor": null
+    },
+    {
+      "nome": "Contador",
+      "valor": null
+    },
+    {
+      "nome": "Caixa (reserva)",
+      "valor": 50
+    },
+    {
+      "nome": "Décimo terceiro",
+      "valor": 200
+    },
+    {
+      "nome": "Pró-labore",
+      "valor": null
+    }
   ]
 }
