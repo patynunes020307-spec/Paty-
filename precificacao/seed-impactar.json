@@ -277,5 +277,12 @@
         }
       ]
     }
+  ],
+  "fixasPadrao": [
+    "Assessoria",
+    "Contador",
+    "Caixa (reserva)",
+    "Décimo terceiro",
+    "Pró-labore"
   ]
 }

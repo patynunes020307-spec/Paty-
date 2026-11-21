@@ -288,6 +288,10 @@ async function initStore(){
   }
   if (!S.fin) S.fin = finVazio();
   if (!S.fin.fixas) S.fin.fixas = [];
+  if (SEED && SEED.fixasPadrao && !S.fin.fixas.length && !S.fin.fixasIniciadas) {
+    S.fin.fixas = SEED.fixasPadrao.map(n => ({ id: uid(), nome: n, valor: null, inicio: `${S.fin.ano}-01`, fim: "" }));
+    S.fin.fixasIniciadas = true;
+  }
   // Contas criadas antes dos campos de imposto e limite recebem os valores iniciais.
   const emp = S.conta.empresa, base = SEED ? SEED.empresa : contaVazia().empresa;
   ["imposto", "cnpjs", "limiteAnual", "tolerancia", "mix"].forEach(k => { if (!(k in emp)) emp[k] = clone(base[k]); });
@@ -563,7 +567,7 @@ function fDate(label, path){ return `<label class="f">${esc(label)}<span class="
 function finCalc(){
   const F = S.fin, e = S.conta.empresa, ano = String(F.ano), hoje = hojeISO();
   const estrutura = (e.despesas || 0) + (e.proLabore || 0);
-  const usaLista = (F.fixas || []).length > 0;
+  const usaLista = (F.fixas || []).some(f => isNum(f.valor));
   const fixoMes = i => usaLista ? F.fixas.reduce((a, f) => a + (isNum(f.valor) && fixaAtiva(f, `${ano}-${String(i + 1).padStart(2, "0")}`) ? f.valor : 0), 0) : estrutura;
   const m = MESES.map(() => ({ prev: 0, rec: 0, custoEv: 0, avEnt: 0, avSai: 0 }));
   const porCnpj = F.cnpjNomes.map(() => ({ prev: 0, rec: 0 }));
@@ -598,7 +602,8 @@ function finResumoHTML(){
   }).join("");
   const rows = R.m.map((x, i) => `<tr><td>${MESES[i]}</td><td>${brl(x.ent)}</td><td>${brl(x.rec + x.avEnt)}</td><td>${brl(x.fix)}</td><td>${brl(x.vari)}</td><td style="color:var(--${x.saldo >= 0 ? "good" : "bad"})">${brl(x.saldo)}</td><td style="color:var(--${x.acum >= 0 ? "good" : "bad"})">${brl(x.acum)}</td></tr>`).join("");
   const neg = R.m.map((x, i) => x.saldo < 0 ? MESES[i] : null).filter(Boolean);
-  return `${!R.fixosOk ? `<div class="miss">Preencha a estrutura mensal na aba Empresa para calcular as saídas fixas.</div>` : ""}
+  const semValor = (F.fixas || []).filter(f => !isNum(f.valor)).map(f => f.nome || "sem nome");
+  return `${semValor.length ? `<div class="miss">Preencha o valor por mês das saídas fixas: ${esc(semValor.join(", "))}.${R.usaLista ? "" : " Até lá, o financeiro usa a estrutura da aba Empresa."}</div>` : ""}${!R.fixosOk ? `<div class="miss">Preencha a estrutura mensal na aba Empresa para calcular as saídas fixas.</div>` : ""}
     <div class="big"><div class="kpi"><div class="k">Entradas ${F.ano}</div><div class="v">${brl(R.tot.ent)}</div></div><div class="kpi"><div class="k">Já recebido</div><div class="v">${brl(R.tot.rec)}</div></div>
     <div class="kpi"><div class="k">Saídas ${F.ano}</div><div class="v">${brl(R.tot.sai)}</div></div><div class="kpi ${res >= 0 ? "good" : "bad"}"><div class="k">Resultado</div><div class="v">${brl(res)}</div></div></div>
     ${R.atrasadas.length ? `<div class="verdict bad">${R.atrasadas.length} parcela(s) vencida(s) sem recebimento: ${R.atrasadas.slice(0, 4).map(a => `${esc(a.c.cliente || "sem nome")} ${brl(a.p.valor)} em ${fmtData(a.p.venc)}`).join("; ")}${R.atrasadas.length > 4 ? "…" : ""}</div>` : ""}
@@ -638,7 +643,7 @@ function viewFinanceiro(){
       <div class="row">${fNum("Caixa no início do ano", "fin.saldoInicial", { pre: "R$", hint: "saldo em conta em 1º de janeiro" })}</div>
       <div id="finResumo"></div></div>
     <div class="card stack"><div class="sec-t"><h3>Contratos</h3><button class="b sm" data-act="add" data-path="fin.contratos" data-kind="contrato">+ Contrato</button></div>${cts || `<p class="empty-s">Cadastre os contratos fechados com as parcelas para ver as entradas de cada mês.</p>`}</div>
-    <div class="card stack"><div class="sec-t"><h3>Saídas fixas</h3><button class="b sm" data-act="add" data-path="fin.fixas" data-kind="fixa">+ Saída fixa</button></div><p class="note" style="margin:0">Gastos que se repetem todo mês. Entram sozinhos em cada mês do período. ${(F.fixas || []).length ? "" : `Enquanto a lista estiver vazia, o financeiro usa a estrutura de ${brl((S.conta.empresa.despesas || 0) + (S.conta.empresa.proLabore || 0))} da aba Empresa.`}</p>${fixas}</div>
+    <div class="card stack"><div class="sec-t"><h3>Saídas fixas</h3><button class="b sm" data-act="add" data-path="fin.fixas" data-kind="fixa">+ Saída fixa</button></div><p class="note" style="margin:0">Gastos que se repetem todo mês. Entram sozinhos em cada mês do período. ${(F.fixas || []).some(f => isNum(f.valor)) ? "" : `Enquanto nenhuma tiver valor, o financeiro usa a estrutura de ${brl((S.conta.empresa.despesas || 0) + (S.conta.empresa.proLabore || 0))} da aba Empresa.`}</p>${fixas}</div>
     <div class="card stack"><div class="sec-t"><h3>Saídas variáveis e entradas avulsas</h3><button class="b sm" data-act="add" data-path="fin.lancamentos" data-kind="lancamento">+ Lançamento</button></div><p class="note" style="margin:0">Gastos que mudam de um mês para outro e entradas que não são parcela de contrato. O custo de cada evento já entra pelo contrato.</p>${lancs}</div>
     <div class="card stack"><h3>Nomes dos CNPJs</h3><div class="row">${F.cnpjNomes.map((n, i) => fTxt(`CNPJ ${i + 1}`, `fin.cnpjNomes.${i}`, "Nome para identificar")).join("")}</div></div></div>`;
 }
