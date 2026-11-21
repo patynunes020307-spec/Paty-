@@ -980,3 +980,22 @@ export const GOLA: MotionProps = {
     segundos: 3.5,
   },
 };
+
+// Versões B para Reels de teste do Instagram (21/11/2026): mesmo vídeo, só o gancho muda
+// (afirmação de bastidor → pergunta), para comparar retenção nos 2 primeiros segundos.
+export const CAUDA_B: MotionProps = {
+  ...CAUDA,
+  gancho: {
+    ...CAUDA.gancho,
+    linha: "Quem arruma a cauda",
+    italico: "do seu vestido no dia?",
+  },
+};
+export const GOLA_B: MotionProps = {
+  ...GOLA,
+  gancho: {
+    ...GOLA.gancho,
+    linha: "Antes do altar,",
+    italico: "quem confere a gola?",
+  },
+};

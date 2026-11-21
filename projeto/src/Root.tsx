@@ -19,6 +19,8 @@ import {
   ROTEIRO,
   CAUDA,
   GOLA,
+  GOLA_B,
+  CAUDA_B,
 } from "./MotionReel";
 import {
   Capa,
@@ -462,6 +464,24 @@ export const RemotionRoot: React.FC = () => {
         component={Capa}
         defaultProps={CAPA_CONJUNTO}
         durationInFrames={1}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelCaudaB"
+        component={MotionReel}
+        defaultProps={CAUDA_B}
+        durationInFrames={duracaoMotion(CAUDA_B)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelGolaB"
+        component={MotionReel}
+        defaultProps={GOLA_B}
+        durationInFrames={duracaoMotion(GOLA_B)}
         fps={FPS}
         width={1080}
         height={1920}
