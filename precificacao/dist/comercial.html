@@ -115,6 +115,7 @@ details.adj[open]>summary::after{content:"Ocultar"}
 "use strict";
 const MODE = "comercial";
 const SEED = null;
+const FIN = MODE === "interno";
 const BRAND = {"nome":"Margem do Evento","sub":"Precificação para cerimonialistas"};
 
 /* ---------- utilidades ---------- */
@@ -263,12 +264,13 @@ async function initStore(){
         S.uid = user ? await user.id() : null;
         if (S.uid) conta = db.doc(`data/users/${S.uid}/conta`);
       } else conta = db.doc("ws/conta");
-      if (conta) { S.store = { conta, sims: conta.collection("sims") }; }
+      if (conta) { S.store = { conta, sims: conta.collection("sims"), fin: FIN ? db.doc("ws/financeiro") : null }; }
     } catch (e) { S.store = null; }
   }
   if (S.store) {
     try {
-      const [c, q] = await withTimeout(Promise.all([S.store.conta.get(), S.store.sims.get()]), 12000);
+      const [c, q, f] = await withTimeout(Promise.all([S.store.conta.get(), S.store.sims.get(), S.store.fin ? S.store.fin.get() : Promise.resolve(null)]), 12000);
+      S.fin = f && f.exists ? clone(f.data().fin) : null;
       S.conta = c.exists ? c.data().conta : null;
       S.sims = q.docs.map(d => d.data()).filter(Boolean);
       S.conta = S.conta ? clone(S.conta) : (SEED ? clone(SEED) : contaVazia());
@@ -281,8 +283,10 @@ async function initStore(){
     const l = lsGet(LKEY());
     S.conta = l && l.conta ? l.conta : (SEED ? clone(SEED) : contaVazia());
     S.sims = l && l.sims ? l.sims : [];
+    S.fin = l && l.fin ? l.fin : null;
     setStatus("Só neste aparelho");
   }
+  if (!S.fin) S.fin = finVazio();
   // Contas criadas antes dos campos de imposto e limite recebem os valores iniciais.
   const emp = S.conta.empresa, base = SEED ? SEED.empresa : contaVazia().empresa;
   ["imposto", "cnpjs", "limiteAnual", "tolerancia", "mix"].forEach(k => { if (!(k in emp)) emp[k] = clone(base[k]); });
@@ -296,20 +300,31 @@ function saveConta(){
   saveTimer = setTimeout(() => {
     const body = { conta: clone(S.conta), atualizadoEm: new Date().toISOString() };
     saving = saving.then(async () => {
-      if (S.local) { lsSet(LKEY(), { conta: S.conta, sims: S.sims }); setStatus("Só neste aparelho"); return; }
+      if (S.local) { lsSet(LKEY(), { conta: S.conta, sims: S.sims, fin: S.fin }); setStatus("Só neste aparelho"); return; }
       try { await S.store.conta.set(body); setStatus("Salvo na conta", "ok"); }
       catch (e) { setStatus("Não salvou", "err"); }
     });
   }, 700);
 }
 async function saveSimDoc(sim){
-  if (S.local) { lsSet(LKEY(), { conta: S.conta, sims: S.sims }); return true; }
+  if (S.local) { lsSet(LKEY(), { conta: S.conta, sims: S.sims, fin: S.fin }); return true; }
   try { setStatus("Salvando…"); await S.store.sims.doc(sim.id).set(clone(sim)); setStatus("Salvo na conta", "ok"); return true; }
   catch { setStatus("Não salvou", "err"); return false; }
 }
 async function deleteSimDoc(id){
-  if (S.local) { lsSet(LKEY(), { conta: S.conta, sims: S.sims }); return; }
+  if (S.local) { lsSet(LKEY(), { conta: S.conta, sims: S.sims, fin: S.fin }); return; }
   try { await S.store.sims.doc(id).delete(); } catch { setStatus("Não excluiu", "err"); }
+}
+let finTimer = null, finSaving = Promise.resolve();
+function saveFin(){
+  clearTimeout(finTimer); setStatus("Salvando…");
+  finTimer = setTimeout(() => {
+    const body = { fin: clone(S.fin), atualizadoEm: new Date().toISOString() };
+    finSaving = finSaving.then(async () => {
+      if (S.local || !S.store.fin) { lsSet(LKEY(), { conta: S.conta, sims: S.sims, fin: S.fin }); setStatus("Só neste aparelho"); return; }
+      try { await S.store.fin.set(body); setStatus("Salvo na conta", "ok"); } catch { setStatus("Não salvou", "err"); }
+    });
+  }, 700);
 }
 let draftTimer = null;
 const saveDraft = () => { clearTimeout(draftTimer); draftTimer = setTimeout(() => lsSet(LKEY() + "-rascunho", S.sim), 400); };
@@ -382,7 +397,7 @@ function btnDel(path, what){
 }
 
 /* ---------- views ---------- */
-const TABS = [["simular", "Simular"], ["pacotes", "Pacotes"], ["empresa", "Empresa"], ["salvas", "Salvas"]];
+const TABS = [["simular", "Simular"], ["pacotes", "Pacotes"], ["empresa", "Empresa"], ["salvas", "Salvas"], ...(FIN ? [["financeiro", "Financeiro"]] : [])];
 function renderTabs(){ $("#tabs").innerHTML = TABS.map(([k, t]) => `<button data-act="tab" data-v="${k}" aria-current="${S.view === k}">${t}${k === "salvas" && S.sims.length ? ` (${S.sims.length})` : ""}</button>`).join(""); }
 
 function render(){
@@ -393,6 +408,7 @@ function render(){
   if (v === "simular") h += viewSimular();
   else if (v === "pacotes") h += viewPacotes();
   else if (v === "empresa") h += viewEmpresa();
+  else if (v === "financeiro") h += viewFinanceiro();
   else h += viewSalvas();
   $("#app").innerHTML = h;
   $("#barra").hidden = v !== "simular" || !S.sim.pacoteId;
@@ -534,6 +550,91 @@ function limiteOutHTML(){
   return h;
 }
 
+/* ---------- financeiro mensal (só versão interna) ---------- */
+const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+const hojeISO = () => new Date().toISOString().slice(0, 10);
+const addDias = (iso, d) => { const t = new Date(iso + "T12:00:00"); t.setDate(t.getDate() + d); return t.toISOString().slice(0, 10); };
+const fmtData = iso => iso ? iso.split("-").reverse().join("/") : "—";
+function finVazio(){ return { ano: new Date().getFullYear(), cnpjNomes: ["CNPJ 1", "CNPJ 2"], contratos: [], lancamentos: [] }; }
+function fDate(label, path){ return `<label class="f">${esc(label)}<span class="inp"><input type="date" data-k="${path}" data-t="text" value="${esc(getP(path) || "")}"></span></label>`; }
+function finCalc(){
+  const F = S.fin, e = S.conta.empresa, ano = String(F.ano), hoje = hojeISO();
+  const fixos = (e.despesas || 0) + (e.proLabore || 0);
+  const m = MESES.map(() => ({ prev: 0, rec: 0, custoEv: 0, avEnt: 0, avSai: 0 }));
+  const porCnpj = F.cnpjNomes.map(() => ({ prev: 0, rec: 0 }));
+  const atrasadas = [];
+  F.contratos.forEach(c => {
+    (c.parcelas || []).forEach(p => {
+      if (!p.venc || !isNum(p.valor)) return;
+      if (!p.recebido && p.venc < hoje) atrasadas.push({ c, p });
+      if (p.venc.slice(0, 4) !== ano) return;
+      const i = +p.venc.slice(5, 7) - 1;
+      m[i].prev += p.valor; if (p.recebido) m[i].rec += p.valor;
+      const k = porCnpj[+c.cnpj || 0]; if (k) { k.prev += p.valor; if (p.recebido) k.rec += p.valor; }
+    });
+    if (c.evento && c.evento.slice(0, 4) === ano && isNum(c.custo)) m[+c.evento.slice(5, 7) - 1].custoEv += c.custo;
+  });
+  F.lancamentos.forEach(l => { if (!l.data || !isNum(l.valor) || l.data.slice(0, 4) !== ano) return; const i = +l.data.slice(5, 7) - 1; if (l.tipo === "entrada") m[i].avEnt += l.valor; else m[i].avSai += l.valor; });
+  let acum = isNum(F.saldoInicial) ? F.saldoInicial : 0;
+  m.forEach(x => { x.ent = x.prev + x.avEnt; x.sai = fixos + x.custoEv + x.avSai; x.saldo = x.ent - x.sai; acum += x.saldo; x.acum = acum; });
+  const tot = m.reduce((a, x) => ({ ent: a.ent + x.ent, rec: a.rec + x.rec + x.avEnt, sai: a.sai + x.sai }), { ent: 0, rec: 0, sai: 0 });
+  return { m, fixos, porCnpj, atrasadas, tot, fixosOk: isNum(e.despesas) && isNum(e.proLabore) };
+}
+function finResumoHTML(){
+  const F = S.fin, e = S.conta.empresa, R = finCalc(), res = R.tot.ent - R.tot.sai;
+  const lim = isNum(e.limiteAnual) ? e.limiteAnual : null, tol = isNum(e.tolerancia) ? e.tolerancia : 0;
+  const cn = F.cnpjNomes.map((n, i) => {
+    const k = R.porCnpj[i]; if (!lim) return `<div class="ln"><span class="l">${esc(n)}</span><span class="v">${brl(k.prev)}</span></div>`;
+    const cor = k.prev <= lim ? "good" : k.prev <= lim * (1 + tol / 100) ? "warn" : "bad";
+    const w = Math.min(100, k.prev / lim * 100);
+    return `<div><div class="ln" style="border:0"><span class="l"><b style="color:var(--fg)">${esc(n)}</b><small>Recebido ${brl(k.rec)} · previsto no ano ${brl(k.prev)} de ${brl(lim)}</small></span><span class="v" style="color:var(--${cor})">${pct(k.prev / lim)}</span></div>
+      <div style="height:8px;border-radius:99px;background:var(--line);overflow:hidden"><div style="height:100%;width:${w}%;background:var(--${cor})"></div></div>
+      ${cor !== "good" ? `<div class="verdict ${cor}" style="margin-top:8px">${cor === "warn" ? `Passa o limite em ${brl(k.prev - lim)}, dentro da tolerância de ${tol}%. O excesso paga imposto complementar.` : `Passa o limite em ${brl(k.prev - lim)}, acima da tolerância. Risco de desenquadramento: fale com a contabilidade antes de receber mais neste CNPJ.`}</div>` : ""}</div>`;
+  }).join("");
+  const rows = R.m.map((x, i) => `<tr><td>${MESES[i]}</td><td>${brl(x.ent)}</td><td>${brl(x.rec + x.avEnt)}</td><td>${brl(x.custoEv)}</td><td>${brl(x.sai)}</td><td style="color:var(--${x.saldo >= 0 ? "good" : "bad"})">${brl(x.saldo)}</td><td style="color:var(--${x.acum >= 0 ? "good" : "bad"})">${brl(x.acum)}</td></tr>`).join("");
+  const neg = R.m.map((x, i) => x.saldo < 0 ? MESES[i] : null).filter(Boolean);
+  return `${!R.fixosOk ? `<div class="miss">Preencha a estrutura mensal na aba Empresa para calcular as saídas fixas.</div>` : ""}
+    <div class="big"><div class="kpi"><div class="k">Entradas ${F.ano}</div><div class="v">${brl(R.tot.ent)}</div></div><div class="kpi"><div class="k">Já recebido</div><div class="v">${brl(R.tot.rec)}</div></div>
+    <div class="kpi"><div class="k">Saídas ${F.ano}</div><div class="v">${brl(R.tot.sai)}</div></div><div class="kpi ${res >= 0 ? "good" : "bad"}"><div class="k">Resultado</div><div class="v">${brl(res)}</div></div></div>
+    ${R.atrasadas.length ? `<div class="verdict bad">${R.atrasadas.length} parcela(s) vencida(s) sem recebimento: ${R.atrasadas.slice(0, 4).map(a => `${esc(a.c.cliente || "sem nome")} ${brl(a.p.valor)} em ${fmtData(a.p.venc)}`).join("; ")}${R.atrasadas.length > 4 ? "…" : ""}</div>` : ""}
+    ${neg.length ? `<div class="verdict warn">Meses com saldo negativo: ${neg.join(", ")}. Confira se o caixa acumulado cobre.</div>` : ""}
+    <h3 style="margin:14px 0 6px">Limite de faturamento por CNPJ</h3>${cn}<p class="note">Conta as parcelas pela data de vencimento dentro do ano. Confirme com a contabilidade se o seu MEI considera recebimento ou emissão de nota.</p>
+    <h3 style="margin:14px 0 6px">Mês a mês</h3>
+    <div class="tbl-wrap"><table class="cmp"><thead><tr><th>Mês</th><th>Entradas</th><th>Recebido</th><th>Custo eventos</th><th>Saídas</th><th>Saldo</th><th>Acumulado</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="note">Saídas = estrutura mensal (${brl(R.fixos)}) + custo dos eventos do mês + lançamentos avulsos.</p>`;
+}
+function ctSumHTML(c){
+  const soma = (c.parcelas || []).reduce((a, p) => a + (p.valor || 0), 0), rec = (c.parcelas || []).reduce((a, p) => a + (p.recebido ? p.valor || 0 : 0), 0);
+  const dif = isNum(c.valor) ? r2(c.valor - soma) : null;
+  return `${brl(c.valor)} · recebido ${brl(rec)} · evento ${fmtData(c.evento)}${dif ? ` · <span style="color:var(--warn)">parcelas ${dif > 0 ? "faltam" : "passam"} ${brl(Math.abs(dif))}</span>` : ""}`;
+}
+function viewFinanceiro(){
+  const F = S.fin;
+  const cnpjOpts = F.cnpjNomes.map((n, i) => [String(i), n]);
+  const pacOpts = [["", "Sem pacote"], ...S.conta.pacotes.map(p => [p.id, p.nome])];
+  const cts = F.contratos.map((c, i) => {
+    const p = `fin.contratos.${i}`;
+    const head = `<div class="li"><div style="min-width:0"><b>${esc(c.cliente || "Contrato sem nome")}</b> <span class="meta">· ${esc(F.cnpjNomes[+c.cnpj || 0] || "")}</span><div class="meta num" data-ctsum="${c.id}">${ctSumHTML(c)}</div></div>
+      <div class="actions"><button class="b sm${S.finOpen === c.id ? "" : " pri"}" data-act="ctopen" data-id="${c.id}">${S.finOpen === c.id ? "Fechar" : "Editar"}</button>${btnDel(p, "contrato")}</div></div>`;
+    if (S.finOpen !== c.id) return `<div class="item">${head}</div>`;
+    const parc = (c.parcelas || []).map((x, j) => `<div class="row" style="align-items:end">${fDate("Vencimento", `${p}.parcelas.${j}.venc`)}${fNum("Valor", `${p}.parcelas.${j}.valor`, { req: 1, pre: "R$" })}
+      <label class="chk${x.recebido ? " on" : ""}" style="align-self:center"><input type="checkbox" data-k="${p}.parcelas.${j}.recebido" data-t="bool"${x.recebido ? " checked" : ""}>Recebido</label>${btnDel(`${p}.parcelas.${j}`, "parcela")}</div>`).join("");
+    return `<div class="item">${head}
+      <div class="row">${fTxt("Cliente", p + ".cliente", "Nome do casal ou cliente")}${fSel("CNPJ que emite", p + ".cnpj", cnpjOpts)}${fSel("Pacote", p + ".pacoteId", pacOpts)}</div>
+      <div class="row">${fNum("Valor do contrato", p + ".valor", { req: 1, pre: "R$" })}${fDate("Assinatura", p + ".assinatura")}${fDate("Data do evento", p + ".evento")}${fNum("Custo do evento", p + ".custo", { pre: "R$", hint: "equipe, ajudas e despesas" })}</div>
+      <div class="actions">${c.pacoteId ? `<button class="b sm" data-act="ctcusto" data-i="${i}">Usar custo e preço do pacote</button>` : ""}<button class="b sm" data-act="ctparc" data-i="${i}">Gerar parcelas 30/40/30</button><button class="b sm" data-act="add" data-path="${p}.parcelas" data-kind="parcela">+ Parcela</button></div>
+      <p class="note" style="margin:0">30/40/30: sinal na assinatura, segunda no meio do prazo, final 30 dias antes do evento. Ajuste datas e valores se o contrato for diferente.</p>
+      ${parc || `<p class="empty-s">Nenhuma parcela ainda.</p>`}</div>`;
+  }).join("");
+  const lancs = F.lancamentos.map((l, i) => { const p = `fin.lancamentos.${i}`; return `<div class="item"><div class="head"><span></span>${btnDel(p, "lançamento")}</div><div class="row">${fDate("Data", p + ".data")}${fTxt("Descrição", p + ".desc", "Curso, equipamento, reembolso…")}${fSel("Tipo", p + ".tipo", [["saida", "Saída"], ["entrada", "Entrada"]])}${fNum("Valor", p + ".valor", { req: 1, pre: "R$" })}</div></div>`; }).join("");
+  return `<div class="grid"><div class="card stack"><div class="sec-t"><h2>Financeiro ${F.ano}</h2><div class="actions"><button class="b sm" data-act="finano" data-d="-1" aria-label="Ano anterior">‹ ${F.ano - 1}</button><button class="b sm" data-act="finano" data-d="1" aria-label="Próximo ano">${F.ano + 1} ›</button></div></div>
+      <div class="row">${fNum("Caixa no início do ano", "fin.saldoInicial", { pre: "R$", hint: "saldo em conta em 1º de janeiro" })}</div>
+      <div id="finResumo"></div></div>
+    <div class="card stack"><div class="sec-t"><h3>Contratos</h3><button class="b sm" data-act="add" data-path="fin.contratos" data-kind="contrato">+ Contrato</button></div>${cts || `<p class="empty-s">Cadastre os contratos fechados com as parcelas para ver as entradas de cada mês.</p>`}</div>
+    <div class="card stack"><div class="sec-t"><h3>Lançamentos avulsos</h3><button class="b sm" data-act="add" data-path="fin.lancamentos" data-kind="lancamento">+ Lançamento</button></div><p class="note" style="margin:0">Gastos ou entradas fora da estrutura mensal e dos eventos.</p>${lancs}</div>
+    <div class="card stack"><h3>Nomes dos CNPJs</h3><div class="row">${F.cnpjNomes.map((n, i) => fTxt(`CNPJ ${i + 1}`, `fin.cnpjNomes.${i}`, "Nome para identificar")).join("")}</div></div></div>`;
+}
+
 function viewSalvas(){
   const e = S.conta.empresa;
   const list = [...S.sims].sort((a, b) => (b.atualizadoEm || "").localeCompare(a.atualizadoEm || ""));
@@ -557,6 +658,7 @@ function recalc(){
       : `<div><div class="k">Sobra</div><div class="v" style="color:var(${R.sobra >= 0 ? "--good" : "--bad"})">${brl(R.sobra)}</div></div><div><div class="k">Margem</div><div class="v">${pct(R.margem)}</div></div><div><div class="k">Preço p/ meta</div><div class="v">${brl(R.precoMeta)}</div></div>`;
   }
   if (S.view === "pacotes" && S.conta.pacotes[S.pacIdx]) { const p = S.conta.pacotes[S.pacIdx]; updOuts(p, calcPacote(p, e)); }
+  if (S.view === "financeiro") { const fr = $("#finResumo"); if (fr) fr.innerHTML = finResumoHTML(); document.querySelectorAll("[data-ctsum]").forEach(el => { const c = S.fin.contratos.find(x => x.id === el.dataset.ctsum); if (c) el.innerHTML = ctSumHTML(c); }); }
   if (S.view === "empresa") { const lo = $("#limiteOut"); if (lo) lo.innerHTML = limiteOutHTML(); const E = calcEstrutura(e); const a = document.querySelector('[data-out="estr"]'); if (a) a.textContent = brl(E.mensal) + " / mês"; const r = document.querySelector('[data-out="rateio"]'); if (r) r.textContent = brl(E.rateio); }
 }
 function updOuts(pac, C){
@@ -576,6 +678,7 @@ function updOuts(pac, C){
 function touched(path){
   if (path.startsWith("conta.")) saveConta();
   if (path.startsWith("sim.")) saveDraft();
+  if (path.startsWith("fin.")) saveFin();
 }
 document.addEventListener("input", ev => {
   const el = ev.target, k = el.dataset && el.dataset.k;
@@ -598,7 +701,8 @@ document.addEventListener("change", ev => {
     const p = S.conta.pacotes.find(x => x.id === el.value);
     const keep = { id: S.sim.id, nome: S.sim.nome, desconto: S.sim.desconto, formaId: S.sim.formaId, meta: S.sim.meta };
     S.sim = { ...novaSim(p), ...keep };
-  } else if (el.tagName === "SELECT") setP(k, el.value);
+  } else if (el.dataset.t === "bool") setP(k, el.checked);
+  else if (el.tagName === "SELECT") setP(k, el.value);
   else if (el.dataset.t === "num") { const n = parseNum(el.value); el.value = fmtIn(Number.isNaN(n) ? getP(k) : n); return; }
   else return;
   touched(k); keepAdj(); render();
@@ -616,7 +720,7 @@ document.addEventListener("click", async ev => {
   else if (a === "cancel") {}
   else if (a === "add") {
     const arr = getP(path); const kind = b.dataset.kind;
-    arr.push(kind === "atividade" ? novaAtividade() : kind === "escala" ? novaEscala() : kind === "despesa" ? novaDespesa() : kind === "forma" ? { id: uid(), nome: "", taxa: null } : { id: uid(), nome: "", valor: null });
+    arr.push(kind === "atividade" ? novaAtividade() : kind === "escala" ? novaEscala() : kind === "despesa" ? novaDespesa() : kind === "forma" ? { id: uid(), nome: "", taxa: null } : kind === "contrato" ? (() => { const c = { id: uid(), cliente: "", cnpj: "0", pacoteId: "", valor: null, assinatura: hojeISO(), evento: "", custo: null, parcelas: [] }; S.finOpen = c.id; return c; })() : kind === "parcela" ? { id: uid(), venc: "", valor: null, recebido: false } : kind === "lancamento" ? { id: uid(), data: hojeISO(), desc: "", tipo: "saida", valor: null } : { id: uid(), nome: "", valor: null });
     touched(path);
   }
   else if (a === "del") {
@@ -652,6 +756,18 @@ document.addEventListener("click", async ev => {
     else { S.sim = s; S.view = "simular"; saveDraft(); }
   }
   else if (a === "delsim") { const id = b.dataset.id; S.sims = S.sims.filter(x => x.id !== id); if (S.sim.id === id) S.sim.id = null; await deleteSimDoc(id); }
+  else if (a === "finano") { S.fin.ano += +b.dataset.d; saveFin(); }
+  else if (a === "ctopen") S.finOpen = S.finOpen === b.dataset.id ? null : b.dataset.id;
+  else if (a === "ctcusto") { const c = S.fin.contratos[+b.dataset.i], p = S.conta.pacotes.find(x => x.id === c.pacoteId); if (p) { const C = calcPacote(p, S.conta.empresa); c.custo = r2(C.custoDireto); if (!isNum(c.valor)) c.valor = p.precoRef; saveFin(); } }
+  else if (a === "ctparc") {
+    const c = S.fin.contratos[+b.dataset.i];
+    if (!isNum(c.valor) || !c.assinatura || !c.evento) { render(); const n = document.querySelector(`[data-ctsum="${c.id}"]`); if (n) n.innerHTML += ` · <span style="color:var(--bad)">Preencha valor, assinatura e data do evento para gerar as parcelas.</span>`; return; }
+    let fim = addDias(c.evento, -30); if (fim < c.assinatura) fim = c.assinatura;
+    const meio = addDias(c.assinatura, Math.round((new Date(fim) - new Date(c.assinatura)) / 864e5 / 2));
+    const v1 = r2(c.valor * .3), v2 = r2(c.valor * .4);
+    c.parcelas = [{ id: uid(), venc: c.assinatura, valor: v1, recebido: false }, { id: uid(), venc: meio, valor: v2, recebido: false }, { id: uid(), venc: fim, valor: r2(c.valor - v1 - v2), recebido: false }];
+    saveFin();
+  }
   else if (a === "seed" && SEED) { S.conta = clone(SEED); S.pacIdx = 0; saveConta(); }
   render();
 });
