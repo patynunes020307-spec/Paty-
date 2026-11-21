@@ -137,9 +137,10 @@ put(we, "A1", "Eventos e parcelas a receber", f_tit)
 put(we, "A2", "Uma linha por evento fechado. Em cada mês, escreva quanto daquele contrato vai entrar (entrada e parcelas, mesmo com valores diferentes ou meses pulados). " + LEG, f_nota)
 MC = [chr(ord("G") + i) for i in range(len(MESES))]  # colunas dos meses: G a S
 c0, c1 = MC[0], MC[-1]
-TC, T27, FD = "T", "U", "V"
+TC, T27, FD, FORA = "T", "U", "V", "W"
 hdr = ["Evento / cliente", "Data do evento", "Pacote", "Valor do contrato", "Forma de pagamento", "Como foi combinado"] + MESES + [
-       "Total combinado no período", "Total em 2027", "Falta distribuir"]
+       "Total combinado no período", "Total em 2027", "Falta distribuir",
+       "Fora do período (antes de dez/2026 ou depois de dez/2027)"]
 header(we, 4, hdr, height=48)
 fim = 4 + NE
 tot = fim + 1
@@ -154,11 +155,12 @@ for r in range(5, fim + 1):
         put(we, f"{col}{r}", None, f_in, BRL, fill_in)
     put(we, f"{TC}{r}", f"=SUM({c0}{r}:{c1}{r})", f_tot, BRL)
     put(we, f"{T27}{r}", f"=SUM({MC[1]}{r}:{c1}{r})", fmt=BRL)
-    put(we, f"{FD}{r}", f'=IF(A{r}="","",N(D{r})-{TC}{r})', fmt=BRL)
+    put(we, f"{FD}{r}", f'=IF(A{r}="","",N(D{r})-{TC}{r}-N({FORA}{r}))', fmt=BRL)
+    put(we, f"{FORA}{r}", None, f_in, BRL, fill_in)
 put(we, f"A{tot}", "Total que entra por mês", f_tot, fill=fill_tot)
 for col in ["D"] + MC + [TC, T27]:
     put(we, f"{col}{tot}", f"=SUM({col}5:{col}{fim})", f_tot, BRL, fill_tot)
-put(we, f"A{tot + 2}", "Falta distribuir: valor do contrato menos o que foi escrito nos meses. Tem que ficar zero. Se não ficar, faltou ou sobrou parcela (ou ela cai depois de dez/2027).", f_nota)
+put(we, f"A{tot + 2}", "Falta distribuir: valor do contrato menos os meses e menos a coluna Fora do período. Tem que ficar zero. Fora do período: o que foi pago antes de dez/2026 ou vence depois de dez/2027.", f_nota)
 put(we, f"A{tot + 3}", "Parcela que vai entrar fica só aqui. Dinheiro que entrou de verdade vai na aba Lançamentos, como Cliente e Realizado.", f_nota)
 for ref, lista in ((f"E5:E{fim}", ["Pix", "Transferência", "Boleto", "Cartão de crédito", "Dinheiro", "Misto"]),
                    (f"C5:C{fim}", ["Essencial", "Plus", "Premium Completa", "Outro"])):
@@ -169,7 +171,7 @@ we.conditional_formatting.add(f"{FD}5:{FD}{fim}", FormulaRule(formula=[f'AND({FD
 we.conditional_formatting.add(f"{FD}5:{FD}{fim}", FormulaRule(formula=[f'AND({FD}5<>"",ABS({FD}5)<0.01)'], fill=verde, font=font_verde))
 for col, w in zip("ABCDEF", (26, 12, 15, 14, 15, 24)):
     we.column_dimensions[col].width = w
-for col in MC + [TC, T27, FD]:
+for col in MC + [TC, T27, FD, FORA]:
     we.column_dimensions[col].width = 13
 we.freeze_panes = "B5"
 EV_MESES = f"Eventos!${c0}$4:${c1}$4"
