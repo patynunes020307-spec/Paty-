@@ -287,6 +287,7 @@ async function initStore(){
     setStatus("Só neste aparelho");
   }
   if (!S.fin) S.fin = finVazio();
+  if (!S.fin.fixas) S.fin.fixas = [];
   // Contas criadas antes dos campos de imposto e limite recebem os valores iniciais.
   const emp = S.conta.empresa, base = SEED ? SEED.empresa : contaVazia().empresa;
   ["imposto", "cnpjs", "limiteAnual", "tolerancia", "mix"].forEach(k => { if (!(k in emp)) emp[k] = clone(base[k]); });
@@ -555,11 +556,15 @@ const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "o
 const hojeISO = () => new Date().toISOString().slice(0, 10);
 const addDias = (iso, d) => { const t = new Date(iso + "T12:00:00"); t.setDate(t.getDate() + d); return t.toISOString().slice(0, 10); };
 const fmtData = iso => iso ? iso.split("-").reverse().join("/") : "—";
-function finVazio(){ return { ano: new Date().getFullYear(), cnpjNomes: ["CNPJ 1", "CNPJ 2"], contratos: [], lancamentos: [] }; }
+function finVazio(){ return { ano: new Date().getFullYear(), cnpjNomes: ["CNPJ 1", "CNPJ 2"], contratos: [], lancamentos: [], fixas: [] }; }
+const fixaAtiva = (f, ym) => (!f.inicio || f.inicio <= ym) && (!f.fim || f.fim >= ym);
+function fMes(label, path, ph){ return `<label class="f">${esc(label)}<span class="inp"><input type="month" data-k="${path}" data-t="text" value="${esc(getP(path) || "")}" placeholder="${esc(ph || "aaaa-mm")}"></span></label>`; }
 function fDate(label, path){ return `<label class="f">${esc(label)}<span class="inp"><input type="date" data-k="${path}" data-t="text" value="${esc(getP(path) || "")}"></span></label>`; }
 function finCalc(){
   const F = S.fin, e = S.conta.empresa, ano = String(F.ano), hoje = hojeISO();
-  const fixos = (e.despesas || 0) + (e.proLabore || 0);
+  const estrutura = (e.despesas || 0) + (e.proLabore || 0);
+  const usaLista = (F.fixas || []).length > 0;
+  const fixoMes = i => usaLista ? F.fixas.reduce((a, f) => a + (isNum(f.valor) && fixaAtiva(f, `${ano}-${String(i + 1).padStart(2, "0")}`) ? f.valor : 0), 0) : estrutura;
   const m = MESES.map(() => ({ prev: 0, rec: 0, custoEv: 0, avEnt: 0, avSai: 0 }));
   const porCnpj = F.cnpjNomes.map(() => ({ prev: 0, rec: 0 }));
   const atrasadas = [];
@@ -576,9 +581,9 @@ function finCalc(){
   });
   F.lancamentos.forEach(l => { if (!l.data || !isNum(l.valor) || l.data.slice(0, 4) !== ano) return; const i = +l.data.slice(5, 7) - 1; if (l.tipo === "entrada") m[i].avEnt += l.valor; else m[i].avSai += l.valor; });
   let acum = isNum(F.saldoInicial) ? F.saldoInicial : 0;
-  m.forEach(x => { x.ent = x.prev + x.avEnt; x.sai = fixos + x.custoEv + x.avSai; x.saldo = x.ent - x.sai; acum += x.saldo; x.acum = acum; });
+  m.forEach((x, i) => { x.fix = fixoMes(i); x.vari = x.custoEv + x.avSai; x.ent = x.prev + x.avEnt; x.sai = x.fix + x.vari; x.saldo = x.ent - x.sai; acum += x.saldo; x.acum = acum; });
   const tot = m.reduce((a, x) => ({ ent: a.ent + x.ent, rec: a.rec + x.rec + x.avEnt, sai: a.sai + x.sai }), { ent: 0, rec: 0, sai: 0 });
-  return { m, fixos, porCnpj, atrasadas, tot, fixosOk: isNum(e.despesas) && isNum(e.proLabore) };
+  return { m, estrutura, usaLista, fixoAtual: fixoMes(new Date().getMonth()), porCnpj, atrasadas, tot, fixosOk: usaLista || (isNum(e.despesas) && isNum(e.proLabore)) };
 }
 function finResumoHTML(){
   const F = S.fin, e = S.conta.empresa, R = finCalc(), res = R.tot.ent - R.tot.sai;
@@ -591,7 +596,7 @@ function finResumoHTML(){
       <div style="height:8px;border-radius:99px;background:var(--line);overflow:hidden"><div style="height:100%;width:${w}%;background:var(--${cor})"></div></div>
       ${cor !== "good" ? `<div class="verdict ${cor}" style="margin-top:8px">${cor === "warn" ? `Passa o limite em ${brl(k.prev - lim)}, dentro da tolerância de ${tol}%. O excesso paga imposto complementar.` : `Passa o limite em ${brl(k.prev - lim)}, acima da tolerância. Risco de desenquadramento: fale com a contabilidade antes de receber mais neste CNPJ.`}</div>` : ""}</div>`;
   }).join("");
-  const rows = R.m.map((x, i) => `<tr><td>${MESES[i]}</td><td>${brl(x.ent)}</td><td>${brl(x.rec + x.avEnt)}</td><td>${brl(x.custoEv)}</td><td>${brl(x.sai)}</td><td style="color:var(--${x.saldo >= 0 ? "good" : "bad"})">${brl(x.saldo)}</td><td style="color:var(--${x.acum >= 0 ? "good" : "bad"})">${brl(x.acum)}</td></tr>`).join("");
+  const rows = R.m.map((x, i) => `<tr><td>${MESES[i]}</td><td>${brl(x.ent)}</td><td>${brl(x.rec + x.avEnt)}</td><td>${brl(x.fix)}</td><td>${brl(x.vari)}</td><td style="color:var(--${x.saldo >= 0 ? "good" : "bad"})">${brl(x.saldo)}</td><td style="color:var(--${x.acum >= 0 ? "good" : "bad"})">${brl(x.acum)}</td></tr>`).join("");
   const neg = R.m.map((x, i) => x.saldo < 0 ? MESES[i] : null).filter(Boolean);
   return `${!R.fixosOk ? `<div class="miss">Preencha a estrutura mensal na aba Empresa para calcular as saídas fixas.</div>` : ""}
     <div class="big"><div class="kpi"><div class="k">Entradas ${F.ano}</div><div class="v">${brl(R.tot.ent)}</div></div><div class="kpi"><div class="k">Já recebido</div><div class="v">${brl(R.tot.rec)}</div></div>
@@ -600,8 +605,9 @@ function finResumoHTML(){
     ${neg.length ? `<div class="verdict warn">Meses com saldo negativo: ${neg.join(", ")}. Confira se o caixa acumulado cobre.</div>` : ""}
     <h3 style="margin:14px 0 6px">Limite de faturamento por CNPJ</h3>${cn}<p class="note">Conta as parcelas pela data de vencimento dentro do ano. Confirme com a contabilidade se o seu MEI considera recebimento ou emissão de nota.</p>
     <h3 style="margin:14px 0 6px">Mês a mês</h3>
-    <div class="tbl-wrap"><table class="cmp"><thead><tr><th>Mês</th><th>Entradas</th><th>Recebido</th><th>Custo eventos</th><th>Saídas</th><th>Saldo</th><th>Acumulado</th></tr></thead><tbody>${rows}</tbody></table></div>
-    <p class="note">Saídas = estrutura mensal (${brl(R.fixos)}) + custo dos eventos do mês + lançamentos avulsos.</p>`;
+    <div class="tbl-wrap"><table class="cmp"><thead><tr><th>Mês</th><th>Entradas</th><th>Recebido</th><th>Fixas</th><th>Variáveis</th><th>Saldo</th><th>Acumulado</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="note">${R.usaLista ? "Fixas = suas saídas fixas cadastradas." : `Fixas = estrutura mensal da aba Empresa (${brl(R.estrutura)}), até você cadastrar as saídas fixas abaixo.`} Variáveis = custo dos eventos do mês + saídas variáveis lançadas.</p>
+    ${R.usaLista && R.fixosOk && Math.abs(R.fixoAtual - R.estrutura) >= 1 ? `<div class="verdict warn">Suas saídas fixas deste mês somam ${brl(R.fixoAtual)}, mas a calculadora de preço usa ${brl(R.estrutura)} de estrutura. Atualize a aba Empresa para o preço refletir o custo real.</div>` : ""}`;
 }
 function ctSumHTML(c){
   const soma = (c.parcelas || []).reduce((a, p) => a + (p.valor || 0), 0), rec = (c.parcelas || []).reduce((a, p) => a + (p.recebido ? p.valor || 0 : 0), 0);
@@ -626,12 +632,14 @@ function viewFinanceiro(){
       <p class="note" style="margin:0">30/40/30: sinal na assinatura, segunda no meio do prazo, final 30 dias antes do evento. Ajuste datas e valores se o contrato for diferente.</p>
       ${parc || `<p class="empty-s">Nenhuma parcela ainda.</p>`}</div>`;
   }).join("");
-  const lancs = F.lancamentos.map((l, i) => { const p = `fin.lancamentos.${i}`; return `<div class="item"><div class="head"><span></span>${btnDel(p, "lançamento")}</div><div class="row">${fDate("Data", p + ".data")}${fTxt("Descrição", p + ".desc", "Curso, equipamento, reembolso…")}${fSel("Tipo", p + ".tipo", [["saida", "Saída"], ["entrada", "Entrada"]])}${fNum("Valor", p + ".valor", { req: 1, pre: "R$" })}</div></div>`; }).join("");
+  const fixas = (F.fixas || []).map((f, i) => { const p = `fin.fixas.${i}`; return `<div class="item"><div class="head"><span></span>${btnDel(p, "saída fixa")}</div><div class="row">${fTxt("Saída fixa", p + ".nome", "Aluguel, contador, DAS, internet…")}${fNum("Valor por mês", p + ".valor", { req: 1, pre: "R$" })}${fMes("Desde", p + ".inicio")}${fMes("Até", p + ".fim", "vazio = sem fim")}</div></div>`; }).join("");
+  const lancs = F.lancamentos.map((l, i) => { const p = `fin.lancamentos.${i}`; return `<div class="item"><div class="head"><span></span>${btnDel(p, "lançamento")}</div><div class="row">${fDate("Data", p + ".data")}${fTxt("Descrição", p + ".desc", "Material, combustível extra, curso, reembolso…")}${fSel("Tipo", p + ".tipo", [["saida", "Saída variável"], ["entrada", "Entrada avulsa"]])}${fNum("Valor", p + ".valor", { req: 1, pre: "R$" })}</div></div>`; }).join("");
   return `<div class="grid"><div class="card stack"><div class="sec-t"><h2>Financeiro ${F.ano}</h2><div class="actions"><button class="b sm" data-act="finano" data-d="-1" aria-label="Ano anterior">‹ ${F.ano - 1}</button><button class="b sm" data-act="finano" data-d="1" aria-label="Próximo ano">${F.ano + 1} ›</button></div></div>
       <div class="row">${fNum("Caixa no início do ano", "fin.saldoInicial", { pre: "R$", hint: "saldo em conta em 1º de janeiro" })}</div>
       <div id="finResumo"></div></div>
     <div class="card stack"><div class="sec-t"><h3>Contratos</h3><button class="b sm" data-act="add" data-path="fin.contratos" data-kind="contrato">+ Contrato</button></div>${cts || `<p class="empty-s">Cadastre os contratos fechados com as parcelas para ver as entradas de cada mês.</p>`}</div>
-    <div class="card stack"><div class="sec-t"><h3>Lançamentos avulsos</h3><button class="b sm" data-act="add" data-path="fin.lancamentos" data-kind="lancamento">+ Lançamento</button></div><p class="note" style="margin:0">Gastos ou entradas fora da estrutura mensal e dos eventos.</p>${lancs}</div>
+    <div class="card stack"><div class="sec-t"><h3>Saídas fixas</h3><button class="b sm" data-act="add" data-path="fin.fixas" data-kind="fixa">+ Saída fixa</button></div><p class="note" style="margin:0">Gastos que se repetem todo mês. Entram sozinhos em cada mês do período. ${(F.fixas || []).length ? "" : `Enquanto a lista estiver vazia, o financeiro usa a estrutura de ${brl((S.conta.empresa.despesas || 0) + (S.conta.empresa.proLabore || 0))} da aba Empresa.`}</p>${fixas}</div>
+    <div class="card stack"><div class="sec-t"><h3>Saídas variáveis e entradas avulsas</h3><button class="b sm" data-act="add" data-path="fin.lancamentos" data-kind="lancamento">+ Lançamento</button></div><p class="note" style="margin:0">Gastos que mudam de um mês para outro e entradas que não são parcela de contrato. O custo de cada evento já entra pelo contrato.</p>${lancs}</div>
     <div class="card stack"><h3>Nomes dos CNPJs</h3><div class="row">${F.cnpjNomes.map((n, i) => fTxt(`CNPJ ${i + 1}`, `fin.cnpjNomes.${i}`, "Nome para identificar")).join("")}</div></div></div>`;
 }
 
@@ -720,7 +728,7 @@ document.addEventListener("click", async ev => {
   else if (a === "cancel") {}
   else if (a === "add") {
     const arr = getP(path); const kind = b.dataset.kind;
-    arr.push(kind === "atividade" ? novaAtividade() : kind === "escala" ? novaEscala() : kind === "despesa" ? novaDespesa() : kind === "forma" ? { id: uid(), nome: "", taxa: null } : kind === "contrato" ? (() => { const c = { id: uid(), cliente: "", cnpj: "0", pacoteId: "", valor: null, assinatura: hojeISO(), evento: "", custo: null, parcelas: [] }; S.finOpen = c.id; return c; })() : kind === "parcela" ? { id: uid(), venc: "", valor: null, recebido: false } : kind === "lancamento" ? { id: uid(), data: hojeISO(), desc: "", tipo: "saida", valor: null } : { id: uid(), nome: "", valor: null });
+    arr.push(kind === "atividade" ? novaAtividade() : kind === "escala" ? novaEscala() : kind === "despesa" ? novaDespesa() : kind === "forma" ? { id: uid(), nome: "", taxa: null } : kind === "contrato" ? (() => { const c = { id: uid(), cliente: "", cnpj: "0", pacoteId: "", valor: null, assinatura: hojeISO(), evento: "", custo: null, parcelas: [] }; S.finOpen = c.id; return c; })() : kind === "parcela" ? { id: uid(), venc: "", valor: null, recebido: false } : kind === "fixa" ? { id: uid(), nome: "", valor: null, inicio: `${S.fin.ano}-01`, fim: "" } : kind === "lancamento" ? { id: uid(), data: hojeISO(), desc: "", tipo: "saida", valor: null } : { id: uid(), nome: "", valor: null });
     touched(path);
   }
   else if (a === "del") {
