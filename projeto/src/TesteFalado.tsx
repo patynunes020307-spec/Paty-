@@ -12,6 +12,7 @@ import { SANS } from "./fontes";
 // Teste do fluxo "vídeo falado" (ficha-paty-celular.md) com IMG_4362.
 // Bruto: public/brutos/teste-4362/IMG_4362.mp4 (cópia H.264 1080x1920 do original).
 // Silêncio cortado (fala real: 1,44–3,66 s e 4,16–6,87 s) e tudo a 1,2x.
+// Voz: playbackRate do Remotion subia o tom (~14%); o áudio vem acelerado no ffmpeg (atempo, mantém o tom).
 const BRUTO = "brutos/teste-4362/IMG_4362.mp4";
 const VELOCIDADE = 1.2;
 export const TESTE_FALADO_DURACAO = 130; // 59 + 71 quadros
@@ -124,9 +125,11 @@ export const TesteFalado: React.FC = () => {
           trimBefore={41}
           trimAfter={112}
           playbackRate={VELOCIDADE}
+          muted
           objectFit="cover"
           style={{ width: "100%", height: "100%" }}
         />
+        <Audio src={staticFile("brutos/teste-4362/frase1-1.2x.wav")} />
       </Sequence>
       {/* Frase forte: aproximação seca de 14% no corte, centrada no rosto */}
       <Sequence name="Frase 2" from={59} durationInFrames={71} premountFor={fps}>
@@ -136,10 +139,12 @@ export const TesteFalado: React.FC = () => {
             trimBefore={124}
             trimAfter={209}
             playbackRate={VELOCIDADE}
+            muted
             objectFit="cover"
             style={{ width: "100%", height: "100%" }}
           />
         </AbsoluteFill>
+        <Audio src={staticFile("brutos/teste-4362/frase2-1.2x.wav")} />
       </Sequence>
       <Sequence name="Lista" from={LISTA_ENTRA} premountFor={fps}>
         <Lista />

@@ -23,6 +23,6 @@
 ## Como aplicar no Remotion (notas técnicas)
 - Posição: detectar o rosto **uma vez por plano** (não seguir quadro a quadro — proibido no CLAUDE.md) e reservar a faixa acima da cabeça para abertura/peças e a faixa do peito para a legenda.
 - Corte de silêncio: transcrição local (whisper.cpp, palavra a palavra) + detecção de silêncio; nunca cortar dentro de palavra.
-- 1,2x: `playbackRate` no `<Video>`/`<Audio>` ou acelerar no ffmpeg (atempo 1.2, sem alterar o tom da voz) — legendas recalculadas.
+- 1,2x: vídeo com `playbackRate` e **`muted`**; a voz **sempre** acelerada no ffmpeg (`atempo=1.2`) e tocada num `<Audio>` separado — legendas recalculadas. **Nunca** usar `playbackRate` no som da voz: no render ele sobe o tom (~14%, voz fina — testado em 24/11 com IMG_4362).
 - "Pulo" = escala 0 → 1,08 → 1 em 0,3 s, uma vez (não é pulsar em loop). "Sai seca" = corte, sem fade.
 - Aproximação de 14% = corte seco de escala 1 → 1,14 no início da frase forte (sem animação de zoom), volta seca no próximo corte.
