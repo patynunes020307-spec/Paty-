@@ -80,4 +80,4 @@ Gancho "COMO GRAVAR 50 REELS EM 1 DIA" → Bloco 1/5 Takes de apoio (9 itens num
 ## Pendências (decisão da Paty)
 1. Quer testar o formato **lista em blocos + "comenta PALAVRA"** em Reel da Impactar? Precisa definir o brinde real (checklist, guia em PDF) antes — sem brinde não existe CTA.
 2. O formato **tutorial de tela** cabe em qual tema? (não invento tema nem material).
-3. Marcação à mão: nude ou verde-água?
+3. ~~Marcação à mão: nude ou verde-água?~~ → **verde-água** (Paty, 24/11). Teste do formato de lista: `briefings/2026-11-24-lista-vespera.md`.

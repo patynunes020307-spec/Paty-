@@ -4,6 +4,7 @@ import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
 import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
 import { DIARIO, Diario, duracaoDiario } from "./Diario";
+import { duracaoLista, ListaBlocos, VESPERA } from "./ListaBlocos";
 import {
   ANTES_CONVIDADOS,
   ASSESSORA,
@@ -482,6 +483,15 @@ export const RemotionRoot: React.FC = () => {
         component={MotionReel}
         defaultProps={GOLA_B}
         durationInFrames={duracaoMotion(GOLA_B)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ListaVespera"
+        component={ListaBlocos}
+        defaultProps={VESPERA}
+        durationInFrames={duracaoLista(VESPERA)}
         fps={FPS}
         width={1080}
         height={1920}
