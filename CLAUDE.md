@@ -14,6 +14,8 @@ projeto/
 ├── exports/       vídeos finais
 ├── public/sfx/    6 efeitos CC0 (whoosh, pop, impacto, ding, notificacao, clique) + LICENSE + FONTES.md
 ├── src/           composições Remotion (Root.tsx registra tudo)
+├── scripts/       transcrição local (whisper.cpp), achar ganchos, render das versões de gancho
+├── ganchos/       <slug>.json por gravação de ganchos + registro.md dos resultados
 ├── .tmp/          TEMP/TMP do render (definido em remotion.config.ts)
 └── .claude/skills/remotion-*   skills oficiais remotion-dev/skills
 ```
@@ -23,6 +25,9 @@ projeto/
 ## Como começar
 
 Toda produção nova começa com a skill `/iniciar` (`.claude/skills/iniciar/SKILL.md`): briefing → inventário → transcrição local → estilo → plano → trecho de validação → vídeo inteiro.
+
+Gravação com vários ganchos + um corpo (teste de ganchos em Reels de teste): variante "versões de gancho" da `/iniciar`
+— composição `VersaoGancho`, scripts `npm run transcrever` / `ganchos:achar` / `ganchos:render`, dados e registro em `projeto/ganchos/`.
 
 ## Guia da marca (obrigatório)
 

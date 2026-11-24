@@ -29,6 +29,9 @@
     "dev": "remotion studio",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "transcrever": "NODE_USE_ENV_PROXY=1 node scripts/transcrever.mjs",
+    "ganchos:achar": "node scripts/achar-ganchos.mjs",
+    "ganchos:render": "NODE_USE_ENV_PROXY=1 node scripts/versoes-gancho.mjs"
   }
 }
