@@ -2,6 +2,7 @@ import { Composition } from "remotion";
 import { MyComposition } from "./Composition";
 import { TesteEdita } from "./TesteEdita";
 import { TesteFalado, TESTE_FALADO_DURACAO } from "./TesteFalado";
+import { TesteEstiloRef, TESTE_ESTILO_DURACAO } from "./TesteEstiloRef";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
 import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
 import { DIARIO, Diario, duracaoDiario } from "./Diario";
@@ -52,6 +53,14 @@ export const RemotionRoot: React.FC = () => {
         id="TesteEdita"
         component={TesteEdita}
         durationInFrames={5 * 30}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="TesteEstiloRef"
+        component={TesteEstiloRef}
+        durationInFrames={TESTE_ESTILO_DURACAO}
         fps={30}
         width={1080}
         height={1920}
