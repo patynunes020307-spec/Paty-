@@ -7,9 +7,14 @@
 - Voz original a 1,0x, só silêncios cortados. Sem música, sem SFX, sem voz artificial.
 - Título acima da cabeça em Cormorant Garamond 500: linha clara + palavra-chave em itálico nude (#E9CEBB), maior. Texto tirado da própria fala.
 - Legenda no peito: Montserrat 600 branca, 1–3 palavras, palavra falada em nude, sem tarja, sombra suave.
-- Tela dividida no momento-chave: metade de cima petróleo (#203F51) com fio nude + etiqueta Montserrat caixa-alta espaçada (areia) + palavra grande em itálico nude; vídeo embaixo, rosto inteiro visível; legenda logo abaixo da linha da divisão. Entra e sai com corte seco.
+- Tela dividida (regra da Paty, 24/11/2026), sempre com corte seco na entrada e na saída, rosto inteiro visível embaixo, legenda logo abaixo da linha da divisão:
+  1. **Com imagem:** quando a fala tratar de algo concreto (cortejo, horário, decoração, ensaio…) e existir foto/trecho de vídeo real sobre aquilo, ele ocupa a metade de cima (1080 × 960).
+  2. **Sem imagem:** em conceito-chave sem imagem, versão tipográfica — petróleo (#203F51) + fio nude + etiqueta Montserrat caixa-alta espaçada (areia) + palavra grande em itálico nude.
+  3. **Frequência:** no máximo uma tela dividida a cada 8–10 s.
+  - Imagens: **só arquivos enviados pela Paty** (ou pasta do Drive que ela indicar) — nunca escolher no acervo por conta própria. Filtro de qualidade do Guia para a área de 1080 × 960; reprovou, não usa e avisa. Casal/cliente identificável: confirmar autorização com a Paty antes.
+  - No roteiro visual, marcar em qual frase entra cada imagem, para aprovação antes de montar.
 - Animação: fade + subida curta (~26 px) em 0,45 s; fio desenha em 0,5 s; uma coisa por vez.
-- Exemplos visuais: só arquivos reais da Paty, em tela cheia (sem moldura/cartão).
+- Exemplos visuais: só na tela dividida (regra acima) ou em tela cheia; nunca em moldura/cartão.
 - Capa: frame real, gancho ≤ 8 palavras da fala, logo PNG oficial pequena sobre área escura lisa (não sobre madeira clara).
 - Não usar: tarja/caixa na legenda, ícones, texto atrás da cabeça (recorte por IA), @ ou elementos da referência.
 
