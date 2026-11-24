@@ -1,5 +1,5 @@
 # Teste de formato: lista em blocos + "comenta PALAVRA" — Checklist da véspera
-- Data: 24/11/2026 | Slug: lista-vespera | Status: **trecho de validação (aguardando Paty)**
+- Data: 24/11/2026 | Slug: lista-vespera | Status: **entregue v1 — NÃO publicar enquanto o brinde for fictício**
 - Origem: estudo `estilos/ref-2026-11-24-tutorial-e-lista.md` (Ref B, @filipe.viana). Pedido da Paty: "Inventa um brinde fictício e testa para mim. Prefiro os que verde água."
 
 ## Objetivo / CTA
@@ -40,6 +40,7 @@ Blocos com 3,4–4 s (a Ref B usa ~2 s; alongado para dar leitura).
 
 ## Log de versões
 - 24/11 — `exports/lista-vespera-teste.mp4` (0–8 s: gancho + bloco 1 + início do bloco 2).
+- 24/11 — trecho aprovado pela Paty ("Aprovado"). `exports/lista-vespera-v1.mp4`: 21,2 s, 1080 × 1920, 30 fps, sem áudio (intencional). Sem mudanças em relação ao trecho.
 
 ## Nota técnica
 O render tentava baixar o Chrome de remotion.media (bloqueado na rede). Usar `--browser-executable=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`.
