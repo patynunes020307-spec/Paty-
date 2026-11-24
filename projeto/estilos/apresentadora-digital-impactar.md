@@ -1,6 +1,6 @@
 # Modelo — Apresentadora Digital Impactar (TESTE COM IA)
 - Criado em 24/11/2026 a pedido da Paty. **Exceção específica para teste privado; não muda o Guia de Publicações** (o Guia proíbe pessoas geradas/alteradas por IA — esta exceção vale só para a imagem e a voz da própria Paty, com autorização dela a cada etapa).
-- Status: **preparação**. Nenhum envio de foto/voz e nenhuma geração foram feitos.
+- Status: **ABORTADO em 24/11/2026** (Paty: não vai pagar Higgsfield agora). Nenhum envio de foto/voz e nenhuma geração foram feitos. Modelo guardado para uso futuro; retomar só com pedido expresso da Paty.
 
 ## Finalidade
 Vídeos curtos em que uma versão digital da Paty explica uma dúvida concreta de quem está organizando o casamento.
