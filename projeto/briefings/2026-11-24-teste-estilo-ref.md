@@ -1,5 +1,5 @@
 # Teste de estilo — referência (título serifado, legenda acompanhando a fala, tela dividida)
-- Data: 24/11/2026 | Slug: teste-estilo-ref | Status: teste enviado, aguardando aprovação
+- Data: 24/11/2026 | Slug: teste-estilo-ref | Status: teste APROVADO pela Paty ("Ficou perfeito", 24/11) — aguardando gravação para o vídeo inteiro
 - **Teste de estilo, não peça pronta e não mudança do Guia.**
 ## Objetivo
 Explorar, com a identidade da Impactar, a linguagem de um Reel de referência (recebido só como 16 prints; o vídeo era grande demais para anexar). Não copiar textos, marca, @ ou imagens da criadora.
@@ -22,3 +22,4 @@ Explorar, com a identidade da Impactar, a linguagem de um Reel de referência (r
 - Não usado: texto atrás da cabeça (exige recorte por IA — conflito com a regra de imagem; decisão da Paty).
 ## Log
 - 24/11: `exports/teste-estilo-ref.mp4` (5,4 s) + `exports/teste-estilo-ref-capa.png`.
+- 24/11: Paty aprovou o teste ("Ficou perfeito"). Estilo registrado em `estilos/teste-falado-serifado.md`. Próximo: gravação com dúvida real de noiva.
