@@ -94,6 +94,7 @@ sem sons empilhados, nada parado mais de 2 s em vídeo falado.
 - Valide com `npm run lint` e `npx remotion compositions`.
 - Renderize só um trecho curto e representativo (5–10 s, com legenda e pelo menos um SFX):
   `npx remotion render <Id> exports/<slug>-teste.mp4 --frames=<ini>-<fim>`.
+- Rode a skill `conferir-edicao` sobre o trecho; só mostre se sair APROVADO.
 - Mostre o trecho e o link do Studio para a Paty. **Pare e espere a aprovação.** Ajuste e repita se ela pedir.
 
 ## 7. Vídeo inteiro
@@ -102,6 +103,6 @@ Só depois da aprovação:
 
 - `npx remotion render <Id> exports/<slug>-v1.mp4` (versões seguintes: `-v2`, `-v3`…; nunca sobrescreva uma versão entregue).
 - Confira com `ffprobe`: 1080 × 1920, 30 fps, duração esperada, áudio presente.
-- Faça mais uma passada pela lista do que é proibido.
+- Rode a skill `conferir-edicao` sobre o vídeo inteiro; só entregue se sair APROVADO.
 - Atualize o briefing: status "entregue", versão, o que mudou.
 - Entregue em poucas linhas: arquivo, duração, o que ficou "não confirmado" ou em dúvida.
