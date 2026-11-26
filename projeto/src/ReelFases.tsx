@@ -362,8 +362,8 @@ export const CapaReelFases: React.FC<ReelFasesProps> = ({ gancho }) => {
 export const LISTA_CONVIDADOS: ReelFasesProps = {
   gancho: {
     foto: "lista/equipe-504-conferindo.jpg",
-    origem: "58% 35%",
-    zoom: [1, 1.05],
+    origem: "66% 30%",
+    zoom: [1.08, 1.13],
     etiqueta: "Bastidores da Impactar",
     linha: "A lista de convidados",
     italico: "sem neura",
@@ -372,7 +372,7 @@ export const LISTA_CONVIDADOS: ReelFasesProps = {
     {
       num: "01",
       foto: "lista/equipe-498-prancheta.jpg",
-      origem: "50% 35%",
+      origem: "97% 35%",
       zoom: [1.02, 1.07],
       etiqueta: "A lista",
       linha: "Uma lista,",
@@ -414,7 +414,7 @@ export const LISTA_CONVIDADOS: ReelFasesProps = {
     {
       num: "04",
       foto: "lista/equipe-143-entrada.jpg",
-      origem: "50% 40%",
+      origem: "60% 40%",
       zoom: [1.02, 1.07],
       etiqueta: "Número final",
       linha: "O número certo",
@@ -428,8 +428,8 @@ export const LISTA_CONVIDADOS: ReelFasesProps = {
   ],
   final: {
     foto: "lista/equipe-80-com-casal.jpg",
-    origem: "54% 35%",
-    zoom: [1.02, 1.07],
+    origem: "41% 35%",
+    zoom: [1.06, 1.1],
     etiqueta: "Salva para montar a sua lista",
     linha: "Menos planilha.",
     italico: "Mais presença.",
