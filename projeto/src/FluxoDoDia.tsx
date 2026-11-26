@@ -12,7 +12,8 @@ import { SANS as sans, SERIF as serif } from "./fontes";
 import { COR } from "./marca";
 
 // Reel "Fluxo do dia" (26/11/2026) — versão em vídeo do carrossel aprovado em conteúdo.
-// Foto real (cerimônia Renata e Pedro, crédito Celebrizar) em tela cheia, P&B,
+// Foto real (cerimônia Renata e Pedro, crédito Celebrizar) em tela cheia, colorida
+// (pedido da Paty em 26/11: imagem mais viva e realista, sobrepõe o P&B do Guia),
 // recortes diferentes por fase com aproximação lenta 100% → 105% (um sentido só).
 // Animações só da lista do Guia (seção 2B): digitação, fade + subida curta,
 // fio desenhado, check desenhado um por vez. Sem som; música pela biblioteca do Instagram.
@@ -20,7 +21,7 @@ import { COR } from "./marca";
 export const FPS = 30;
 const FOTO = "fluxo/cerimonia-renata-pedro.jpg";
 const DEGRADE =
-  "linear-gradient(to top, rgba(7,33,38,0.96) 0%, rgba(7,33,38,0.9) 34%, rgba(7,33,38,0) 66%)";
+  "linear-gradient(to top, rgba(7,33,38,0.92) 0%, rgba(7,33,38,0.78) 30%, rgba(7,33,38,0.35) 46%, rgba(7,33,38,0) 60%)";
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const suave = Easing.bezier(0.16, 1, 0.3, 1);
 
@@ -44,7 +45,7 @@ export const FASES: Fase[] = [
       "Montagem e fornecedores conferidos",
       "Cronograma alinhado com cada equipe",
     ],
-    origem: "50% 28%",
+    origem: "30% 100%",
   },
   {
     num: "02",
@@ -56,7 +57,7 @@ export const FASES: Fase[] = [
       "Sinal combinado para música e entrada",
       "Cerimônia acompanhada de perto",
     ],
-    origem: "50% 52%",
+    origem: "55% 100%",
   },
   {
     num: "03",
@@ -68,7 +69,7 @@ export const FASES: Fase[] = [
       "Cada momento na hora combinada",
       "Fornecedores alinhados durante a festa",
     ],
-    origem: "80% 70%",
+    origem: "85% 100%",
   },
   {
     num: "04",
@@ -80,7 +81,7 @@ export const FASES: Fase[] = [
       "Últimos alinhamentos com fornecedores",
       "Encerramento do evento",
     ],
-    origem: "18% 66%",
+    origem: "15% 100%",
   },
 ];
 
@@ -111,7 +112,7 @@ const Foto: React.FC<{ de: number; ate: number; origem: string; dur: number }> =
           height: "100%",
           objectFit: "cover",
           objectPosition: origem,
-          filter: "grayscale(1) contrast(1.05)",
+          filter: "contrast(1.04) saturate(1.05)",
           transformOrigin: origem,
           scale: String(s),
         }}
@@ -236,6 +237,7 @@ const BlocoFase: React.FC<{ f: Fase; dur: number }> = ({ f, dur }) => {
           fontSize: 96,
           lineHeight: 1.05,
           marginBottom: 40,
+          textShadow: "0 2px 18px rgba(7,33,38,0.5)",
         }}
       >
         {f.linha}
@@ -265,6 +267,7 @@ const BlocoFase: React.FC<{ f: Fase; dur: number }> = ({ f, dur }) => {
                 fontWeight: 500,
                 fontSize: 44,
                 lineHeight: 1.25,
+                textShadow: "0 2px 14px rgba(7,33,38,0.55)",
                 textWrap: "balance",
               }}
             >

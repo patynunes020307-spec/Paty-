@@ -23,7 +23,7 @@ Nenhum vídeo. Foto real: "Renata e Pedro — Cerimônia ao ar livre — Vertica
 - Animações só da seção 2B: digitação, fade + subida, fio desenhado, check desenhado.
 
 ## Inventário técnico
-Foto única, P&B (cerimônia = emoção). Zoom máximo 1,28 sobre o cover, então não há ampliação além do arquivo original.
+Foto única, colorida (pedido da Paty em 26/11, sobrepõe o P&B do Guia). Zoom máximo 1,28 sobre o cover, então não há ampliação além do arquivo original.
 Limite: a mesma foto aparece em 6 recortes. Outras fotos do casamento passam de 10 MB e o conector do Drive não baixa. Não confirmado: se a Paty quer mandar mais fotos.
 
 ## Plano de edição
@@ -31,3 +31,4 @@ Limite: a mesma foto aparece em 6 recortes. Outras fotos do casamento passam de 
 
 ## Log de versões
 - 26/11: teste de 9 s (`exports/fluxo-do-dia-teste.mp4`), frames 0–269.
+- 26/11: teste colorido (`exports/fluxo-do-dia-teste-cor.mp4`): foto colorida natural a pedido da Paty, degradê mais leve, recortes ancorados na base para o texto não cobrir o casal.
