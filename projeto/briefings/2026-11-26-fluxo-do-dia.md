@@ -1,5 +1,5 @@
 # Reel — Fluxo do dia do evento
-- Data: 26/11/2026 | Slug: fluxo-do-dia | Status: teste de estilo enviado (aguardando aprovação)
+- Data: 26/11/2026 | Slug: fluxo-do-dia | Status: aprovado (26/11/2026), aguardando upload do MP4 pela Paty
 
 ## Objetivo / CTA
 Versão em vídeo do carrossel "Quem cuida do dia enquanto você vive" (objetivo: Confiança).
@@ -33,3 +33,4 @@ Fotos da pasta Renata e Pedro com menos de 10 MB (limite do conector). Cópias r
 - 26/11: teste de 9 s (`exports/fluxo-do-dia-teste.mp4`), frames 0–269.
 - 26/11: teste colorido (`exports/fluxo-do-dia-teste-cor.mp4`): foto colorida natural a pedido da Paty, degradê mais leve, recortes ancorados na base para o texto não cobrir o casal.
 - 26/11: v1 completa (`exports/fluxo-do-dia-v1.mp4`, 27 s, 1080 × 1920, 30 fps, sem áudio) + capa (`exports/fluxo-do-dia-capa.jpg`). Fotos escolhidas da pasta Renata e Pedro (pedido da Paty), todas coloridas: 0658 (gancho, fase 01, final), 0934 beijo (fase 02), 0989 brinde (fase 03), 1046 cumprimento (fase 04). Crédito: Celebrizar. Status: prévia enviada, aguardando "aprovado".
+- 26/11: APROVADO pela Paty. Entregue em Drive › Criativos › 2026-11-26_Reel_FluxoDoDia (capa + legenda; MP4 de 26.734.705 bytes enviado à Paty para subir, acima do limite do conector). Cartão criado no Calendário Editorial.
