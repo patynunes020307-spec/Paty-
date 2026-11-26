@@ -4,6 +4,7 @@ import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
 import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
 import { DIARIO, Diario, duracaoDiario } from "./Diario";
+import { CapaFluxo, DURACAO_FLUXO, FluxoDoDia } from "./FluxoDoDia";
 import {
   ANTES_CONVIDADOS,
   ASSESSORA,
@@ -47,6 +48,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <MyComposition />
+      <Composition
+        id="ReelFluxoDoDia"
+        component={FluxoDoDia}
+        durationInFrames={DURACAO_FLUXO}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaFluxoDoDia"
+        component={CapaFluxo}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="TesteEdita"
         component={TesteEdita}

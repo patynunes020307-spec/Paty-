@@ -20,3 +20,5 @@ referencias/*
 public/brutos/
 public/audio/
 whisper.cpp/
+# Fotos de trabalho dos Reels (cópias do Drive)
+public/fluxo/

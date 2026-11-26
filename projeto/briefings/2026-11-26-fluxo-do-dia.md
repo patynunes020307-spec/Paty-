@@ -1,0 +1,33 @@
+# Reel — Fluxo do dia do evento
+- Data: 26/11/2026 | Slug: fluxo-do-dia | Status: teste de estilo enviado (aguardando aprovação)
+
+## Objetivo / CTA
+Versão em vídeo do carrossel "Quem cuida do dia enquanto você vive" (objetivo: Confiança).
+CTA na etiqueta final: "Manda para quem vai casar com você" (confirmado no carrossel).
+
+## Plataforma e duração
+Instagram Reel 9:16, 1080 × 1920, 30 fps, 27 s (formato passo a passo: Guia permite até 30 s). Sem som; música pela biblioteca do Instagram.
+
+## Público
+Noivas de 25 a 44 anos, BH e Grande BH (Guia de Publicações, versão 25/11/2026).
+
+## Brutos usados
+Nenhum vídeo. Foto real: "Renata e Pedro — Cerimônia ao ar livre — Vertical" (Drive › Banco de imagens), 1707 × 2560, crédito Celebrizar (confirmado pela Paty). Cópia em `public/fluxo/`.
+
+## Estilo
+`estilos/impactar-guia-oficial.md` + Guia do Notion (seção 11). Componentes no padrão de `MotionReel.tsx`.
+
+## Obrigatório / Proibido neste vídeo
+- Textos das fases iguais aos do carrossel.
+- Sem tela final e sem logo no fim; logo só na capa (`script-nude.png`).
+- Animações só da seção 2B: digitação, fade + subida, fio desenhado, check desenhado.
+
+## Inventário técnico
+Foto única, P&B (cerimônia = emoção). Zoom máximo 1,28 sobre o cover, então não há ampliação além do arquivo original.
+Limite: a mesma foto aparece em 6 recortes. Outras fotos do casamento passam de 10 MB e o conector do Drive não baixa. Não confirmado: se a Paty quer mandar mais fotos.
+
+## Plano de edição
+0–3,5 s gancho digitado · 3,5–23,5 s quatro fases de 5 s (título + 3 checks, um por vez) · 23,5–27 s frase final + CTA sobre a foto aberta.
+
+## Log de versões
+- 26/11: teste de 9 s (`exports/fluxo-do-dia-teste.mp4`), frames 0–269.
