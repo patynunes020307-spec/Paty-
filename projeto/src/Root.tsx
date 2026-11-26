@@ -6,6 +6,12 @@ import { CORTES, CorteFilme, duracaoCorte, FPS } from "./CorteFilme";
 import { DIARIO, Diario, duracaoDiario } from "./Diario";
 import { CapaFluxo, DURACAO_FLUXO, FluxoDoDia } from "./FluxoDoDia";
 import {
+  CapaReelFases,
+  duracaoReelFases,
+  LISTA_CONVIDADOS,
+  ReelFases,
+} from "./ReelFases";
+import {
   ANTES_CONVIDADOS,
   ASSESSORA,
   duracaoMotion,
@@ -52,6 +58,24 @@ export const RemotionRoot: React.FC = () => {
         id="ReelFluxoDoDia"
         component={FluxoDoDia}
         durationInFrames={DURACAO_FLUXO}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ReelListaConvidados"
+        component={ReelFases}
+        defaultProps={LISTA_CONVIDADOS}
+        durationInFrames={duracaoReelFases(LISTA_CONVIDADOS)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="CapaListaConvidados"
+        component={CapaReelFases}
+        defaultProps={LISTA_CONVIDADOS}
+        durationInFrames={1}
         fps={30}
         width={1080}
         height={1920}
