@@ -427,9 +427,9 @@ export const LISTA_CONVIDADOS: ReelFasesProps = {
     },
   ],
   final: {
-    foto: "lista/equipe-80-com-casal.jpg",
-    origem: "41% 35%",
-    zoom: [1.06, 1.1],
+    foto: "lista/final-carol-caio-556.jpg",
+    origem: "50% 40%",
+    zoom: [1, 1.05],
     etiqueta: "Salva para montar a sua lista",
     linha: "Menos planilha.",
     italico: "Mais presença.",
