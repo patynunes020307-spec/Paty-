@@ -1,5 +1,5 @@
 # Reel + carrossel — A lista de convidados sem neura
-- Data: 26/11/2026 | Slug: lista-convidados | Status: prévia enviada (aguardando "aprovado")
+- Data: 26/11/2026 | Slug: lista-convidados | Status: aprovado (26/11/2026), aguardando upload do MP4 pela Paty
 
 ## Objetivo / CTA
 Confiança: mostrar o processo da lista de convidados e do RSVP automático para tirar a ansiedade da noiva. CTA: "Salva para montar a sua lista".
@@ -22,3 +22,4 @@ Drive › Banco de imagens › "Equipe em ação": Recepção 504 (gancho, capa)
 - 26/11: v3 (`exports/lista-convidados-v3.mp4`): fases 01 e 03 trocadas pelas fotos com tablet enviadas pela Paty (THI00421 e THI00412), a pedido dela. Crédito dessas fotos: não confirmado.
 - 26/11: v4 (`exports/lista-convidados-v4.mp4`): abertura e capas fechadas só na Paty (foto 504 em resolução original, zoom 1,88–1,95 sem ampliação), a pedido dela. Cena final aguardando nova foto da Paty.
 - 26/11: v5 (`exports/lista-convidados-v5.mp4`): cena final trocada pela foto enviada pela Paty "Recepção Carol e Caio 556" (noiva com buquê e banda). A outra opção enviada (Luma e Agni 34) não foi usada: mascote de time ao fundo (marca de terceiros). Crédito: não confirmado.
+- 26/11: APROVADO pela Paty (v5 + carrossel). Entregue em Drive › Criativos (2026-11-26_Reel_ListaConvidados e 2026-11-26_Carrossel_ListaConvidados). Cartões criados no Calendário. Crédito pendente (fotógrafos não identificados).
