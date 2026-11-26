@@ -358,7 +358,7 @@ export const CapaReelFases: React.FC<ReelFasesProps> = ({ gancho }) => {
 
 // ——— Peça: Lista de convidados sem neura (26/11/2026) ———
 // Fatos: proposta vigente 19/10/2026 (3 disparos automáticos em todos os planos; confirmação ativa
-// incluída no Premium) + modelo Assessoria VIP de 13/11 (prazos). Fotos: Drive › Banco › "Equipe em ação".
+// incluída no Premium) + modelo Assessoria VIP de 13/11 (prazos). Fotos: Drive › Banco › "Equipe em ação" + 2 fotos com tablet enviadas pela Paty (THI00421, THI00412).
 export const LISTA_CONVIDADOS: ReelFasesProps = {
   gancho: {
     foto: "lista/equipe-504-conferindo.jpg",
@@ -371,9 +371,9 @@ export const LISTA_CONVIDADOS: ReelFasesProps = {
   fases: [
     {
       num: "01",
-      foto: "lista/equipe-498-prancheta.jpg",
-      origem: "97% 35%",
-      zoom: [1.02, 1.07],
+      foto: "lista/tablet-1-THI00421.jpg",
+      origem: "55% 30%",
+      zoom: [1, 1.05],
       etiqueta: "A lista",
       linha: "Uma lista,",
       italico: "um lugar só",
@@ -399,9 +399,9 @@ export const LISTA_CONVIDADOS: ReelFasesProps = {
     },
     {
       num: "03",
-      foto: "lista/equipe-77-conduzindo.jpg",
-      origem: "52% 40%",
-      zoom: [1.02, 1.07],
+      foto: "lista/tablet-2-THI00412.jpg",
+      origem: "45% 30%",
+      zoom: [1, 1.05],
       etiqueta: "Confirmação",
       linha: "Sem cobrança",
       italico: "constrangedora",
