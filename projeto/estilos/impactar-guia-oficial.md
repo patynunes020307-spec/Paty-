@@ -12,7 +12,7 @@ Substitui o "padrão visual v6" (Areia #FAF7F3, selo como tela final), que deixo
 - Fontes: títulos Cormorant Garamond com **uma palavra-chave em itálico**; textos e etiquetas Montserrat. Geraldine só dentro da logo. Bodoni, Arial, Metropolis, Atten New: proibidas.
 - Logo: sempre o arquivo original (Drive › 08 — MARKETING › 00 — MARCA › Logo-original-*.png), pequena, nunca escrita em texto nem redesenhada.
 - 4 sinais: monograma IC suave no canto (telas sem foto); palavra em itálico; degradê petróleo só na base da foto; logo original pequena.
-- P&B para emoção (cerimônia, lágrimas, beijo); cor para festa, decoração e 15 anos.
+- ~~P&B para emoção~~ **Decisão da Paty (26/11/2026): fotos sempre coloridas, cor natural e viva, em todos os criativos (inclusive cerimônia). Nunca converter para P&B.** Peças aprovadas antes disso ficam como estão.
 - Proibido: caixas com borda, faixas, ícones, pílulas, ramos/flores ilustrados, sombras pesadas, véu escuro sobre a foto toda, etiquetas internas visíveis, logo escrita em texto.
 
 ## Reels
