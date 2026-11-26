@@ -362,8 +362,8 @@ export const CapaReelFases: React.FC<ReelFasesProps> = ({ gancho }) => {
 export const LISTA_CONVIDADOS: ReelFasesProps = {
   gancho: {
     foto: "lista/equipe-504-conferindo.jpg",
-    origem: "66% 30%",
-    zoom: [1.08, 1.13],
+    origem: "49% 22%",
+    zoom: [1.88, 1.95],
     etiqueta: "Bastidores da Impactar",
     linha: "A lista de convidados",
     italico: "sem neura",

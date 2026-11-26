@@ -20,3 +20,4 @@ Drive › Banco de imagens › "Equipe em ação": Recepção 504 (gancho, capa)
 - 26/11: v1 (`exports/lista-convidados-v1.mp4`, capa `exports/lista-convidados-capa.jpg`) + carrossel. Prévia: https://claude.ai/artifact/JrJyfLDD4PVr9tmfKmopsM
 - 26/11: v2 (`exports/lista-convidados-v2.mp4`): pedido da Paty — tirar a colega que não trabalha mais na equipe (recortes do gancho, fase 01, fase 04 e capas), foco na Paty (a do meio na foto 504), final só com o casal (foto 80 recortada).
 - 26/11: v3 (`exports/lista-convidados-v3.mp4`): fases 01 e 03 trocadas pelas fotos com tablet enviadas pela Paty (THI00421 e THI00412), a pedido dela. Crédito dessas fotos: não confirmado.
+- 26/11: v4 (`exports/lista-convidados-v4.mp4`): abertura e capas fechadas só na Paty (foto 504 em resolução original, zoom 1,88–1,95 sem ampliação), a pedido dela. Cena final aguardando nova foto da Paty.
