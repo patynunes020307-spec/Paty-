@@ -24,7 +24,7 @@ Nenhum vídeo. Foto real: "Renata e Pedro — Cerimônia ao ar livre — Vertica
 
 ## Inventário técnico
 Foto única, colorida (pedido da Paty em 26/11, sobrepõe o P&B do Guia). Zoom máximo 1,28 sobre o cover, então não há ampliação além do arquivo original.
-Limite: a mesma foto aparece em 6 recortes. Outras fotos do casamento passam de 10 MB e o conector do Drive não baixa. Não confirmado: se a Paty quer mandar mais fotos.
+Fotos da pasta Renata e Pedro com menos de 10 MB (limite do conector). Cópias reduzidas em `public/fluxo/` (fora do git).
 
 ## Plano de edição
 0–3,5 s gancho digitado · 3,5–23,5 s quatro fases de 5 s (título + 3 checks, um por vez) · 23,5–27 s frase final + CTA sobre a foto aberta.
@@ -32,3 +32,4 @@ Limite: a mesma foto aparece em 6 recortes. Outras fotos do casamento passam de 
 ## Log de versões
 - 26/11: teste de 9 s (`exports/fluxo-do-dia-teste.mp4`), frames 0–269.
 - 26/11: teste colorido (`exports/fluxo-do-dia-teste-cor.mp4`): foto colorida natural a pedido da Paty, degradê mais leve, recortes ancorados na base para o texto não cobrir o casal.
+- 26/11: v1 completa (`exports/fluxo-do-dia-v1.mp4`, 27 s, 1080 × 1920, 30 fps, sem áudio) + capa (`exports/fluxo-do-dia-capa.jpg`). Fotos escolhidas da pasta Renata e Pedro (pedido da Paty), todas coloridas: 0658 (gancho, fase 01, final), 0934 beijo (fase 02), 0989 brinde (fase 03), 1046 cumprimento (fase 04). Crédito: Celebrizar. Status: prévia enviada, aguardando "aprovado".

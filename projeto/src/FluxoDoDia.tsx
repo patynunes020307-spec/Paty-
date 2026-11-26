@@ -32,11 +32,15 @@ type Fase = {
   italico: string;
   itens: string[];
   origem: string; // ponto de interesse do recorte
+  foto: string;
+  zoom: [number, number];
 };
 
 export const FASES: Fase[] = [
   {
     num: "01",
+    foto: "fluxo/cerimonia-renata-pedro.jpg",
+    zoom: [1.22, 1.28],
     etiqueta: "Antes de vocês chegarem",
     linha: "Tudo conferido",
     italico: "antes da entrada",
@@ -49,6 +53,8 @@ export const FASES: Fase[] = [
   },
   {
     num: "02",
+    foto: "fluxo/rp-0934-beijo.jpg",
+    zoom: [1.02, 1.07],
     etiqueta: "Cerimônia",
     linha: "Cada entrada",
     italico: "no tempo certo",
@@ -57,10 +63,12 @@ export const FASES: Fase[] = [
       "Sinal combinado para música e entrada",
       "Cerimônia acompanhada de perto",
     ],
-    origem: "55% 100%",
+    origem: "62% 100%",
   },
   {
     num: "03",
+    foto: "fluxo/rp-0989-brinde.jpg",
+    zoom: [1.04, 1.09],
     etiqueta: "Recepção",
     linha: "A festa segue",
     italico: "o roteiro de vocês",
@@ -69,10 +77,12 @@ export const FASES: Fase[] = [
       "Cada momento na hora combinada",
       "Fornecedores alinhados durante a festa",
     ],
-    origem: "85% 100%",
+    origem: "55% 100%",
   },
   {
     num: "04",
+    foto: "fluxo/rp-1046-cumprimento.jpg",
+    zoom: [1.02, 1.07],
     etiqueta: "Encerramento",
     linha: "Presença até",
     italico: "o fim da festa",
@@ -81,7 +91,7 @@ export const FASES: Fase[] = [
       "Últimos alinhamentos com fornecedores",
       "Encerramento do evento",
     ],
-    origem: "15% 100%",
+    origem: "70% 100%",
   },
 ];
 
@@ -95,18 +105,19 @@ export const DURACAO_FLUXO = Math.round(
 
 // Foto em tela cheia: aproximação lenta e contínua, sem upscale além do arquivo
 // (cover = 75% do original; zoom máximo 1,32 mantém ≥ 1 px de origem por px).
-const Foto: React.FC<{ de: number; ate: number; origem: string; dur: number }> = ({
-  de,
-  ate,
-  origem,
-  dur,
-}) => {
+const Foto: React.FC<{
+  de: number;
+  ate: number;
+  origem: string;
+  dur: number;
+  foto?: string;
+}> = ({ foto = FOTO, de, ate, origem, dur }) => {
   const frame = useCurrentFrame();
   const s = interpolate(frame, [0, dur], [de, ate], clamp);
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <Img
-        src={staticFile(FOTO)}
+        src={staticFile(foto)}
         style={{
           width: "100%",
           height: "100%",
@@ -121,8 +132,11 @@ const Foto: React.FC<{ de: number; ate: number; origem: string; dur: number }> =
   );
 };
 
-const Fio: React.FC<{ inicio: number }> = ({ inicio }) => {
-  const frame = useCurrentFrame();
+const Fio: React.FC<{ inicio: number; pronto?: boolean }> = ({
+  inicio,
+  pronto,
+}) => {
+  const frame = useCurrentFrame() + (pronto ? 1000 : 0);
   const { fps } = useVideoConfig();
   const w = interpolate(frame - inicio, [0, 0.5 * fps], [0, 64], {
     ...clamp,
@@ -131,16 +145,23 @@ const Fio: React.FC<{ inicio: number }> = ({ inicio }) => {
   return <div style={{ width: w, height: 3, backgroundColor: COR.nude }} />;
 };
 
-const Etiqueta: React.FC<{ texto: string }> = ({ texto }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 26 }}>
-    <Fio inicio={0} />
+const Etiqueta: React.FC<{
+  texto: string;
+  compacta?: boolean;
+  fioPronto?: boolean;
+}> = ({ texto, compacta, fioPronto }) => (
+  <div
+    style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 26 }}
+  >
+    <Fio inicio={0} pronto={fioPronto} />
     <div
       style={{
         color: COR.nude,
         fontFamily: sans,
         fontWeight: 600,
-        fontSize: 30,
-        letterSpacing: 6,
+        fontSize: compacta ? 26 : 30,
+        letterSpacing: compacta ? 4 : 6,
+        whiteSpace: "nowrap",
         textTransform: "uppercase",
       }}
     >
@@ -160,9 +181,19 @@ const Gancho: React.FC<{ dur: number }> = ({ dur }) => {
   const b = l2.slice(0, Math.max(0, n - l1.length));
   const digitando = n < l1.length + l2.length;
   const saida = interpolate(frame, [dur - 0.3 * fps, dur], [1, 0], clamp);
-  const cursor = <span style={{ color: COR.nude, fontStyle: "normal" }}>|</span>;
+  const cursor = (
+    <span style={{ color: COR.nude, fontStyle: "normal" }}>|</span>
+  );
   return (
-    <div style={{ position: "absolute", left: 96, right: 60, bottom: 460, opacity: saida }}>
+    <div
+      style={{
+        position: "absolute",
+        left: 96,
+        right: 60,
+        bottom: 460,
+        opacity: saida,
+      }}
+    >
       <Etiqueta texto="Bastidores da Impactar" />
       <div
         style={{
@@ -214,7 +245,10 @@ const Check: React.FC<{ inicio: number }> = ({ inicio }) => {
 const BlocoFase: React.FC<{ f: Fase; dur: number }> = ({ f, dur }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const entra = interpolate(frame, [0, 0.45 * fps], [0, 1], { ...clamp, easing: suave });
+  const entra = interpolate(frame, [0, 0.45 * fps], [0, 1], {
+    ...clamp,
+    easing: suave,
+  });
   const sai = interpolate(frame, [dur - 0.3 * fps, dur], [1, 0], clamp);
   const tItem = (i: number) => Math.round((1.0 + i * 1.05) * fps);
   return (
@@ -242,7 +276,9 @@ const BlocoFase: React.FC<{ f: Fase; dur: number }> = ({ f, dur }) => {
       >
         {f.linha}
         <br />
-        <span style={{ fontStyle: "italic", color: COR.nude }}>{f.italico}</span>
+        <span style={{ fontStyle: "italic", color: COR.nude }}>
+          {f.italico}
+        </span>
       </div>
       {f.itens.map((t, i) => {
         const em = tItem(i);
@@ -284,7 +320,10 @@ const BlocoFase: React.FC<{ f: Fase; dur: number }> = ({ f, dur }) => {
 const BlocoCTA: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const entra = interpolate(frame, [0, 0.45 * fps], [0, 1], { ...clamp, easing: suave });
+  const entra = interpolate(frame, [0, 0.45 * fps], [0, 1], {
+    ...clamp,
+    easing: suave,
+  });
   return (
     <div
       style={{
@@ -296,7 +335,7 @@ const BlocoCTA: React.FC = () => {
         translate: `0px ${interpolate(entra, [0, 1], [24, 0])}px`,
       }}
     >
-      <Etiqueta texto="Manda para quem vai casar com você" />
+      <Etiqueta texto="Manda para quem vai casar com você" compacta />
       <div
         style={{
           color: COR.fundoClaro,
@@ -329,8 +368,19 @@ export const FluxoDoDia: React.FC = () => {
         <Foto de={1} ate={1.05} origem="50% 45%" dur={dG} />
       </Sequence>
       {FASES.map((f, i) => (
-        <Sequence key={f.num} from={dG + i * dF} durationInFrames={dF} premountFor={fps}>
-          <Foto de={1.22} ate={1.28} origem={f.origem} dur={dF} />
+        <Sequence
+          key={f.num}
+          from={dG + i * dF}
+          durationInFrames={dF}
+          premountFor={fps}
+        >
+          <Foto
+            foto={f.foto}
+            de={f.zoom[0]}
+            ate={f.zoom[1]}
+            origem={f.origem}
+            dur={dF}
+          />
         </Sequence>
       ))}
       <Sequence from={inicioCTA} durationInFrames={dC} premountFor={fps}>
@@ -362,7 +412,7 @@ export const CapaFluxo: React.FC = () => (
       style={{ position: "absolute", right: 72, bottom: 250, width: 230 }}
     />
     <div style={{ position: "absolute", left: 96, right: 60, bottom: 460 }}>
-      <Etiqueta texto="Bastidores da Impactar" />
+      <Etiqueta texto="Bastidores da Impactar" fioPronto />
       <div
         style={{
           color: COR.fundoClaro,
@@ -374,7 +424,9 @@ export const CapaFluxo: React.FC = () => (
       >
         Quem cuida do dia
         <br />
-        <span style={{ fontStyle: "italic", color: COR.nude }}>enquanto você vive</span>
+        <span style={{ fontStyle: "italic", color: COR.nude }}>
+          enquanto você vive
+        </span>
       </div>
     </div>
   </AbsoluteFill>
