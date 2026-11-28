@@ -633,40 +633,10 @@ const ENTRADA_BASE: FalaPatyProps = {
   legenda: LEGENDA_ENTRADA,
 };
 
-// A cópia do Drive (IMG_9673 1080p) veio desacelerada: voz ~6 % mais grave que IMG_9674, da mesma sessão.
-// fala-ret-vn.mp4 = fala-ret.mp4 de volta à velocidade natural (setpts/1,0594 + asetrate ×1,0594, tom confere: 232 Hz).
-// Os tempos acima foram medidos no arquivo lento; aqui são convertidos para o arquivo corrigido.
-const VEL_ENTRADA = 1.0594;
-const naVelocidade = (
-  p: FalaPatyProps,
-  k: number,
-  fala: string,
-): FalaPatyProps => {
-  const t = (x: number) => Math.round((x / k) * 1000) / 1000;
-  return {
-    ...p,
-    fala,
-    ini: t(p.ini),
-    fim: t(p.fim),
-    cortes: p.cortes.map((c) => ({ ...c, de: t(c.de), ate: t(c.ate) })),
-    gancho: { ...p.gancho, de: t(p.gancho.de), ate: t(p.gancho.ate) },
-    checklist: p.checklist
-      ? {
-          ...p.checklist,
-          de: t(p.checklist.de),
-          ate: t(p.checklist.ate),
-          itens: p.checklist.itens.map((it) => ({ ...it, em: t(it.em) })),
-        }
-      : undefined,
-    blocos: p.blocos.map((b) => ({ ...b, de: t(b.de), ate: t(b.ate) })),
-    legenda: p.legenda.map((l) => ({ ...l, ini: t(l.ini), fim: t(l.fim) })),
-  };
-};
-export const ENTRADA = naVelocidade(
-  ENTRADA_BASE,
-  VEL_ENTRADA,
-  "brutos/entrada/fala-ret-vn.mp4",
-);
+// A cópia do Drive (IMG_9673 1080p) repete 1 quadro a cada 2 (imagem a 15 q/s → "travando").
+// fala-ret.mp4 usa só os quadros reais + quadros intermediários calculados (minterpolate), mesma velocidade.
+// (Teste de 28/11: boca × voz confere na escala 1,0 — o arquivo NÃO estava desacelerado.)
+export const ENTRADA = ENTRADA_BASE;
 
 // ---------- Vídeo 3: Seu único trabalho (IMG_9674; sem as frases "nem fica sabendo") ----------
 // Junções da montagem (s): 12,85 · 15,62 — escondidas por apoio.
