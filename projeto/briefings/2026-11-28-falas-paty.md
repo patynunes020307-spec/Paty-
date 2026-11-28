@@ -52,3 +52,8 @@
   "Quando tem alguém que está conduzindo, você só vive o momento." (sem as frases "nem fica sabendo").
   Lista "Quem resolve?" (fornecedor · convidado · chuva), fecho "Você só vive / o momento.". Apoios: equipe 9608, foto 9605.
   Enquadramento destes dois: origem da aproximação embaixo (rosto mais baixo no quadro). Capas: entrada 2,5 s · único 14,0 s (zoom 1,15).
+- 28/11 — Paty: "o primeiro vídeo tá com delay, slow motion". Diagnóstico: faixas sincronizadas; IMG_9673 (cópia 1080p do Drive)
+  com voz ~6 % mais grave (F0 219 Hz × 232 Hz no IMG_9674 da mesma sessão) e fala a 2,0 palavras/s (×2,9 nos outros) → cópia desacelerada.
+  Correção: fala-ret-vn.mp4 (setpts/1,0594 + asetrate ×1,0594; F0 volta a 232 Hz). Tempos convertidos (naVelocidade), legenda conferida (±0,05 s).
+  exports/fala-entrada-v2.mp4 (44,5 s) + capa v2.
+  Cortejo (cortejo-1440.mp4, "conversão, não é o original MOV"): ~27 % de quadros repetidos → imagem travadinha. Não dá para criar os quadros que faltam; pedir o MOV original.
