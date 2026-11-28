@@ -1,6 +1,16 @@
 import { Composition } from "remotion";
 import { Still } from "remotion";
-import { CAPA_CORTEJO, CapaFala, CORTEJO, duracaoFala, FalaPaty } from "./FalaPaty";
+import {
+  CAPA_CORTEJO,
+  CAPA_ENTRADA,
+  CAPA_UNICO,
+  CapaFala,
+  CORTEJO,
+  duracaoFala,
+  ENTRADA,
+  FalaPaty,
+  UNICO,
+} from "./FalaPaty";
 import { MyComposition } from "./Composition";
 import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
@@ -49,7 +59,45 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <MyComposition />
-      <Still id="CapaFalaCortejo" component={CapaFala} defaultProps={CAPA_CORTEJO} width={1080} height={1920} />
+      <Composition
+        id="FalaEntrada"
+        component={FalaPaty}
+        defaultProps={ENTRADA}
+        durationInFrames={duracaoFala(ENTRADA)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="FalaUnico"
+        component={FalaPaty}
+        defaultProps={UNICO}
+        durationInFrames={duracaoFala(UNICO)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Still
+        id="CapaFalaEntrada"
+        component={CapaFala}
+        defaultProps={CAPA_ENTRADA}
+        width={1080}
+        height={1920}
+      />
+      <Still
+        id="CapaFalaUnico"
+        component={CapaFala}
+        defaultProps={CAPA_UNICO}
+        width={1080}
+        height={1920}
+      />
+      <Still
+        id="CapaFalaCortejo"
+        component={CapaFala}
+        defaultProps={CAPA_CORTEJO}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="FalaCortejo"
         component={FalaPaty}

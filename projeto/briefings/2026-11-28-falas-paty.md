@@ -43,3 +43,12 @@
   huesaturation r+m -0,3 (batom mais suave). Enquadramento: aberto 1,08 / fechado 1,22, origem 50% 22%.
   Cabelo: na gravação das 14h40 ela está sem as tranças (nos IMG_9673/9674 está com tranças) — não é editável.
   exports/fala-cortejo-v2.mp4 + exports/fala-cortejo-v2-capa.jpg.
+- 28/11 — Paty: "Ótimo" (sobre o Cortejo v2). Feitos os vídeos 2 e 3 no mesmo estilo e retoque.
+  Entrada e ritmo v1 (47,2 s): montagem de IMG_9673 (15,80–23,50 · 24,42–34,25 · 34,94–43,70 · 52,10–61,85 · 103,95–110,20 · 111,28–116,15),
+  sem "Quando isso é conduzido… o convidado larga o celular e olha pra você". Gancho "Decoração linda. / E o ritmo da entrada?",
+  lista "O ritmo é:" (tempo certo · música junto · pausa antes do sim), frases "Não é a decoração, / é o ritmo." e "A entrada começa / antes do dia.".
+  Apoios: foto altar 9600, corredor 9647 (10 s), coro 9647 (1 s), véu 9635, casal no altar 9636 (39,5 s).
+  Seu único trabalho v1 (17,1 s): montagem de IMG_9674 (6,55–19,40 · 21,95–24,72 · 28,05–29,50) →
+  "Quando tem alguém que está conduzindo, você só vive o momento." (sem as frases "nem fica sabendo").
+  Lista "Quem resolve?" (fornecedor · convidado · chuva), fecho "Você só vive / o momento.". Apoios: equipe 9608, foto 9605.
+  Enquadramento destes dois: origem da aproximação embaixo (rosto mais baixo no quadro). Capas: entrada 2,5 s · único 14,0 s (zoom 1,15).

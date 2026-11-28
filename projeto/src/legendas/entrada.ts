@@ -1,0 +1,23 @@
+// Legenda — transcrição local (whisper.cpp medium) da fala JÁ MONTADA (public/brutos/entrada/fala-ret.mp4), agrupada à mão.
+export const LEGENDA_ENTRADA = [
+  { texto: "Sua cerimônia", ini: 0.07, fim: 1.85 },
+  { texto: "pode ter a decoração", ini: 1.85, fim: 4.76 },
+  { texto: "mais linda do mundo", ini: 4.76, fim: 8.19 },
+  { texto: "mas se a sua entrada", ini: 8.19, fim: 10.93 },
+  { texto: "for confusa", ini: 10.93, fim: 12.16 },
+  { texto: "ou a entrada de alguém", ini: 12.16, fim: 14.7 },
+  { texto: "é isso que todo mundo", ini: 14.7, fim: 16.52 },
+  { texto: "vai lembrar", ini: 16.52, fim: 17.96 },
+  { texto: "O que faz uma cerimônia", ini: 17.96, fim: 20.4 },
+  { texto: "ser inesquecível", ini: 20.4, fim: 22.28 },
+  { texto: "não é a decoração", ini: 22.28, fim: 24.9 },
+  { texto: "é o ritmo", ini: 24.9, fim: 26.35 },
+  { texto: "É a entrada no tempo certo", ini: 26.35, fim: 29.77 },
+  { texto: "a música que entra junto", ini: 29.77, fim: 33.07 },
+  { texto: "a pausa antes do sim", ini: 33.07, fim: 36.1 },
+  { texto: "No fim,", ini: 36.1, fim: 36.95 },
+  { texto: "não é sobre ser perfeito", ini: 36.95, fim: 39.95 },
+  { texto: "é sobre fazer sentido", ini: 39.95, fim: 42.36 },
+  { texto: "A entrada começa a ser preparada", ini: 42.36, fim: 45.85 },
+  { texto: "antes do dia", ini: 45.85, fim: 47.3 },
+];
