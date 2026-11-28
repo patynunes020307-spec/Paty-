@@ -1,4 +1,5 @@
 import { Composition } from "remotion";
+import { CORTEJO, duracaoFala, FalaPaty } from "./FalaPaty";
 import { MyComposition } from "./Composition";
 import { TesteEdita } from "./TesteEdita";
 import { BastidoresSemana, BASTIDORES_DURACAO } from "./BastidoresSemana";
@@ -47,6 +48,15 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <MyComposition />
+      <Composition
+        id="FalaCortejo"
+        component={FalaPaty}
+        defaultProps={CORTEJO}
+        durationInFrames={duracaoFala(CORTEJO)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="TesteEdita"
         component={TesteEdita}

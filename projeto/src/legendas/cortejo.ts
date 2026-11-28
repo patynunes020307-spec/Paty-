@@ -1,0 +1,26 @@
+// Legenda do Reel Cortejo — transcrição local (whisper.cpp medium, palavra a palavra),
+// agrupada à mão nas pausas da fala. Tempos em segundos no arquivo-fonte (fala.mp4).
+// Fala literal da Paty (nenhuma palavra trocada).
+export const LEGENDA_CORTEJO = [
+  { texto: "O cortejo não começa", ini: 1.2, fim: 2.53 },
+  { texto: "quando a música toca", ini: 2.53, fim: 3.94 },
+  { texto: "ele começa semanas antes", ini: 3.94, fim: 5.36 },
+  { texto: "Quem entra com você", ini: 5.36, fim: 6.7 },
+  { texto: "em qual ordem", ini: 6.7, fim: 7.6 },
+  { texto: "qual a música", ini: 7.6, fim: 8.53 },
+  { texto: "isso não se decide", ini: 8.53, fim: 10.24 },
+  { texto: "na hora", ini: 10.24, fim: 11.14 },
+  { texto: "A gente alinha", ini: 11.14, fim: 12.1 },
+  { texto: "o que vocês desejam", ini: 12.1, fim: 13.62 },
+  { texto: "o que que o espaço", ini: 13.62, fim: 14.87 },
+  { texto: "e quem vai conduzir", ini: 14.87, fim: 15.9 },
+  { texto: "a cerimônia orientam", ini: 15.9, fim: 17.32 },
+  { texto: "Assim, cada entrada", ini: 17.32, fim: 18.69 },
+  { texto: "ela tem o ritmo", ini: 18.69, fim: 19.6 },
+  { texto: "e tem um sentido", ini: 19.6, fim: 20.88 },
+  { texto: "No dia, você só entra", ini: 20.88, fim: 22.38 },
+  { texto: "tranquila", ini: 22.38, fim: 23.2 },
+  { texto: "e a equipe já sabe", ini: 23.2, fim: 24.31 },
+  { texto: "exatamente", ini: 24.31, fim: 25.06 },
+  { texto: "o que que vai fazer", ini: 25.06, fim: 26.9 },
+];
