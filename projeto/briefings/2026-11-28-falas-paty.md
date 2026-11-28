@@ -37,3 +37,9 @@
   e "A equipe já sabe / o que vai fazer.", 12 cortes (enquadramento fechado 1,16 em cortes secos + apoios 9635, 9647, 9608, foto 9605),
   legenda Montserrat 52 px escondida enquanto lista/frase do Guia está na tela.
   exports/fala-cortejo-v1.mp4 (26,3 s, 1080×1920, 30 fps, com a voz) + exports/fala-cortejo-v1-capa.jpg (frame 26,7 s, logo Logo-original-1.png pequena).
+- 28/11 — Paty pediu retoque (manchas, dentes, batom suave), notou "cabelo curto" e pediu melhor enquadramento.
+  v2: retoque GLOBAL no vídeo da fala, sem rastrear rosto (public/brutos/cortejo/fala-ret.mp4):
+  bilateral sigmaS 6/sigmaR 0,05 (pele) · colortemperature 7600 mix 0,6 + eq sat 1,08 (tira o tom sépia; dentes mais claros) ·
+  huesaturation r+m -0,3 (batom mais suave). Enquadramento: aberto 1,08 / fechado 1,22, origem 50% 22%.
+  Cabelo: na gravação das 14h40 ela está sem as tranças (nos IMG_9673/9674 está com tranças) — não é editável.
+  exports/fala-cortejo-v2.mp4 + exports/fala-cortejo-v2-capa.jpg.

@@ -214,7 +214,7 @@ const Aproximacao: React.FC<{ dur: number; base: number; children: React.ReactNo
   const f = useCurrentFrame();
   const s = base * interpolate(f, [0, dur], [1, 1.05], clamp);
   return (
-    <AbsoluteFill style={{ transform: `scale(${s})`, transformOrigin: "50% 32%" }}>{children}</AbsoluteFill>
+    <AbsoluteFill style={{ transform: `scale(${s})`, transformOrigin: "50% 22%" }}>{children}</AbsoluteFill>
   );
 };
 
@@ -307,23 +307,23 @@ export const FalaPaty: React.FC<FalaPatyProps> = (p) => {
 // ---------- Vídeo 1: Cortejo ----------
 const CJ = "brutos/cortejo/";
 export const CORTEJO: FalaPatyProps = {
-  fala: `${CJ}fala.mp4`,
+  fala: `${CJ}fala-ret.mp4`, // retoque global (sem rastrear rosto): pele, cor neutra, batom suave
   ini: 1.0,
   fim: 27.3,
   // cortes secos; "zoom" = enquadramento mais fechado no corte (não é animação)
   cortes: [
-    { de: 1.0, ate: 3.94, paty: true },
-    { de: 3.94, ate: 5.36, paty: true, zoom: 1.16 },
+    { de: 1.0, ate: 3.94, paty: true, zoom: 1.08 },
+    { de: 3.94, ate: 5.36, paty: true, zoom: 1.22 },
     { de: 5.36, ate: 6.9, arquivo: `${CJ}entrada-9635.mp4`, inicio: 2.0 }, // noiva e pai de costas, véu
     { de: 6.9, ate: 8.55, arquivo: `${CJ}corredor-9647.mp4`, inicio: 10.0 }, // corredor decorado
-    { de: 8.55, ate: 11.14, paty: true, zoom: 1.16 },
+    { de: 8.55, ate: 11.14, paty: true, zoom: 1.22 },
     { de: 11.14, ate: 12.9, arquivo: `${CJ}equipe-9608.mp4`, inicio: 0.5 }, // equipe com prancheta
     { de: 12.9, ate: 14.87, arquivo: `${CJ}equipe-roda-9605.jpg`, enquadramento: "50% 40%" },
     { de: 14.87, ate: 17.32, arquivo: `${CJ}equipe-9608.mp4`, inicio: 6.0 },
-    { de: 17.32, ate: 19.0, paty: true },
+    { de: 17.32, ate: 19.0, paty: true, zoom: 1.08 },
     { de: 19.0, ate: 20.88, arquivo: `${CJ}corredor-9647.mp4`, inicio: 14.0 },
-    { de: 20.88, ate: 23.2, paty: true, zoom: 1.16 },
-    { de: 23.2, ate: 27.3, paty: true },
+    { de: 20.88, ate: 23.2, paty: true, zoom: 1.22 },
+    { de: 23.2, ate: 27.3, paty: true, zoom: 1.08 },
   ],
   gancho: {
     kicker: "Bastidores da Impactar",
