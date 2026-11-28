@@ -10,182 +10,289 @@ import {
   useVideoConfig,
 } from "remotion";
 import { COR } from "./marca";
-import { SANS } from "./fontes";
+import { SANS, SERIF } from "./fontes";
 import { LEGENDA_CORTEJO } from "./legendas/cortejo";
 
-// Reels falados da Paty (instruções v2 de 28/11/2026 + Guia do Notion de 26/11/2026).
-// - Voz real e contínua da Paty, sem acelerar e sem trocar palavras.
-// - Gancho grande nos 2 primeiros segundos (subida suave), legenda falada >= 52 px.
-// - Imagens de apoio por cima da fala, trocando a cada 2–4 s, aproximação lenta 100→105 %.
-// - Sem logo no fim (Guia: logo só na capa). Sem SFX (a Paty coloca a música no app).
+// Reels falados da Paty — instruções v2 (28/11/2026) + Guia do Notion (26/11/2026, seção 11).
+// Paty (28/11): "texto conforme o guia, motions, cortes, edições mais animadas".
+// - Voz real e contínua, sem acelerar e sem trocar palavras.
+// - Texto do Guia: fio nude + etiqueta Montserrat maiúscula + frase Cormorant (2ª linha itálico nude),
+//   alinhado à esquerda no terço de baixo. Gancho digitado (~25 letras/s), cursor fixo.
+// - Animações só da lista do Guia: digitação, fade + subida curta, fio desenhado, check desenhado,
+//   aproximação lenta contínua. Cortes secos. Uma animação de cada vez.
+// - Sem logo no fim (logo só na capa). Sem SFX (música pelo app).
 
 export const FPS = 30;
+const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+const suave = Easing.bezier(0.22, 1, 0.36, 1);
 
-type Apoio = {
-  /** Intervalo na linha do tempo da fala (s, no arquivo-fonte da fala). */
-  de: number;
-  ate: number;
-  arquivo: string;
-  /** Ponto de entrada no arquivo de apoio (s). */
-  inicio: number;
-  enquadramento?: string;
-};
+type Corte =
+  | { de: number; ate: number; paty: true; zoom?: number }
+  | { de: number; ate: number; arquivo: string; inicio?: number; enquadramento?: string };
+
+type Bloco = { kicker: string; linha: string; italico: string; de: number; ate: number };
 
 export type FalaPatyProps = {
   fala: string;
-  /** Trecho usado da fala (s). */
   ini: number;
   fim: number;
-  gancho: string[];
+  cortes: Corte[];
+  gancho: Bloco;
+  checklist?: { titulo: string; de: number; ate: number; itens: { texto: string; em: number }[] };
+  blocos: Bloco[];
   legenda: readonly { texto: string; ini: number; fim: number }[];
-  apoios: Apoio[];
 };
 
 export const duracaoFala = (p: FalaPatyProps) => Math.round((p.fim - p.ini) * FPS);
 
-const ease = Easing.bezier(0.22, 1, 0.36, 1);
+// ---------- peças de texto (padrão do Guia) ----------
 
-const Aproximacao: React.FC<{ dur: number; ate: number; children: React.ReactNode }> = ({
-  dur,
-  ate,
-  children,
-}) => {
-  const f = useCurrentFrame();
-  const s = interpolate(f, [0, dur], [1, ate], { extrapolateRight: "clamp" });
-  return <AbsoluteFill style={{ transform: `scale(${s})` }}>{children}</AbsoluteFill>;
-};
-
-const Gancho: React.FC<{ linhas: string[] }> = ({ linhas }) => {
-  const f = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const entra = interpolate(f, [4, 4 + 0.45 * fps], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: ease,
-  });
-  const sai = interpolate(f, [3.0 * fps, 3.3 * fps], [1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  return (
+const Etiqueta: React.FC<{ texto: string; fio: number }> = ({ texto, fio }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 24 }}>
+    <div style={{ width: 64 * fio, height: 3, backgroundColor: COR.nude }} />
     <div
       style={{
-        position: "absolute",
-        top: 1010,
-        left: 60,
-        right: 60,
-        textAlign: "center",
+        color: COR.nude,
         fontFamily: SANS,
-        fontWeight: 600,
-        fontSize: 76,
-        lineHeight: 1.12,
-        letterSpacing: -0.5,
-        color: "#FFFFFF",
-        opacity: entra * sai,
-        transform: `translateY(${(1 - entra) * 28}px)`,
-        textShadow: "0 3px 18px rgba(7,33,38,0.55)",
+        fontWeight: 500,
+        fontSize: 28,
+        letterSpacing: 5,
+        textTransform: "uppercase",
+        opacity: fio,
       }}
     >
-      {linhas.map((l, i) => (
-        <div key={i} style={{ whiteSpace: "nowrap" }}>{l}</div>
-      ))}
+      {texto}
+    </div>
+  </div>
+);
+
+const POS_BLOCO = { position: "absolute", left: 96, right: 60, bottom: 560 } as const;
+const TITULO = {
+  color: COR.fundoClaro,
+  fontFamily: SERIF,
+  fontWeight: 500,
+  fontSize: 88,
+  lineHeight: 1.06,
+  textShadow: "0 2px 22px rgba(7,33,38,0.45)",
+} as const;
+
+// Gancho digitado letra por letra, cursor fino parado (sem piscar), some ao terminar.
+const GanchoDigitado: React.FC<{ b: Bloco; duracao: number }> = ({ b, duracao }) => {
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const porLetra = fps / 25;
+  const n = Math.floor(f / porLetra);
+  const total = b.linha.length + b.italico.length;
+  const l1 = b.linha.slice(0, Math.min(n, b.linha.length));
+  const l2 = b.italico.slice(0, Math.max(0, n - b.linha.length));
+  const fio = interpolate(f, [0, 0.5 * fps], [0, 1], { ...clamp, easing: suave });
+  const sai = interpolate(f, [duracao - 0.3 * fps, duracao], [1, 0], clamp);
+  const cursor = <span style={{ fontStyle: "normal", color: COR.nude, fontWeight: 400 }}>|</span>;
+  return (
+    <div style={{ ...POS_BLOCO, opacity: sai }}>
+      <Etiqueta texto={b.kicker} fio={fio} />
+      <div style={{ ...TITULO, minHeight: 2 * 88 * 1.06 }}>
+        {l1}
+        {n < total && n <= b.linha.length ? cursor : null}
+        <br />
+        <span style={{ fontStyle: "italic", color: COR.nude }}>
+          {l2}
+          {n < total && n > b.linha.length ? cursor : null}
+        </span>
+      </div>
     </div>
   );
 };
 
+// Frase do Guia: entra com fade + subida curta (0,45 s), fio se desenha, sai com fade.
+const Frase: React.FC<{ b: Bloco; duracao: number }> = ({ b, duracao }) => {
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const fio = interpolate(f, [0, 0.5 * fps], [0, 1], { ...clamp, easing: suave });
+  const a = interpolate(f, [0.1 * fps, 0.55 * fps], [0, 1], { ...clamp, easing: suave });
+  const sai = interpolate(f, [duracao - 0.3 * fps, duracao], [1, 0], clamp);
+  return (
+    <div style={{ ...POS_BLOCO, opacity: sai }}>
+      <Etiqueta texto={b.kicker} fio={fio} />
+      <div style={{ ...TITULO, opacity: a, transform: `translateY(${(1 - a) * 26}px)` }}>
+        {b.linha}
+        <br />
+        <span style={{ fontStyle: "italic", color: COR.nude }}>{b.italico}</span>
+      </div>
+    </div>
+  );
+};
+
+const Check: React.FC<{ em: number }> = ({ em }) => {
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const p = interpolate(f - em, [0, 0.3 * fps], [1, 0], { ...clamp, easing: Easing.out(Easing.cubic) });
+  return (
+    <svg width="46" height="46" viewBox="0 0 44 44" style={{ flexShrink: 0 }}>
+      <path
+        d="M6 23 L17 34 L38 9"
+        fill="none"
+        stroke={COR.nude}
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        pathLength={1}
+        strokeDasharray={1}
+        strokeDashoffset={p}
+      />
+    </svg>
+  );
+};
+
+// Lista com check: um item por vez, no momento em que a Paty fala.
+const Lista: React.FC<{ c: NonNullable<FalaPatyProps["checklist"]>; duracao: number }> = ({ c, duracao }) => {
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = interpolate(f, [0, 0.45 * fps], [0, 1], { ...clamp, easing: suave });
+  const sai = interpolate(f, [duracao - 0.3 * fps, duracao], [1, 0], clamp);
+  return (
+    <div style={{ position: "absolute", left: 96, right: 60, bottom: 470, opacity: sai }}>
+      <div style={{ ...TITULO, fontSize: 80, marginBottom: 34, opacity: a, transform: `translateY(${(1 - a) * 24}px)` }}>
+        <span style={{ fontStyle: "italic", color: COR.fundoClaro, textShadow: "0 2px 18px rgba(7,33,38,0.85)" }}>{c.titulo}</span>
+      </div>
+      {c.itens.map((it, i) => {
+        const em = Math.round((it.em - c.de) * fps);
+        const op = interpolate(f, [em, em + 0.3 * fps], [0, 1], { ...clamp, easing: suave });
+        return (
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 22,
+              marginBottom: 16,
+              opacity: op,
+              transform: `translateY(${(1 - op) * 20}px)`,
+            }}
+          >
+            <Check em={em} />
+            <div
+              style={{
+                color: COR.fundoClaro,
+                fontFamily: SANS,
+                fontWeight: 600,
+                fontSize: 52,
+                textShadow: "0 2px 14px rgba(7,33,38,0.6)",
+              }}
+            >
+              {it.texto}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// Legenda da fala: Montserrat 52 px, esquerda, abaixo do bloco do Guia, acima da faixa de botões.
 const Legenda: React.FC<{ texto: string }> = ({ texto }) => (
   <div
     style={{
       position: "absolute",
-      top: 1360,
-      left: 110,
-      right: 110,
-      textAlign: "center",
+      left: 96,
+      right: 96,
+      bottom: 400,
+      color: "#FFFFFF",
       fontFamily: SANS,
       fontWeight: 600,
-      fontSize: 58,
-      lineHeight: 1.18,
-      color: "#FFFFFF",
-      textShadow: "0 2px 12px rgba(7,33,38,0.7)",
+      fontSize: 52,
+      lineHeight: 1.22,
+      textShadow: "0 2px 14px rgba(7,33,38,0.75)",
     }}
   >
     {texto}
   </div>
 );
 
+// Aproximação lenta e contínua, num sentido só (Guia: 100 → 105 %).
+const Aproximacao: React.FC<{ dur: number; base: number; children: React.ReactNode }> = ({ dur, base, children }) => {
+  const f = useCurrentFrame();
+  const s = base * interpolate(f, [0, dur], [1, 1.05], clamp);
+  return (
+    <AbsoluteFill style={{ transform: `scale(${s})`, transformOrigin: "50% 32%" }}>{children}</AbsoluteFill>
+  );
+};
+
+// ---------- composição ----------
+
 export const FalaPaty: React.FC<FalaPatyProps> = (p) => {
   const total = duracaoFala(p);
-  const q = (s: number) => Math.round((s - p.ini) * FPS);
+  const q = (s: number) => Math.max(0, Math.min(total, Math.round((s - p.ini) * FPS)));
 
-  // Trechos em que a Paty aparece (entre as imagens de apoio), para a aproximação lenta.
-  const apoios = [...p.apoios].sort((a, b) => a.de - b.de);
-  const blocosPaty: { de: number; ate: number }[] = [];
-  let cursor = p.ini;
-  for (const a of apoios) {
-    if (a.de > cursor) blocosPaty.push({ de: cursor, ate: a.de });
-    cursor = a.ate;
-  }
-  if (cursor < p.fim) blocosPaty.push({ de: cursor, ate: p.fim });
+  // Legenda some enquanto a lista ou um bloco do Guia (exceto o gancho) está na tela: um texto de cada vez.
+  const ocupado = [...p.blocos, ...(p.checklist ? [p.checklist] : [])];
+  const livre = (ini: number) => !ocupado.some((b) => ini >= b.de - 0.05 && ini < b.ate);
 
   return (
     <AbsoluteFill style={{ backgroundColor: COR.petroleoEscuro }}>
-      {/* Paty falando (imagem muda; o som vem do <Audio> contínuo) */}
-      {blocosPaty.map((b, i) => (
-        <Sequence key={`p${i}`} from={q(b.de)} durationInFrames={q(b.ate) - q(b.de)} premountFor={FPS}>
-          <Aproximacao dur={q(b.ate) - q(b.de)} ate={1.04}>
-            <Video
-              src={staticFile(p.fala)}
-              trimBefore={Math.round(b.de * FPS)}
-              muted
-              objectFit="cover"
-              style={{ width: "100%", height: "100%" }}
-            />
-          </Aproximacao>
-        </Sequence>
-      ))}
+      {p.cortes.map((c, i) => {
+        const d = q(c.ate) - q(c.de);
+        return (
+          <Sequence key={`c${i}`} from={q(c.de)} durationInFrames={d} premountFor={FPS}>
+            <Aproximacao dur={d} base={"paty" in c ? c.zoom ?? 1 : 1}>
+              {"paty" in c ? (
+                <Video
+                  src={staticFile(p.fala)}
+                  trimBefore={Math.round(c.de * FPS)}
+                  muted
+                  objectFit="cover"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              ) : /\.(jpe?g|png)$/i.test(c.arquivo) ? (
+                <Img
+                  src={staticFile(c.arquivo)}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: c.enquadramento }}
+                />
+              ) : (
+                <Video
+                  src={staticFile(c.arquivo)}
+                  trimBefore={Math.round((c.inicio ?? 0) * FPS)}
+                  muted
+                  objectFit="cover"
+                  style={{ width: "100%", height: "100%", objectPosition: c.enquadramento }}
+                />
+              )}
+            </Aproximacao>
+          </Sequence>
+        );
+      })}
 
-      {/* Imagens de apoio por cima da fala */}
-      {apoios.map((a, i) => (
-        <Sequence key={`a${i}`} from={q(a.de)} durationInFrames={q(a.ate) - q(a.de)} premountFor={FPS}>
-          <Aproximacao dur={q(a.ate) - q(a.de)} ate={1.05}>
-            {a.arquivo.endsWith(".jpeg") || a.arquivo.endsWith(".jpg") ? (
-              <Img
-                src={staticFile(a.arquivo)}
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: a.enquadramento }}
-              />
-            ) : (
-              <Video
-                src={staticFile(a.arquivo)}
-                trimBefore={Math.round(a.inicio * FPS)}
-                muted
-                objectFit="cover"
-                style={{ width: "100%", height: "100%", objectPosition: a.enquadramento }}
-              />
-            )}
-          </Aproximacao>
-        </Sequence>
-      ))}
+      {/* Voz da Paty, contínua por baixo de todos os cortes */}
+      <Audio src={staticFile(p.fala)} trimBefore={Math.round(p.ini * FPS)} trimAfter={Math.round(p.fim * FPS)} />
 
-      {/* Voz da Paty, contínua */}
-      <Audio
-        src={staticFile(p.fala)}
-        trimBefore={Math.round(p.ini * FPS)}
-        trimAfter={Math.round(p.fim * FPS)}
-      />
-
-      {/* Degradê petróleo só na base, para leitura do texto */}
+      {/* Degradê petróleo escuro só na base */}
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(to top, rgba(7,33,38,0.72) 0%, rgba(7,33,38,0.5) 28%, rgba(7,33,38,0) 52%)",
+            "linear-gradient(to top, rgba(7,33,38,0.82) 0%, rgba(7,33,38,0.6) 24%, rgba(7,33,38,0) 50%)",
         }}
       />
 
-      <Gancho linhas={p.gancho} />
+      <Sequence from={q(p.gancho.de)} durationInFrames={q(p.gancho.ate) - q(p.gancho.de)} layout="none">
+        <GanchoDigitado b={p.gancho} duracao={q(p.gancho.ate) - q(p.gancho.de)} />
+      </Sequence>
+
+      {p.checklist ? (
+        <Sequence from={q(p.checklist.de)} durationInFrames={q(p.checklist.ate) - q(p.checklist.de)} layout="none">
+          <Lista c={p.checklist} duracao={q(p.checklist.ate) - q(p.checklist.de)} />
+        </Sequence>
+      ) : null}
+
+      {p.blocos.map((b, i) => (
+        <Sequence key={`b${i}`} from={q(b.de)} durationInFrames={q(b.ate) - q(b.de)} layout="none">
+          <Frase b={b} duracao={q(b.ate) - q(b.de)} />
+        </Sequence>
+      ))}
 
       {p.legenda.map((l, i) => {
-        const de = Math.max(0, q(l.ini));
-        const ate = Math.min(total, q(l.fim));
+        if (!livre(l.ini)) return null;
+        const de = q(l.ini);
+        const ate = q(l.fim);
         if (ate <= de) return null;
         return (
           <Sequence key={`l${i}`} from={de} durationInFrames={ate - de} layout="none">
@@ -197,22 +304,82 @@ export const FalaPaty: React.FC<FalaPatyProps> = (p) => {
   );
 };
 
+// ---------- Vídeo 1: Cortejo ----------
+const CJ = "brutos/cortejo/";
 export const CORTEJO: FalaPatyProps = {
-  fala: "brutos/cortejo/fala.mp4",
+  fala: `${CJ}fala.mp4`,
   ini: 1.0,
   fim: 27.3,
-  gancho: ["Quem decide a ordem", "das entradas?"],
-  legenda: LEGENDA_CORTEJO,
-  apoios: [
-    // "Quem entra com você, em qual ordem, qual a música" — noiva e pai de costas, véu
-    { de: 5.36, ate: 8.55, arquivo: "brutos/cortejo/entrada-9635.mp4", inicio: 2.0 },
-    // "A gente alinha o que vocês desejam…" — equipe com prancheta (1080p)
-    { de: 11.14, ate: 14.3, arquivo: "brutos/cortejo/equipe-9608.mp4", inicio: 0.5 },
-    { de: 14.3, ate: 17.32, arquivo: "brutos/cortejo/equipe-9608.mp4", inicio: 6.0 },
-    // "Assim, cada entrada tem o ritmo e tem um sentido" — corredor, de longe
-    { de: 17.32, ate: 20.88, arquivo: "brutos/cortejo/entrada-9635.mp4", inicio: 9.0 },
+  // cortes secos; "zoom" = enquadramento mais fechado no corte (não é animação)
+  cortes: [
+    { de: 1.0, ate: 3.94, paty: true },
+    { de: 3.94, ate: 5.36, paty: true, zoom: 1.16 },
+    { de: 5.36, ate: 6.9, arquivo: `${CJ}entrada-9635.mp4`, inicio: 2.0 }, // noiva e pai de costas, véu
+    { de: 6.9, ate: 8.55, arquivo: `${CJ}corredor-9647.mp4`, inicio: 10.0 }, // corredor decorado
+    { de: 8.55, ate: 11.14, paty: true, zoom: 1.16 },
+    { de: 11.14, ate: 12.9, arquivo: `${CJ}equipe-9608.mp4`, inicio: 0.5 }, // equipe com prancheta
+    { de: 12.9, ate: 14.87, arquivo: `${CJ}equipe-roda-9605.jpg`, enquadramento: "50% 40%" },
+    { de: 14.87, ate: 17.32, arquivo: `${CJ}equipe-9608.mp4`, inicio: 6.0 },
+    { de: 17.32, ate: 19.0, paty: true },
+    { de: 19.0, ate: 20.88, arquivo: `${CJ}corredor-9647.mp4`, inicio: 14.0 },
+    { de: 20.88, ate: 23.2, paty: true, zoom: 1.16 },
+    { de: 23.2, ate: 27.3, paty: true },
   ],
+  gancho: {
+    kicker: "Bastidores da Impactar",
+    linha: "Quem decide a ordem",
+    italico: "das entradas?",
+    de: 1.0,
+    ate: 4.6,
+  },
+  checklist: {
+    titulo: "Alinhado semanas antes:",
+    de: 5.36,
+    ate: 8.55,
+    itens: [
+      { texto: "Quem entra com você", em: 5.4 },
+      { texto: "Em qual ordem", em: 6.7 },
+      { texto: "Qual a música", em: 7.6 },
+    ],
+  },
+  blocos: [
+    { kicker: "O cortejo", linha: "Cada entrada tem ritmo", italico: "e tem sentido.", de: 17.32, ate: 20.88 },
+    { kicker: "No dia", linha: "A equipe já sabe", italico: "o que vai fazer.", de: 24.31, ate: 27.3 },
+  ],
+  legenda: LEGENDA_CORTEJO,
 };
 
 // Logo oficial usada só na capa (Logo-original-1.png, Drive › 08 — MARKETING › 00 — Marca).
 export const LOGO_CAPA = "marca/Logo-original-1.png";
+
+// ---------- Capa (1080 × 1920): Paty olhando para a câmera + gancho + logo original pequena ----------
+export type CapaFalaProps = { foto: string; kicker: string; linha: string; italico: string };
+
+export const CapaFala: React.FC<CapaFalaProps> = (c) => (
+  <AbsoluteFill style={{ backgroundColor: COR.petroleoEscuro }}>
+    <Img src={staticFile(c.foto)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+    <AbsoluteFill
+      style={{
+        background:
+          "linear-gradient(to top, rgba(7,33,38,0.85) 0%, rgba(7,33,38,0.62) 26%, rgba(7,33,38,0) 50%)",
+      }}
+    />
+    {/* logo original pequena, no canto, dentro da área 4:5 do perfil, sem cobrir o rosto */}
+    <Img src={staticFile(LOGO_CAPA)} style={{ position: "absolute", top: 310, left: 64, width: 210 }} />
+    <div style={{ ...POS_BLOCO, bottom: 470 }}>
+      <Etiqueta texto={c.kicker} fio={1} />
+      <div style={{ ...TITULO, fontSize: 100 }}>
+        {c.linha}
+        <br />
+        <span style={{ fontStyle: "italic", color: COR.nude }}>{c.italico}</span>
+      </div>
+    </div>
+  </AbsoluteFill>
+);
+
+export const CAPA_CORTEJO: CapaFalaProps = {
+  foto: `${CJ}capa.jpg`,
+  kicker: "Bastidores da Impactar",
+  linha: "Quem decide a ordem",
+  italico: "das entradas?",
+};

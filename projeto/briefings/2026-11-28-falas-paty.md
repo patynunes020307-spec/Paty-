@@ -31,3 +31,9 @@
 
 ## Log de versões
 - 28/11 — exports/fala-cortejo-teste.mp4 (0–10 s) enviado para validar estilo.
+- 28/11 — Paty: "Gostei, só quero o texto conforme o guia, motions, cortes, edições mais animadas".
+  v1 completa: texto no padrão do Guia (fio nude + etiqueta Montserrat + Cormorant com 2ª linha itálico nude),
+  gancho digitado, lista com check ("Alinhado semanas antes:"), frases do Guia em "Cada entrada tem ritmo / e tem sentido."
+  e "A equipe já sabe / o que vai fazer.", 12 cortes (enquadramento fechado 1,16 em cortes secos + apoios 9635, 9647, 9608, foto 9605),
+  legenda Montserrat 52 px escondida enquanto lista/frase do Guia está na tela.
+  exports/fala-cortejo-v1.mp4 (26,3 s, 1080×1920, 30 fps, com a voz) + exports/fala-cortejo-v1-capa.jpg (frame 26,7 s, logo Logo-original-1.png pequena).
