@@ -1,4 +1,5 @@
 import { Composition } from "remotion";
+import { DURACAO_EDITORIAL_UNICO, EditorialUnico } from "./EditorialUnico";
 import { Still } from "remotion";
 import {
   CAPA_CORTEJO,
@@ -73,6 +74,14 @@ export const RemotionRoot: React.FC = () => {
         component={FalaPaty}
         defaultProps={UNICO}
         durationInFrames={duracaoFala(UNICO)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="EditorialUnico"
+        component={EditorialUnico}
+        durationInFrames={DURACAO_EDITORIAL_UNICO}
         fps={30}
         width={1080}
         height={1920}

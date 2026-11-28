@@ -70,14 +70,18 @@ export const duracaoFala = (p: FalaPatyProps) =>
 
 // ---------- peças de texto (padrão do Guia) ----------
 
-const Etiqueta: React.FC<{ texto: string; fio: number }> = ({ texto, fio }) => (
+export const Etiqueta: React.FC<{
+  texto: string;
+  fio: number;
+  cor?: string;
+}> = ({ texto, fio, cor = COR.nude }) => (
   <div
     style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 24 }}
   >
-    <div style={{ width: 64 * fio, height: 3, backgroundColor: COR.nude }} />
+    <div style={{ width: 64 * fio, height: 3, backgroundColor: cor }} />
     <div
       style={{
-        color: COR.nude,
+        color: cor,
         fontFamily: SANS,
         fontWeight: 500,
         fontSize: 28,
@@ -177,7 +181,7 @@ const Frase: React.FC<{ b: Bloco; duracao: number }> = ({ b, duracao }) => {
   );
 };
 
-const Check: React.FC<{ em: number }> = ({ em }) => {
+export const Check: React.FC<{ em: number }> = ({ em }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const p = interpolate(f - em, [0, 0.3 * fps], [1, 0], {
@@ -280,7 +284,7 @@ const Lista: React.FC<{
 };
 
 // Legenda da fala: Montserrat 52 px, esquerda, abaixo do bloco do Guia, acima da faixa de botões.
-const Legenda: React.FC<{ texto: string }> = ({ texto }) => (
+export const Legenda: React.FC<{ texto: string }> = ({ texto }) => (
   <div
     style={{
       position: "absolute",

@@ -66,3 +66,10 @@
   (4) Clipe do altar 9636 começava com a câmera subindo do chão → início 2,2 s.
   Cortejo: medida correta = 1 % de quadros repetidos (normal) — o "27 %" anterior foi erro de medição.
   Entregues: fala-cortejo-v3, fala-entrada-v4, fala-unico-v2 (+ capas).
+- 28/11 — Paty mandou referência (referencias/ref-2026-11-28-efeitos.mp4, "4 estilos de edição") e pediu "efeitos assim" + legenda TikTok
+  do vídeo "No dia do seu casamento". Feito `EditorialUnico` (src/EditorialUnico.tsx), 18,6 s: capa de revista ("O DIA / do seu casamento…"),
+  palavras gigantes (ÚNICO, NOIVA, VOCÊ, MOMENTO), tela dividida (Paty em cima, equipe embaixo + lista "Quem resolve?"),
+  cartão flutuante com a equipe, tela tipográfica final (modelo B). Mecânica adaptada, sem copiar layout; sem caixas atrás da legenda.
+  Conflitos com o Guia (letra a letra, cartão com sombra leve, tela final tipográfica) — decisão expressa da Paty prevalece; avisado.
+  exports/editorial-unico-v1.mp4 + capa (CapaFalaUnico).
+  Legenda TikTok proposta (não publicada): ver resposta de 28/11.
