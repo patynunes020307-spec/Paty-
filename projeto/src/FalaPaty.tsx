@@ -1,9 +1,10 @@
-import { Audio, Video } from "@remotion/media";
+import { Audio } from "@remotion/media";
 import {
   AbsoluteFill,
   Easing,
   Img,
   interpolate,
+  OffthreadVideo,
   Sequence,
   staticFile,
   useCurrentFrame,
@@ -343,12 +344,11 @@ export const FalaPaty: React.FC<FalaPatyProps> = (p) => {
               origem={"paty" in c ? (p.origemPaty ?? "50% 22%") : undefined}
             >
               {"paty" in c ? (
-                <Video
+                <OffthreadVideo
                   src={staticFile(p.fala)}
                   trimBefore={Math.round(c.de * FPS)}
                   muted
-                  objectFit="cover"
-                  style={{ width: "100%", height: "100%" }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               ) : /\.(jpe?g|png)$/i.test(c.arquivo) ? (
                 <Img
@@ -361,14 +361,14 @@ export const FalaPaty: React.FC<FalaPatyProps> = (p) => {
                   }}
                 />
               ) : (
-                <Video
+                <OffthreadVideo
                   src={staticFile(c.arquivo)}
                   trimBefore={Math.round((c.inicio ?? 0) * FPS)}
                   muted
-                  objectFit="cover"
                   style={{
                     width: "100%",
                     height: "100%",
+                    objectFit: "cover",
                     objectPosition: c.enquadramento,
                   }}
                 />
@@ -592,7 +592,7 @@ const ENTRADA_BASE: FalaPatyProps = {
     { de: 24.9, ate: 26.29, paty: true, zoom: 1.08 },
     { de: 26.29, ate: 29.77, arquivo: `${CJ}entrada-9635.mp4`, inicio: 9.0 }, // entrada no corredor, de longe
     { de: 29.77, ate: 33.07, arquivo: `${CJ}corredor-9647.mp4`, inicio: 1.0 }, // coro e orquestra
-    { de: 33.07, ate: 36.04, arquivo: `${CJ}altar-9636.mp4`, inicio: 1.5 }, // casal no altar, de costas
+    { de: 33.07, ate: 36.04, arquivo: `${CJ}altar-9636.mp4`, inicio: 2.2 }, // casal no altar, de costas
     { de: 36.04, ate: 39.95, paty: true, zoom: 1.08 },
     { de: 39.95, ate: 42.29, paty: true, zoom: 1.22 },
     { de: 42.29, ate: 47.15, paty: true, zoom: 1.08 },

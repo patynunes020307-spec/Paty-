@@ -57,3 +57,12 @@
   Correção: fala-ret-vn.mp4 (setpts/1,0594 + asetrate ×1,0594; F0 volta a 232 Hz). Tempos convertidos (naVelocidade), legenda conferida (±0,05 s).
   exports/fala-entrada-v2.mp4 (44,5 s) + capa v2.
   Cortejo (cortejo-1440.mp4, "conversão, não é o original MOV"): ~27 % de quadros repetidos → imagem travadinha. Não dá para criar os quadros que faltam; pedir o MOV original.
+- 28/11 — Paty: "continua em slow motion, travando muito". Diagnóstico refeito:
+  (1) Correção de velocidade da v2 estava ERRADA — teste boca × voz confere na escala 1,0; desfeita.
+  (2) IMG_9673 (cópia 1080p do Drive) repete 1 quadro a cada 2 (imagem a 15 q/s). Montagem refeita com só os quadros reais +
+      quadros intermediários (minterpolate mci/aobmc, 30 q/s), mesma duração/sincronia. Original .MOV pedido à Paty.
+  (3) Quadros corrompidos (imagem "picotada" em tiras) no render com <Video> do @remotion/media — nos 3 vídeos.
+      Trocado por <OffthreadVideo>; varredura quadro a quadro sem falhas.
+  (4) Clipe do altar 9636 começava com a câmera subindo do chão → início 2,2 s.
+  Cortejo: medida correta = 1 % de quadros repetidos (normal) — o "27 %" anterior foi erro de medição.
+  Entregues: fala-cortejo-v3, fala-entrada-v4, fala-unico-v2 (+ capas).
