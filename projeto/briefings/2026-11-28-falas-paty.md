@@ -73,3 +73,6 @@
   Conflitos com o Guia (letra a letra, cartão com sombra leve, tela final tipográfica) — decisão expressa da Paty prevalece; avisado.
   exports/editorial-unico-v1.mp4 + capa (CapaFalaUnico).
   Legenda TikTok proposta (não publicada): ver resposta de 28/11.
+- 28/11 — Paty: "Crie todos os vídeos" (estilo editorial). src/Editorial.tsx (modelo por dados) substitui EditorialUnico.tsx.
+  Entregues: exports/editorial-cortejo-v1.mp4 (27,4 s) · editorial-entrada-v1.mp4 (48,4 s) · editorial-unico-v2.mp4 (18,6 s) + capas.
+  Varredura quadro a quadro: só cortes e entrada da capa (sem quadros corrompidos).
